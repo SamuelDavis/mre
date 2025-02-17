@@ -1,6 +1,6 @@
 import { For, Show } from "solid-js";
 import ImgSrc from "./ImgSrc";
-import type { Api } from "./types";
+import type { Api, Show as TvShow } from "./types";
 import state from "./state";
 
 export default function TvShow(props: {
@@ -19,7 +19,15 @@ export default function TvShow(props: {
 					</Show>
 				</header>
 				<header>
-					<button type="button">Add</button>
+					{state.showIsAdded(props.data) ? (
+						<button type="button" onClick={() => state.removeShow(props.data)}>
+							Remove
+						</button>
+					) : (
+						<button type="button" onClick={() => state.addShow(props.data)}>
+							Add
+						</button>
+					)}
 				</header>
 				<Show when={props.data.genre_ids.length}>
 					<section>

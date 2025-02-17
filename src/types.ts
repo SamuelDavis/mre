@@ -18,6 +18,24 @@ type Paginated<T> = {
 	results: T[];
 };
 
+export type Show = {
+	adult: boolean;
+	backdrop_path: string;
+	genre_ids: int[];
+	id: int;
+	origin_country: country[];
+	original_language: language[];
+	original_name: string;
+	overview: string | "";
+	popularity: number;
+	poster_path: path | null;
+	first_air_date: date;
+	name: string;
+	vote_average: number;
+	vote_count: int;
+};
+export type Genre = { id: int; name: string };
+
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function isErrorResponse(value: any): value is ErrorResponse {
 	return (
@@ -38,27 +56,12 @@ export interface Api {
 			page?: int;
 			year?: int;
 		};
-		response: Paginated<{
-			adult: boolean;
-			backdrop_path: string;
-			genre_ids: int[];
-			id: int;
-			origin_country: country[];
-			original_language: language[];
-			original_name: string;
-			overview: string | "";
-			popularity: number;
-			poster_path: path | null;
-			first_air_date: date;
-			name: string;
-			vote_average: number;
-			vote_count: int;
-		}>;
+		response: Paginated<Show>;
 	};
 	tvGenres: {
 		request: void;
 		response: {
-			genres: { id: int; name: string }[];
+			genres: Genre[];
 		};
 	};
 }

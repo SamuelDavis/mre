@@ -1,3 +1,4 @@
+import { createRoot } from "solid-js";
 import {
 	type Api,
 	type ApiFactory,
@@ -5,14 +6,30 @@ import {
 	isErrorResponse,
 	paths,
 } from "./types";
+import { createPersistentStore } from "./utilities";
 
 const apiKey = window.location.hash.slice(1);
+
+const state = createRoot(() => {
+	const [requestPathResponseMap, setRequests] = createPersistentStore<
+		Record<string, unknown>
+	>({
+		key: "requests",
+		reviver: (value: string | null) => JSON.parse(value ?? "null") ?? {},
+	});
+
+	function addRequest(path: string, value: unknown): void {
+		setRequests((requests) => ({ ...requests, [path]: value }));
+	}
+
+	return { requestPathResponseMap, addRequest };
+});
 
 async function httpFetch<Data extends Record<string, unknown>>(
 	url: URL,
 ): Promise<Data> {
 	const key = url.toString();
-	let body = localStorage.getItem(key);
+	let body = state.requestPathResponseMap[key];
 	if (!body)
 		body = await fetch(url, {
 			method: "GET",
@@ -26,8 +43,7 @@ async function httpFetch<Data extends Record<string, unknown>>(
 	const data: ErrorResponse | Data = JSON.parse(body);
 
 	if (isErrorResponse(data)) throw new Error(data.status_message);
-
-	localStorage.setItem(key, body);
+	state.addRequest(key, body);
 	return data;
 }
 
