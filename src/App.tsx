@@ -32,9 +32,8 @@ export default function App() {
 
 	return (
 		<main>
-			<form onSubmit={onSubmit}>
-				<label for="query">Title</label>
-				<input type="text" name="query" id="query" value={getQuery() || ""} />
+			<form onSubmit={onSubmit} role="search">
+				<input type="search" name="query" id="query" value={getQuery() || ""} />
 				<input type="submit" />
 			</form>
 			<Show when={results.loading}>Loading...</Show>
@@ -44,15 +43,54 @@ export default function App() {
 					<For each={results()?.results}>
 						{(result) => (
 							<li>
-								<h3>{result.name}</h3>
-								<Show when={result.original_name !== result.name}>
-									<small>{result.original_name}</small>
-								</Show>
-								<p>{result.overview}</p>
-								<img
-									aria-label="poster"
-									src={`${new ImgSrc(result.poster_path)}`}
-								/>
+								<article role="group">
+									<div>
+										<header role="group">
+											<button type="button">Add</button>
+											<div>
+												<h3>{result.name}</h3>
+												<Show when={result.original_name !== result.name}>
+													<small>{result.original_name}</small>
+												</Show>
+											</div>
+										</header>
+										<section>
+											<h5>Categories</h5>
+											<ul role="group">
+												<For each={result.genre_ids}>
+													{(id) => <li>{id}</li>}
+												</For>
+											</ul>
+										</section>
+										<section>
+											<h5>Sentiment</h5>
+											<table>
+												<thead>
+													<tr>
+														<th>Popularity</th>
+														<th>Vote Average</th>
+														<th>Vote Count</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>{result.popularity}</td>
+														<td>{result.vote_average}</td>
+														<td>{result.vote_count}</td>
+													</tr>
+												</tbody>
+											</table>
+										</section>
+										<section>
+											<h5>Details</h5>
+											<p>{result.overview}</p>
+										</section>
+									</div>
+									<img
+										aria-label="poster"
+										src={`${new ImgSrc(result.poster_path)}`}
+									/>
+								</article>
 							</li>
 						)}
 					</For>
