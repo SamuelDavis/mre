@@ -10,7 +10,7 @@ const state = createRoot(() => {
 		key: "genres",
 		reviver: (value: string | null) => JSON.parse(value ?? "null") ?? {},
 	});
-	const [getShowList, setShowList] = createPersistentSignal<Show[]>({
+	const [getShows, setShows] = createPersistentSignal<Show[]>({
 		key: "showList",
 		reviver: (value: string | null) => JSON.parse(value ?? "null") ?? [],
 	});
@@ -25,15 +25,15 @@ const state = createRoot(() => {
 	);
 
 	function addShow(show: Show): void {
-		setShowList((shows) => [...omitById(shows, show), show]);
+		setShows((shows) => [...omitById(shows, show), show]);
 	}
 
 	function showIsAdded(show: Show): boolean {
-		return getShowList().some((item) => item.id === show.id);
+		return getShows().some((item) => item.id === show.id);
 	}
 
 	function removeShow(show: Show): void {
-		setShowList((shows) => omitById(shows, show));
+		setShows((shows) => omitById(shows, show));
 	}
 
 	return {
@@ -41,6 +41,7 @@ const state = createRoot(() => {
 		addShow,
 		removeShow,
 		showIsAdded,
+		getShows,
 	};
 });
 

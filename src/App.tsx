@@ -1,5 +1,7 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, For } from "solid-js";
 import SearchResults from "./SearchResults.tsx";
+import state from "./state.ts";
+import TvShow from "./TvShow.tsx";
 
 export default function App() {
 	const url = new URL(window.location.toString());
@@ -23,12 +25,28 @@ export default function App() {
 	}
 
 	return (
-		<main>
-			<form onSubmit={onSubmit} role="search">
-				<input type="search" name="query" id="query" value={getQuery() || ""} />
-				<input type="submit" />
-			</form>
-			<SearchResults getQuery={getQuery} />
+		<main role="group">
+			<aside>
+				<form onSubmit={onSubmit} role="search">
+					<input
+						type="search"
+						name="query"
+						id="query"
+						value={getQuery() || ""}
+					/>
+					<input type="submit" />
+				</form>
+				<SearchResults getQuery={getQuery} />
+			</aside>
+			<ul>
+				<For each={state.getShows()}>
+					{(data) => (
+						<li>
+							<TvShow data={data} />
+						</li>
+					)}
+				</For>
+			</ul>
 		</main>
 	);
 }
