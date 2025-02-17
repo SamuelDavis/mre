@@ -1,4 +1,4 @@
-import { ErrorBoundary, createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import SearchResults from "./SearchResults.tsx";
 
 export default function App() {
@@ -28,7 +28,7 @@ export default function App() {
 				<input type="search" name="query" id="query" value={getQuery() || ""} />
 				<input type="submit" />
 			</form>
-				<SearchResults getQuery={getQuery} />
+			<SearchResults getQuery={getQuery} />
 		</main>
 	);
 }
