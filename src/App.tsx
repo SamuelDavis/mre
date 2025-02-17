@@ -13,7 +13,7 @@ export default function App() {
 	const [getQuery, setQuery] = createSignal<undefined | string>(
 		url.searchParams.get("query")?.toString(),
 	);
-	const [results] = createResource(() => getQuery() || undefined, searchTv);
+	const [results] = createResource(() => getQuery(), searchTv);
 
 	createEffect(() => {
 		const query = getQuery();

@@ -1,8 +1,11 @@
+import type { path } from "./types";
+
 export default class ImageSource {
-	public readonly base = "https://image.tmdb.org/t/p/";
+	private readonly base = "https://image.tmdb.org/t/p/";
+
 	constructor(
-		public readonly path: string,
-		public readonly size = "w500",
+		private readonly path: path,
+		private readonly size = "w500",
 	) {}
 
 	toString(): string {

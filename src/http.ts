@@ -1,37 +1,17 @@
+import type { SearchTV } from "./types";
+
 const apiKey = window.location.hash.slice(1);
 
-export async function searchTv(query: string) {
-	return httpFetch<{
-		page: number;
-		total_pages: number;
-		total_results: number;
-		results: {
-			adult: boolean;
-			backdrop_path: string;
-			genre_ids: number[];
-			id: number;
-			origin_country: string[];
-			original_language: string;
-			original_name: string;
-			overview: string;
-			popularity: number;
-			poster_path: string;
-			first_air_date: string;
-			name: string;
-			vote_average: number;
-			vote_count: number;
-		}[];
-	}>(
-		makeUrl(
-			"/search/tv",
-			new URLSearchParams({
-				include_adult: "true",
-				language: "en-US",
-				page: "1",
-				query,
-			}),
-		),
-	);
+export async function searchTv(query: SearchTV.Request["query"]) {
+	const request: SearchTV.Request = {
+		include_adult: true,
+		language: "en",
+		page: 1,
+		query,
+	};
+	const params = makeSearchParams(request);
+	const url = makeUrl("/search/tv", new URLSearchParams(params));
+	return httpFetch<SearchTV.Response>(url);
 }
 
 export async function httpFetch<Data extends Record<string, unknown>>(
@@ -57,4 +37,12 @@ export async function httpFetch<Data extends Record<string, unknown>>(
 
 function makeUrl(path: string, params: URLSearchParams): URL {
 	return new URL(`https://api.themoviedb.org/3/${path}?${params}`);
+}
+
+function makeSearchParams(
+	query: Record<string, string | boolean | number>,
+): URLSearchParams {
+	const params = new URLSearchParams();
+	for (const key in query) params.set(key, query[key].toString());
+	return params;
 }
