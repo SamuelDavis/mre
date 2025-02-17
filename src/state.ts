@@ -1,28 +1,50 @@
-import { createRoot } from "solid-js";
+import { createEffect, createRoot } from "solid-js";
 import { api } from "./http";
-import type { Genre, Show } from "./types";
+import type { Cast, Crew, Genre, Show } from "./types";
 import { createPersistentSignal, createPersistentStore } from "./utilities";
+import { produce } from "solid-js/store";
 
 const state = createRoot(() => {
 	const [genreIdNameMap, setGenres] = createPersistentStore<
 		Record<Genre["id"], Genre["name"]>
-	>({
-		key: "genres",
-		reviver: (value: string | null) => JSON.parse(value ?? "null") ?? {},
-	});
+	>({ key: "genres", reviver: {} });
 	const [getShows, setShows] = createPersistentSignal<Show[]>({
 		key: "showList",
-		reviver: (value: string | null) => JSON.parse(value ?? "null") ?? [],
+		reviver: [],
+	});
+	const [showIdPeopleMap, setPeople] = createPersistentStore<
+		Record<Show["id"], { cast: Cast[]; crew: Crew[] }>
+	>({
+		key: "people",
+		reviver: {},
 	});
 
 	api.tvGenres().then((res) =>
-		setGenres((acc) =>
-			res.genres.reduce((acc, item) => {
-				acc[item.id] = item.name;
-				return acc;
-			}, acc),
+		setGenres(
+			produce((genres) => {
+				for (const genre of res.genres) {
+					const { id, name } = genre;
+					genres[id] = name;
+				}
+			}),
 		),
 	);
+
+	createEffect(() => {
+		const requests = getShows()
+			.filter((show) => !(show.id in showIdPeopleMap))
+			.map((show) => api.tvPeople({ series_id: show.id }));
+		Promise.all(requests).then((responses) => {
+			setPeople(
+				produce((people) => {
+					for (const response of responses) {
+						const { id, ...rest } = response;
+						people[id] = rest;
+					}
+				}),
+			);
+		});
+	});
 
 	function addShow(show: Show): void {
 		setShows((shows) => [...omitById(shows, show), show]);
@@ -38,6 +60,7 @@ const state = createRoot(() => {
 
 	return {
 		genreIdNameMap,
+		showIdPeopleMap,
 		addShow,
 		removeShow,
 		showIsAdded,

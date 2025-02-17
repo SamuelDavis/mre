@@ -4,11 +4,15 @@ import { createStore } from "solid-js/store";
 export function createPersistentSignal<T>(
 	options: {
 		key: string;
-		reviver: (value: string | null) => T;
+		reviver: T | ((value: string | null) => T);
 	} & Parameters<typeof createSignal>[1],
 ): ReturnType<typeof createSignal<T>> {
 	const { key, reviver, ...opts } = options;
-	const value = reviver(localStorage.getItem(key));
+	const stored = localStorage.getItem(key);
+	const value =
+		reviver instanceof Function
+			? reviver(stored)
+			: (JSON.parse(stored ?? "null") ?? reviver);
 	const signal = createSignal<T>(value, opts);
 	createEffect(() => {
 		const value = signal[0]();

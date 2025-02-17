@@ -13,7 +13,9 @@ export default function TvShow(props: {
 		<article role="group">
 			<div>
 				<header>
-					<h3>{props.data.name}</h3>
+					<h3>
+						{props.data.name} ({props.data.id})
+					</h3>
 					<Show when={props.data.original_name !== props.data.name}>
 						<small>{props.data.original_name}</small>
 					</Show>
@@ -77,6 +79,40 @@ export default function TvShow(props: {
 					<Show when={props.data.overview}>
 						<p>{props.data.overview}</p>
 					</Show>
+				</section>
+				<section>
+					<h5>Cast</h5>
+					<details>
+						<ul>
+							<For each={state.showIdPeopleMap[props.data.id]?.cast}>
+								{(person) => (
+									<li>
+										<span>{person.name}</span>
+										<br />
+										<i>
+											{person.roles.map((role) => role.character).join(", ")}
+										</i>
+									</li>
+								)}
+							</For>
+						</ul>
+					</details>
+				</section>
+				<section>
+					<h5>Crew</h5>
+					<details>
+						<ul>
+							<For each={state.showIdPeopleMap[props.data.id]?.crew}>
+								{(person) => (
+									<li>
+										<span>{person.name}</span>
+										<br />
+										<i>{person.jobs.map((job) => job.job).join(", ")}</i>
+									</li>
+								)}
+							</For>
+						</ul>
+					</details>
 				</section>
 			</div>
 			<Show when={props.data.poster_path}>

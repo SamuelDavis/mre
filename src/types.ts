@@ -4,6 +4,9 @@ type country = string | ("US" | "JP" | "KR");
 export type path = string | "/${string}";
 type date =
 	`${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+type department = string | "Acting";
+type job = string | "Visual Effects";
+type gender = int;
 
 export type ErrorResponse = {
 	status_code: int;
@@ -35,6 +38,42 @@ export type Show = {
 	vote_count: int;
 };
 export type Genre = { id: int; name: string };
+export type Role = {
+	credit_id: string;
+	character: string;
+	episode_count: int;
+};
+export type Job = {
+	credit_id: string;
+	job: job;
+	episode_count: int;
+};
+export type Cast = {
+	adult: boolean;
+	gender: gender;
+	id: int;
+	known_for_department: department;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: null | path;
+	roles: Role[];
+	total_episode_count: int;
+	order: int;
+};
+export type Crew = {
+	adult: boolean;
+	gender: gender;
+	id: 4490273;
+	known_for_department: department;
+	name: string;
+	original_name: string;
+	popularity: number;
+	profile_path: null | path;
+	jobs: Job[];
+	department: department;
+	total_episode_count: number;
+};
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function isErrorResponse(value: any): value is ErrorResponse {
@@ -64,6 +103,17 @@ export interface Api {
 			genres: Genre[];
 		};
 	};
+	tvPeople: {
+		request: {
+			series_id: int;
+			language?: language;
+		};
+		response: {
+			id: int;
+			cast: Cast[];
+			crew: Crew[];
+		};
+	};
 }
 
 export type ApiFactory = {
@@ -73,11 +123,9 @@ export type ApiFactory = {
 };
 
 export const paths: {
-	[Key in keyof Api]: {
-		path: path;
-		defaults?: Partial<Api[Key]["request"]>;
-	};
+	[Key in keyof Api]: path | ((request: Api[Key]["request"]) => path);
 } = {
-	searchTv: { path: "/search/tv" },
-	tvGenres: { path: "/genre/tv/list" },
+	searchTv: "/search/tv",
+	tvGenres: "/genre/tv/list",
+	tvPeople: (request) => `/tv/${request.series_id}/aggregate_credits`,
 };

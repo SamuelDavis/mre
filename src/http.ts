@@ -52,10 +52,10 @@ function makeUrl(path: string, params: URLSearchParams): URL {
 }
 
 function makeSearchParams(
-	query: Record<string, string | boolean | number>,
+	query: unknown | Record<string, string | boolean | number>,
 ): URLSearchParams {
 	const params = new URLSearchParams();
-	for (const key in query) params.set(key, query[key].toString());
+	if (query) for (const key in query) params.set(key, query[key].toString());
 	return params;
 }
 
@@ -64,9 +64,11 @@ export const api = new Proxy(
 	{
 		get<Key extends keyof Api>(_target: never, p: Key, _receiver: never) {
 			return (request: Api[Key]["request"]) => {
-				const { path, defaults = {} } = paths[p];
-				const params = makeSearchParams({ ...defaults, ...request });
-				const url = makeUrl(path, params);
+				const path = paths[p];
+				const params = makeSearchParams(request);
+				const pathString: string =
+					path instanceof Function ? path(request) : path;
+				const url = makeUrl(pathString, params);
 				return httpFetch<Api[Key]["response"]>(url);
 			};
 		},
