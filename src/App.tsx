@@ -1,4 +1,10 @@
-import { createResource, createSignal, For, Show } from "solid-js";
+import {
+	createEffect,
+	createResource,
+	createSignal,
+	For,
+	Show,
+} from "solid-js";
 import { searchTv } from "./http.ts";
 import ImgSrc from "./ImgSrc.ts";
 
@@ -7,22 +13,28 @@ export default function App() {
 	const [getQuery, setQuery] = createSignal<undefined | string>(
 		url.searchParams.get("query")?.toString(),
 	);
-	const [results] = createResource(getQuery, searchTv);
+	const [results] = createResource(() => getQuery() || undefined, searchTv);
+
+	createEffect(() => {
+		const query = getQuery();
+		const url = new URL(window.location.toString());
+		if (query) url.searchParams.set("query", query);
+		else url.searchParams.delete("query");
+		window.history.pushState(undefined, "", url.toString());
+	});
 
 	function onSubmit(event: Event & { currentTarget: HTMLFormElement }) {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		const query = data.get("query")?.toString() ?? "";
-		setQuery(query);
-		url.searchParams.set("query", query);
-		window.history.pushState(undefined, "", url.toString());
+		const query = data.get("query")?.toString();
+		setQuery(query || undefined);
 	}
 
 	return (
 		<main>
 			<form onSubmit={onSubmit}>
 				<label for="query">Title</label>
-				<input type="text" name="query" id="query" value={getQuery()} />
+				<input type="text" name="query" id="query" value={getQuery() || ""} />
 				<input type="submit" />
 			</form>
 			<Show when={results.loading}>Loading...</Show>
