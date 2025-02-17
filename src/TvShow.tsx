@@ -1,10 +1,14 @@
 import { For, Show } from "solid-js";
 import ImgSrc from "./ImgSrc";
 import type { Api } from "./types";
+import state from "./state";
 
 export default function TvShow(props: {
 	data: Api["searchTv"]["response"]["results"][number];
 }) {
+	const getGenres = () =>
+		props.data.genre_ids.map((id) => state.genreIdNameMap[id]);
+
 	return (
 		<article role="group">
 			<div>
@@ -21,7 +25,7 @@ export default function TvShow(props: {
 					<section>
 						<h5>Genres</h5>
 						<ul aria-label="categories" role="group">
-							<For each={props.data.genre_ids}>{(id) => <li>{id}</li>}</For>
+							<For each={getGenres()}>{(genre) => <li>{genre}</li>}</For>
 						</ul>
 					</section>
 				</Show>

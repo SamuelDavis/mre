@@ -56,7 +56,7 @@ export interface Api {
 		}>;
 	};
 	tvGenres: {
-		request: never;
+		request: void;
 		response: {
 			genres: { id: int; name: string }[];
 		};

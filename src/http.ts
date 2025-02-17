@@ -28,7 +28,6 @@ async function httpFetch<Data extends Record<string, unknown>>(
 	if (isErrorResponse(data)) throw new Error(data.status_message);
 
 	localStorage.setItem(key, body);
-	console.log(url, data);
 	return data;
 }
 

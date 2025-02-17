@@ -1,0 +1,13 @@
+img {
+	object-fit: cover;
+}
+
+*[role="group"] {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+*[role="group"] > * {
+	flex: 1 1;
+}
