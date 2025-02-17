@@ -1,4 +1,4 @@
-import type { SearchTV } from "./types";
+import { type ErrorResponse, type SearchTV, isErrorResponse } from "./types";
 
 const apiKey = window.location.hash.slice(1);
 
@@ -29,7 +29,10 @@ export async function httpFetch<Data extends Record<string, unknown>>(
 		}).then((res) => res.text());
 
 	if (!(typeof body === "string")) throw new TypeError();
-	const data: Data = JSON.parse(body);
+	const data: ErrorResponse | Data = JSON.parse(body);
+
+	if (isErrorResponse(data)) throw new Error(data.status_message);
+
 	localStorage.setItem(key, body);
 	console.log(url, data);
 	return data;
