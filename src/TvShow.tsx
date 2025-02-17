@@ -1,8 +1,10 @@
 import { For, Show } from "solid-js";
 import ImgSrc from "./ImgSrc";
-import type { SearchTV } from "./types";
+import type { Api } from "./types";
 
-export default function TvShow(props: { data: SearchTV.Result }) {
+export default function TvShow(props: {
+	data: Api["searchTv"]["response"]["results"][number];
+}) {
 	return (
 		<article role="group">
 			<div>

@@ -7,12 +7,15 @@ import {
 	createResource,
 } from "solid-js";
 import TvShow from "./TvShow";
-import { searchTv } from "./http";
+import { api } from "./http";
 
 export default function SearchResults(props: {
 	getQuery: Accessor<string | undefined>;
 }) {
-	const [results] = createResource(() => props.getQuery(), searchTv);
+	const [results] = createResource(() => {
+		const query = props.getQuery();
+		return query ? { query } : undefined;
+	}, api.searchTv);
 
 	return (
 		<ErrorBoundary fallback={(err: Error) => <p>{err.message}</p>}>

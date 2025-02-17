@@ -1,20 +1,14 @@
-import { type ErrorResponse, type SearchTV, isErrorResponse } from "./types";
+import {
+	type Api,
+	type ApiFactory,
+	type ErrorResponse,
+	isErrorResponse,
+	paths,
+} from "./types";
 
 const apiKey = window.location.hash.slice(1);
 
-export async function searchTv(query: SearchTV.Request["query"]) {
-	const request: SearchTV.Request = {
-		include_adult: true,
-		language: "en",
-		page: 1,
-		query,
-	};
-	const params = makeSearchParams(request);
-	const url = makeUrl("/search/tv", new URLSearchParams(params));
-	return httpFetch<SearchTV.Response>(url);
-}
-
-export async function httpFetch<Data extends Record<string, unknown>>(
+async function httpFetch<Data extends Record<string, unknown>>(
 	url: URL,
 ): Promise<Data> {
 	const key = url.toString();
@@ -49,3 +43,17 @@ function makeSearchParams(
 	for (const key in query) params.set(key, query[key].toString());
 	return params;
 }
+
+export const api = new Proxy(
+	{},
+	{
+		get<Key extends keyof Api>(_target: never, p: Key, _receiver: never) {
+			return (request: Api[Key]["request"]) => {
+				const { path, defaults = {} } = paths[p];
+				const params = makeSearchParams({ ...defaults, ...request });
+				const url = makeUrl(path, params);
+				return httpFetch<Api[Key]["response"]>(url);
+			};
+		},
+	},
+) as ApiFactory;
