@@ -1,7 +1,7 @@
-import { createEffect, createSignal, For } from "solid-js";
+import { For, Show, createEffect, createSignal } from "solid-js";
 import SearchResults from "./SearchResults.tsx";
-import state from "./state.ts";
 import TvShow from "./TvShow.tsx";
+import state from "./state.ts";
 
 export default function App() {
 	const url = new URL(window.location.toString());
@@ -24,6 +24,12 @@ export default function App() {
 		setQuery(query || undefined);
 	}
 
+	function onInput(
+		event: InputEvent & { currentTarget: HTMLInputElement },
+	): void {
+		if (!event.currentTarget.value) setQuery(undefined);
+	}
+
 	return (
 		<main role="group">
 			<aside>
@@ -33,10 +39,13 @@ export default function App() {
 						name="query"
 						id="query"
 						value={getQuery() || ""}
+						onInput={onInput}
 					/>
 					<input type="submit" />
 				</form>
-				<SearchResults getQuery={getQuery} />
+				<Show when={getQuery()}>
+					<SearchResults getQuery={getQuery} />
+				</Show>
 			</aside>
 			<ul>
 				<For each={state.getShows()}>
