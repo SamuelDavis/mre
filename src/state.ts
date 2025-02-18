@@ -58,6 +58,14 @@ const state = createRoot(() => {
 		setShows((shows) => omitById(shows, show));
 	}
 
+	function getCast(show: Show): Cast[] {
+		return showIdPeopleMap[show.id]?.cast ?? [];
+	}
+
+	function getCrew(show: Show): Crew[] {
+		return showIdPeopleMap[show.id]?.crew ?? [];
+	}
+
 	return {
 		genreIdNameMap,
 		showIdPeopleMap,
@@ -65,6 +73,8 @@ const state = createRoot(() => {
 		removeShow,
 		showIsAdded,
 		getShows,
+		getCast,
+		getCrew,
 	};
 });
 
