@@ -1,3 +1,5 @@
+import type { ComponentProps, ValidComponent } from "solid-js";
+
 type int = number;
 type language = string | ("en" | "ko" | "ja");
 type country = string | ("US" | "JP" | "KR");
