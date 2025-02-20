@@ -1,11 +1,17 @@
 import { createSignal } from "solid-js";
-import SearchResults from "./SearchResults";
+import { ErrorBoundary, For, Match, Switch, createResource } from "solid-js";
+import TvShow from "./TvShow";
+import { api } from "./http";
 
 export default function Search() {
 	const url = new URL(window.location.toString());
 	const value = url.searchParams.get("query")?.toString();
 
 	const [getQuery, setQuery] = createSignal(value ?? "");
+	const [results] = createResource(() => {
+		const query = getQuery();
+		return query ? { query } : undefined;
+	}, api.searchTv);
 
 	function onSubmit(event: Event & { currentTarget: HTMLFormElement }) {
 		event.preventDefault();
@@ -25,7 +31,26 @@ export default function Search() {
 				<input type="search" name="query" id="query" value={value ?? ""} />
 				<input type="submit" />
 			</form>
-			<SearchResults getQuery={getQuery} />
+			<ErrorBoundary fallback={(err: Error) => <p>{err.message}</p>}>
+				<Switch>
+					<Match when={results?.loading}>
+						<progress />
+					</Match>
+					<Match when={results()?.results}>
+						{(get) => (
+							<ul>
+								<For each={get()}>
+									{(result) => (
+										<li>
+											<TvShow data={result} />
+										</li>
+									)}
+								</For>
+							</ul>
+						)}
+					</Match>
+				</Switch>
+			</ErrorBoundary>
 		</>
 	);
 }

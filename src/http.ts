@@ -8,9 +8,7 @@ import {
 } from "./types";
 import { createPersistentStore } from "./utilities";
 
-const apiKey = window.location.hash.slice(1);
-
-const state = createRoot(() => {
+const cache = createRoot(() => {
 	const [requestPathResponseMap, setRequests] = createPersistentStore<
 		Record<string, unknown>
 	>({
@@ -28,8 +26,9 @@ const state = createRoot(() => {
 async function httpFetch<Data extends Record<string, unknown>>(
 	url: URL,
 ): Promise<Data> {
+	const apiKey = JSON.parse(localStorage.getItem("api-key") ?? '""');
 	const key = url.toString();
-	let body = state.requestPathResponseMap[key];
+	let body = cache.requestPathResponseMap[key];
 	if (!body)
 		body = await fetch(url, {
 			method: "GET",
@@ -43,7 +42,7 @@ async function httpFetch<Data extends Record<string, unknown>>(
 	const data: ErrorResponse | Data = JSON.parse(body);
 
 	if (isErrorResponse(data)) throw new Error(data.status_message);
-	state.addRequest(key, body);
+	cache.addRequest(key, body);
 	return data;
 }
 

@@ -18,6 +18,10 @@ const state = createRoot(() => {
 		key: "people",
 		reviver: {},
 	});
+	const [getApiKey, setApiKey] = createPersistentSignal({
+		key: "api-key",
+		reviver: "",
+	});
 
 	api.tvGenres().then((res) =>
 		setGenres(
@@ -75,6 +79,8 @@ const state = createRoot(() => {
 		getShows,
 		getCast,
 		getCrew,
+		getApiKey,
+		setApiKey,
 	};
 });
 
