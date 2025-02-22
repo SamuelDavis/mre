@@ -10,13 +10,13 @@ import Search from "./Search.tsx";
 import { NotFound } from "./NotFound.tsx";
 
 render(
-	() => (
-		<Router root={Layout}>
-			<Route path="/" component={Home} />
-			<Route path="/search" component={Search} />
-			<Route path="/data" component={Data} />
-			<Route path="*404" component={NotFound} />
-		</Router>
-	),
-	document.body,
+  () => (
+    <Router root={Layout}>
+      <Route path="/" component={Home} />
+      <Route path="/search" component={Search} />
+      <Route path="/data" component={Data} />
+      <Route path="*404" component={NotFound} />
+    </Router>
+  ),
+  document.body,
 );
