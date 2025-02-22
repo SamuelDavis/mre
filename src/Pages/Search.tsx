@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 import { ErrorBoundary, For, Match, Switch, createResource } from "solid-js";
-import TvShow from "./TvShow";
-import { api } from "./http";
+import TvShow from "../TvShow";
+import { api } from "../http";
 
 export default function Search() {
   const url = new URL(window.location.toString());

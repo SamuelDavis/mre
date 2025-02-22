@@ -1,6 +1,5 @@
 import type { ParentProps } from "solid-js";
-import { Link, Nav } from "./components";
-import state from "./state";
+import { Link, Nav } from "../components";
 
 export default function Layout(props: ParentProps) {
   return (
@@ -12,14 +11,6 @@ export default function Layout(props: ParentProps) {
           <Link href="/list">List</Link>
           <Link href="/data">Data</Link>
         </Nav>
-        <label>
-          <span>API Key</span>
-          <input
-            type="text"
-            value={state.getApiKey()}
-            onInput={(e) => state.setApiKey(e.target.value)}
-          />
-        </label>
       </header>
       {props.children}
     </main>

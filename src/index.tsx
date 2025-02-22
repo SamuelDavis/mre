@@ -1,13 +1,13 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
-import Home from "./Home.tsx";
-import Data from "./Data.tsx";
+import Home from "./Pages/Home.tsx";
+import Data from "./Pages/Data.tsx";
 import "@picocss/pico/css/pico.classless.min.css";
 import "./index.css";
 import { Route, Router } from "@solidjs/router";
-import Layout from "./Layout.tsx";
-import Search from "./Search.tsx";
-import { NotFound } from "./NotFound.tsx";
+import Layout from "./Pages/Layout.tsx";
+import Search from "./Pages/Search.tsx";
+import { NotFound } from "./Pages/NotFound.tsx";
 
 render(
   () => (

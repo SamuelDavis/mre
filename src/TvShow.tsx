@@ -38,86 +38,92 @@ export default function TvShow(props: {
               <For each={getGenres()}>{(genre) => <li>{genre}</li>}</For>
             </ul>
           </section>
+          <section>
+            <h5>Summary</h5>
+            <Show when={props.data.overview}>
+              <p>{props.data.overview}</p>
+            </Show>
+          </section>
         </Show>
-        <section>
-          <h5>Sentiment</h5>
-          <table>
-            <thead>
-              <tr>
-                <th>Popularity</th>
-                <th>Vote Average</th>
-                <th>Vote Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{props.data.popularity}</td>
-                <td>{props.data.vote_average}</td>
-                <td>{props.data.vote_count}</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <h5>Details</h5>
-          <table>
-            <thead>
-              <tr>
-                <th>Aired</th>
-                <th>Country</th>
-                <th>Language</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{props.data.first_air_date}</td>
-                <td>{props.data.origin_country}</td>
-                <td>{props.data.original_language}</td>
-              </tr>
-            </tbody>
-          </table>
-          <Show when={props.data.overview}>
-            <p>{props.data.overview}</p>
+        <details>
+          <summary>More Info</summary>
+          <section>
+            <h5>Sentiment</h5>
+            <table>
+              <thead>
+                <tr>
+                  <th>Popularity</th>
+                  <th>Vote Average</th>
+                  <th>Vote Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{props.data.popularity}</td>
+                  <td>{props.data.vote_average}</td>
+                  <td>{props.data.vote_count}</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h5>Details</h5>
+            <table>
+              <thead>
+                <tr>
+                  <th>Aired</th>
+                  <th>Country</th>
+                  <th>Language</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{props.data.first_air_date}</td>
+                  <td>{props.data.origin_country}</td>
+                  <td>{props.data.original_language}</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h5>Cast</h5>
+            <details>
+              <ul>
+                <For each={state.showIdPeopleMap[props.data.id]?.cast}>
+                  {(person) => (
+                    <li>
+                      <span>{person.name}</span>
+                      <br />
+                      <i>
+                        {person.roles.map((role) => role.character).join(", ")}
+                      </i>
+                    </li>
+                  )}
+                </For>
+              </ul>
+            </details>
+          </section>
+          <section>
+            <h5>Crew</h5>
+            <details>
+              <ul>
+                <For each={state.showIdPeopleMap[props.data.id]?.crew}>
+                  {(person) => (
+                    <li>
+                      <span>{person.name}</span>
+                      <br />
+                      <i>{person.jobs.map((job) => job.job).join(", ")}</i>
+                    </li>
+                  )}
+                </For>
+              </ul>
+            </details>
+          </section>
+          <Show when={props.data.poster_path}>
+            {(get) => <img aria-label="poster" src={`${new ImgSrc(get())}`} />}
           </Show>
-        </section>
-        <section>
-          <h5>Cast</h5>
-          <details>
-            <ul>
-              <For each={state.showIdPeopleMap[props.data.id]?.cast}>
-                {(person) => (
-                  <li>
-                    <span>{person.name}</span>
-                    <br />
-                    <i>
-                      {person.roles.map((role) => role.character).join(", ")}
-                    </i>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </details>
-        </section>
-        <section>
-          <h5>Crew</h5>
-          <details>
-            <ul>
-              <For each={state.showIdPeopleMap[props.data.id]?.crew}>
-                {(person) => (
-                  <li>
-                    <span>{person.name}</span>
-                    <br />
-                    <i>{person.jobs.map((job) => job.job).join(", ")}</i>
-                  </li>
-                )}
-              </For>
-            </ul>
-          </details>
-        </section>
+        </details>
       </div>
-      <Show when={props.data.poster_path}>
-        {(get) => <img aria-label="poster" src={`${new ImgSrc(get())}`} />}
-      </Show>
     </article>
   );
 }
