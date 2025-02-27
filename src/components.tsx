@@ -1,17 +1,6 @@
 import { useMatch } from "@solidjs/router";
-import {
-  type ComponentProps,
-  For,
-  type ValidComponent,
-  children,
-  splitProps,
-} from "solid-js";
-
-type ExtendProps<
-  Parent extends ValidComponent,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  Except extends keyof ComponentProps<Parent> = never,
-> = Omit<ComponentProps<Parent>, keyof Props & Except> & Props;
+import { For, children, splitProps } from "solid-js";
+import type { ExtendProps } from "./types";
 
 export function Nav(props: ExtendProps<"nav">) {
   const [local, parent] = splitProps(props, ["children"]);
@@ -29,4 +18,22 @@ export function Link(props: ExtendProps<"a">) {
   const getMatch = useMatch(() => props.href ?? Math.random().toString(36));
   const getIsCurrent = () => Boolean(getMatch());
   return <a aria-current={getIsCurrent()} {...props} />;
+}
+
+export function RenderedError(error: unknown | Error) {
+  console.error(error);
+  if (!(error instanceof Error)) return <h3>Something went wrong.</h3>;
+  return (
+    <section role="alert">
+      <h3>{error.message}</h3>
+      <details>
+        <summary>Stack Trace</summary>
+        <ol>
+          <For each={(error.stack ?? "").split("\n")}>
+            {(line) => <li>{line}</li>}
+          </For>
+        </ol>
+      </details>
+    </section>
+  );
 }

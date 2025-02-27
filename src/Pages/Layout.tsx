@@ -1,5 +1,5 @@
-import type { ParentProps } from "solid-js";
-import { Link, Nav } from "../components";
+import { ErrorBoundary, type ParentProps } from "solid-js";
+import { Link, Nav, RenderedError } from "../components";
 
 export default function Layout(props: ParentProps) {
   return (
@@ -12,7 +12,7 @@ export default function Layout(props: ParentProps) {
           <Link href="/data">Data</Link>
         </Nav>
       </header>
-      {props.children}
+      <ErrorBoundary fallback={RenderedError}>{props.children}</ErrorBoundary>
     </main>
   );
 }

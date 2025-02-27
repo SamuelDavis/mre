@@ -1,129 +1,93 @@
-import { For, Show } from "solid-js";
-import ImgSrc from "./ImgSrc";
-import type { Api, Show as TvShow } from "./types";
+import {
+  ErrorBoundary,
+  For,
+  createResource,
+  createEffect,
+  createSignal,
+  Show,
+  Suspense,
+} from "solid-js";
+import { api } from "./http";
+import { RenderedError } from "./components";
+import type { Show as TShow } from "./types";
 import state from "./state";
 
-export default function TvShow(props: {
-  data: Api["searchTv"]["response"]["results"][number];
-}) {
-  const getGenres = () =>
-    props.data.genre_ids.map((id) => state.genreIdNameMap[id]);
+export default function SearchResult(props: { show: TShow }) {
+  const getGenres = () => {
+    const genres = props.show.genre_ids.map((id) => {
+      const genre = state.getGenreNameById(id);
+      if (genre) return genre;
+      throw new Error(`Genre ${id} not found.`);
+    });
+    return genres.length ? genres : undefined;
+  };
 
   return (
-    <article role="group">
-      <div>
-        <header>
-          <h3>
-            {props.data.name} ({props.data.id})
-          </h3>
-          <Show when={props.data.original_name !== props.data.name}>
-            <small>{props.data.original_name}</small>
-          </Show>
-        </header>
-        <header>
-          {state.showIsAdded(props.data) ? (
-            <button type="button" onClick={() => state.removeShow(props.data)}>
-              Remove
-            </button>
-          ) : (
-            <button type="button" onClick={() => state.addShow(props.data)}>
-              Add
-            </button>
-          )}
-        </header>
-        <Show when={props.data.genre_ids.length}>
-          <section>
-            <h5>Genres</h5>
-            <ul aria-label="categories" role="group">
-              <For each={getGenres()}>{(genre) => <li>{genre}</li>}</For>
-            </ul>
-          </section>
-          <section>
-            <h5>Summary</h5>
-            <Show when={props.data.overview}>
-              <p>{props.data.overview}</p>
-            </Show>
-          </section>
+    <article>
+      <header>
+        <h1>{props.show.name}</h1>
+        <Show when={props.show.original_name !== props.show.name}>
+          <h5>{props.show.original_name}</h5>
         </Show>
-        <details>
-          <summary>More Info</summary>
-          <section>
-            <h5>Sentiment</h5>
-            <table>
-              <thead>
-                <tr>
-                  <th>Popularity</th>
-                  <th>Vote Average</th>
-                  <th>Vote Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{props.data.popularity}</td>
-                  <td>{props.data.vote_average}</td>
-                  <td>{props.data.vote_count}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-          <section>
-            <h5>Details</h5>
-            <table>
-              <thead>
-                <tr>
-                  <th>Aired</th>
-                  <th>Country</th>
-                  <th>Language</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{props.data.first_air_date}</td>
-                  <td>{props.data.origin_country}</td>
-                  <td>{props.data.original_language}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-          <section>
-            <h5>Cast</h5>
-            <details>
-              <ul>
-                <For each={state.showIdPeopleMap[props.data.id]?.cast}>
-                  {(person) => (
-                    <li>
-                      <span>{person.name}</span>
-                      <br />
-                      <i>
-                        {person.roles.map((role) => role.character).join(", ")}
-                      </i>
-                    </li>
-                  )}
-                </For>
-              </ul>
-            </details>
-          </section>
-          <section>
-            <h5>Crew</h5>
-            <details>
-              <ul>
-                <For each={state.showIdPeopleMap[props.data.id]?.crew}>
-                  {(person) => (
-                    <li>
-                      <span>{person.name}</span>
-                      <br />
-                      <i>{person.jobs.map((job) => job.job).join(", ")}</i>
-                    </li>
-                  )}
-                </For>
-              </ul>
-            </details>
-          </section>
-          <Show when={props.data.poster_path}>
-            {(get) => <img aria-label="poster" src={`${new ImgSrc(get())}`} />}
-          </Show>
-        </details>
-      </div>
+        <ToggleInList value={props.show} />
+      </header>
+      <dl>
+        <Show when={getGenres()}>
+          {(getGenres) => (
+            <>
+              <dt>Genres</dt>
+              <dd>
+                <ul role="group">
+                  <For each={getGenres()}>
+                    {(genre) => <li>{genre.name}</li>}
+                  </For>
+                </ul>
+              </dd>
+            </>
+          )}
+        </Show>
+        <dt>First Aired</dt>
+        <dd>{props.show.first_air_date}</dd>
+      </dl>
+      <blockquote>{props.show.overview}</blockquote>
     </article>
+  );
+}
+
+function ToggleInList(props: { value: TShow }) {
+  const [getAdded, setAdded] = createSignal(state.inList(props.value));
+  const [request] = createResource(
+    () => getAdded() || undefined,
+    async () => {
+      const tvPeople = await api.tvPeople({ series_id: props.value.id });
+      state.addCast(props.value.id, tvPeople.cast);
+      state.addCrew(props.value.id, tvPeople.crew);
+      return null;
+    },
+  );
+
+  createEffect(() => {
+    if (getAdded()) state.addToList(props.value);
+    else state.removeFromList(props.value);
+  });
+
+  function onInput(event: { currentTarget: HTMLInputElement }) {
+    setAdded(event.currentTarget.checked);
+  }
+
+  return (
+    <label>
+      <span>Add to List</span>
+      <input
+        type="checkbox"
+        role="switch"
+        checked={getAdded()}
+        aria-checked={getAdded()}
+        onInput={onInput}
+      />
+      <ErrorBoundary fallback={RenderedError}>
+        <Suspense fallback={<progress />}>{request()}</Suspense>
+      </ErrorBoundary>
+    </label>
   );
 }

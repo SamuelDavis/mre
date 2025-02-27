@@ -1,40 +1,89 @@
-import { createSignal, For } from "solid-js";
+import { For, Match, type ParentProps, Show, Switch } from "solid-js";
 import state from "../state";
+import type { Cast, Crew } from "../types";
+import ImageSource from "../ImgSrc";
 import TvShow from "../TvShow";
 
 export default function List() {
-  const [getSearch, setSearch] = createSignal("");
-  const getShows = () => {
-    const shows = state.getShows();
-    const search = getSearch();
-
-    if (!search.trim()) return shows;
-
-    const regexp = new RegExp(search, "i");
-    return shows.filter((show) =>
-      regexp.test(`${show.name}\n${show.overview}`),
-    );
-  };
-
   return (
     <article>
       <h1>Saved Shows</h1>
-      <header>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="search"
-            value={getSearch()}
-            onInput={(e) => setSearch(e.target.value)}
-          />
-        </form>
-      </header>
       <ul>
-        <For each={getShows()}>
-          {(data) => {
-            return <TvShow data={data} />;
+        <For each={state.getShowsInList()}>
+          {(show) => {
+            return (
+              <li>
+                <TvShow show={show} />
+                <details>
+                  <summary>Cast</summary>
+                  <For each={state.getCastByShow(show)}>
+                    {(person) => (
+                      <PersonDetails person={person}>
+                        <dt>Roles</dt>
+                        <ul role="group">
+                          <For each={person.roles}>
+                            {(role) => <li>{role.character}</li>}
+                          </For>
+                        </ul>
+                      </PersonDetails>
+                    )}
+                  </For>
+                </details>
+                <details>
+                  <summary>Crew</summary>
+                  <For each={state.getCrewByShow(show)}>
+                    {(person) => (
+                      <PersonDetails person={person}>
+                        <dt>Jobs</dt>
+                        <ul role="group">
+                          <For each={person.jobs}>
+                            {(job) => <li>{job.job}</li>}
+                          </For>
+                        </ul>
+                      </PersonDetails>
+                    )}
+                  </For>
+                </details>
+              </li>
+            );
           }}
         </For>
       </ul>
+    </article>
+  );
+}
+
+function PersonDetails(props: ParentProps<{ person: Cast | Crew }>) {
+  return (
+    <article role="group">
+      <section>
+        <h1>{props.person.name}</h1>
+        <Show when={props.person.original_name !== props.person.name}>
+          <h5>{props.person.original_name}</h5>
+        </Show>
+        <dl>
+          {props.children}
+          <dt>Adult</dt>
+          <dd>{props.person.adult ? "Yes" : "No"}</dd>
+          <dt>Gender</dt>
+          <dd>
+            <Switch fallback={"Unknown"}>
+              <Match when={props.person.gender === 0}>Male</Match>
+              <Match when={props.person.gender === 1}>Female</Match>
+            </Switch>
+          </dd>
+        </dl>
+      </section>
+      <Show when={props.person.profile_path}>
+        {(getPath) => (
+          <section>
+            <img
+              alt={props.person.name}
+              src={new ImageSource(getPath()).toString()}
+            />
+          </section>
+        )}
+      </Show>
     </article>
   );
 }

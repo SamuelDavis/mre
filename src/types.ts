@@ -1,5 +1,11 @@
 import type { ComponentProps, ValidComponent } from "solid-js";
 
+export type ExtendProps<
+  Parent extends ValidComponent,
+  Props extends Record<string, unknown> = Record<string, unknown>,
+  Except extends keyof ComponentProps<Parent> = never,
+> = Omit<ComponentProps<Parent>, keyof Props & Except> & Props;
+
 type int = number;
 type language = string | ("en" | "ko" | "ja");
 type country = string | ("US" | "JP" | "KR");
@@ -30,7 +36,7 @@ export type Show = {
   id: int;
   origin_country: country[];
   original_language: language[];
-  original_name: string;
+  original_name: null | string;
   overview: string | "";
   popularity: number;
   poster_path: path | null;
@@ -66,7 +72,7 @@ export type Cast = {
 export type Crew = {
   adult: boolean;
   gender: gender;
-  id: 4490273;
+  id: int;
   known_for_department: department;
   name: string;
   original_name: string;
@@ -76,6 +82,8 @@ export type Crew = {
   department: department;
   total_episode_count: number;
 };
+export type ShowCastMap = Record<Show["id"], Cast["id"][]>;
+export type ShowCrewMap = Record<Show["id"], Cast["id"][]>;
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function isErrorResponse(value: any): value is ErrorResponse {

@@ -1,56 +1,64 @@
-import { createSignal } from "solid-js";
-import { ErrorBoundary, For, Match, Switch, createResource } from "solid-js";
-import TvShow from "../TvShow";
+import { useSearchParams } from "@solidjs/router";
+import { Suspense, createEffect } from "solid-js";
+import { ErrorBoundary, For, createResource } from "solid-js";
+import { RenderedError } from "../components";
 import { api } from "../http";
+import state from "../state";
+import TvShow from "../TvShow";
 
 export default function Search() {
-  const url = new URL(window.location.toString());
-  const value = url.searchParams.get("query")?.toString();
+  const [searchParams, setSearchParams] = useSearchParams<{ query: string }>();
+  const getQuery = () => searchParams.query ?? "";
+  const setQuery = (query: string) => setSearchParams({ query });
 
-  const [getQuery, setQuery] = createSignal(value ?? "");
-  const [results] = createResource(() => {
-    const query = getQuery();
-    return query ? { query } : undefined;
-  }, api.searchTv);
+  return (
+    <article>
+      <SearchForm getQuery={getQuery} setQuery={setQuery} />
+      <ErrorBoundary fallback={RenderedError}>
+        <SearchResults getQuery={getQuery} />
+      </ErrorBoundary>
+    </article>
+  );
+}
 
-  function onSubmit(event: Event & { currentTarget: HTMLFormElement }) {
+function SearchForm(props: {
+  getQuery: () => string;
+  setQuery: (value: string) => void;
+}) {
+  function onSubmit(event: SubmitEvent & { currentTarget: HTMLFormElement }) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const query = data.get("query")?.toString();
-
-    if (query) url.searchParams.set("query", query);
-    else url.searchParams.delete("query");
-    window.history.pushState(undefined, "", url.toString());
-
-    setQuery(query ?? "");
+    const query = data.get("query")?.toString() ?? "";
+    props.setQuery(query);
   }
 
   return (
-    <>
-      <form onSubmit={onSubmit} role="search">
-        <input type="search" name="query" id="query" value={value ?? ""} />
-        <input type="submit" />
-      </form>
-      <ErrorBoundary fallback={(err: Error) => <p>{err.message}</p>}>
-        <Switch>
-          <Match when={results?.loading}>
-            <progress />
-          </Match>
-          <Match when={results()?.results}>
-            {(get) => (
-              <ul>
-                <For each={get()}>
-                  {(result) => (
-                    <li>
-                      <TvShow data={result} />
-                    </li>
-                  )}
-                </For>
-              </ul>
-            )}
-          </Match>
-        </Switch>
-      </ErrorBoundary>
-    </>
+    <form onSubmit={onSubmit}>
+      <label>
+        <span>Search</span>
+        <input type="search" name="query" value={props.getQuery()} />
+      </label>
+    </form>
+  );
+}
+
+function SearchResults(props: { getQuery: () => string }) {
+  const [getResults] = createResource(props.getQuery, async (query) =>
+    query ? api.searchTv({ query }).then((response) => response.results) : [],
+  );
+
+  createEffect(() => {
+    state.addShows(getResults() ?? []);
+  });
+
+  return (
+    <Suspense fallback={<progress />}>
+      <For
+        each={getResults()}
+        fallback={props.getQuery() ? "No results found." : undefined}
+      >
+        {(show) => <TvShow show={show} />}
+      </For>
+    </Suspense>
   );
 }

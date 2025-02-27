@@ -1,6 +1,6 @@
 import { Link } from "./../components";
 
-export function NotFound() {
+export default function NotFound() {
   return (
     <article>
       <h1>Not Found</h1>

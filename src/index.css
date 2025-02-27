@@ -16,3 +16,11 @@ img {
 a[aria-current="true"] {
   font-weight: bold;
 }
+
+label > *:not(:first-child) {
+  margin-left: 0.5em;
+}
+
+label > *:not(:last-child) {
+  margin-right: 0.5em;
+}

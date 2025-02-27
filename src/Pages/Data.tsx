@@ -1,215 +1,204 @@
+import * as d3 from "d3";
 import {
-  type Accessor,
+  For,
   createEffect,
-  JSX,
-  JSXElement,
+  onCleanup,
   onMount,
+  JSX,
+  createSignal,
 } from "solid-js";
 import state from "../state";
-import * as d3 from "d3";
-import type { SimulationNodeDatum, SimulationLinkDatum } from "d3";
+import type { Cast, Crew, Show, ShowCastMap, ShowCrewMap } from "../types";
 
 enum Type {
-  Show = 0,
-  Person = 1,
+  Show = "show",
+  Cast = "cast",
+  Crew = "crew",
 }
 
-interface Node extends SimulationNodeDatum {
-  id: number;
-  type: Type;
-}
-type Link = SimulationLinkDatum<Node>;
+const typeColorMap: Record<Type, JSX.CSSProperties["color"]> = {
+  [Type.Show]: "red",
+  [Type.Cast]: "green",
+  [Type.Crew]: "blue",
+};
+
+type Node = { id: string; type: Type };
+type Link = { source: string; target: string };
+type GraphData = {
+  nodes: { id: string; type: Type }[];
+  links: { source: string; target: string }[];
+};
 
 export default function Data() {
-  let tooltipRef: HTMLDivElement | undefined;
-  let svgRef: SVGSVGElement | undefined;
-  const peopleShowCountMap = () => {
-    const result: Record<number, number> = {};
-    for (const { cast, crew } of Object.values(state.showIdPeopleMap)) {
-      for (const person of [...cast, ...crew]) {
-        result[person.id] = (result[person.id] ?? 0) + 1;
-      }
-    }
-    return result;
-  };
+  let svgRef: undefined | SVGSVGElement;
+  let tooltipRef: undefined | HTMLDivElement;
 
-  const getData: Accessor<{ nodes: Node[]; links: Link[] }> = () => {
-    const shows = state.getShows();
-    const showPeopleMap = state.showIdPeopleMap;
-    const peopleShowCounts = peopleShowCountMap();
-
+  const getGraphData = (): GraphData => {
     const nodes: Node[] = [];
     const links: Link[] = [];
-    for (const show of shows) {
-      nodes.push({ id: show.id, type: Type.Show });
-      const { cast = [], crew = [] } = showPeopleMap[show.id] ?? {};
-      for (const person of [...cast, ...crew]) {
-        if ((peopleShowCounts[person.id] ?? 0) <= 1) continue;
-        nodes.push({ id: person.id, type: Type.Person });
-        links.push({ source: show.id, target: person.id });
+
+    const castShowMap: Record<number, number[]> = {};
+    const crewShowMap: Record<number, number[]> = {};
+
+    for (const show of state.getShowsInList()) {
+      for (const cast of state.getCastByShow(show)) {
+        castShowMap[cast.id] = castShowMap[cast.id] ?? [];
+        castShowMap[cast.id].push(show.id);
+      }
+      for (const crew of state.getCrewByShow(show)) {
+        crewShowMap[crew.id] = crewShowMap[crew.id] ?? [];
+        crewShowMap[crew.id].push(show.id);
+      }
+    }
+
+    for (const castId in castShowMap) {
+      if (castShowMap[castId].length <= 1) delete castShowMap[castId];
+    }
+    for (const crewId in crewShowMap) {
+      if (crewShowMap[crewId].length <= 1) delete crewShowMap[crewId];
+    }
+
+    const seenShows: Show["id"][] = [];
+    const seenCast: Cast["id"][] = [];
+    const seenCrew: Crew["id"][] = [];
+    for (const show of state.getShowsInList()) {
+      if (!seenShows.includes(show.id)) {
+        seenShows.push(show.id);
+        nodes.push({ id: show.name, type: Type.Show });
+      }
+      for (const cast of state.getCastByShow(show)) {
+        if (!(cast.id in castShowMap)) continue;
+        if (!seenCast.includes(cast.id)) {
+          seenCast.push(cast.id);
+          nodes.push({ id: cast.name, type: Type.Cast });
+        }
+        links.push({ source: show.name, target: cast.name });
+      }
+      for (const crew of state.getCrewByShow(show)) {
+        if (!(crew.id in crewShowMap)) continue;
+        if (!seenCrew.includes(crew.id)) {
+          seenCrew.push(crew.id);
+          nodes.push({ id: crew.name, type: Type.Crew });
+        }
+        links.push({ source: show.name, target: crew.name });
       }
     }
 
     return { nodes, links };
   };
 
-  onMount(() => {
+  createEffect(() => {
     if (!svgRef) return;
     if (!tooltipRef) return;
-    const data = getData();
-    const width = 1000;
-    const height = 1000;
 
-    // Create a tooltip element for node hover information
+    svgRef.innerHTML = "";
+    tooltipRef.innerHTML = "";
+
+    const container = svgRef.parentElement;
+    const width = container?.clientWidth ?? 800;
+    const height = Math.max(600, container?.clientHeight ?? 600);
+
+    const graph = getGraphData();
+
+    const svg = d3
+      .select(svgRef)
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .style("width", "100%")
+      .style("height", "100%")
+      .call(
+        d3
+          .zoom()
+          .scaleExtent([0.1, 3])
+          .on("zoom", ({ transform }) => {
+            svgGroup.attr("transform", transform);
+          }),
+      );
+
+    const svgGroup = svg.append("g");
+
     const tooltip = d3
       .select(tooltipRef)
-      .attr("class", "tooltip")
       .style("position", "absolute")
-      .style("text-align", "center")
+      .style("background", "white")
+      .style("border", "1px solid black")
       .style("padding", "5px")
-      .style("font", "12px sans-serif")
-      .style("background", "rgba(0, 0, 0, 0.7)")
-      .style("color", "#fff")
-      .style("border-radius", "4px")
-      .style("pointer-events", "none")
-      .style("opacity", 0);
+      .style("display", "none");
 
-    const svg = d3.select(svgRef).attr("width", width).attr("height", height);
-
-    // Define arrow marker for directed links
-    svg
-      .append("defs")
-      .append("marker")
-      .attr("id", "arrowhead")
-      .attr("viewBox", "-0 -5 10 10")
-      .attr("refX", 15)
-      .attr("refY", 0)
-      .attr("orient", "auto")
-      .attr("markerWidth", 6)
-      .attr("markerHeight", 6)
-      .append("path")
-      .attr("d", "M 0,-5 L 10,0 L 0,5")
-      .attr("fill", "#999");
-
-    // Create groups for links and nodes
-    const linkGroup = svg.append("g").attr("class", "links");
-    const nodeGroup = svg.append("g").attr("class", "nodes");
-
-    // Initialize simulation
     const simulation = d3
-      .forceSimulation<Node>(data.nodes)
+      .forceSimulation(graph.nodes)
       .force(
         "link",
         d3
-          .forceLink<Node, Link>(data.links)
-          .id((d) => d.id)
-          .distance(150),
+          .forceLink(graph.links)
+          .id((d: any) => d.id)
+          .distance(100),
       )
       .force("charge", d3.forceManyBody().strength(-300))
       .force("center", d3.forceCenter(width / 2, height / 2));
 
-    // On every tick update positions of nodes and links
+    const link = svgGroup
+      .append("g")
+      .selectAll("line")
+      .data(graph.links)
+      .enter()
+      .append("line")
+      .attr("stroke", "#aaa");
+
+    const node = svgGroup
+      .append("g")
+      .selectAll("circle")
+      .data(graph.nodes)
+      .enter()
+      .append("circle")
+      .attr("r", 8)
+      .attr("fill", (d) => typeColorMap[d.type])
+      .on("mouseover", (event, d) => {
+        tooltip
+          .style("display", "block")
+          .html(d.id)
+          .style("left", `${event.pageX + 10}px`)
+          .style("top", `${event.pageY + 10}px`);
+      })
+      .on("mouseout", () => {
+        tooltip.style("display", "none");
+      })
+      .on("click", (event, d) => {
+        alert(`Clicked on: ${d.id}`);
+      })
+      .call(
+        d3
+          .drag()
+          .on("start", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on("drag", (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on("end", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          }),
+      );
+
     simulation.on("tick", () => {
-      linkGroup
-        .selectAll("line")
+      link
         .attr("x1", (d: any) => d.source.x)
         .attr("y1", (d: any) => d.source.y)
         .attr("x2", (d: any) => d.target.x)
         .attr("y2", (d: any) => d.target.y);
 
-      nodeGroup
-        .selectAll("circle")
-        .attr("cx", (d: any) => d.x)
-        .attr("cy", (d: any) => d.y);
+      node.attr("cx", (d: any) => d.x).attr("cy", (d: any) => d.y);
     });
-
-    // Function to update the graph when data changes
-    function updateGraph() {
-      const data = getData();
-
-      // Update simulation nodes and links
-      simulation.nodes(data.nodes);
-      (simulation.force("link") as d3.ForceLink<Node, Link>).links(data.links);
-
-      // DATA JOIN for links
-      const links = linkGroup
-        .selectAll("line")
-        .data(data.links, (d: any) => `${d.source}-${d.target}`);
-
-      // Remove exiting links
-      links.exit().remove();
-
-      // Append new links
-      const linksEnter = links
-        .enter()
-        .append("line")
-        .attr("stroke", "#999")
-        .attr("stroke-width", 1.5)
-        .attr("marker-end", "url(#arrowhead)");
-
-      linksEnter.merge(links);
-
-      // DATA JOIN for nodes
-      const nodes = nodeGroup.selectAll("circle").data(data.nodes, (d) => d.id);
-
-      // Remove old nodes
-      nodes.exit().remove();
-
-      // Append new nodes
-      const nodesEnter = nodes
-        .enter()
-        .append("circle")
-        .attr("r", 10)
-        .attr("fill", (d) => (d.type === Type.Show ? "#1f77b4" : "#2ca02c"))
-        .call(
-          d3
-            .drag<SVGCircleElement, Node>()
-            .on("start", (event, d) => {
-              if (!event.active) simulation.alphaTarget(0.3).restart();
-              d.fx = d.x;
-              d.fy = d.y;
-            })
-            .on("drag", (event, d) => {
-              d.fx = event.x;
-              d.fy = event.y;
-            })
-            .on("end", (event, d) => {
-              if (!event.active) simulation.alphaTarget(0);
-              d.fx = null;
-              d.fy = null;
-            }),
-        )
-        .on("mouseover", (event, d: Node) => {
-          const { id, type } = d;
-          const html =
-            type === Type.Show
-              ? state.getShows().find((show) => show.id === id)?.name
-              : Object.values(state.showIdPeopleMap)
-                  .flatMap(({ cast, crew }) => [...cast, ...crew])
-                  .find((person) => person.id === id)?.name;
-
-          tooltip.transition().duration(200).style("opacity", 0.9);
-          tooltip
-            .html(html)
-            .style("left", `${event.pageX + 10}px`)
-            .style("top", `${event.pageY - 28}px`);
-        })
-        .on("mouseout", () => {
-          tooltip.transition().duration(500).style("opacity", 0);
-        });
-      nodesEnter.merge(nodes);
-
-      // Restart simulation with the new data
-      simulation.alpha(1).restart();
-    }
-
-    createEffect(updateGraph);
   });
 
   return (
     <article>
-      <div ref={tooltipRef} />
       <svg ref={svgRef} />
+      <div ref={tooltipRef}></div>
     </article>
   );
 }

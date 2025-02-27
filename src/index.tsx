@@ -7,7 +7,7 @@ import "./index.css";
 import { Route, Router } from "@solidjs/router";
 import Layout from "./Pages/Layout.tsx";
 import Search from "./Pages/Search.tsx";
-import { NotFound } from "./Pages/NotFound.tsx";
+import NotFound from "./Pages/NotFound.tsx";
 import List from "./Pages/List.tsx";
 
 render(
