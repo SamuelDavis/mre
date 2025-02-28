@@ -37,3 +37,7 @@ export function createPersistentStore<T extends object>(
   createEffect(() => localStorage.setItem(key, JSON.stringify(store[0])));
   return store;
 }
+
+export function preventDefault(event: SubmitEvent) {
+  event.preventDefault();
+}

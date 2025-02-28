@@ -25,7 +25,9 @@ export default function SearchResult(props: { show: TShow }) {
   return (
     <article>
       <header>
-        <h1>{props.show.name}</h1>
+        <h1>
+          {props.show.name} <small>{props.show.id}</small>
+        </h1>
         <Show when={props.show.original_name !== props.show.name}>
           <h5>{props.show.original_name}</h5>
         </Show>

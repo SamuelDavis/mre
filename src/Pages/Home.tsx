@@ -1,3 +1,5 @@
+import { preventDefault } from "../utilities";
+
 export default function Home() {
   return (
     <main>
@@ -20,10 +22,6 @@ function ApiKeyForm() {
 
   function onSetApiKey(event: { currentTarget: HTMLInputElement }) {
     setApiKey(event.currentTarget.value);
-  }
-
-  function preventDefault(event: SubmitEvent) {
-    event.preventDefault();
   }
 
   return (
