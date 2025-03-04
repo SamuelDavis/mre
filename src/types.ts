@@ -85,13 +85,12 @@ export type Crew = {
 export type ShowCastMap = Record<Show["id"], Cast["id"][]>;
 export type ShowCrewMap = Record<Show["id"], Cast["id"][]>;
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export function isErrorResponse(value: any): value is ErrorResponse {
-  return (
+export function isErrorResponse(value: unknown): value is ErrorResponse {
+  return Boolean(
     value &&
-    typeof value === "object" &&
-    "success" in value &&
-    value.success === false
+      typeof value === "object" &&
+      "success" in value &&
+      value.success === false,
   );
 }
 

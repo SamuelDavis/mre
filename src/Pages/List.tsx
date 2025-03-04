@@ -58,6 +58,7 @@ function PersonDetails(props: ParentProps<{ person: Cast | Crew }>) {
     <article role="group">
       <section>
         <h1>{props.person.name}</h1>
+        <small>{props.person.id}</small>
         <Show when={props.person.original_name !== props.person.name}>
           <h5>{props.person.original_name}</h5>
         </Show>
