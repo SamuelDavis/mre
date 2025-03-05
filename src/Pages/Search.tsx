@@ -1,64 +1,71 @@
 import { useSearchParams } from "@solidjs/router";
-import { Suspense, createEffect } from "solid-js";
-import { ErrorBoundary, For, createResource } from "solid-js";
+import { ErrorBoundary, For, Suspense, createResource } from "solid-js";
+import TvListToggle from "../TvListToggle";
 import { RenderedError } from "../components";
-import { api } from "../http";
-import state from "../state";
-import TvShow from "../TvShow";
+import { apiFactory } from "../http";
+import type { Targeted } from "../types";
 
 export default function Search() {
-  const [searchParams, setSearchParams] = useSearchParams<{ query: string }>();
-  const getQuery = () => searchParams.query ?? "";
-  const setQuery = (query: string) => setSearchParams({ query });
-
   return (
     <article>
-      <SearchForm getQuery={getQuery} setQuery={setQuery} />
-      <ErrorBoundary fallback={RenderedError}>
-        <SearchResults getQuery={getQuery} />
-      </ErrorBoundary>
+      <SearchForm />
+      <SearchResults />
     </article>
   );
 }
 
-function SearchForm(props: {
-  getQuery: () => string;
-  setQuery: (value: string) => void;
-}) {
-  function onSubmit(event: SubmitEvent & { currentTarget: HTMLFormElement }) {
+function SearchForm() {
+  const [getQuery, setQuery] = useSearchQuery();
+
+  function onSearchTv(event: Targeted<SubmitEvent>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const query = data.get("query")?.toString() ?? "";
-    props.setQuery(query);
+    setQuery(query);
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSearchTv}>
       <label>
         <span>Search</span>
-        <input type="search" name="query" value={props.getQuery()} />
+        <input type="search" name="query" value={getQuery()} />
       </label>
     </form>
   );
 }
 
-function SearchResults(props: { getQuery: () => string }) {
-  const [getResults] = createResource(props.getQuery, async (query) =>
-    query ? api.searchTv({ query }).then((response) => response.results) : [],
+function SearchResults() {
+  const [getQuery] = useSearchQuery();
+  const [getResults] = createResource(
+    () => getQuery(),
+    (query) =>
+      query
+        ? apiFactory.searchTv({ query }).then((results) => results.results)
+        : [],
   );
-
-  createEffect(() => {
-    state.addShows(getResults() ?? []);
-  });
 
   return (
-    <Suspense fallback={<progress />}>
-      <For
-        each={getResults()}
-        fallback={props.getQuery() ? "No results found." : undefined}
-      >
-        {(show) => <TvShow show={show} />}
-      </For>
-    </Suspense>
+    <ErrorBoundary fallback={RenderedError}>
+      <Suspense fallback={<progress />}>
+        <For each={getResults()}>
+          {(result) => (
+            <article>
+              <header>
+                <h1>{result.name}</h1>
+                <TvListToggle result={result} />
+              </header>
+              <p>{result.overview}</p>
+            </article>
+          )}
+        </For>
+      </Suspense>
+    </ErrorBoundary>
   );
+}
+
+function useSearchQuery() {
+  const [searchParams, setSearchParams] = useSearchParams<{ query: string }>();
+  const getQuery = () => searchParams.query ?? "";
+  const setQuery = (query: string) => setSearchParams({ query });
+  return [getQuery, setQuery] as const;
 }

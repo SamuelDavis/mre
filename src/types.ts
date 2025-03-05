@@ -1,89 +1,18 @@
-import type { ComponentProps, ValidComponent } from "solid-js";
-
-export type ExtendProps<
-  Parent extends ValidComponent,
-  Props extends Record<string, unknown> = Record<string, unknown>,
-  Except extends keyof ComponentProps<Parent> = never,
-> = Omit<ComponentProps<Parent>, keyof Props & Except> & Props;
-
-type int = number;
-type language = string | ("en" | "ko" | "ja");
-type country = string | ("US" | "JP" | "KR");
-export type path = string | "/${string}";
-type date =
-  `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
-type department = string | "Acting";
-type job = string | "Visual Effects";
-type gender = int;
+import type {
+  Language,
+  ProductionCountry,
+  TvGenre,
+  country,
+  department,
+  job,
+  language,
+} from "./constants";
 
 export type ErrorResponse = {
   status_code: int;
   status_message: string;
   success: boolean;
 };
-
-type Paginated<T> = {
-  page: number;
-  total_pages: int;
-  total_results: int;
-  results: T[];
-};
-
-export type Show = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: int[];
-  id: int;
-  origin_country: country[];
-  original_language: language[];
-  original_name: null | string;
-  overview: string | "";
-  popularity: number;
-  poster_path: path | null;
-  first_air_date: date;
-  name: string;
-  vote_average: number;
-  vote_count: int;
-};
-export type Genre = { id: int; name: string };
-export type Role = {
-  credit_id: string;
-  character: string;
-  episode_count: int;
-};
-export type Job = {
-  credit_id: string;
-  job: job;
-  episode_count: int;
-};
-export type Cast = {
-  adult: boolean;
-  gender: gender;
-  id: int;
-  known_for_department: department;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: null | path;
-  roles: Role[];
-  total_episode_count: int;
-  order: int;
-};
-export type Crew = {
-  adult: boolean;
-  gender: gender;
-  id: int;
-  known_for_department: department;
-  name: string;
-  original_name: string;
-  popularity: number;
-  profile_path: null | path;
-  jobs: Job[];
-  department: department;
-  total_episode_count: number;
-};
-export type ShowCastMap = Record<Show["id"], Cast["id"][]>;
-export type ShowCrewMap = Record<Show["id"], Cast["id"][]>;
 
 export function isErrorResponse(value: unknown): value is ErrorResponse {
   return Boolean(
@@ -94,33 +23,209 @@ export function isErrorResponse(value: unknown): value is ErrorResponse {
   );
 }
 
+export type Targeted<
+  Ev extends Event,
+  El extends Element = Ev extends InputEvent
+    ? HTMLInputElement
+    : Ev extends SubmitEvent
+      ? HTMLFormElement
+      : HTMLElement,
+> = Ev & { currentTarget: El; target: Element };
+
+export enum Gender {
+  Unknown = 0,
+  Female = 1,
+  Male = 2,
+}
+
+export enum Type {
+  Show = "show",
+  Cast = "cast",
+  Crew = "crew",
+}
+
+export type int = number;
+export type datestr =
+  `${number}${number}${number}${number}-${number}${number}-${number}${number}`;
+export type image_path = null | `/${string}`;
+export type status = "Ended" | string;
+export type series_type = "Scripted" | string;
+export type episode_type = "finale" | string;
+export type production_code = string;
+
+export type Paginated<T> = {
+  page: 0 | int;
+  total_pages: 0 | int;
+  total_results: 0 | int;
+  results: Array<T>;
+};
+
+export type SearchTvResult = {
+  adult: true | boolean;
+  backdrop_path: string;
+  genre_ids: TvGenre["id"][];
+  id: 0 | int;
+  origin_country: country[];
+  original_language: language;
+  original_name: string;
+  overview: string;
+  popularity: 0 | number;
+  poster_path: string;
+  first_air_date: datestr;
+  name: string;
+  vote_average: 0 | number;
+  vote_count: 0 | int;
+};
+
+export type Cast = {
+  adult: true | boolean;
+  gender: Gender.Unknown | Gender;
+  id: int;
+  known_for_department: department;
+  name: string;
+  original_name: string;
+  popularity: 0 | number;
+  profile_path: image_path;
+  character: string;
+  credit_id: string;
+  order: 0 | int;
+};
+
+export type Crew = {
+  adult: true | boolean;
+  gender: Gender.Unknown | Gender;
+  id: int;
+  known_for_department: department;
+  name: string;
+  original_name: string;
+  popularity: 0 | number;
+  profile_path: image_path;
+  credit_id: string;
+  department: department;
+  job: job;
+};
+
+export type ProductionCompany = {
+  id: 0 | int;
+  logo_path: image_path;
+  name: string;
+  origin_country: country;
+};
+
+export type Creator = Pick<
+  Crew,
+  "id" | "credit_id" | "name" | "original_name" | "gender" | "profile_path"
+>;
+
+export type Network = {
+  id: int;
+  logo_path: image_path;
+  name: string;
+  origin_country: country;
+};
+
+export type Season = {
+  air_date: datestr;
+  episode_count: 0 | int;
+  id: 0 | int;
+  name: string;
+  overview: string;
+  poster_path: image_path;
+  season_number: 0 | int;
+  vote_average: 0 | number;
+};
+
+export type Episode = {
+  id: int;
+  name: string;
+  overview: string;
+  vote_average: number;
+  vote_count: int;
+  air_date: datestr;
+  episode_number: int;
+  episode_type: episode_type;
+  production_code: production_code;
+  runtime: int;
+  season_number: int;
+  show_id: int;
+  still_path: image_path;
+};
+
+export type TvSeriesDetails = Pick<
+  SearchTvResult,
+  | "id"
+  | "adult"
+  | "backdrop_path"
+  | "first_air_date"
+  | "name"
+  | "origin_country"
+  | "original_language"
+  | "original_name"
+  | "overview"
+  | "popularity"
+  | "poster_path"
+  | "vote_count"
+  | "vote_average"
+> & {
+  created_by: Creator[];
+  episode_run_time: int[];
+  genres: TvGenre[];
+  homepage: string;
+  in_production: true | boolean;
+  languages: language[];
+  last_air_date: datestr;
+  last_episode_to_air: null | Episode;
+  next_episode_to_air: null | string;
+  networks: Network[];
+  number_of_episodes: 0 | int;
+  number_of_seasons: 0 | int;
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountry[];
+  seasons: Season[];
+  spoken_languages: Language[];
+  status: status;
+  tagline: string;
+  type: series_type;
+};
+
+export type Credit<AdditionalProperties extends object = object> = {
+  adult: true | boolean;
+  backdrop_path: string;
+  genre_ids: TvGenre["id"][];
+  id: int;
+  origin_country: country[];
+  original_language: language;
+  original_name: string;
+  overview: string;
+  popularity: 0 | number;
+  poster_path: string;
+  first_air_date: datestr;
+  name: string;
+  vote_average: 0 | number;
+  vote_count: 0 | int;
+  credit_id: string;
+  episode_count: 0 | int;
+} & AdditionalProperties;
+
+export type CastCredit = Credit<{ character: string }>;
+
+export type CrewCredit = Credit<{ department: department; job: job }>;
+
 export interface Api {
   searchTv: {
-    request: {
-      query: string;
-      first_air_date_year?: int;
-      include_adult?: boolean;
-      language?: language;
-      page?: int;
-      year?: int;
-    };
-    response: Paginated<Show>;
+    request: { query: string };
+    response: Paginated<SearchTvResult>;
   };
-  tvGenres: {
-    request: void;
-    response: {
-      genres: Genre[];
-    };
+  tvSeriesDetails: {
+    request: { series_id: int };
+    response: TvSeriesDetails & { credits: { cast: Cast[]; crew: Crew[] } };
   };
-  tvPeople: {
-    request: {
-      series_id: int;
-      language?: language;
-    };
+  personTvCredits: {
+    request: { person_id: int };
     response: {
+      cast: CastCredit[];
+      crew: CrewCredit[];
       id: int;
-      cast: Cast[];
-      crew: Crew[];
     };
   };
 }
@@ -131,10 +236,6 @@ export type ApiFactory = {
   ) => Promise<Api[Key]["response"]>;
 };
 
-export const paths: {
-  [Key in keyof Api]: path | ((request: Api[Key]["request"]) => path);
-} = {
-  searchTv: "/search/tv",
-  tvGenres: "/genre/tv/list",
-  tvPeople: (request) => `/tv/${request.series_id}/aggregate_credits`,
+export type PathFactory = {
+  [Key in keyof Api]: (request: Api[Key]["request"]) => URL;
 };

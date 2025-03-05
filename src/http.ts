@@ -1,75 +1,60 @@
-import { createRoot } from "solid-js";
-import {
-  type Api,
-  type ApiFactory,
-  type ErrorResponse,
-  isErrorResponse,
-  paths,
-} from "./types";
-import { createPersistentStore } from "./utilities";
+import { httpCache } from "./state";
+import type { Api, ApiFactory, ErrorResponse, PathFactory } from "./types";
+import { isErrorResponse } from "./types";
 
-const cache = createRoot(() => {
-  const [requestPathResponseMap, setRequests] = createPersistentStore<
-    Record<string, unknown>
-  >({
-    key: "requests",
-    reviver: (value: string | null) => JSON.parse(value ?? "null") ?? {},
-  });
+export const apiFactory = new Proxy(
+  {},
+  {
+    get<Key extends keyof Api>(
+      _target: never,
+      p: Key | "rateLimit",
+      _receiver: never,
+    ) {
+      if (p === "rateLimit") return 25;
+      return (request: Api[Key]["request"]) => {
+        const path = urlFactory[p](request);
+        const url = new URL(`${path}`);
+        for (const key in request)
+          url.searchParams.set(key, String(request[key]));
+        return cachingFetch<Api[Key]["response"]>(url);
+      };
+    },
+  },
+) as ApiFactory & { rateLimit: number };
 
-  function addRequest(path: string, value: unknown): void {
-    setRequests((requests) => ({ ...requests, [path]: value }));
-  }
+const urlFactory: PathFactory = {
+  searchTv() {
+    return new URL("https://api.themoviedb.org/3/search/tv");
+  },
+  tvSeriesDetails(request) {
+    return new URL(
+      `https://api.themoviedb.org/3/tv/${request.series_id}?append_to_response=credits`,
+    );
+  },
+  personTvCredits(request) {
+    return new URL(
+      `https://api.themoviedb.org/3/person/${request.person_id}/tv_credits?append_to_response=credits`,
+    );
+  },
+};
 
-  return { requestPathResponseMap, addRequest };
-});
-
-async function httpFetch<Data extends Record<string, unknown>>(
-  url: URL,
-): Promise<Data> {
-  const apiKey = JSON.parse(localStorage.getItem("api-key") ?? '""');
+async function cachingFetch<Data extends object>(url: URL): Promise<Data> {
+  const apiKey = httpCache.getApiKey();
   const key = url.toString();
-  let body = cache.requestPathResponseMap[key];
-  if (!body)
-    body = await fetch(url, {
+  const body =
+    httpCache.getRequest(key) ??
+    (await fetch(url, {
       method: "GET",
       headers: {
         accept: "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
-    }).then((res) => res.text());
+    }).then((res) => res.text()));
 
   if (!(typeof body === "string")) throw new TypeError();
   const data: ErrorResponse | Data = JSON.parse(body);
 
   if (isErrorResponse(data)) throw new Error(data.status_message);
-  cache.addRequest(key, body);
+  // httpCache.setRequest(key, body);
   return data;
 }
-
-function makeUrl(path: string, params: URLSearchParams): URL {
-  return new URL(`https://api.themoviedb.org/3/${path}?${params}`);
-}
-
-function makeSearchParams(
-  query: unknown | Record<string, string | boolean | number>,
-): URLSearchParams {
-  const params = new URLSearchParams();
-  if (query) for (const key in query) params.set(key, query[key].toString());
-  return params;
-}
-
-export const api = new Proxy(
-  {},
-  {
-    get<Key extends keyof Api>(_target: never, p: Key, _receiver: never) {
-      return (request: Api[Key]["request"]) => {
-        const path = paths[p];
-        const params = makeSearchParams(request);
-        const pathString: string =
-          path instanceof Function ? path(request) : path;
-        const url = makeUrl(pathString, params);
-        return httpFetch<Api[Key]["response"]>(url);
-      };
-    },
-  },
-) as ApiFactory;

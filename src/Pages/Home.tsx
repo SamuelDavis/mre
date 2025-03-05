@@ -1,3 +1,5 @@
+import { httpCache } from "../state";
+import type { Targeted } from "../types";
 import { preventDefault } from "../utilities";
 
 export default function Home() {
@@ -11,17 +13,8 @@ export default function Home() {
 }
 
 function ApiKeyForm() {
-  function setApiKey(key: string) {
-    if (key) localStorage.setItem("api-key", JSON.stringify(key));
-    else localStorage.removeItem("api-key");
-  }
-
-  function getApiKey(): null | string {
-    return JSON.parse(localStorage.getItem("api-key") || "null");
-  }
-
-  function onSetApiKey(event: { currentTarget: HTMLInputElement }) {
-    setApiKey(event.currentTarget.value);
+  function onUpdateApiKey(event: Targeted<InputEvent>) {
+    httpCache.setApiKey(event.currentTarget.value);
   }
 
   return (
@@ -37,7 +30,11 @@ function ApiKeyForm() {
             More Info
           </a>
         </small>
-        <input type="text" value={getApiKey() ?? ""} onInput={onSetApiKey} />
+        <input
+          type="text"
+          value={httpCache.getApiKey()}
+          onInput={onUpdateApiKey}
+        />
       </label>
     </form>
   );
