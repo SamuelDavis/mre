@@ -1,5 +1,4 @@
 import { Show, batch, createSignal } from "solid-js";
-import { ImportantJobs, ImportantRoles } from "./constants";
 import { apiFactory } from "./http";
 import { tvCast, tvCrew, tvList, tvSeries } from "./state";
 import {
@@ -10,6 +9,8 @@ import {
   type SearchTvResult,
   type Targeted,
   type int,
+  isImportantCast,
+  isImportantCrew,
 } from "./types";
 
 export default function TvListToggle(props: {
@@ -62,8 +63,8 @@ async function fetchSeriesInfo(series_id: int, withRelated: boolean) {
 
   if (withRelated) {
     const importantPeople = [
-      ...credits.cast.filter((cast) => cast.order <= ImportantRoles),
-      ...credits.crew.filter((crew) => ImportantJobs.includes(crew.job)),
+      ...credits.cast.filter(isImportantCast),
+      ...credits.crew.filter(isImportantCrew),
     ];
 
     let peopleResponses: Api["personTvCredits"]["response"][] = [];

@@ -1,12 +1,21 @@
-import type {
-  Language,
-  ProductionCountry,
-  TvGenre,
-  country,
-  department,
-  job,
-  language,
+import {
+  ImportantJobs,
+  ImportantRoles,
+  type Language,
+  type ProductionCountry,
+  type TvGenre,
+  type country,
+  type department,
+  type job,
+  type language,
 } from "./constants";
+
+export function isImportantCast(person: Cast): boolean {
+  return person.order <= ImportantRoles;
+}
+export function isImportantCrew(person: Crew): boolean {
+  return ImportantJobs.includes(person.job);
+}
 
 export type ErrorResponse = {
   status_code: int;
@@ -70,7 +79,7 @@ export type SearchTvResult = {
   original_name: string;
   overview: string;
   popularity: 0 | number;
-  poster_path: string;
+  poster_path: null | image_path;
   first_air_date: datestr;
   name: string;
   vote_average: 0 | number;
@@ -85,7 +94,7 @@ export type Cast = {
   name: string;
   original_name: string;
   popularity: 0 | number;
-  profile_path: image_path;
+  profile_path: null | image_path;
   character: string;
   credit_id: string;
   order: 0 | int;
@@ -99,7 +108,7 @@ export type Crew = {
   name: string;
   original_name: string;
   popularity: 0 | number;
-  profile_path: image_path;
+  profile_path: null | image_path;
   credit_id: string;
   department: department;
   job: job;
