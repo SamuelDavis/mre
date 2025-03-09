@@ -1,269 +1,314 @@
-import type {
-  DraggedElementBaseType,
-  SimulationLinkDatum,
-  SimulationNodeDatum,
-} from "d3";
+import type { SimulationLinkDatum, SimulationNodeDatum } from "d3";
 import * as d3 from "d3";
-import { type JSX, Show, createEffect, createSignal } from "solid-js";
+import { type JSX, type Ref, Show, createEffect, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 import ImageSource from "../ImgSrc";
-import { ImportantJobs, ImportantRoles } from "../constants";
 import { tvCast, tvCrew, tvList, tvSeries } from "../state";
-import { Type, type int } from "../types";
+import { Type, type int, isImportantCast, isImportantCrew } from "../types";
+
+type Color = Exclude<JSX.CSSProperties["color"], undefined>;
 
 type Node = SimulationNodeDatum & {
-  id: string;
+  uuid: string;
+  id: number;
   type: Type;
   list: boolean;
 };
 type Link = SimulationLinkDatum<Node> & {
-  source: string;
-  target: string;
+  source: string & Node;
+  target: string & Node;
 };
-type GraphData = { nodes: Node[]; links: Link[] };
+
+type GraphData = {
+  nodes: Node[];
+  links: Link[];
+};
+
+function isNode(value: any): value is Node {
+  return (
+    value &&
+    typeof value === "object" &&
+    ["id", "type", "list"].every((property) => property in value)
+  );
+}
+
+function getGraphData(): GraphData {
+  const nodes: GraphData["nodes"] = [];
+  const links: GraphData["links"] = [];
+
+  const listSeriesIds = tvList.get();
+  const seriesInList = tvSeries
+    .get()
+    .filter((series) => listSeriesIds.includes(series.id));
+
+  for (const series of seriesInList) {
+    const seriesNode: Node = {
+      id: series.id,
+      type: Type.Show,
+      uuid: `${Type.Show}:${series.id}`,
+      list: true,
+    };
+    nodes.push(seriesNode);
+
+    const importantCast = tvCast.getBySeries(series).filter(isImportantCast);
+    for (const person of importantCast) {
+      const node: Node = {
+        id: person.id,
+        type: Type.Cast,
+        uuid: `${Type.Cast}:${person.id}`,
+        list: true,
+      };
+      links.push({ source: seriesNode.uuid, target: node.uuid } as any);
+      if (nodes.some((n) => n.uuid === node.uuid)) continue;
+      nodes.push(node);
+    }
+
+    const importantCrew = tvCrew.getBySeries(series).filter(isImportantCrew);
+    for (const person of importantCrew) {
+      const node: Node = {
+        id: person.id,
+        type: Type.Crew,
+        uuid: `${Type.Crew}:${person.id}`,
+        list: true,
+      };
+      links.push({ source: seriesNode.uuid, target: node.uuid } as any);
+      if (nodes.some((n) => n.uuid === node.uuid)) continue;
+      nodes.push(node);
+    }
+  }
+
+  return { nodes, links };
+}
 
 export default function Data() {
   let svgRef: undefined | SVGSVGElement;
-  let tooltipRef: undefined | HTMLDivElement;
+  let tooltipRef: undefined | HTMLElement;
 
-  const inListTypeColorMap: Record<
-    Type,
-    Exclude<JSX.CSSProperties["color"], undefined>
-  > = {
-    [Type.Show]: "red",
-    [Type.Cast]: "green",
-    [Type.Crew]: "blue",
-  };
-  const notListTypeColorMap: Record<
-    Type,
-    Exclude<JSX.CSSProperties["color"], undefined>
-  > = {
-    [Type.Show]: "yellow",
-    [Type.Cast]: "teal",
-    [Type.Crew]: "purple",
-  };
+  const [getNode, setNode] = createSignal<undefined | Node>();
 
-  const getGraphData = (): GraphData => {
-    const nodes: Node[] = [];
-    const links: Link[] = [];
-
-    const listSeries = tvList.get();
-    const listCast = listSeries
-      .flatMap((id) => tvCast.getBySeries({ id }))
-      .map((person) => person.id);
-    const listCrew = listSeries
-      .flatMap((id) => tvCrew.getBySeries({ id }))
-      .map((person) => person.id);
-
-    for (const series of tvSeries.get()) {
-      const seriesId = `${Type.Show}:${series.id}`;
-      nodes.push({
-        id: seriesId,
-        type: Type.Show,
-        list: listSeries.includes(series.id),
-      });
-      for (const person of tvCast.getBySeries(series)) {
-        if (person.order > ImportantRoles) continue;
-        const personId = `${Type.Cast}:${person.id}`;
-        if (!nodes.some((node) => node.id === personId))
-          nodes.push({
-            id: personId,
-            type: Type.Cast,
-            list: listCast.includes(person.id),
-          });
-        links.push({ source: seriesId, target: personId });
-      }
-      for (const person of tvCrew.getBySeries(series)) {
-        if (!ImportantJobs.includes(person.job)) continue;
-        const personId = `${Type.Crew}:${person.id}`;
-        if (!nodes.some((node) => node.id === personId))
-          nodes.push({
-            id: personId,
-            type: Type.Crew,
-            list: listCrew.includes(person.id),
-          });
-        links.push({ source: seriesId, target: personId });
-      }
-    }
-
-    return { nodes, links };
-  };
-
-  const [getTargetId, setTargetId] = createSignal<undefined | string>();
+  const [config, _setConfig] = createStore({
+    linkDistance: 30, // How far apart linked nodes should be
+    chargeStrength: -30, // Strength of the charge (repulsion if negative)
+    nodeRadius: 5, // Radius of the node circles
+    linkStrokeWidth: 1, // Thickness of the link lines
+    minZoomScale: 0.1,
+    maxZoomScale: 10.0,
+    tooltipCursorOffet: 10,
+    maxRadius: 15,
+    minRadius: 5,
+  });
 
   createEffect(() => {
     if (!svgRef) return;
-    if (!tooltipRef) return;
 
-    svgRef.innerHTML = "";
-    tooltipRef.innerHTML = "";
-
-    const container = svgRef.parentElement;
-    const width = container?.clientWidth ?? 800;
-    const height = Math.max(600, container?.clientHeight ?? 600);
-
+    const width = svgRef.clientWidth;
+    const height = svgRef.clientHeight;
     const graphData = getGraphData();
 
-    const nodeDegree: Record<string, number> = {};
-    for (const link of graphData.links)
-      for (const key of [link.source, link.target])
-        nodeDegree[key] = (nodeDegree[key] ?? 0) + 1;
-
-    const svg = d3
-      .select(svgRef)
-      .attr("viewBox", `0 0 ${width} ${height}`)
-      .style("width", "100%")
-      .style("height", "100%")
-      .call(
-        d3
-          .zoom()
-          .scaleExtent([0.1, 3])
-          .on("zoom", ({ transform }) => {
-            svgGroup.attr("transform", transform);
-          }),
+    // Implement highlighting
+    function isConnected(a: Node, b: Node): boolean {
+      return (
+        a.uuid === b.uuid ||
+        graphData.links.some(
+          (l) =>
+            (l.source.uuid === a.uuid && l.target.uuid === b.uuid) ||
+            (l.source.uuid === b.uuid && l.target.uuid === a.uuid),
+        )
       );
+    }
 
-    const svgGroup = svg.append("g");
+    function getNodeColor(node: Node, other?: Node | number): Color {
+      if (isNode(other)) if (isConnected(node, other)) return "orange";
+      switch (node.type) {
+        case Type.Show:
+          return "red";
+        case Type.Cast:
+          return "green";
+        case Type.Crew:
+          return "blue";
+      }
+    }
 
-    const tooltip = d3
-      .select(tooltipRef)
-      .style("position", "absolute")
-      .style("background", "white")
-      .style("border", "1px solid black")
-      .style("padding", "5px")
-      .style("display", "none");
+    function getLinkColor(link: Link, other?: Node | number): Color {
+      if (isNode(other)) {
+        if (link.source.uuid === other.uuid || link.target.uuid === other.uuid)
+          return "orange";
+      }
+      return "gray";
+    }
 
+    // Scale Node Size
+    const degrees = new Map<Node["uuid"], Node["uuid"][]>();
+    for (const n of graphData.nodes) {
+      degrees.set(
+        n.uuid,
+        graphData.links
+          .filter((l) => l.source === n.uuid || l.target === n.uuid)
+          .map((l) => l.target),
+      );
+    }
+    const nodesWithDegreeOne = Array.from(degrees.entries())
+      .filter(([, v]) => v.length === 1)
+      .map(([k]) => k);
+    for (const key of degrees.keys()) {
+      degrees.set(
+        key,
+        degrees
+          .get(key)
+          ?.filter((uuid) => !nodesWithDegreeOne.includes(uuid)) ?? [],
+      );
+    }
+
+    const values = Array.from(degrees.values()).map((v) => v.length);
+    const minDegree = d3.min(values) ?? 0;
+    const maxDegree = d3.max(values) ?? 0;
     const sizeScale = d3
       .scaleLinear()
-      .domain([1, d3.max(Object.values(nodeDegree)) || 1])
-      .range([6, 20]);
+      .domain([minDegree, maxDegree])
+      .range([config.minRadius, config.maxRadius]);
 
+    // Initialize the Container
+    const graphContainer = d3.select(svgRef);
+
+    // Initialize Zooming+Panning Container & Behavior
+    const zoomContainer = graphContainer.append("g");
+    const zoomBehavior = d3
+      .zoom<SVGSVGElement, unknown>()
+      .scaleExtent([config.minZoomScale, config.maxZoomScale])
+      .on("zoom", (event) => zoomContainer.attr("transform", event.transform));
+    graphContainer.call(zoomBehavior);
+
+    // Render nodes & links
+    const link = zoomContainer
+      .selectAll<SVGLineElement, Link>("line")
+      .data(graphData.links)
+      .enter()
+      .append("line")
+      .attr("stroke", getLinkColor)
+      .attr("stroke-width", config.linkStrokeWidth);
+
+    const node = zoomContainer
+      .selectAll<SVGCircleElement, Node>("circle")
+      .data(graphData.nodes)
+      .enter()
+      .append("circle")
+      .attr("r", (d) => sizeScale(degrees.get(d.uuid)?.length ?? 0))
+      .attr("fill", getNodeColor);
+
+    // Run simulation
     const simulation = d3
-      .forceSimulation(graphData.nodes)
+      .forceSimulation<Node>(graphData.nodes)
       .force(
         "link",
         d3
           .forceLink<Node, Link>(graphData.links)
-          .id((d) => d.id)
-          .distance(100),
+          .id((d) => d.uuid)
+          .distance(config.linkDistance),
       )
-      .force("charge", d3.forceManyBody().strength(-300))
+      .force("charge", d3.forceManyBody().strength(config.chargeStrength))
       .force("center", d3.forceCenter(width / 2, height / 2));
-
-    const link = svgGroup
-      .append("g")
-      .selectAll("line")
-      .data(graphData.links)
-      .enter()
-      .append("line")
-      .attr("stroke", "#aaa");
-
-    const node = svgGroup
-      .append("g")
-      .selectAll("circle")
-      .data(graphData.nodes)
-      .enter()
-      .append("circle")
-      .attr("r", (d) => sizeScale(d.list ? (nodeDegree[d.id] ?? 1) : 1))
-      .attr("fill", (d) =>
-        d.list ? inListTypeColorMap[d.type] : notListTypeColorMap[d.type],
-      )
-      .attr("opacity", (d) => (d.list ? 1 : 0.5))
-      .on("mouseover", (event, d) => {
-        setTargetId(d.id);
-        tooltip
-          .style("display", "block")
-          .style("left", `${event.pageX + 10}px`)
-          .style("top", `${event.pageY + 10}px`);
-      })
-      .on("mouseout", () => {
-        setTargetId(undefined);
-        tooltip.style("display", "none");
-      })
-      .on("click", (_event, d) => {
-        alert(`Clicked on: ${d.id}`);
-      })
-      .call(
-        d3
-          .drag<any, Node>()
-          .on("start", (event, d) => {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-          })
-          .on("drag", (event, d) => {
-            d.fx = event.x;
-            d.fy = event.y;
-          })
-          .on("end", (event, d) => {
-            if (!event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
-          }),
-      );
 
     simulation.on("tick", () => {
       link
-        .attr("x1", (d: any) => d.source.x)
-        .attr("y1", (d: any) => d.source.y)
-        .attr("x2", (d: any) => d.target.x)
-        .attr("y2", (d: any) => d.target.y);
+        .attr("x1", (l) => l.source.x ?? 0)
+        .attr("y1", (l) => l.source.y ?? 0)
+        .attr("x2", (l) => l.target.x ?? 0)
+        .attr("y2", (l) => l.target.y ?? 0);
+      node.attr("cx", (d) => d.x ?? 0).attr("cy", (d) => d.y ?? 0);
+    });
 
-      node.attr("cx", (d: any) => d.x).attr("cy", (d: any) => d.y);
+    // Implement tooltip
+    node
+      .on("mouseover", (_event, d) => setNode(d))
+      .on("mouseout", (_event, _d) => setNode(undefined))
+      .on("mousemove", (event, _d) => {
+        if (!tooltipRef) return;
+        d3.select(tooltipRef)
+          .style("position", "absolute")
+          .style("left", `${event.pageX + config.tooltipCursorOffet}px`)
+          .style("top", `${event.pageY + config.tooltipCursorOffet}px`);
+      });
+
+    node.on("mouseover.highlight", (_event, d) => {
+      link.attr("stroke", (l) => getLinkColor(l, d));
+      node.attr("fill", (n) => getNodeColor(n, d));
+    });
+    node.on("mouseout.highlight", (_event, _d) => {
+      link.attr("stroke", getLinkColor);
+      node.attr("fill", getNodeColor);
     });
   });
 
   return (
-    <article>
-      <svg ref={svgRef} />
-      <div ref={tooltipRef}>
-        <Show when={getTargetId()}>
-          {(getId) => {
-            const [type, id] = getId().split(":");
-            return <RenderType type={type as Type} id={Number(id)} />;
-          }}
-        </Show>
-      </div>
+    <article style={{ "aspect-ratio": "1/1" }}>
+      <svg ref={svgRef} width="100%" height="100%" />
+      <Show when={getNode()}>
+        {(getNode) => {
+          const node = getNode();
+          const [, id] = node.uuid.split(":");
+          return <Tooltip ref={tooltipRef} type={node.type} id={Number(id)} />;
+        }}
+      </Show>
     </article>
   );
 }
 
-function RenderType(props: { type: Type; id: int }) {
-  switch (props.type) {
-    case Type.Show: {
-      const item = tvSeries.getById(props.id);
-      if (item)
-        return (
-          <aside>
-            <h4>
-              {item.name} ({props.type})
-            </h4>
-            <img
-              src={new ImageSource(item.poster_path, "w154").toString()}
-              alt="poster"
-            />
-          </aside>
-        );
-      break;
+function Tooltip(props: { ref: Ref<any>; type: Type; id: int }) {
+  const getItem = ():
+    | undefined
+    | { name: string; label?: string; img: ImageSource } => {
+    switch (props.type) {
+      case Type.Show: {
+        const item = tvSeries.getById(props.id);
+        if (item)
+          return {
+            name: item.name,
+            img: new ImageSource("poster", item.poster_path, "w154"),
+          };
+        break;
+      }
+      case Type.Cast: {
+        const item = tvCast.getById(props.id);
+        if (item)
+          return {
+            name: item.name,
+            label: item.character,
+            img: new ImageSource("profile", item.profile_path, "w185"),
+          };
+        break;
+      }
+      case Type.Crew: {
+        const item = tvCrew.getById(props.id);
+        if (item)
+          return {
+            name: item.name,
+            label: item.job,
+            img: new ImageSource("profile", item.profile_path, "w185"),
+          };
+        break;
+      }
     }
-    case Type.Crew:
-    case Type.Cast: {
-      const item =
-        props.type === Type.Crew
-          ? tvCrew.getById(props.id)
-          : tvCast.getById(props.id);
-      if (item)
-        return (
-          <aside>
-            <h4>
-              {item.name} ({props.type})
-            </h4>
-            <img
-              src={new ImageSource(item.profile_path ?? "", "w185").toString()}
-              alt="profile"
-            />
-          </aside>
-        );
-      break;
-    }
-  }
+    return undefined;
+  };
+
+  const item = getItem();
+
+  if (!item) return null;
+
+  return (
+    <aside ref={props.ref}>
+      <header>
+        <strong>{item.name}</strong>
+        <br />
+        <small>
+          {props.type}:{props.id}
+        </small>
+        <br />
+        <Show when={item.label}>
+          {(getLabel) => <small>{getLabel()}</small>}
+        </Show>
+      </header>
+      <img src={item.img.toString()} alt={item.img.type} />
+    </aside>
+  );
 }
