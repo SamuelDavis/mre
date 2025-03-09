@@ -1,11 +1,13 @@
-import type { path } from "./types";
+import type { ImageSize, ImageType } from "./constants";
+import type { image_path } from "./types";
 
-export default class ImageSource {
+export default class ImageSource<T extends ImageType = ImageType> {
   private readonly base = "https://image.tmdb.org/t/p/";
 
   constructor(
-    private readonly path: path,
-    private readonly size = "w500",
+    public readonly type: T,
+    private readonly path: image_path,
+    private readonly size: ImageSize<T>,
   ) {}
 
   toString(): string {
