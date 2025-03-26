@@ -1,8 +1,7 @@
 import { useMatch } from "@solidjs/router";
-import { For, children, splitProps } from "solid-js";
-import type { ExtendProps } from "./types";
+import { For, children, splitProps, type ComponentProps } from "solid-js";
 
-export function Nav(props: ExtendProps<"nav">) {
+export function Nav(props: ComponentProps<"nav">) {
   const [local, parent] = splitProps(props, ["children"]);
   const getChildren = children(() => local.children).toArray;
   return (
@@ -14,7 +13,7 @@ export function Nav(props: ExtendProps<"nav">) {
   );
 }
 
-export function Link(props: ExtendProps<"a">) {
+export function Link(props: ComponentProps<"a">) {
   const getMatch = useMatch(() => props.href ?? Math.random().toString(36));
   const getIsCurrent = () => Boolean(getMatch());
   return <a aria-current={getIsCurrent()} {...props} />;
