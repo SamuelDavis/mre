@@ -10,7 +10,7 @@ type Genre = (typeof Genres)[number];
 type IsoLanguageString = (typeof Langauges)[number]["iso_639_1"];
 type DateString = `${number}-${number}-${number}`;
 type CountryIsoStr = (typeof Countries)[number]["iso_3166_1"];
-export type SearchResults = Paginated<
+export type SearchResult =
   | {
       media_type: "tv";
       id: number;
@@ -48,8 +48,61 @@ export type SearchResults = Paginated<
   | {
       media_type: string & "other";
       id: number;
-    }
->;
+    };
+export type SearchResults = Paginated<SearchResult>;
+
+export type Cast = {
+  credit_id: number;
+  id: number;
+  name: string;
+  original_name: string;
+  profile_path: AssetPath;
+  character: string;
+  order: number;
+};
+export type Crew = {
+  credit_id: number;
+  id: number;
+  name: string;
+  original_name: string;
+  profile_path: AssetPath;
+  department: string;
+  job: string;
+};
+export type ProductionCompany = {
+  id: number;
+  logo_path: AssetPath;
+  name: string;
+};
+type Credits = {
+  cast: Cast[];
+  crew: Crew[];
+};
+export type MediaDetails = SearchResults & {
+  credits: Credits;
+  production_companies: ProductionCompany[];
+};
+
+export type MediaCredit = {
+  credit_id: number;
+  id: number;
+  name: string;
+  original_name: string;
+  profile_path: null | AssetPath;
+  department: string;
+  job: string;
+  order: number;
+};
+export type MediaItem = {
+  id: number;
+  type: string;
+  name: string;
+  originalName: string;
+  overview: string;
+  date: Date;
+  poster: AssetPath;
+};
+
 export class ApiError extends Error {
   public constructor(body: {
     success: false;
