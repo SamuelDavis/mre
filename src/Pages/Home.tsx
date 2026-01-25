@@ -1,5 +1,5 @@
 import { useApiKey } from "../AppState";
-import type { Targeted } from "@samueldavis/solidlib";
+import type { Targeted } from "../types";
 
 export default function Home() {
   return (

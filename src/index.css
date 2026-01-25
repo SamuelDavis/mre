@@ -1,16 +1,5 @@
-.material-icons {
-	vertical-align: text-bottom;
-}
-
-header [role="group"] {
-	display: flex;
-	justify-content: space-between;
-}
-
-header [role="group"]>* {
-	flex: none;
-}
-
-section[role="group"] {
-	gap: 1em;
+dialog {
+	max-height: 100vh;
+	max-width: 100vw;
+	overflow: auto;
 }

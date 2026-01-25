@@ -7,7 +7,7 @@ export default function ImageAsset<Type extends keyof AssetSizes>(
     "img",
     {
       type: Type;
-      size?: "original" | AssetSizes[Type][number];
+      size?: AssetSizes[Type][number];
       path?: null | string;
     },
     "src" | "srcset"

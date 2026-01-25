@@ -1,9 +1,25 @@
-import { type ExtendProps, type Targeted } from "@samueldavis/solidlib";
 import { useApi, useSearchQuery } from "../AppState";
-import { createResource, Suspense } from "solid-js";
-import { type MediaItem, type SearchResults } from "../types";
+import {
+  createMemo,
+  createResource,
+  createSignal,
+  For,
+  Match,
+  Show,
+  splitProps,
+  Suspense,
+  Switch,
+} from "solid-js";
+import type {
+  ExtendProps,
+  MultiSearchResult,
+  PersonSearchResult,
+  Signal,
+  Targeted,
+} from "../types";
 import ErrorModal from "../Components/ErrorModal";
-import MediaList from "../Components/MediaList";
+import ImageAsset from "../Components/ImageAsset";
+import { extract, Modal } from "@samueldavis/solidlib";
 
 export default function Search() {
   return (
@@ -40,11 +56,8 @@ function SearchForm(props: ExtendProps<"form", {}, "children" | "onSubmit">) {
 
 function SearchResultList() {
   const [getQuery, setQuery] = useSearchQuery();
-  const request = useApi();
-  const [resource] = createResource(getQuery, async (query) => {
-    const response = await request<SearchResults>(`/search/multi`, { query });
-    return response.results.map(normalizeSearchResult);
-  });
+  const { requestSearchMulti: searchMulti } = useApi();
+  const [resource] = createResource(getQuery, searchMulti);
 
   function onReset() {
     setQuery();
@@ -52,42 +65,148 @@ function SearchResultList() {
 
   return (
     <ErrorModal reset={onReset}>
-      <Suspense fallback={<progress />}>
-        <MediaList items={resource()}>
-          <p>No results, try searching for something.</p>
-        </MediaList>
-      </Suspense>
+      <Show when={resource()} fallback={<progress />}>
+        {(get) => (
+          <ul>
+            <For each={get().results}>
+              {(result) => (
+                <li>
+                  <SearchResultListItem item={result} />
+                </li>
+              )}
+            </For>
+          </ul>
+        )}
+      </Show>
     </ErrorModal>
   );
 }
 
-function normalizeSearchResult(
-  value: SearchResults["results"][number],
-): Error | MediaItem {
-  switch (value.media_type) {
-    case "tv":
-      return {
-        id: value.id,
-        type: value.media_type,
-        name: value.name,
-        originalName: value.original_name,
-        date: new Date(value.first_air_date),
-        poster: value.poster_path,
-        overview: value.overview,
-      };
-    case "movie":
-      return {
-        id: value.id,
-        type: value.media_type,
-        name: value.title,
-        originalName: value.original_title,
-        date: new Date(value.release_date),
-        poster: value.poster_path,
-        overview: value.overview,
-      };
-    default:
-      return new TypeError(`Unhandled media type "${value.media_type}".`, {
-        cause: value,
-      });
+function SearchResultListItem(
+  props: ExtendProps<"article", { item: MultiSearchResult }, "children">,
+) {
+  const [local, parent] = splitProps(props, ["item"]);
+
+  function getType<T extends MultiSearchResult["media_type"]>(
+    type: T,
+  ): undefined | Extract<MultiSearchResult, { media_type: T }> {
+    return local.item.media_type === type ? (local.item as any) : undefined;
   }
+
+  const getNorm = createMemo(() => {
+    switch (local.item.media_type) {
+      case "movie":
+        return {
+          type: local.item.media_type,
+          original_name: local.item.original_title,
+          name: local.item.title,
+        };
+      case "tv":
+        return {
+          type: local.item.media_type,
+          original_name: local.item.original_name,
+          name: local.item.name,
+        };
+      case "person":
+        return {
+          type: local.item.media_type,
+          original_name: local.item.original_name,
+          name: local.item.name,
+        };
+    }
+  });
+
+  const [getShowModal, setShowModel] = createSignal(false);
+
+  return (
+    <article {...parent}>
+      <header>
+        <small>{getNorm().type}</small>
+        <h1>{getNorm().name}</h1>
+        <Show when={getNorm().original_name !== getNorm().name}>
+          <h5>{getNorm().original_name}</h5>
+        </Show>
+      </header>
+      <header>
+        <button onClick={[setShowModel, true]}>Details</button>
+        <DetailsModal item={local.item} toggle={[getShowModal, setShowModel]} />
+      </header>
+      <Switch>
+        <Match when={getType("movie") ?? getType("tv")}>
+          {(get) => (
+            <>
+              <ImageAsset type="poster" size="w185" path={get().poster_path} />
+              <p>{get().overview}</p>
+            </>
+          )}
+        </Match>
+        <Match when={getType("person")}>
+          {(get) => (
+            <>
+              <ImageAsset
+                type="profile"
+                size="w185"
+                path={get().profile_path}
+              />
+              <dl>
+                <dt>Popularity</dt>
+                <dd>{get().popularity}</dd>
+                <dt>Known For</dt>
+                <dd>{get().known_for_department}</dd>
+                <dd>
+                  <ul>
+                    <For each={get().known_for}>
+                      {(item) => <KnownForListItem item={item} />}
+                    </For>
+                  </ul>
+                </dd>
+              </dl>
+            </>
+          )}
+        </Match>
+      </Switch>
+    </article>
+  );
+}
+
+function KnownForListItem(
+  props: ExtendProps<
+    "li",
+    { item: PersonSearchResult["known_for"][number] },
+    "children"
+  >,
+) {
+  const [local, parent] = splitProps(props, ["item"]);
+  const getName = () =>
+    extract(local.item, "title")?.title ?? extract(local.item, "name")?.name;
+  return <li {...parent}>{getName()}</li>;
+}
+
+function DetailsModal(
+  props: ExtendProps<
+    typeof Modal,
+    { item: MultiSearchResult; toggle: Signal<boolean> },
+    "children" | "when" | "onClose"
+  >,
+) {
+  const { requestDetails } = useApi();
+  const [local, parent] = splitProps(props, ["item", "toggle"]);
+  const [getOpen, setOpen] = local.toggle;
+  const onClose = () => setOpen(false);
+  const [resource] = createResource(
+    () => (getOpen() ? local.item : undefined),
+    requestDetails,
+  );
+
+  return (
+    <Modal when={getOpen()} onClose={onClose} {...parent}>
+      <ErrorModal>
+        <Suspense fallback={<progress />}>
+          <pre>
+            {JSON.stringify(extract(resource(), "credits")?.id, null, 2)}
+          </pre>
+        </Suspense>
+      </ErrorModal>
+    </Modal>
+  );
 }
