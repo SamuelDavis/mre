@@ -1,13 +1,19 @@
+import { persist } from "@samueldavis/solidlib";
 import { createContext, useContext, type ParentProps } from "solid-js";
 import { createStore, type SetStoreFunction } from "solid-js/store";
 
-type AppState = {};
+type AppState = {
+  apiKey: string;
+};
 
 type AppStateContextValue = [AppState, SetStoreFunction<AppState>];
 const AppStateContext = createContext<AppStateContextValue>();
 
 export function AppStateProvider(props: ParentProps) {
-  const [appState, setAppState] = createStore<AppState>({});
+  const [appState, setAppState] = persist(
+    createStore<AppState>({ apiKey: "" }),
+    { key: "mre" },
+  );
 
   return (
     <AppStateContext.Provider value={[appState, setAppState]}>
