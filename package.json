@@ -12,7 +12,9 @@
     "@picocss/pico": "^2.1.1",
     "@samueldavis/solidlib": "github:samueldavis/solidlib",
     "@solidjs/router": "^0.15.4",
-    "solid-js": "^1.9.10"
+    "@tailwindcss/vite": "^4.2.0",
+    "solid-js": "^1.9.10",
+    "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",

@@ -4,6 +4,7 @@ import { createStore, type SetStoreFunction } from "solid-js/store";
 
 type AppState = {
   apiKey: string;
+  list: number[];
 };
 
 type AppStateContextValue = [AppState, SetStoreFunction<AppState>];
@@ -11,7 +12,7 @@ const AppStateContext = createContext<AppStateContextValue>();
 
 export function AppStateProvider(props: ParentProps) {
   const [appState, setAppState] = persist(
-    createStore<AppState>({ apiKey: "" }),
+    createStore<AppState>({ apiKey: "", list: [] }),
     { key: "mre" },
   );
 
