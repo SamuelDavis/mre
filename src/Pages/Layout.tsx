@@ -1,4 +1,3 @@
-import { HTMLIcon } from "@samueldavis/solidlib";
 import { A } from "@solidjs/router";
 import { type ParentProps } from "solid-js";
 
@@ -13,6 +12,9 @@ export default function Layout(props: ParentProps) {
             </li>
             <li>
               <A href="/search">Search</A>
+            </li>
+            <li>
+              <A href="/list">List</A>
             </li>
           </ul>
           <ul>

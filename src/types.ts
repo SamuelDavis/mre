@@ -1,6 +1,13 @@
 export type ImgPath = `/${string}.jpg`;
 export type DateString = `${number}-${number}-${number}`;
 
+export type Paginated<T> = {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  results: T[];
+};
+
 export type TVSearchResult = {
   id: number;
   name: string;
@@ -10,6 +17,10 @@ export type TVSearchResult = {
   genre_ids: Genre["id"][];
   first_air_date: DateString;
   data: any;
+};
+
+export type TVSeriesDetails = TVSearchResult & {
+  tagline: string;
 };
 
 export const configuration = {
