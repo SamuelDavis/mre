@@ -1,4 +1,4 @@
-import type { ExtendProps } from "@samueldavis/solidlib";
+import { HTMLIcon, type ExtendProps } from "@samueldavis/solidlib";
 import { Show, For, splitProps, createSignal, createResource } from "solid-js";
 import { useAppState } from "../AppState";
 import {
@@ -59,6 +59,13 @@ export default function TVSeries(
         <summary>Details</summary>
         <pre>{JSON.stringify(props.data, null, 2)}</pre>
       </details>
+      <a
+        target="_blank"
+        class="float-right"
+        href={`https://www.themoviedb.org/tv/${props.data.id}`}
+      >
+        TMDB <HTMLIcon type="open_in_new" />
+      </a>
     </article>
   );
 }
@@ -72,7 +79,10 @@ function ListToggle(props: ExtendProps<"label", { mediaId: number }>) {
 
   const [getSearchResult] = createResource(getFetch, async (id) => {
     if (!id) return;
-    const res = await appState.request<TVSeriesDetails>(`/tv/${props.mediaId}`);
+    const res = await appState.request<TVSeriesDetails>(
+      `/tv/${props.mediaId}`,
+      { append_to_response: "credits" },
+    );
     setFetch(0);
     appState.addToList(res);
   });

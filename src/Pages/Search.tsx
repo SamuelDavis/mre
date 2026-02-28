@@ -50,9 +50,7 @@ function SearchResultList() {
         "search/tv",
         { query: q },
       );
-      return res.results.map((result: TVSearchResult): TVSeriesDetails => {
-        return { ...result };
-      });
+      return res.results;
     },
   );
 
