@@ -3,7 +3,11 @@ import { useSearchParams } from "@solidjs/router";
 import { createResource, ErrorBoundary, For, Suspense } from "solid-js";
 import { useAppState } from "../AppState";
 import ErrorModal from "../Components/ErrorModal";
-import { type Paginated, type TVSearchResult } from "../types";
+import {
+  type Paginated,
+  type TVSearchResult,
+  type TVSeriesDetails,
+} from "../types";
 import TVSeries from "../Components/TVSeries";
 
 export default function Search() {
@@ -46,7 +50,9 @@ function SearchResultList() {
         "search/tv",
         { query: q },
       );
-      return res.results;
+      return res.results.map((result: TVSearchResult): TVSeriesDetails => {
+        return { ...result };
+      });
     },
   );
 
@@ -61,7 +67,7 @@ function SearchResultList() {
           <For each={getSearchResults()}>
             {(searchResult) => (
               <li>
-                <TVSeries data={searchResult} />
+                <TVSeries data={searchResult} search />
               </li>
             )}
           </For>

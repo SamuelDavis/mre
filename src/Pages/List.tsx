@@ -8,7 +8,7 @@ export default function List() {
   return (
     <article>
       <header>
-        <h1>Search</h1>
+        <h1>List</h1>
       </header>
       <For each={appState.list}>{(data) => <TVSeries data={data} />}</For>
     </article>

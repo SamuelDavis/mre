@@ -19,8 +19,16 @@ export type TVSearchResult = {
   data: any;
 };
 
-export type TVSeriesDetails = TVSearchResult & {
+export type TVSeriesDetails = {
+  id: number;
+  name: string;
+  original_name: string;
+  overview: string;
+  poster_path: ImgPath;
+  genres: Genre[];
+  first_air_date: DateString;
   tagline: string;
+  data: any;
 };
 
 export const configuration = {
@@ -103,4 +111,4 @@ export const tvGenres = [
     name: "Western",
   },
 ] as const;
-type Genre = (typeof tvGenres)[number];
+export type Genre = (typeof tvGenres)[number];

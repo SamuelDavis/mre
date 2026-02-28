@@ -1,10 +1,26 @@
 import type { ExtendProps } from "@samueldavis/solidlib";
 import { Show, For, splitProps, createSignal, createResource } from "solid-js";
 import { useAppState } from "../AppState";
-import { tvGenres, type TVSearchResult, type TVSeriesDetails } from "../types";
+import {
+  tvGenres,
+  type Genre,
+  type TVSearchResult,
+  type TVSeriesDetails,
+} from "../types";
 import Img from "./Img";
 
-export default function TVSeries(props: { data: TVSearchResult }) {
+export default function TVSeries(
+  props:
+    | { search: true; data: TVSearchResult }
+    | { search?: false; data: TVSeriesDetails },
+) {
+  const getGenres = (): Genre[] =>
+    props.search
+      ? tvGenres.filter((genre) => props.data.genre_ids.includes(genre.id))
+      : props.data.genres;
+  const getTagline = (): undefined | string =>
+    props.search ? undefined : props.data.tagline;
+
   return (
     <article>
       <header>
@@ -23,12 +39,13 @@ export default function TVSeries(props: { data: TVSearchResult }) {
             <dt>First Aired</dt>
             <dd>{props.data.first_air_date}</dd>
             <dt>Genres</dt>
-            <For each={props.data.genre_ids}>
-              {(id) => (
-                <dd>{tvGenres.find((genre) => genre.id === id)?.name}</dd>
-              )}
-            </For>
+            <For each={getGenres()}>{(genre) => <dd>{genre.name}</dd>}</For>
           </dl>
+          <Show when={getTagline()}>
+            {(get) => (
+              <q class="block mb-(--pico-block-spacing-vertical)">{get()}</q>
+            )}
+          </Show>
           <p>{props.data.overview}</p>
         </div>
         <Img
