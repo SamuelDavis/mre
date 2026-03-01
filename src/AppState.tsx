@@ -20,7 +20,7 @@ type AppState = {
   removeFromList(id: TVSeriesId): void;
   get filters(): {
     castOrderLimit: number;
-    crewJobs: Job[];
+    interestingJobs: Job[];
   };
 };
 
@@ -54,7 +54,7 @@ export function AppStateProvider(props: ParentProps) {
           get filters(): AppState["filters"] {
             return {
               castOrderLimit: 3,
-              crewJobs: [
+              interestingJobs: [
                 "Creator",
                 "Producer",
                 "Editor",
@@ -91,16 +91,25 @@ export function useApi() {
   const [appState] = useAppState();
 
   return {
-    searchTV(query: string): Promise<SearchTVResponse> {
-      return request(appState.apiKey, "search/tv", { query });
+    searchTV(query: string, init?: RequestInit): Promise<SearchTVResponse> {
+      return request(appState.apiKey, "search/tv", { query }, init);
     },
-    tvSeriesDetails(id: TVSeriesId): Promise<TvSeriesDetailsResponse> {
-      return request(appState.apiKey, `tv/${id}`, {
-        append_to_response: "aggregate_credits",
-      });
+    tvSeriesDetails(
+      id: TVSeriesId,
+      init?: RequestInit,
+    ): Promise<TvSeriesDetailsResponse> {
+      return request(
+        appState.apiKey,
+        `tv/${id}`,
+        { append_to_response: "aggregate_credits" },
+        init,
+      );
     },
-    personDetails(id: PersonId): Promise<PeopleTVCreditsResponse> {
-      return request(appState.apiKey, `person/${id}/tv_credits`);
+    personTvCredits(
+      id: PersonId,
+      init?: RequestInit,
+    ): Promise<PeopleTVCreditsResponse> {
+      return request(appState.apiKey, `person/${id}/tv_credits`, {}, init);
     },
   };
 }
