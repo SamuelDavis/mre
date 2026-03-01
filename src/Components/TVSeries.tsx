@@ -81,7 +81,7 @@ function ListToggle(props: ExtendProps<"label", { mediaId: number }>) {
     if (!id) return;
     const res = await appState.request<TVSeriesDetails>(
       `/tv/${props.mediaId}`,
-      { append_to_response: "credits" },
+      { append_to_response: "aggregate_credits" },
     );
     setFetch(0);
     appState.addToList(res);
