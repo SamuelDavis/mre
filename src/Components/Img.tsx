@@ -1,17 +1,12 @@
-import { assert, isOf, type ExtendProps } from "@samueldavis/solidlib";
+import { isNonNullable, isOf, type ExtendProps } from "@samueldavis/solidlib";
 import { splitProps } from "solid-js";
-import { type Configuration, configuration, type ImgPath } from "../types";
+import type { ImgPath, ImgSizes } from "../Types";
+import { Configuration } from "../Types/Configuration";
 
-export default function Img<
-  Type extends keyof Configuration["images"]["sizes"],
->(
+export default function Img<Type extends keyof ImgSizes>(
   props: ExtendProps<
     "img",
-    {
-      type: Type;
-      size: Configuration["images"]["sizes"][Type][number];
-      path: ImgPath;
-    },
+    { type: Type; size: ImgSizes[Type][number]; path: ImgPath },
     "src"
   >,
 ) {
@@ -24,17 +19,22 @@ export default function Img<
   ]);
   const getAlt = (): HTMLImageElement["alt"] => local.alt ?? local.type;
   const getSrc = (): HTMLImageElement["src"] =>
-    configuration.images.root + (local.size ?? "original") + local.path;
+    Configuration.Details.images.secure_base_url +
+    (local.size ?? "original") +
+    local.path;
   const getSrcSet = (): HTMLImageElement["srcset"] =>
-    configuration.images.sizes[local.type]
+    Configuration.Details.images.sizes[local.type]
       .map((size) => {
         const [orientation, stringValue] = [size.slice(0, 1), size.slice(1)];
         const value = Number(stringValue);
-        assert(isOf, orientation, ["w", "h"] as const);
-        const url = `${configuration.images.root}${size}${local.path}`;
+        if (!isOf(orientation, ["w"])) return null;
+        const url = `${Configuration.Details.images.secure_base_url}${size}${local.path}`;
         return `${url} ${value}${orientation}`;
       })
-      .concat([`${configuration.images.root}original${local.path} 1000w`])
+      .filter(isNonNullable)
+      .concat([
+        `${Configuration.Details.images.secure_base_url}original${local.path} 1000w`,
+      ])
       .join(", ");
   const getSizes = (): HTMLImageElement["sizes"] => `${local.size.slice(1)}px`;
 

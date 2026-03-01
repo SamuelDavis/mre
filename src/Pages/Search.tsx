@@ -1,10 +1,11 @@
-import type { Targeted } from "@samueldavis/solidlib";
+import { isNonNullable, type Targeted } from "@samueldavis/solidlib";
 import { useSearchParams } from "@solidjs/router";
 import { createResource, ErrorBoundary, For, Suspense } from "solid-js";
-import { useAppState } from "../AppState";
+import { useApi } from "../AppState";
 import ErrorModal from "../Components/ErrorModal";
-import { type Paginated, type TVSearchResult } from "../types";
+import { type Genre } from "../Types";
 import TVSeries from "../Components/TVSeries";
+import { GenresTVListResponse } from "../Types/Configuration";
 
 export default function Search() {
   return (
@@ -37,17 +38,11 @@ function SearchForm() {
 }
 
 function SearchResultList() {
-  const [appState] = useAppState();
+  const request = useApi();
   const [searchParams, setSearchParams] = useSearchParams<{ q: string }>();
   const [getSearchResults] = createResource(
     () => searchParams.q,
-    async (q) => {
-      const res = await appState.request<Paginated<TVSearchResult>>(
-        "search/tv",
-        { query: q },
-      );
-      return res.results;
-    },
+    async (q) => (await request.searchTV(q)).results,
   );
 
   function fallback(): void {
@@ -59,11 +54,25 @@ function SearchResultList() {
       <ErrorBoundary fallback={ErrorModal.fallback(fallback)}>
         <ul>
           <For each={getSearchResults()}>
-            {(searchResult) => (
-              <li>
-                <TVSeries data={searchResult} search />
-              </li>
-            )}
+            {(searchResult) => {
+              const getGenres = (): Genre[] =>
+                searchResult.genre_ids
+                  .map((id) =>
+                    GenresTVListResponse.genres.find(
+                      (genre) => genre.id === id,
+                    ),
+                  )
+                  .filter(isNonNullable);
+
+              return (
+                <li>
+                  <TVSeries
+                    data={{ ...searchResult, genres: getGenres() }}
+                    search
+                  />
+                </li>
+              );
+            }}
           </For>
         </ul>
       </ErrorBoundary>
