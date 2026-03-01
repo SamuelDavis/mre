@@ -1,16 +1,33 @@
-import { HTMLIcon, type ExtendProps } from "@samueldavis/solidlib";
+import {
+  HTMLIcon,
+  isKeyed,
+  isNonNullable,
+  type ExtendProps,
+} from "@samueldavis/solidlib";
 import { Show, For, splitProps, createSignal, createResource } from "solid-js";
 import { useApi, useAppState } from "../AppState";
-import type { AppTVSeries, TVSeriesId } from "../Types";
+import type {
+  AppTVSeriesDetails,
+  AppTvSeriesSearch,
+  Genre,
+  TVSeriesId,
+} from "../Types";
 import Img from "./Img";
+import { TVGenres } from "../Types/Configuration";
 
 export default function TVSeries(
   props:
-    | { search: true; data: AppTVSeries }
-    | { search?: false; data: AppTVSeries },
+    | { search: true; data: AppTvSeriesSearch }
+    | { search?: false; data: AppTVSeriesDetails },
 ) {
   const getTagline = (): undefined | string =>
     props.search ? undefined : props.data.tagline;
+  const getGenres = (): Genre[] =>
+    isKeyed(props.data, "genres")
+      ? props.data.genres
+      : props.data.genre_ids
+          .map((id) => TVGenres.find((genre) => genre.id === id))
+          .filter(isNonNullable);
   const getHref = (): string =>
     `https://www.themoviedb.org/tv/${props.data.id}`;
   const getYear = (): string => props.data.first_air_date.slice(0, 4);
@@ -31,9 +48,7 @@ export default function TVSeries(
             <dt>First Aired</dt>
             <dd>{props.data.first_air_date}</dd>
             <dt>Genres</dt>
-            <For each={props.data.genres}>
-              {(genre) => <dd>{genre.name}</dd>}
-            </For>
+            <For each={getGenres()}>{(genre) => <dd>{genre.name}</dd>}</For>
           </dl>
           <Show when={getTagline()}>
             {(get) => (

@@ -1,7 +1,7 @@
 import { persist } from "@samueldavis/solidlib";
 import { createContext, useContext, type ParentProps } from "solid-js";
 import { createStore, produce, type SetStoreFunction } from "solid-js/store";
-import type { AppTVSeries } from "./Types";
+import type { AppTVSeriesDetails } from "./Types";
 import type {
   Job,
   PeopleTVCreditsResponse,
@@ -14,9 +14,9 @@ import { request } from "./util";
 
 type AppState = {
   apiKey: string;
-  list: AppTVSeries[];
+  list: AppTVSeriesDetails[];
   isInList(id: TVSeriesId): boolean;
-  addToList(item: AppTVSeries): void;
+  addToList(item: AppTVSeriesDetails): void;
   removeFromList(id: TVSeriesId): void;
   get filters(): {
     castOrderLimit: number;
@@ -37,7 +37,7 @@ export function AppStateProvider(props: ParentProps) {
           isInList(id: number): boolean {
             return this.list.some((item) => item.id === id);
           },
-          addToList(item: AppTVSeries): void {
+          addToList(item: AppTVSeriesDetails): void {
             setAppState(
               produce((state) => {
                 state.list.push(item);

@@ -1,11 +1,9 @@
-import { isNonNullable, type Targeted } from "@samueldavis/solidlib";
+import { type Targeted } from "@samueldavis/solidlib";
 import { useSearchParams } from "@solidjs/router";
 import { createResource, ErrorBoundary, For, Suspense } from "solid-js";
 import { useApi } from "../AppState";
 import ErrorModal from "../Components/ErrorModal";
-import { type Genre } from "../Types";
 import TVSeries from "../Components/TVSeries";
-import { GenresTVListResponse } from "../Types/Configuration";
 
 export default function Search() {
   return (
@@ -54,25 +52,11 @@ function SearchResultList() {
       <ErrorBoundary fallback={ErrorModal.fallback(fallback)}>
         <ul>
           <For each={getSearchResults()}>
-            {(searchResult) => {
-              const getGenres = (): Genre[] =>
-                searchResult.genre_ids
-                  .map((id) =>
-                    GenresTVListResponse.genres.find(
-                      (genre) => genre.id === id,
-                    ),
-                  )
-                  .filter(isNonNullable);
-
-              return (
-                <li>
-                  <TVSeries
-                    data={{ ...searchResult, genres: getGenres() }}
-                    search
-                  />
-                </li>
-              );
-            }}
+            {(searchResult) => (
+              <li>
+                <TVSeries data={{ ...searchResult }} search />
+              </li>
+            )}
           </For>
         </ul>
       </ErrorBoundary>

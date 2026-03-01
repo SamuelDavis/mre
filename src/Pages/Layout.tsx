@@ -16,6 +16,9 @@ export default function Layout(props: ParentProps) {
             <li>
               <A href="/list">List</A>
             </li>
+            <li>
+              <A href="/suggest">Suggest</A>
+            </li>
           </ul>
           <ul>
             <li>

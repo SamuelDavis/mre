@@ -1,14 +1,28 @@
 export * from "./TMDB";
 
-import type { DateString, ImgPath, TVSeriesId, Genre } from "./TMDB";
+import type { SearchTVResponseResult, TvSeriesDetailsResponse } from "./TMDB";
 
-export type AppTVSeries = {
-  genres: Genre[];
-  tagline?: string;
-  id: TVSeriesId;
-  name: string;
-  original_name: string;
-  first_air_date: DateString;
-  overview: string;
-  poster_path: ImgPath;
-};
+export type AppTvSeriesSearch = Pick<
+  SearchTVResponseResult,
+  | "genre_ids"
+  | "id"
+  | "name"
+  | "original_name"
+  | "first_air_date"
+  | "overview"
+  | "poster_path"
+>;
+
+export type AppTVSeriesDetails = Pick<
+  TvSeriesDetailsResponse,
+  | "created_by"
+  | "genres"
+  | "tagline"
+  | "id"
+  | "name"
+  | "original_name"
+  | "first_air_date"
+  | "overview"
+  | "poster_path"
+  | "aggregate_credits"
+>;

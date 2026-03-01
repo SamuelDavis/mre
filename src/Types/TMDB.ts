@@ -1,4 +1,4 @@
-import type { Configuration, GenresTVListResponse } from "./Configuration";
+import type { Configuration, TVGenres } from "./Configuration";
 
 export type ImgPath = `/${string}.jpg`;
 export type Href = `http${string}`;
@@ -202,6 +202,6 @@ export type Job = Configuration["Jobs"][number]["jobs"][number];
 export type Department = Configuration["Jobs"][number]["department"];
 export type ISOLanguage = Configuration["Languages"][number]["iso_639_1"];
 export type ISOCountry = Configuration["Countries"][number]["iso_3166_1"];
-export type Genre = (typeof GenresTVListResponse)["genres"][number];
+export type Genre = (typeof TVGenres)[number];
 // iso_639_1
 // e
