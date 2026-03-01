@@ -14,31 +14,40 @@ type PersonCredit = {
 
 export default function Suggest() {
   const [appState] = useAppState();
-  const getListPeople = () =>
-    appState.list.map((series): PersonCredit[] =>
-      [
-        ...series.created_by,
-        ...series.aggregate_credits.cast.flatMap((credit) =>
-          credit.roles.map((role) => ({ ...credit, ...role })),
-        ),
-        ...series.aggregate_credits.crew.flatMap((credit) =>
-          credit.jobs.map((job) => ({ ...credit, ...job })),
-        ),
-      ].map(
+  const getListPeople = (): PersonCredit[] =>
+    appState.list.flatMap((series) => [
+      ...series.created_by.map(
         (credit): PersonCredit => ({
+          ...credit,
           series_id: series.id,
           person_id: credit.id,
-          credit_id: credit.credit_id,
-          name: credit.name,
-          original_name: credit.original_name,
-          ...(isKeyed(credit, "department")
-            ? { department: credit.department, job: credit.job }
-            : isKeyed(credit, "character")
-              ? { department: "Actors", job: credit.character }
-              : { department: "Crew", job: "Creator" }),
+          department: "Crew",
+          job: "Creator",
         }),
       ),
-    );
+      ...series.aggregate_credits.cast.flatMap((credit) =>
+        credit.roles.map(
+          (role): PersonCredit => ({
+            ...credit,
+            ...role,
+            series_id: series.id,
+            person_id: credit.id,
+            department: "Actors",
+            job: role.character,
+          }),
+        ),
+      ),
+      ...series.aggregate_credits.crew.flatMap((credit) =>
+        credit.jobs.map(
+          (job): PersonCredit => ({
+            ...credit,
+            ...job,
+            series_id: series.id,
+            person_id: credit.id,
+          }),
+        ),
+      ),
+    ]);
 
   return (
     <article>
