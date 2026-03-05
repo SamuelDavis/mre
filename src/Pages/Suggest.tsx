@@ -1,7 +1,13 @@
-import { isKeyed } from "@samueldavis/solidlib";
+import { HTMLIcon, isKeyed } from "@samueldavis/solidlib";
 import { useApi, useAppState } from "../AppState";
 import type { CreditId, Department, Job, PersonId, TVSeriesId } from "../Types";
-import { createResource, createSignal, onCleanup, Suspense } from "solid-js";
+import {
+  createResource,
+  createSignal,
+  For,
+  onCleanup,
+  Suspense,
+} from "solid-js";
 import { rateLimit } from "../util";
 
 type PersonCredit = {
@@ -28,20 +34,22 @@ export default function Suggest() {
           job: "Creator",
         }),
       ),
-      ...series.aggregate_credits.cast.flatMap((credit) =>
-        credit.roles.map(
-          (role): PersonCredit => ({
-            ...credit,
-            ...role,
-            series_id: series.id,
-            person_id: credit.id,
-            department: "Actors",
-            job: role.character,
-          }),
+      ...series.aggregate_credits.cast
+        .filter(isInterestingCast)
+        .flatMap((credit) =>
+          credit.roles.map(
+            (role): PersonCredit => ({
+              ...credit,
+              ...role,
+              series_id: series.id,
+              person_id: credit.id,
+              department: "Actors",
+              job: role.character,
+            }),
+          ),
         ),
-      ),
       ...series.aggregate_credits.crew.flatMap((credit) =>
-        credit.jobs.map(
+        credit.jobs.filter(isInterestingCrew).map(
           (job): PersonCredit => ({
             ...credit,
             ...job,
@@ -97,12 +105,14 @@ export default function Suggest() {
     },
   );
 
-  function isInterestingCast(credit: { episode_count: number }): boolean {
-    return credit.episode_count > 1;
+  function isInterestingCast(
+    credit: { order: number } | { episode_count: number },
+  ): boolean {
+    return (isKeyed(credit, "order") ? credit.order : credit.episode_count) < 3;
   }
 
   function isInterestingCrew(credit: { job: Job }): boolean {
-    return appState.filters.interestingJobs.includes(credit.job);
+    return !appState.filters.interestingJobs.includes(credit.job);
   }
 
   onCleanup(() => {
@@ -123,7 +133,36 @@ export default function Suggest() {
       </header>
       <details>
         <summary>List People</summary>
-        <pre>{JSON.stringify(getListPeople(), null, 2)}</pre>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Job</th>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={getListPeople()}>
+              {(person) => {
+                return (
+                  <tr>
+                    <td>
+                      <a
+                        target="_blank"
+                        href={`https://www.themoviedb.org/person/${person.person_id}`}
+                      >
+                        <HTMLIcon type="open_in_new" />
+                        {person.name}
+                      </a>
+                    </td>
+                    <td>{person.department}</td>
+                    <td>{person.job}</td>
+                  </tr>
+                );
+              }}
+            </For>
+          </tbody>
+        </table>
       </details>
       <button onClick={onClick}>Load</button>
       <Suspense fallback={<progress value={getValue()} max={getMax()} />}>

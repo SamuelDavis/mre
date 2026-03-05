@@ -7,8 +7,10 @@
 }
 
 .material-symbols {
-  vertical-align: bottom;
+  vertical-align: middle;
+  user-select: none;
 }
+
 .material-symbols[role="button"] {
   padding: 0.5em;
   aspect-ratio: 1/1;
