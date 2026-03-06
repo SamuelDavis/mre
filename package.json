@@ -13,10 +13,14 @@
     "@samueldavis/solidlib": "github:samueldavis/solidlib",
     "@solidjs/router": "^0.15.4",
     "@tailwindcss/vite": "^4.2.0",
+    "cytoscape": "^3.33.1",
+    "cytoscape-fcose": "^2.2.0",
     "solid-js": "^1.9.10",
     "tailwindcss": "^4.2.0"
   },
   "devDependencies": {
+    "@types/cytoscape": "^3.21.9",
+    "@types/cytoscape-fcose": "^2.2.5",
     "@types/node": "^24.10.1",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
