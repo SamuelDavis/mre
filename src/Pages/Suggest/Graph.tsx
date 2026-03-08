@@ -3,52 +3,39 @@ import { useAppState } from "../../AppState";
 import {
   isInterestingCast,
   isInterestingCrew,
-  type CreditId,
-  type Department,
-  type Job,
-  type PersonId,
-  type TVSeriesId,
+  type CreditData,
+  type PersonData,
+  type SeriesData,
+  type Node,
 } from "../../Types";
-import { createEffect, createMemo, onCleanup, onMount } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  onCleanup,
+  onMount,
+  splitProps,
+} from "solid-js";
 import { useDocumentStyles } from "../../util";
 import { type FcoseLayoutOptions } from "cytoscape-fcose";
-import type {
-  Core,
-  EdgeDataDefinition,
-  ElementDefinition,
-  NodeDataDefinition,
-  StylesheetJsonBlock,
-} from "cytoscape";
+import type { Core, ElementDefinition, StylesheetJsonBlock } from "cytoscape";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 
+// @ts-ignore
 cytoscape.use(fcose);
 
-type PersonData = NodeDataDefinition & {
-  type: "person";
-  id: `person:${PersonId}`;
-  label: string;
-};
-type SeriesData = NodeDataDefinition & {
-  type: "series";
-  id: `series:${TVSeriesId}`;
-  label: string;
-};
-type CreditData = EdgeDataDefinition & {
-  type: "credit";
-  id: `credit:${CreditId}`;
-  label: string;
-  job: Job;
-  department: Department;
-};
-type Node<T extends PersonData | SeriesData | CreditData> = {
-  data(): T;
-  data<K extends keyof T>(key: K): T[K];
-};
-
-export default function Graph(props: ExtendProps<"div", {}>) {
+export default function Graph(
+  props: ExtendProps<
+    "div",
+    {
+      onSelectNode: (node: { originalEvent: MouseEvent; target: Node }) => void;
+    }
+  >,
+) {
+  const [local, parent] = splitProps(props, ["onSelectNode"]);
   const [appState] = useAppState();
   const getDocumentStyle = useDocumentStyles();
+  console.debug(local.onSelectNode);
 
   const getElements = (): ElementDefinition[] => {
     const personNodes = new Map<PersonData["id"], PersonData>();
@@ -61,6 +48,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
         type: "series",
         id: seriesId,
         label: series.name,
+        img: series.poster_path,
       });
 
       for (const person of series.aggregate_credits.cast) {
@@ -72,6 +60,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
             type: "person",
             id: personId,
             label: person.name,
+            img: person.profile_path,
           });
           edges.set(creditId, {
             type: "credit",
@@ -79,6 +68,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
             label: role.character,
             department: "Actors",
             job: "Actor",
+            img: person.profile_path,
             source: personId,
             target: seriesId,
           });
@@ -93,6 +83,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
             type: "person",
             id: personId,
             label: person.name,
+            img: person.profile_path,
           });
           edges.set(creditId, {
             type: "credit",
@@ -100,6 +91,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
             label: job.job,
             department: person.department,
             job: job.job,
+            img: person.profile_path,
             source: personId,
             target: seriesId,
           });
@@ -169,6 +161,8 @@ export default function Graph(props: ExtendProps<"div", {}>) {
         "text-max-width": 10,
         "text-wrap": "wrap",
         "text-halign": "center",
+        "text-valign": (node: Node<PersonData | SeriesData>) =>
+          node.data("type") === "series" ? "center" : "top",
       },
     },
     {
@@ -198,20 +192,8 @@ export default function Graph(props: ExtendProps<"div", {}>) {
       layout,
     });
 
-    cy.on("tap", "node", (event: { target: Node<SeriesData | PersonData> }) => {
-      const data = event.target.data();
-      switch (data.type) {
-        case "series": {
-          console.debug({ series: data });
-          break;
-        }
-        case "person": {
-          console.debug({ series: data });
-          break;
-        }
-        default:
-          throw new TypeError();
-      }
+    cy.on("tap", "node, edge", (event) => {
+      local.onSelectNode(event);
     });
   }
 
@@ -219,7 +201,7 @@ export default function Graph(props: ExtendProps<"div", {}>) {
     <div
       class="aspect-video touch-none bg-(--pico-background-color)"
       ref={ref}
-      {...props}
+      {...parent}
     />
   );
 }

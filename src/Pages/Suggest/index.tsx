@@ -1,4 +1,4 @@
-import { HTMLIcon, type ExtendProps } from "@samueldavis/solidlib";
+import { HTMLIcon, Modal } from "@samueldavis/solidlib";
 import { useApi, useAppState } from "../../AppState";
 import {
   isInterestingCast,
@@ -8,16 +8,19 @@ import {
   type Job,
   type PersonId,
   type TVSeriesId,
+  type NodeData,
 } from "../../Types";
 import {
   createResource,
   createSignal,
   For,
   onCleanup,
+  Show,
   Suspense,
 } from "solid-js";
 import { rateLimit } from "../../util";
 import Graph from "./Graph";
+import Img from "../../Components/Img";
 
 type PersonCredit = {
   series_id: TVSeriesId;
@@ -32,6 +35,7 @@ type PersonCredit = {
 export default function Suggest() {
   const [appState] = useAppState();
   const request = useApi();
+
   const getListPeople = (): PersonCredit[] =>
     appState.list.flatMap((series) => [
       ...series.created_by.map(
@@ -114,6 +118,8 @@ export default function Suggest() {
     },
   );
 
+  const [getTargetNode, setTargetNode] = createSignal<NodeData>();
+
   onCleanup(() => {
     getAbortController()?.abort();
   });
@@ -133,7 +139,11 @@ export default function Suggest() {
       <section>
         <h2>Graph</h2>
         <p>Hello, world!</p>
-        <Graph />
+        <Graph
+          onSelectNode={(event) => {
+            setTargetNode(event.target.data());
+          }}
+        />
       </section>
       <details>
         <summary>List People</summary>
@@ -184,6 +194,28 @@ export default function Suggest() {
           <pre>{JSON.stringify(getListPeopleCredits(), null, 2)}</pre>
         </details>
       </Suspense>
+      <Show when={getTargetNode()}>
+        {(getNode) => (
+          <Modal
+            when={getTargetNode()}
+            onClose={() => setTargetNode(undefined)}
+          >
+            <article>
+              <header>
+                <h1>{getNode().label}</h1>
+              </header>
+              <Show
+                when={getNode().type === "series"}
+                fallback={
+                  <Img type="profile" path={getNode().img} size="w185" />
+                }
+              >
+                <Img type="poster" path={getNode().img} size="w342" />
+              </Show>
+            </article>
+          </Modal>
+        )}
+      </Show>
     </article>
   );
 }

@@ -2,10 +2,16 @@ export * from "./TMDB";
 
 import { isKeyed } from "@samueldavis/solidlib";
 import type {
+  CreditId,
+  Department,
+  ImgPath,
   Job,
+  PersonId,
   SearchTVResponseResult,
   TvSeriesDetailsResponse,
+  TVSeriesId,
 } from "./TMDB";
+import type { EdgeDataDefinition, NodeDataDefinition } from "cytoscape";
 
 export type AppTvSeriesSearch = Pick<
   SearchTVResponseResult,
@@ -55,3 +61,29 @@ export function isInterestingCast(
 export function isInterestingCrew(credit: { job: Job }): boolean {
   return interestingJobs.includes(credit.job);
 }
+
+export type PersonData = NodeDataDefinition & {
+  type: "person";
+  id: `person:${PersonId}`;
+  label: string;
+  img: ImgPath;
+};
+export type SeriesData = NodeDataDefinition & {
+  type: "series";
+  id: `series:${TVSeriesId}`;
+  label: string;
+  img: ImgPath;
+};
+export type CreditData = EdgeDataDefinition & {
+  type: "credit";
+  id: `credit:${CreditId}`;
+  label: string;
+  job: Job;
+  department: Department;
+  img: ImgPath;
+};
+export type NodeData = PersonData | SeriesData | CreditData;
+export type Node<T extends NodeData = NodeData> = {
+  data(): T;
+  data<K extends keyof T>(key: K): T[K];
+};
