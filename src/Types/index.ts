@@ -53,5 +53,5 @@ export function isInterestingCast(
 }
 
 export function isInterestingCrew(credit: { job: Job }): boolean {
-  return !interestingJobs.includes(credit.job);
+  return interestingJobs.includes(credit.job);
 }

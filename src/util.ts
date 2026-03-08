@@ -1,3 +1,5 @@
+import type { JSX } from "solid-js";
+
 export async function request<T>(
   apiKey: string,
   path: string,
@@ -37,4 +39,11 @@ export async function* rateLimit<T = unknown>(
     if (i + chunkSize >= promises.length) break;
     await new Promise((resolve) => setTimeout(resolve, waitTime));
   }
+}
+
+export function useDocumentStyles() {
+  return <K extends keyof JSX.CSSProperties>(
+    value: K,
+  ): JSX.CSSProperties[K] | any =>
+    getComputedStyle(document.documentElement).getPropertyValue(value) as any;
 }

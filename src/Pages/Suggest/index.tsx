@@ -1,5 +1,5 @@
-import { HTMLIcon, isKeyed, type ExtendProps } from "@samueldavis/solidlib";
-import { useApi, useAppState } from "../AppState";
+import { HTMLIcon, type ExtendProps } from "@samueldavis/solidlib";
+import { useApi, useAppState } from "../../AppState";
 import {
   isInterestingCast,
   isInterestingCrew,
@@ -8,115 +8,16 @@ import {
   type Job,
   type PersonId,
   type TVSeriesId,
-} from "../Types";
+} from "../../Types";
 import {
-  createEffect,
   createResource,
   createSignal,
   For,
   onCleanup,
-  onMount,
   Suspense,
 } from "solid-js";
-import { rateLimit } from "../util";
-import cytoscape from "cytoscape";
-import fcose from "cytoscape-fcose";
-import type {
-  Core,
-  EdgeDefinition,
-  ElementDefinition,
-  NodeDefinition,
-} from "cytoscape";
-
-cytoscape.use(fcose);
-
-type Credit = {
-  series_id: TVSeriesId;
-  person_id: PersonId;
-  credit_id: CreditId;
-};
-
-function Graph(props: ExtendProps<"div">) {
-  const [appState] = useAppState();
-  const getCredits = () =>
-    appState.list.flatMap((series) => [
-      ...series.aggregate_credits.cast
-        .flatMap((cast) => cast.roles.map((role) => ({ ...cast, ...role })))
-        .filter(isInterestingCast)
-        .map(
-          (cast): Credit => ({
-            series_id: series.id,
-            person_id: cast.id,
-            credit_id: cast.credit_id,
-          }),
-        ),
-    ]);
-
-  const getNodes = (): NodeDefinition[] => {
-    const nodes = new Set<string>();
-    for (const credit of getCredits()) {
-      nodes.add(`person:${credit.person_id}`);
-      nodes.add(`series:${credit.series_id}`);
-    }
-    return [...nodes.values()].map((id): NodeDefinition => ({ data: { id } }));
-  };
-
-  const getEdges = (): EdgeDefinition[] =>
-    getCredits().map(
-      (credit): EdgeDefinition => ({
-        data: {
-          id: credit.credit_id,
-          source: `person:${credit.person_id}`,
-          target: `series:${credit.series_id}`,
-        },
-      }),
-    );
-
-  const getElements = (): ElementDefinition[] => [...getNodes(), ...getEdges()];
-
-  let ref: undefined | HTMLDivElement;
-  let cy: undefined | Core;
-
-  onMount(render);
-  createEffect(render);
-  onCleanup(() => cy?.destroy());
-
-  function render() {
-    cy?.destroy();
-    cy = cytoscape({
-      container: ref,
-      elements: getElements(),
-      style: [
-        // the stylesheet for the graph
-        {
-          selector: "node",
-          style: {
-            "background-color": "#666",
-            label: "data(id)",
-          },
-        },
-
-        {
-          selector: "edge",
-          style: {
-            width: 3,
-            "line-color": "#ccc",
-            "target-arrow-color": "#ccc",
-            "target-arrow-shape": "triangle",
-            "curve-style": "bezier",
-          },
-        },
-      ],
-      layout: {
-        name: "fcose",
-      },
-    });
-  }
-
-  return (
-    <div style={{ width: "100vw", height: "100vh" }} ref={ref} {...props} />
-  );
-}
+import { rateLimit } from "../../util";
+import Graph from "./Graph";
 
 type PersonCredit = {
   series_id: TVSeriesId;
@@ -231,6 +132,7 @@ export default function Suggest() {
       </header>
       <section>
         <h2>Graph</h2>
+        <p>Hello, world!</p>
         <Graph />
       </section>
       <details>
