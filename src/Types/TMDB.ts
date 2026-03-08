@@ -1,6 +1,6 @@
 import type { Configuration, TVGenres } from "./Configuration";
 
-export type ImgPath = `/${string}.jpg`;
+export type ImgPath = `/${string}.${string}`;
 export type Href = `http${string}`;
 export type DateString = `${number}-${number}-${number}`;
 export type Gender = 1 | 2;
@@ -60,24 +60,24 @@ export type TvSeriesDetailsResponse = {
     vote_count: number;
     air_date: DateString;
     episode_number: number;
-    episode_type: "finale";
+    episode_type: "finale" & string;
     production_code: "";
     runtime: number;
     season_number: number;
-    show_id: number;
+    show_id: TVSeriesId;
     still_path: ImgPath;
   };
   name: string;
   next_episode_to_air: null;
   networks: {
     id: number;
-    logo_path: "/mZf3Om1VVr2hyKbDEfdVM5Dgvh6.png";
+    logo_path: ImgPath;
     name: string;
     origin_country: ISOCountry;
   }[];
   number_of_episodes: number;
   number_of_seasons: number;
-  origin_country: [ISOCountry];
+  origin_country: ISOCountry[];
   original_langauge: ISOLanguage;
   original_name: string;
   overview: string;
@@ -85,7 +85,7 @@ export type TvSeriesDetailsResponse = {
   poster_path: ImgPath;
   production_companies: {
     id: number;
-    logo_path: "/yipyNbVGcdyUtss9RtA4i7Zkkey.png";
+    logo_path: ImgPath;
     name: string;
     origin_country: ISOCountry;
   }[];
@@ -105,12 +105,12 @@ export type TvSeriesDetailsResponse = {
   }[];
   spoken_languages: {
     english_name: string;
-    iso_639_1: "ko";
+    iso_639_1: ISOLanguage;
     name: string;
   }[];
-  status: string & "Ended";
+  status: "Ended" & string;
   tagline: string;
-  type: string & "Scripted";
+  type: "Scripted" & string;
   vote_average: number;
   vote_count: number;
   aggregate_credits: {
@@ -196,12 +196,79 @@ export type PeopleTVCreditsResponse = {
   id: PersonId;
 };
 
+export type PeopleDetailsResponse = {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: DateString;
+  deathday: DateString;
+  gender: Gender;
+  homepage: Href;
+  id: number;
+  imdb_id: string;
+  known_for_department: Department;
+  name: string;
+  place_of_birth: EnglishCountry;
+  popularity: number;
+  profile_path: ImgPath;
+};
+
+export type CreditsDetailsResponse = {
+  credit_type: "cast" & string;
+  department: Department;
+  job: Job;
+  media: {
+    adult: boolean;
+    backdrop_path: ImgPath;
+    id: number;
+    name: string;
+    original_language: ISOLanguage;
+    original_name: string;
+    overview: string;
+    poster_path: ImgPath;
+    media_type: "tv" & string;
+    genre_ids: Genre["id"][];
+    popularity: number;
+    first_air_date: DateString;
+    vote_average: number;
+    vote_count: number;
+    origin_country: ISOCountry[];
+    character: string;
+    episodes: [];
+    seasons: {
+      air_date: DateString;
+      episode_count: number;
+      id: number;
+      name: string;
+      overview: string;
+      poster_path: ImgPath;
+      season_number: number;
+      show_id: TVSeriesId;
+    }[];
+  };
+  media_type: "tv" & string;
+  id: CreditId;
+  person: {
+    adult: boolean;
+    id: PersonId;
+    name: string;
+    original_name: string;
+    media_type: "person" & string;
+    popularity: number;
+    gender: Gender;
+    known_for_department: Department;
+    profile_path: ImgPath;
+  };
+};
+
 export type Configuration = typeof Configuration;
 export type ImgSizes = Configuration["Details"]["images"]["sizes"];
-export type Job = Configuration["Jobs"][number]["jobs"][number];
 export type Department = Configuration["Jobs"][number]["department"];
+export type Job<D extends Department = Department> = Extract<
+  Configuration["Jobs"][number],
+  { department: D }
+>["jobs"][number];
 export type ISOLanguage = Configuration["Languages"][number]["iso_639_1"];
 export type ISOCountry = Configuration["Countries"][number]["iso_3166_1"];
+export type EnglishCountry = Configuration["Countries"][number]["english_name"];
 export type Genre = (typeof TVGenres)[number];
-// iso_639_1
-// e
