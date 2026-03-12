@@ -1,5 +1,5 @@
 import { type ExtendProps } from "@samueldavis/solidlib";
-import { useAppState } from "../../AppState";
+import { useApi, useList } from "../../AppState";
 import {
   isInterestingCast,
   isInterestingCrew,
@@ -11,11 +11,12 @@ import {
 import {
   createEffect,
   createMemo,
+  createResource,
   onCleanup,
   onMount,
   splitProps,
 } from "solid-js";
-import { useDocumentStyles } from "../../util";
+import { rateLimit, useDocumentStyles } from "../../util";
 import { type FcoseLayoutOptions } from "cytoscape-fcose";
 import type { Core, ElementDefinition, StylesheetJsonBlock } from "cytoscape";
 import cytoscape from "cytoscape";
@@ -32,79 +33,89 @@ export default function Graph(
     }
   >,
 ) {
+  const request = useApi();
+  const list = useList();
   const [local, parent] = splitProps(props, ["onSelectNode"]);
-  const [appState] = useAppState();
   const getDocumentStyle = useDocumentStyles();
-  console.debug(local.onSelectNode);
 
-  const getElements = (): ElementDefinition[] => {
-    const personNodes = new Map<PersonData["id"], PersonData>();
-    const seriesNodes = new Map<SeriesData["id"], SeriesData>();
-    const edges = new Map<CreditData["id"], CreditData>();
+  const [getElements] = createResource(
+    list.arr,
+    async (): Promise<ElementDefinition[]> => {
+      const personNodes = new Map<PersonData["id"], PersonData>();
+      const seriesNodes = new Map<SeriesData["id"], SeriesData>();
+      const edges = new Map<CreditData["id"], CreditData>();
 
-    for (const series of appState.list) {
-      const seriesId: SeriesData["id"] = `series:${series.id}`;
-      seriesNodes.set(seriesId, {
-        type: "series",
-        id: seriesId,
-        label: series.name,
-        img: series.poster_path,
-      });
+      const requests = rateLimit(
+        list.arr().map((id) => () => request.tvSeriesDetails(id)),
+      );
 
-      for (const person of series.aggregate_credits.cast) {
-        const personId: PersonData["id"] = `person:${person.id}`;
-        for (const role of person.roles) {
-          if (!isInterestingCast({ ...person, ...role })) continue;
-          const creditId: CreditData["id"] = `credit:${role.credit_id}`;
-          personNodes.set(personId, {
-            type: "person",
-            id: personId,
-            label: person.name,
-            img: person.profile_path,
+      for await (const result of requests) {
+        for (const series of result) {
+          const seriesId: SeriesData["id"] = `series:${series.id}`;
+          seriesNodes.set(seriesId, {
+            type: "series",
+            id: seriesId,
+            label: series.name,
+            img: series.poster_path,
           });
-          edges.set(creditId, {
-            type: "credit",
-            id: creditId,
-            label: role.character,
-            department: "Actors",
-            job: "Actor",
-            img: person.profile_path,
-            source: personId,
-            target: seriesId,
-          });
+
+          for (const person of series.aggregate_credits.cast) {
+            const personId: PersonData["id"] = `person:${person.id}`;
+            for (const role of person.roles) {
+              if (!isInterestingCast({ ...person, ...role })) continue;
+              const creditId: CreditData["id"] = `credit:${role.credit_id}`;
+              personNodes.set(personId, {
+                type: "person",
+                id: personId,
+                label: person.name,
+                img: person.profile_path,
+              });
+              edges.set(creditId, {
+                type: "credit",
+                id: creditId,
+                label: role.character,
+                department: "Actors",
+                job: "Actor",
+                img: person.profile_path,
+                source: personId,
+                target: seriesId,
+              });
+            }
+          }
+          for (const person of series.aggregate_credits.crew) {
+            const personId: PersonData["id"] = `person:${person.id}`;
+            for (const job of person.jobs) {
+              if (!isInterestingCrew({ ...person, ...job })) continue;
+              const creditId: CreditData["id"] = `credit:${job.credit_id}`;
+              personNodes.set(personId, {
+                type: "person",
+                id: personId,
+                label: person.name,
+                img: person.profile_path,
+              });
+              edges.set(creditId, {
+                type: "credit",
+                id: creditId,
+                label: job.job,
+                department: person.department,
+                job: job.job,
+                img: person.profile_path,
+                source: personId,
+                target: seriesId,
+              });
+            }
+          }
         }
       }
-      for (const person of series.aggregate_credits.crew) {
-        const personId: PersonData["id"] = `person:${person.id}`;
-        for (const job of person.jobs) {
-          if (!isInterestingCrew({ ...person, ...job })) continue;
-          const creditId: CreditData["id"] = `credit:${job.credit_id}`;
-          personNodes.set(personId, {
-            type: "person",
-            id: personId,
-            label: person.name,
-            img: person.profile_path,
-          });
-          edges.set(creditId, {
-            type: "credit",
-            id: creditId,
-            label: job.job,
-            department: person.department,
-            job: job.job,
-            img: person.profile_path,
-            source: personId,
-            target: seriesId,
-          });
-        }
-      }
-    }
 
-    return [
-      ...personNodes.values(),
-      ...seriesNodes.values(),
-      ...edges.values(),
-    ].map((data): ElementDefinition => ({ data }));
-  };
+      return [
+        ...personNodes.values(),
+        ...seriesNodes.values(),
+        ...edges.values(),
+      ].map((data): ElementDefinition => ({ data }));
+    },
+    { initialValue: [] },
+  );
 
   const getDegree = createMemo(() =>
     getElements().reduce((map, element) => {
@@ -115,8 +126,6 @@ export default function Graph(
       return map;
     }, new Map<string, number>()),
   );
-
-  createEffect(() => console.debug(getDegree()));
 
   let ref: undefined | HTMLDivElement;
   let cy: undefined | Core;

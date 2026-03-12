@@ -1,5 +1,5 @@
 import { HTMLIcon, Modal } from "@samueldavis/solidlib";
-import { useApi, useAppState } from "../../AppState";
+import { useApi, useList } from "../../AppState";
 import {
   isInterestingCast,
   isInterestingCrew,
@@ -33,45 +33,60 @@ type PersonCredit = {
 };
 
 export default function Suggest() {
-  const [appState] = useAppState();
+  const list = useList();
   const request = useApi();
 
-  const getListPeople = (): PersonCredit[] =>
-    appState.list.flatMap((series) => [
-      ...series.created_by.map(
-        (credit): PersonCredit => ({
-          ...credit,
-          series_id: series.id,
-          person_id: credit.id,
-          department: "Crew",
-          job: "Creator",
-        }),
-      ),
-      ...series.aggregate_credits.cast
-        .filter(isInterestingCast)
-        .flatMap((credit) =>
-          credit.roles.map(
-            (role): PersonCredit => ({
-              ...credit,
-              ...role,
-              series_id: series.id,
-              person_id: credit.id,
-              department: "Actors",
-              job: role.character,
-            }),
-          ),
-        ),
-      ...series.aggregate_credits.crew.flatMap((credit) =>
-        credit.jobs.filter(isInterestingCrew).map(
-          (job): PersonCredit => ({
-            ...credit,
-            ...job,
-            series_id: series.id,
-            person_id: credit.id,
-          }),
-        ),
-      ),
-    ]);
+  const [getListPeople] = createResource(
+    list.arr,
+    async function () {
+      let personCredits: PersonCredit[] = [];
+      const results = rateLimit(
+        list.arr().map((id) => () => request.tvSeriesDetails(id)),
+      );
+      for await (const result of results) {
+        personCredits = [
+          ...personCredits,
+          ...result.flatMap((series) => [
+            ...series.created_by.map(
+              (credit): PersonCredit => ({
+                ...credit,
+                series_id: series.id,
+                person_id: credit.id,
+                department: "Crew",
+                job: "Creator",
+              }),
+            ),
+            ...series.aggregate_credits.cast
+              .filter(isInterestingCast)
+              .flatMap((credit) =>
+                credit.roles.map(
+                  (role): PersonCredit => ({
+                    ...credit,
+                    ...role,
+                    series_id: series.id,
+                    person_id: credit.id,
+                    department: "Actors",
+                    job: role.character,
+                  }),
+                ),
+              ),
+            ...series.aggregate_credits.crew.flatMap((credit) =>
+              credit.jobs.filter(isInterestingCrew).map(
+                (job): PersonCredit => ({
+                  ...credit,
+                  ...job,
+                  series_id: series.id,
+                  person_id: credit.id,
+                }),
+              ),
+            ),
+          ]),
+        ];
+      }
+      return personCredits;
+    },
+    { initialValue: [] },
+  );
 
   const [getAbortController, setAbortController] =
     createSignal<AbortController>();
@@ -116,6 +131,7 @@ export default function Suggest() {
         }
       return credits;
     },
+    { initialValue: [] },
   );
 
   const [getTargetNode, setTargetNode] = createSignal<NodeData>();
@@ -181,13 +197,11 @@ export default function Suggest() {
       <button onClick={onClick}>Load</button>
       <Suspense fallback={<progress value={getValue()} max={getMax()} />}>
         <details>
-          <summary>
-            List Credits ({getListPeopleCredits()?.length ?? "-"})
-          </summary>
+          <summary>List Credits ({getListPeopleCredits().length})</summary>
           <h2>
             {
               getListPeopleCredits()
-                ?.map((credit) => credit.series_id)
+                .map((credit) => credit.series_id)
                 .filter((id, i, arr) => arr.indexOf(id) === i).length
             }
           </h2>

@@ -1,9 +1,11 @@
 export * from "./TMDB";
 
-import { isKeyed } from "@samueldavis/solidlib";
+import { isKeyed, isNonNullable, type Signal } from "@samueldavis/solidlib";
 import type {
   CreditId,
+  DateString,
   Department,
+  Genre,
   ImgPath,
   Job,
   PersonId,
@@ -12,90 +14,71 @@ import type {
   TVSeriesId,
 } from "./TMDB";
 import type { EdgeDataDefinition, NodeDataDefinition } from "cytoscape";
-import { createStore, produce } from "solid-js/store";
 
-export type MapLike<T extends { id: PropertyKey }> = {
-  has(id: T["id"]): boolean;
-  get(id: T["id"]): undefined | T;
+export type MapLike<K extends PropertyKey, T> = {
+  has(id: K): boolean;
+  get(id: K): undefined | T;
   set(item: T): T;
-  del(id: T["id"]): undefined | T;
-  arr(): T[];
+  del(id: K): undefined | T;
+  arr(): NonNullable<T>[];
 };
 
-export function createMapLike<
-  K extends PropertyKey,
-  T extends { id: K },
->(): ReturnType<
-  typeof createStore<{ items: Partial<Record<T["id"], T>> } & MapLike<T>>
-> {
-  const [state, setState] = createStore<
-    { items: Partial<Record<T["id"], T>> } & MapLike<T>
-  >({
-    items: {},
+export function createMapLike<K extends PropertyKey, T>(
+  [read, write]: Signal<Partial<Record<K, T>>>,
+  identity: (item: T) => K,
+): MapLike<K, T> {
+  return {
     has(id) {
-      return id in this.items;
+      return id in read();
     },
     get(id) {
-      return this.items[id];
+      return read()[id];
     },
     set(item) {
-      setState(
-        produce((state) => {
-          state.items[item.id] = item;
-        }),
-      );
+      write((state) => ({ ...state, [identity(item)]: item }));
       return item;
     },
     del(id) {
-      let item = this.get(id);
-      setState(
-        produce((state) => {
-          delete state.items[id];
-        }),
-      );
+      const item = read()[id];
+      write((state) => {
+        const next = { ...state };
+        delete next[id];
+        return next;
+      });
       return item;
     },
     arr() {
-      return Object.values(this.items);
+      return Object.values(read());
     },
-  });
-  return [state, setState];
+  };
 }
 
-export type SetLike<T extends PropertyKey> = {
+export type SetLike<T> = {
   has(item: T): boolean;
   add(item: T): void;
   del(item: T): void;
-  arr(): T[];
+  arr(): NonNullable<T>[];
 };
 
-export function createSetLike<T extends PropertyKey>(): ReturnType<
-  typeof createStore<{ items: T[] } & SetLike<T>>
-> {
-  const [state, setState] = createStore<{ items: T[] } & SetLike<T>>({
-    items: [],
-    has(id) {
-      return this.items.includes(id);
+export function createSetLike<T extends PropertyKey>([get, set]: Signal<
+  Partial<T[]>
+>): SetLike<T> {
+  return {
+    has(item) {
+      return get().includes(item);
     },
-    add(id) {
-      setState(
-        produce((state) => {
-          if (!this.has(id)) state.items.push(id);
-        }),
-      );
+    add(item) {
+      set((items) => {
+        return items.includes(item) ? items : [...items, item];
+      });
     },
-    del(id) {
-      setState(
-        produce(
-          (state) => (state.items = state.items.filter((item) => item !== id)),
-        ),
-      );
+    del(item) {
+      set((items) => items.filter((existing) => existing !== item));
     },
     arr() {
-      return this.items;
+      return get().filter(isNonNullable);
     },
-  });
-  return [state, setState];
+  };
 }
 
 export type Person = {
@@ -106,7 +89,12 @@ export type Person = {
 export type TvSeries = {
   id: TVSeriesId;
   name: string;
+  original_name: string;
   poster_path: ImgPath;
+  first_air_date: DateString;
+  overview: string;
+  tagline: string;
+  genre_ids: Genre["id"][];
 };
 export type Credit<D extends Department = Department> = {
   id: CreditId;

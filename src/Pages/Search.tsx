@@ -1,9 +1,11 @@
-import { type Targeted } from "@samueldavis/solidlib";
+import { HTMLIcon, isNonNullable, type Targeted } from "@samueldavis/solidlib";
 import { useSearchParams } from "@solidjs/router";
-import { createResource, ErrorBoundary, For, Suspense } from "solid-js";
+import { createResource, ErrorBoundary, For, Show, Suspense } from "solid-js";
 import { useApi } from "../AppState";
 import ErrorModal from "../Components/ErrorModal";
-import TVSeries from "../Components/TVSeries";
+import Img from "../Components/Img";
+import { TVGenres } from "../Types/Configuration";
+import { ListToggle } from "../Components/ListToggle";
 
 export default function Search() {
   return (
@@ -52,11 +54,58 @@ function SearchResultList() {
       <ErrorBoundary fallback={ErrorModal.fallback(fallback)}>
         <ul>
           <For each={getSearchResults()}>
-            {(searchResult) => (
-              <li>
-                <TVSeries data={{ ...searchResult }} search />
-              </li>
-            )}
+            {(data) => {
+              const getGenres = () =>
+                data.genre_ids
+                  .map((id) => TVGenres.find((genre) => genre.id === id))
+                  .filter(isNonNullable);
+              const getHref = (): string =>
+                `https://www.themoviedb.org/tv/${data.id}`;
+              const getYear = (): string => data.first_air_date.slice(0, 4);
+
+              return (
+                <li>
+                  <article>
+                    <header>
+                      <h1 class="mb-0">
+                        <span>{data.name} </span>
+                        <small class="text-xs align-super">({getYear()})</small>
+                      </h1>
+                      <Show when={data.original_name}>
+                        {(get) => <h2>{get()}</h2>}
+                      </Show>
+                      <ListToggle seriesId={data.id} />
+                    </header>
+                    <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
+                      <div>
+                        <dl>
+                          <dt>First Aired</dt>
+                          <dd>{data.first_air_date}</dd>
+                          <dt>Genres</dt>
+                          <For each={getGenres()}>
+                            {(genre) => <dd>{genre.name}</dd>}
+                          </For>
+                        </dl>
+                        <p>{data.overview}</p>
+                      </div>
+                      <Img
+                        type="poster"
+                        size="w342"
+                        path={data.poster_path}
+                        class="place-self-center"
+                      />
+                    </section>
+                    <details>
+                      <summary>Details</summary>
+                      <pre>{JSON.stringify(data, null, 2)}</pre>
+                    </details>
+                    <a target="_blank" class="float-right" href={getHref()}>
+                      TMDB <HTMLIcon type="open_in_new" />
+                    </a>
+                  </article>
+                </li>
+              );
+            }}
           </For>
         </ul>
       </ErrorBoundary>
