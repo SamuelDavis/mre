@@ -4,6 +4,7 @@ import { HTMLIcon, isNonNullable } from "@samueldavis/solidlib";
 import Img from "../Components/Img";
 import { ListToggle } from "../Components/ListToggle";
 import { TVGenres } from "../Types/Configuration";
+import { A } from "@solidjs/router";
 
 export default function List() {
   const list = useList();
@@ -14,7 +15,15 @@ export default function List() {
       <header>
         <h1>List</h1>
       </header>
-      <For each={list.arr()}>
+      <For
+        each={list.arr()}
+        fallback={
+          <p>
+            <div>You have no media in your list.</div>
+            Try <A href="/search">searching for something</A>.
+          </p>
+        }
+      >
         {(id) => {
           const data = tvSeries.get(id);
           if (!data) return null;
@@ -52,9 +61,13 @@ export default function List() {
                       {(genre) => <dd>{genre.name}</dd>}
                     </For>
                   </dl>
-                  <q class="block mb-(--pico-block-spacing-vertical)">
-                    {data.tagline}
-                  </q>
+                  <Show when={data.tagline}>
+                    {(get) => (
+                      <q class="block mb-(--pico-block-spacing-vertical)">
+                        {get()}
+                      </q>
+                    )}
+                  </Show>
                   <p>{data.overview}</p>
                 </div>
                 <Img
