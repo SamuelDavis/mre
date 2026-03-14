@@ -7,6 +7,7 @@ import {
   type PersonData,
   type SeriesData,
   type Node,
+  type TvSeries,
 } from "../../Types";
 import {
   createEffect,
@@ -40,13 +41,13 @@ export default function Graph(
 
   const [getElements] = createResource(
     list.arr,
-    async (): Promise<ElementDefinition[]> => {
+    async (ids: TvSeries["id"][]): Promise<ElementDefinition[]> => {
       const personNodes = new Map<PersonData["id"], PersonData>();
       const seriesNodes = new Map<SeriesData["id"], SeriesData>();
       const edges = new Map<CreditData["id"], CreditData>();
 
       const requests = rateLimit(
-        list.arr().map((id) => () => request.tvSeriesDetails(id)),
+        ids.map((id) => () => request.tvSeriesDetails(id)),
       );
 
       for await (const result of requests) {
@@ -127,13 +128,6 @@ export default function Graph(
     }, new Map<string, number>()),
   );
 
-  let ref: undefined | HTMLDivElement;
-  let cy: undefined | Core;
-
-  onMount(render);
-  createEffect(render);
-  onCleanup(() => cy?.destroy());
-
   const layout: FcoseLayoutOptions = {
     name: "fcose",
     animate: false,
@@ -162,10 +156,8 @@ export default function Graph(
               throw new TypeError();
           }
         },
-        width: (node: Node<PersonData | SeriesData>) =>
-          (getDegree().get(node.data("id")) ?? 1) * 10,
-        height: (node: Node<PersonData | SeriesData>) =>
-          (getDegree().get(node.data("id")) ?? 1) * 10,
+        width: getSize,
+        height: getSize,
         // @ts-ignore
         "text-max-width": 10,
         "text-wrap": "wrap",
@@ -192,6 +184,15 @@ export default function Graph(
     },
   ];
 
+  let ref: undefined | HTMLDivElement;
+  let cy: undefined | Core;
+
+  function getSize(node: Node<PersonData | SeriesData>): number {
+    const degree = getDegree().get(node.data("id")) ?? 1;
+    const mod = node.data("type") === "person" ? 30 : 30;
+    return Math.log(degree + 1) * mod;
+  }
+
   function render() {
     cy?.destroy();
     cy = cytoscape({
@@ -205,6 +206,10 @@ export default function Graph(
       local.onSelectNode(event);
     });
   }
+
+  onMount(render);
+  createEffect(render);
+  onCleanup(() => cy?.destroy());
 
   return (
     <div
