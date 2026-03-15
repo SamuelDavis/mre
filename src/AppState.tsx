@@ -9,6 +9,9 @@ import {
 } from "solid-js";
 import { createSetLike, type SetLike, type TvSeries } from "./Types";
 import type {
+  CreditId,
+  CreditsDetailsResponse,
+  PeopleDetailsResponse,
   PeopleTVCreditsResponse,
   PersonId,
   SearchTVResponse,
@@ -68,6 +71,18 @@ export function useApi() {
       return tmdbRequest(authorize(init), `tv/${id}`, {
         append_to_response: "aggregate_credits",
       });
+    },
+    personDetails(
+      id: PersonId,
+      init: RequestInit = {},
+    ): Promise<PeopleDetailsResponse> {
+      return tmdbRequest(authorize(init), `person/${id}`);
+    },
+    creditDetails(
+      id: CreditId,
+      init: RequestInit = {},
+    ): Promise<CreditsDetailsResponse> {
+      return tmdbRequest(authorize(init), `credit/${id}`);
     },
     personTvCredits(
       id: PersonId,

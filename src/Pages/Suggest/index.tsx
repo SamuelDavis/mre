@@ -2,11 +2,16 @@ import {
   createEffect,
   createMemo,
   createResource,
+  createSignal,
+  ErrorBoundary,
+  For,
   onCleanup,
   onMount,
   Show,
   splitProps,
+  Suspense,
   type Accessor,
+  type Setter,
 } from "solid-js";
 import { useApi, useList, useDocumentStyles } from "../../AppState";
 import {
@@ -17,6 +22,10 @@ import {
   tvSeriesToCredits,
   type CreditNode,
   type CreditData,
+  type NodeData,
+  type PeopleDetailsResponse,
+  type TvSeriesDetailsResponse,
+  type CreditsDetailsResponse,
 } from "../../Types";
 import type {
   Core,
@@ -28,7 +37,10 @@ import type {
 import type { FcoseLayoutOptions } from "cytoscape-fcose";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
-import { type ExtendProps } from "@samueldavis/solidlib";
+import { HTMLIcon, Modal, type ExtendProps } from "@samueldavis/solidlib";
+import ErrorModal from "../../Components/ErrorModal";
+import { Dynamic } from "solid-js/web";
+import Img from "../../Components/Img";
 
 // @ts-ignore
 cytoscape.use(fcose);
@@ -36,6 +48,7 @@ cytoscape.use(fcose);
 export default function Suggest() {
   const api = useApi();
   const list = useList();
+  const [getTargetNode, setTargetNode] = createSignal<undefined | NodeData>();
 
   const [getCredits, { mutate }] = createResource(
     list.arr,
@@ -182,16 +195,215 @@ export default function Suggest() {
       <Show when={getCredits.loading}>
         <progress />
       </Show>
-      <Graph getElements={getElements} />
+      <Graph getElements={getElements} onClickNode={setTargetNode} />
+      <Show when={getTargetNode()}>
+        {(_) => {
+          const api = useApi();
+          const onClose = () => setTargetNode(undefined);
+          const [getData] = createResource(getTargetNode, async (node) => {
+            switch (node._type) {
+              case "person":
+                return api
+                  .personDetails(node._id)
+                  .then((data) => <PersonModal data={data} />);
+              case "series":
+                return api
+                  .tvSeriesDetails(node._id)
+                  .then((data) => <TvSeriesModal data={data} />);
+              case "credit":
+                return api
+                  .creditDetails(node._id)
+                  .then((data) => <CreditModal data={data} />);
+            }
+          });
+          return (
+            <ErrorBoundary fallback={ErrorModal.fallback(onClose)}>
+              <Suspense fallback={<progress />}>
+                <Modal onClose={onClose}>
+                  <Dynamic component={getData() as any} />
+                </Modal>
+              </Suspense>
+            </ErrorBoundary>
+          );
+        }}
+      </Show>
+    </article>
+  );
+}
+
+function PersonModal(
+  props: ExtendProps<"article", { data: PeopleDetailsResponse }>,
+) {
+  const [local, parent] = splitProps(props, ["data"]);
+  const getAlsoKnownAs = () =>
+    local.data.also_known_as[0] !== local.data.name
+      ? local.data.also_known_as[0]
+      : undefined;
+  const getGender = () => ["Male", "Female"][local.data.gender] ?? "Unknown";
+  const getHref = (): string =>
+    `https://www.themoviedb.org/person/${local.data.id}`;
+  const getYear = (): string => local.data.birthday.slice(0, 4);
+
+  return (
+    <article {...parent}>
+      <header>
+        <h1 class="mb-0">
+          <span>{local.data.name} </span>
+        </h1>
+        <Show when={getAlsoKnownAs()}>{(get) => <h2>{get()}</h2>}</Show>
+      </header>
+      <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
+        <div>
+          <dl>
+            <dt>Born</dt>
+            <dd>{getYear()}</dd>
+            <dt>Gender</dt>
+            <dd>{getGender()}</dd>
+            <dt>Known For</dt>
+            <dd>{local.data.known_for_department}</dd>
+          </dl>
+          <p>{local.data.biography}</p>
+          <a target="_blank" href={getHref()}>
+            TMDB <HTMLIcon type="open_in_new" />
+          </a>
+        </div>
+        <Img
+          type="profile"
+          size="original"
+          path={local.data.profile_path}
+          class="place-self-center"
+        />
+      </section>
+      <details>
+        <summary>Details</summary>
+        <pre>{JSON.stringify(local.data, null, 2)}</pre>
+      </details>
+    </article>
+  );
+}
+
+function TvSeriesModal(
+  props: ExtendProps<"article", { data: TvSeriesDetailsResponse }>,
+) {
+  const [local, parent] = splitProps(props, ["data"]);
+  const getHref = (): string =>
+    `https://www.themoviedb.org/tv/${local.data.id}`;
+  const getYear = (): string => local.data.first_air_date.slice(0, 4);
+
+  return (
+    <article {...parent}>
+      <header>
+        <h1 class="mb-0">
+          <span>{local.data.name} </span>
+          <small class="text-xs align-super">({getYear()})</small>
+        </h1>
+        <Show when={local.data.original_name}>{(get) => <h2>{get()}</h2>}</Show>
+      </header>
+      <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
+        <div>
+          <dl>
+            <dt>First Aired</dt>
+            <dd>{local.data.first_air_date}</dd>
+            <dt>Genres</dt>
+            <For each={local.data.genres}>
+              {(genre) => <dd>{genre.name}</dd>}
+            </For>
+            <dt>Production</dt>
+            <dd>
+              {local.data.number_of_episodes} episodes over{" "}
+              {local.data.number_of_seasons} season
+              {local.data.number_of_seasons === 1 ? "" : "s"}.
+            </dd>
+            <dt>runtime</dt>
+            <dd>{local.data.episode_run_time[0]} minutes</dd>
+          </dl>
+          <hr />
+          <q>{local.data.tagline}</q>
+          <hr />
+          <p>{local.data.overview}</p>
+          <a target="_blank" href={getHref()}>
+            TMDB <HTMLIcon type="open_in_new" />
+          </a>
+        </div>
+        <Img
+          type="poster"
+          size="w342"
+          path={local.data.poster_path}
+          class="place-self-center"
+        />
+      </section>
+      <details>
+        <summary>Details</summary>
+        <pre>{JSON.stringify(local.data, null, 2)}</pre>
+      </details>
+    </article>
+  );
+}
+
+function CreditModal(
+  props: ExtendProps<"article", { data: CreditsDetailsResponse }>,
+) {
+  const [local, parent] = splitProps(props, ["data"]);
+
+  return (
+    <article {...parent}>
+      <header>
+        <h1 class="mb-0">
+          <span>{local.data.job} </span>
+          <small class="text-xs align-super">({local.data.department})</small>
+        </h1>
+      </header>
+      <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
+        <div>
+          <header>
+            <h2>{local.data.person.name}</h2>
+            <h3>{local.data.person.original_name}</h3>
+            <a
+              target="_blank"
+              href={`https://www.themoviedb.org/tv/${local.data.media.id}`}
+            >
+              TMDB <HTMLIcon type="open_in_new" />
+            </a>
+          </header>
+          <Img
+            type="profile"
+            size="w185"
+            path={local.data.person.profile_path}
+          />
+        </div>
+        <div>
+          <header>
+            <h2>{local.data.media.name}</h2>
+            <h3>{local.data.media.original_name}</h3>
+            <a
+              target="_blank"
+              href={`https://www.themoviedb.org/person/${local.data.person.id}`}
+            >
+              TMDB <HTMLIcon type="open_in_new" />
+            </a>
+          </header>
+          <Img type="poster" size="w185" path={local.data.media.poster_path} />
+        </div>
+      </section>
+      <details>
+        <summary>Details</summary>
+        <pre>{JSON.stringify(local.data, null, 2)}</pre>
+      </details>
     </article>
   );
 }
 
 function Graph(
-  props: ExtendProps<"div", { getElements: Accessor<ElementDefinition[]> }>,
+  props: ExtendProps<
+    "div",
+    {
+      getElements: Accessor<ElementDefinition[]>;
+      onClickNode: Setter<undefined | NodeData>;
+    }
+  >,
 ) {
+  const [local, parent] = splitProps(props, ["getElements", "onClickNode"]);
   const getDocumentStyle = useDocumentStyles();
-  const [local, parent] = splitProps(props, ["getElements"]);
   const getDegree = createMemo(() => {
     const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
     for (const element of local.getElements())
@@ -219,7 +431,7 @@ function Graph(
     });
 
     cy.on("tap", "node, edge", (event) => {
-      console.debug(event.target.data());
+      local.onClickNode(event.target.data());
     });
   }
 
