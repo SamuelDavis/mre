@@ -1,7 +1,8 @@
-import { lazy } from "solid-js";
+import { lazy, onCleanup, onMount } from "solid-js";
 import { Route, HashRouter as Router } from "@solidjs/router";
 import Layout from "./Pages/Layout";
 import { AppStateProvider } from "./AppState";
+import { rateLimitInterval, usage } from "./util";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Search = lazy(() => import("./Pages/Search"));
@@ -10,6 +11,10 @@ const Suggest = lazy(() => import("./Pages/Suggest"));
 const NotFound = lazy(() => import("./Pages/NotFound"));
 
 export default function App() {
+  onMount(() => {
+    const interval = setInterval(() => usage.clear(), rateLimitInterval);
+    onCleanup(() => clearInterval(interval));
+  });
   return (
     <AppStateProvider>
       <Router root={Layout}>

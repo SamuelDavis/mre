@@ -1,5 +1,10 @@
 import { isFunction, persist } from "@samueldavis/solidlib";
-import { createContext, useContext, type ParentProps } from "solid-js";
+import {
+  createContext,
+  type JSX,
+  useContext,
+  type ParentProps,
+} from "solid-js";
 import { createStore, produce, type SetStoreFunction } from "solid-js/store";
 import {
   createMapLike,
@@ -16,7 +21,7 @@ import type {
   TvSeriesDetailsResponse,
   TVSeriesId,
 } from "./Types/TMDB";
-import { request } from "./util";
+import { tmdbRequest } from "./util";
 
 type AppState = {
   apiKey: string;
@@ -146,27 +151,38 @@ export function useTvSeries() {
 
 export function useApi() {
   const [appState] = useAppState();
+  const authorize = (init?: RequestInit): RequestInit => ({
+    ...(init ?? {}),
+    headers: {
+      Authorization: `Bearer ${appState.apiKey}`,
+      ...(init?.headers ?? {}),
+    },
+  });
 
   return {
-    searchTV(query: string, init?: RequestInit): Promise<SearchTVResponse> {
-      return request(appState.apiKey, "search/tv", { query }, init);
+    searchTV(query: string, init: RequestInit = {}): Promise<SearchTVResponse> {
+      return tmdbRequest(authorize(init), "search/tv", { query });
     },
     tvSeriesDetails(
       id: TVSeriesId,
-      init?: RequestInit,
+      init: RequestInit = {},
     ): Promise<TvSeriesDetailsResponse> {
-      return request(
-        appState.apiKey,
-        `tv/${id}`,
-        { append_to_response: "aggregate_credits" },
-        init,
-      );
+      return tmdbRequest(authorize(init), `tv/${id}`, {
+        append_to_response: "aggregate_credits",
+      });
     },
     personTvCredits(
       id: PersonId,
-      init?: RequestInit,
+      init: RequestInit = {},
     ): Promise<PeopleTVCreditsResponse> {
-      return request(appState.apiKey, `person/${id}/tv_credits`, {}, init);
+      return tmdbRequest(authorize(init), `person/${id}/tv_credits`);
     },
   };
+}
+
+export function useDocumentStyles() {
+  return <K extends keyof JSX.CSSProperties>(
+    value: K,
+  ): JSX.CSSProperties[K] | any =>
+    getComputedStyle(document.documentElement).getPropertyValue(value) as any;
 }

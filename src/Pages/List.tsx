@@ -5,7 +5,6 @@ import Img from "../Components/Img";
 import { ListToggle } from "../Components/ListToggle";
 import { A } from "@solidjs/router";
 import type { TvSeriesDetailsResponse } from "../Types";
-import { rateLimit } from "../util";
 import ErrorModal from "../Components/ErrorModal";
 
 export default function List() {
@@ -15,10 +14,10 @@ export default function List() {
   const [tvSeriesDetails, { mutate }] = createResource(
     list.arr,
     async function (ids) {
-      const requests = ids.map((id) => () => api.tvSeriesDetails(id));
       let data: TvSeriesDetailsResponse[] = [];
-      for await (const result of rateLimit(requests))
+      for await (const result of ids.map((id) => api.tvSeriesDetails(id))) {
         data = mutate((prev) => [...prev, result]);
+      }
       return data;
     },
     { initialValue: [] },

@@ -133,13 +133,14 @@ export type AppTVSeriesDetails = Pick<
   | "aggregate_credits"
 >;
 
-const castOrderLimit: number = 0 as const;
+const castOrderLimit: number = 3 as const;
 const interestingJobs: Job[] = [
   "Creator",
+  "Writer",
+  "Director",
+  // "Storyboard",
   // "Producer",
   // "Editor",
-  // "Storyboard",
-  // "Director",
   // "Co-Director",
   // "Executive Producer",
 ] as const;
@@ -171,6 +172,8 @@ export type CreditData = EdgeDataDefinition & {
   _id: CreditId;
   id: `${PersonId}:person-${TVSeriesId}:series`;
   label: Job;
+  source: PersonData["id"];
+  target: SeriesData["id"];
 };
 export type NodeData = PersonData | SeriesData | CreditData;
 export type Node<T extends NodeData> = {

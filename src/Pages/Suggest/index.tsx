@@ -1,15 +1,14 @@
 import {
   createEffect,
+  createMemo,
   createResource,
-  For,
   onCleanup,
   onMount,
   Show,
   splitProps,
   type Accessor,
 } from "solid-js";
-import { useApi, useList } from "../../AppState";
-import { rateLimit, useDocumentStyles } from "../../util";
+import { useApi, useList, useDocumentStyles } from "../../AppState";
 import {
   type PersonData,
   type SeriesData,
@@ -21,6 +20,7 @@ import {
 } from "../../Types";
 import type {
   Core,
+  EdgeDefinition,
   ElementDefinition,
   NodeDefinition,
   StylesheetJsonBlock,
@@ -28,7 +28,7 @@ import type {
 import type { FcoseLayoutOptions } from "cytoscape-fcose";
 import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
-import type { ExtendProps } from "@samueldavis/solidlib";
+import { type ExtendProps } from "@samueldavis/solidlib";
 
 // @ts-ignore
 cytoscape.use(fcose);
@@ -41,22 +41,50 @@ export default function Suggest() {
     list.arr,
     async (ids: TVSeriesId[]) => {
       let result = new Map<CreditNode["credit"]["id"], CreditNode>();
-      const requests = ids.map((id) => () => api.tvSeriesDetails(id));
-      for await (const response of rateLimit(requests)) {
-        result = mutate((prev) =>
-          tvSeriesToCredits(response).reduce(
-            (acc, item) => acc.set(item.credit.id, item),
-            new Map(prev),
-          ),
+      const requests = ids.map((id) => api.tvSeriesDetails(id));
+      for await (const response of requests) {
+        const interestingPeople = tvSeriesToCredits(response).map(
+          (credit) => credit.person.id,
         );
+        const requests = interestingPeople.map((id) => api.personTvCredits(id));
+        for await (const response of requests) {
+          const requests = [
+            ...response.cast.map((credit) => credit.id),
+            ...response.crew.map((credit) => credit.id),
+          ].map((id) => api.tvSeriesDetails(id));
+
+          for await (const response of requests) {
+            result = mutate((prev) =>
+              tvSeriesToCredits(response).reduce((acc, item) => {
+                if (interestingPeople.includes(item.person.id))
+                  acc.set(item.credit.id, item);
+                return acc;
+              }, new Map(prev)),
+            );
+          }
+        }
       }
+
       return result;
     },
     { initialValue: new Map() },
   );
 
   const getElements = () => {
-    const elements = new Map<string, ElementDefinition>();
+    const counts = new Map<PersonData["id"] | SeriesData["id"], number>();
+
+    const personNodes = new Map<
+      PersonData["id"],
+      NodeDefinition & { data: PersonData }
+    >();
+    const seriesNodes = new Map<
+      SeriesData["id"],
+      NodeDefinition & { data: SeriesData }
+    >();
+    const creditNodes = new Map<
+      CreditData["id"],
+      EdgeDefinition & { data: CreditData }
+    >();
 
     for (const credit of getCredits().values()) {
       const personId: PersonData["id"] = `${credit.person.id}:person`;
@@ -69,7 +97,7 @@ export default function Suggest() {
           id: personId,
         },
       };
-      elements.set(personId, personNode);
+      personNodes.set(personId, personNode);
 
       const seriesId: SeriesData["id"] = `${credit.series.id}:series`;
       const seriesNode: NodeDefinition & { data: SeriesData } = {
@@ -81,10 +109,12 @@ export default function Suggest() {
           id: seriesId,
         },
       };
-      elements.set(seriesId, seriesNode);
+      seriesNodes.set(seriesId, seriesNode);
 
       const creditId: CreditData["id"] = `${personId}-${seriesId}`;
-      const creditNode: NodeDefinition & { data: CreditData } = {
+      const creditNode: EdgeDefinition & {
+        data: CreditData;
+      } = {
         data: {
           _type: "credit",
           _id: credit.credit.id,
@@ -94,30 +124,59 @@ export default function Suggest() {
           target: seriesId,
         },
       };
-      elements.set(creditId, creditNode);
+      creditNodes.set(creditId, creditNode);
+
+      counts.set(personId, (counts.get(personId) ?? 0) + 1);
+      counts.set(seriesId, (counts.get(seriesId) ?? 0) + 1);
     }
 
-    return [...elements.values()];
+    const count = (id: PersonData["id"] | SeriesData["id"]): number => {
+      let n = 0;
+      for (const credit of creditNodes.values())
+        if (credit.data.source === id || credit.data.target === id) n++;
+      return n;
+    };
+
+    for (let i = 0; i < 2; i++) {
+      for (const credit of creditNodes.values()) {
+        const { id: creditId, source: personId } = credit.data;
+        if (count(personId) <= 1) {
+          personNodes.delete(personId);
+          creditNodes.delete(creditId);
+        }
+      }
+
+      for (const credit of creditNodes.values()) {
+        const { id: creditId, target: seriesId } = credit.data;
+        if (count(seriesId) <= 1) {
+          seriesNodes.delete(seriesId);
+          creditNodes.delete(creditId);
+        }
+      }
+    }
+
+    for (const person of personNodes.values())
+      if (count(person.data.id) === 0) personNodes.delete(person.data.id);
+    for (const series of seriesNodes.values())
+      if (count(series.data.id) === 0) seriesNodes.delete(series.data.id);
+
+    return [
+      ...personNodes.values(),
+      ...seriesNodes.values(),
+      ...creditNodes.values(),
+    ];
   };
 
   return (
     <article>
       <header>
-        <h1>Suggest {getElements().length}</h1>
+        <h1>Suggest</h1>
+        <small>Found {getElements().length} nodes.</small>
       </header>
       <Show when={getCredits.loading}>
         <progress />
       </Show>
       <Graph getElements={getElements} />
-      <ul>
-        <For each={[...getElements().values()]}>
-          {(credit) => (
-            <li>
-              <pre>{JSON.stringify(credit, null, 2)}</pre>
-            </li>
-          )}
-        </For>
-      </ul>
     </article>
   );
 }
@@ -127,12 +186,21 @@ function Graph(
 ) {
   const getDocumentStyle = useDocumentStyles();
   const [local, parent] = splitProps(props, ["getElements"]);
+  const getDegree = createMemo(() => {
+    const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
+    for (const element of local.getElements())
+      if (element.data._type === "credit") {
+        const { source: personId, target: seriesId } = element.data;
+        degrees.set(personId, (degrees.get(personId) ?? 0) + 1);
+        degrees.set(seriesId, (degrees.get(seriesId) ?? 0) + 1);
+      }
+    return degrees;
+  });
 
-  function getSize(_: Node<PersonData | SeriesData>): number {
-    return 30;
-    // const degree = getDegree().get(node.data("id")) ?? 1;
-    // const mod = node.data("type") === "person" ? 30 : 30;
-    // return Math.log(degree + 1) * mod;
+  function getSize(node: Node<PersonData | SeriesData>): number {
+    const degree = getDegree().get(node.data("id")) ?? 1;
+    const mod = node.data("type") === "person" ? 30 : 30;
+    return Math.log(degree + 1) * mod;
   }
 
   function render() {
@@ -145,7 +213,7 @@ function Graph(
     });
 
     cy.on("tap", "node, edge", (event) => {
-      console.debug(event);
+      console.debug(event.target.data());
     });
   }
 
@@ -159,6 +227,7 @@ function Graph(
   const layout: FcoseLayoutOptions = {
     name: "fcose",
     animate: false,
+    nodeRepulsion: 400000,
   };
 
   const style: StylesheetJsonBlock[] = [
@@ -220,49 +289,3 @@ function Graph(
     />
   );
 }
-
-/*
-const [getCredits, { mutate }] = createResource(
-  list.arr,
-  async (ids) => {
-    let result = new Map<Credit["credit_id"], Credit>();
-    const listTvSeriesRequests = ids.map((id) => () => api.tvSeriesDetails(id));
-    for await (const tvSeriesResponse of rateLimit(listTvSeriesRequests)) {
-      const personCreditRequests = [
-        ...tvSeriesResponse.aggregate_credits.cast.map((credit) => credit.id),
-        ...tvSeriesResponse.aggregate_credits.crew.map((credit) => credit.id),
-      ].map((id) => () => api.personTvCredits(id));
-
-      for await (const creditResponse of rateLimit(personCreditRequests)) {
-        const credits = [
-          ...creditResponse.cast.filter(isInterestingCast).map(
-            (credit): Credit => ({
-              _type: "cast" as const,
-              person_id: creditResponse.id,
-              series_id: tvSeriesResponse.id,
-              ...credit,
-            }),
-          ),
-          ...creditResponse.crew.filter(isInterestingCrew).map(
-            (credit): Credit => ({
-              _type: "crew" as const,
-              person_id: creditResponse.id,
-              series_id: tvSeriesResponse.id,
-              ...credit,
-            }),
-          ),
-        ];
-
-        result = mutate((prev) =>
-          credits.reduce(
-            (acc, item) => acc.set(item.credit_id, item),
-            new Map(prev),
-          ),
-        );
-      }
-    }
-    return result;
-  },
-  { initialValue: new Map() },
-);
-*/
