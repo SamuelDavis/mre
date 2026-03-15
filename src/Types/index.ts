@@ -1,6 +1,6 @@
 export * from "./TMDB";
 
-import { isKeyed, isNonNullable, type Signal } from "@samueldavis/solidlib";
+import { isNonNullable, type Signal } from "@samueldavis/solidlib";
 import type {
   CreditId,
   DateString,
@@ -133,24 +133,19 @@ export type AppTVSeriesDetails = Pick<
   | "aggregate_credits"
 >;
 
-const castOrderLimit: number = 3 as const;
+const castOrderLimit: number = 0 as const;
 const interestingJobs: Job[] = [
   "Creator",
-  "Producer",
-  "Editor",
-  "Storyboard",
-  "Director",
-  "Co-Director",
-  "Executive Producer",
+  // "Producer",
+  // "Editor",
+  // "Storyboard",
+  // "Director",
+  // "Co-Director",
+  // "Executive Producer",
 ] as const;
 
-export function isInterestingCast(
-  credit: { order: number } | { episode_count: number },
-): boolean {
-  return (
-    (isKeyed(credit, "order") ? credit.order : credit.episode_count) <
-    castOrderLimit
-  );
+export function isInterestingCast(credit: { order: number }): boolean {
+  return credit.order <= castOrderLimit;
 }
 
 export function isInterestingCrew(credit: { job: Job }): boolean {
@@ -158,27 +153,91 @@ export function isInterestingCrew(credit: { job: Job }): boolean {
 }
 
 export type PersonData = NodeDataDefinition & {
-  type: "person";
-  id: `person:${PersonId}`;
+  _type: "person";
+  _id: PersonId;
+  id: `${PersonId}:person`;
   label: string;
   img: ImgPath;
 };
 export type SeriesData = NodeDataDefinition & {
-  type: "series";
-  id: `series:${TVSeriesId}`;
+  _type: "series";
+  _id: TVSeriesId;
+  id: `${TVSeriesId}:series`;
   label: string;
   img: ImgPath;
 };
 export type CreditData = EdgeDataDefinition & {
-  type: "credit";
-  id: `credit:${CreditId}`;
-  label: string;
-  job: Job;
-  department: Department;
-  img: ImgPath;
+  _type: "credit";
+  _id: CreditId;
+  id: `${PersonId}:person-${TVSeriesId}:series`;
+  label: Job;
 };
 export type NodeData = PersonData | SeriesData | CreditData;
-export type Node<T extends NodeData = NodeData> = {
+export type Node<T extends NodeData> = {
   data(): T;
   data<K extends keyof T>(key: K): T[K];
 };
+
+export type CreditNode = {
+  _type: "cast" | "crew";
+  person: { id: PersonId; name: string; img: ImgPath };
+  series: { id: TVSeriesId; name: string; img: ImgPath };
+  credit: { id: CreditId; name: Job };
+};
+
+export function tvSeriesToCredits(
+  response: TvSeriesDetailsResponse,
+): CreditNode[] {
+  return [
+    ...response.aggregate_credits.cast
+      .flatMap((credit) => credit.roles.map((role) => ({ ...role, ...credit })))
+      .filter(isInterestingCast)
+      .map(
+        (credit): CreditNode => ({
+          _type: "cast",
+          person: {
+            id: credit.id,
+            name: credit.name,
+            img: credit.profile_path,
+          },
+          series: {
+            id: response.id,
+            name: response.name,
+            img: response.poster_path,
+          },
+          credit: { id: credit.credit_id, name: "Actor" },
+        }),
+      ),
+    ...response.aggregate_credits.crew
+      .flatMap((credit) => credit.jobs.map((job) => ({ ...job, ...credit })))
+      .filter(isInterestingCrew)
+      .map(
+        (credit): CreditNode => ({
+          _type: "crew",
+          person: {
+            id: credit.id,
+            name: credit.name,
+            img: credit.profile_path,
+          },
+          series: {
+            id: response.id,
+            name: response.name,
+            img: response.poster_path,
+          },
+          credit: { id: credit.credit_id, name: credit.job },
+        }),
+      ),
+    ...response.created_by.map(
+      (credit): CreditNode => ({
+        _type: "crew",
+        person: { id: credit.id, name: credit.name, img: credit.profile_path },
+        series: {
+          id: response.id,
+          name: response.name,
+          img: response.poster_path,
+        },
+        credit: { id: credit.credit_id, name: "Creator" },
+      }),
+    ),
+  ];
+}

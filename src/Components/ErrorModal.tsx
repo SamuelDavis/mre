@@ -25,7 +25,7 @@ export default function ErrorModal(
   return (
     <Modal {...parent}>
       <article>
-        <header class="flex content-center items-center">
+        <header class="flex content-center items-center justify-between">
           <h1>{local.error.name}</h1>
           <HTMLIcon type="close" onClick={onClick} />
         </header>

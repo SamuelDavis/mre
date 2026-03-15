@@ -1,93 +1,107 @@
-import { For, Show } from "solid-js";
-import { useList, useTvSeries } from "../AppState";
-import { HTMLIcon, isNonNullable } from "@samueldavis/solidlib";
+import { createResource, ErrorBoundary, For, Show, splitProps } from "solid-js";
+import { useApi, useList } from "../AppState";
+import { HTMLIcon, type ExtendProps } from "@samueldavis/solidlib";
 import Img from "../Components/Img";
 import { ListToggle } from "../Components/ListToggle";
-import { TVGenres } from "../Types/Configuration";
 import { A } from "@solidjs/router";
+import type { TvSeriesDetailsResponse } from "../Types";
+import { rateLimit } from "../util";
+import ErrorModal from "../Components/ErrorModal";
 
 export default function List() {
   const list = useList();
-  const tvSeries = useTvSeries();
+  const api = useApi();
+
+  const [tvSeriesDetails, { mutate }] = createResource(
+    list.arr,
+    async function (ids) {
+      const requests = ids.map((id) => () => api.tvSeriesDetails(id));
+      let data: TvSeriesDetailsResponse[] = [];
+      for await (const result of rateLimit(requests))
+        data = mutate((prev) => [...prev, result]);
+      return data;
+    },
+    { initialValue: [] },
+  );
 
   return (
     <article>
       <header>
         <h1>List</h1>
       </header>
-      <For
-        each={list.arr()}
-        fallback={
-          <p>
-            <div>You have no media in your list.</div>
+      <Show when={list.arr().length === 0}>
+        <p class="flex gap-1">
+          <span>You have no media in your list.</span>
+          <span>
             Try <A href="/search">searching for something</A>.
-          </p>
-        }
-      >
-        {(id) => {
-          const data = tvSeries.get(id);
-          if (!data) return null;
-          const getYear = () => data.first_air_date?.slice(0, 4);
-          const getGenres = () =>
-            data.genre_ids
-              ?.map((id) => TVGenres.find((genre) => genre.id === id))
-              .filter(isNonNullable);
-          const getHref = (): string =>
-            `https://www.themoviedb.org/tv/${data.id}`;
-          const getOriginalName = () =>
-            data.original_name && data.original_name !== data.name
-              ? data.original_name
-              : undefined;
+          </span>
+        </p>
+      </Show>
+      <Show when={tvSeriesDetails.loading}>
+        <progress />
+      </Show>
+      <ErrorBoundary fallback={ErrorModal.fallback()}>
+        <For each={tvSeriesDetails()}>
+          {(data) => <TvSeriesListItem data={data} />}
+        </For>
+      </ErrorBoundary>
+    </article>
+  );
+}
 
-          return (
-            <article>
-              <header>
-                <h1 class="mb-0">
-                  <span>{data.name} </span>
-                  <small class="text-xs align-super">({getYear()})</small>
-                </h1>
-                <Show when={getOriginalName()}>
-                  {(get) => <h2>{get()}</h2>}
-                </Show>
-                <ListToggle seriesId={data.id} />
-              </header>
-              <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
-                <div>
-                  <dl>
-                    <dt>First Aired</dt>
-                    <dd>{data.first_air_date}</dd>
-                    <dt>Genres</dt>
-                    <For each={getGenres()}>
-                      {(genre) => <dd>{genre.name}</dd>}
-                    </For>
-                  </dl>
-                  <Show when={data.tagline}>
-                    {(get) => (
-                      <q class="block mb-(--pico-block-spacing-vertical)">
-                        {get()}
-                      </q>
-                    )}
-                  </Show>
-                  <p>{data.overview}</p>
-                </div>
-                <Img
-                  type="poster"
-                  size="w342"
-                  path={data.poster_path}
-                  class="place-self-center"
-                />
-              </section>
-              <details>
-                <summary>Details</summary>
-                <pre>{JSON.stringify(data, null, 2)}</pre>
-              </details>
-              <a target="_blank" class="float-right" href={getHref()}>
-                TMDB <HTMLIcon type="open_in_new" />
-              </a>
-            </article>
-          );
-        }}
-      </For>
+function TvSeriesListItem(
+  props: ExtendProps<"article", { data: TvSeriesDetailsResponse }>,
+) {
+  const [local, parent] = splitProps(props, ["data"]);
+  const getYear = () => local.data.first_air_date?.slice(0, 4);
+  const getHref = (): string =>
+    `https://www.themoviedb.org/tv/${local.data.id}`;
+  const getOriginalName = () =>
+    local.data.original_name && local.data.original_name !== local.data.name
+      ? local.data.original_name
+      : undefined;
+
+  return (
+    <article {...parent}>
+      <header>
+        <h1 class="mb-0">
+          <span>{local.data.name} </span>
+          <small class="text-xs align-super">({getYear()})</small>
+        </h1>
+        <Show when={getOriginalName()}>{(get) => <h2>{get()}</h2>}</Show>
+        <ListToggle seriesId={local.data.id} />
+      </header>
+      <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
+        <div>
+          <dl>
+            <dt>First Aired</dt>
+            <dd>{local.data.first_air_date}</dd>
+            <dt>Genres</dt>
+            <For each={local.data.genres} fallback={<dd>None</dd>}>
+              {(genre) => <dd>{genre.name}</dd>}
+            </For>
+          </dl>
+          <Show when={local.data.tagline}>
+            {(get) => (
+              <q class="block mb-(--pico-block-spacing-vertical)">{get()}</q>
+            )}
+          </Show>
+          <p>{local.data.overview}</p>
+        </div>
+        <Img
+          type="poster"
+          size="w342"
+          path={local.data.poster_path}
+          class="place-self-center"
+        />
+      </section>
+      <details>
+        <summary>Details</summary>
+        <pre>{JSON.stringify(local.data, null, 2)}</pre>
+      </details>
+      <a target="_blank" class="float-right" href={getHref()}>
+        TMDB <HTMLIcon type="open_in_new" />
+      </a>
     </article>
   );
 }

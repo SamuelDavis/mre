@@ -34,7 +34,9 @@ export async function* rateLimit<T = unknown>(
       .slice(i, i + chunkSize)
       .map((callback) => callback());
 
-    yield Promise.all(requests);
+    for (const result of await Promise.all(requests)) {
+      yield result;
+    }
 
     if (i + chunkSize >= promises.length) break;
     await new Promise((resolve) => setTimeout(resolve, waitTime));
