@@ -67,7 +67,7 @@ export default function Suggest() {
     { initialValue: new Map() },
   );
 
-  const getElements = () => {
+  const getNodes = () => {
     const personNodes = new Map<
       PersonData["id"],
       NodeDefinition & { data: PersonData }
@@ -122,6 +122,12 @@ export default function Suggest() {
       creditNodes.set(creditId, creditNode);
     }
 
+    return [personNodes, seriesNodes, creditNodes];
+  };
+
+  const getElements = () => {
+    const [personNodes, seriesNodes, creditNodes] = getNodes();
+
     const count = (id: PersonData["id"] | SeriesData["id"]): number => {
       let n = 0;
       for (const credit of creditNodes.values())
@@ -159,11 +165,19 @@ export default function Suggest() {
     ];
   };
 
+  const getNodeCount = () =>
+    getNodes().reduce((acc, nodes) => acc + nodes.size, 0);
+  const getIntersectionCount = () =>
+    getElements().filter((el) => el.data._type !== "credit").length;
+
   return (
     <article>
       <header>
         <h1>Suggest</h1>
-        <small>Found {getElements().length} nodes.</small>
+        <small>
+          Found {getNodeCount()} nodes with
+          <span> {getIntersectionCount() || "no"} </span>intersections.
+        </small>
       </header>
       <Show when={getCredits.loading}>
         <progress />
