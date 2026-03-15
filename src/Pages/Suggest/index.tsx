@@ -54,25 +54,20 @@ export default function Suggest() {
           ].map((id) => api.tvSeriesDetails(id));
 
           for await (const response of requests) {
-            result = mutate((prev) =>
-              tvSeriesToCredits(response).reduce((acc, item) => {
-                if (interestingPeople.includes(item.person.id))
-                  acc.set(item.credit.id, item);
-                return acc;
-              }, new Map(prev)),
-            );
+            for (const item of tvSeriesToCredits(response))
+              if (interestingPeople.includes(item.person.id))
+                result.set(item.credit.id, item);
+            mutate(new Map(result));
           }
         }
       }
 
-      return result;
+      return new Map(result);
     },
     { initialValue: new Map() },
   );
 
   const getElements = () => {
-    const counts = new Map<PersonData["id"] | SeriesData["id"], number>();
-
     const personNodes = new Map<
       PersonData["id"],
       NodeDefinition & { data: PersonData }
@@ -125,9 +120,6 @@ export default function Suggest() {
         },
       };
       creditNodes.set(creditId, creditNode);
-
-      counts.set(personId, (counts.get(personId) ?? 0) + 1);
-      counts.set(seriesId, (counts.get(seriesId) ?? 0) + 1);
     }
 
     const count = (id: PersonData["id"] | SeriesData["id"]): number => {
@@ -226,8 +218,6 @@ function Graph(
 
   const layout: FcoseLayoutOptions = {
     name: "fcose",
-    animate: false,
-    nodeRepulsion: 400000,
   };
 
   const style: StylesheetJsonBlock[] = [

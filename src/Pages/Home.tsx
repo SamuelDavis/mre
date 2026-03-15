@@ -1,7 +1,6 @@
 import { HTMLIcon, type Targeted } from "@samueldavis/solidlib";
 import { A } from "@solidjs/router";
 import { useAppState } from "../AppState";
-import { produce } from "solid-js/store";
 
 export default function Home() {
   return (
@@ -15,10 +14,10 @@ export default function Home() {
 }
 
 function ApiKeyInput() {
-  const [appState, setAppState] = useAppState();
+  const [getApiKey, setApiKey] = useAppState().apiKey;
 
   function onInput(event: Targeted<HTMLInputElement>): void {
-    setAppState(produce((state) => (state.apiKey = event.currentTarget.value)));
+    setApiKey(event.currentTarget.value);
   }
 
   return (
@@ -30,7 +29,7 @@ function ApiKeyInput() {
       >
         <HTMLIcon type="help" />
       </A>
-      <input type="text" onInput={onInput} value={appState.apiKey} />
+      <input type="text" onInput={onInput} value={getApiKey()} />
     </label>
   );
 }

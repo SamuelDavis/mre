@@ -60,9 +60,7 @@ export type SetLike<T> = {
   arr(): NonNullable<T>[];
 };
 
-export function createSetLike<T extends PropertyKey>([get, set]: Signal<
-  Partial<T[]>
->): SetLike<T> {
+export function createSetLike<T>([get, set]: Signal<T[]>): SetLike<T> {
   return {
     has(item) {
       return get().includes(item);

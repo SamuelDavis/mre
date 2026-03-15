@@ -11,12 +11,13 @@ export default function List() {
   const list = useList();
   const api = useApi();
 
-  const [tvSeriesDetails, { mutate }] = createResource(
+  const [getTvSeries, { mutate }] = createResource(
     list.arr,
     async function (ids) {
       let data: TvSeriesDetailsResponse[] = [];
       for await (const result of ids.map((id) => api.tvSeriesDetails(id))) {
-        data = mutate((prev) => [...prev, result]);
+        data = [...data, result];
+        mutate(data);
       }
       return data;
     },
@@ -36,11 +37,11 @@ export default function List() {
           </span>
         </p>
       </Show>
-      <Show when={tvSeriesDetails.loading}>
+      <Show when={getTvSeries.loading}>
         <progress />
       </Show>
       <ErrorBoundary fallback={ErrorModal.fallback()}>
-        <For each={tvSeriesDetails()}>
+        <For each={getTvSeries()}>
           {(data) => <TvSeriesListItem data={data} />}
         </For>
       </ErrorBoundary>

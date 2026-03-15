@@ -1,19 +1,13 @@
-import { isFunction, persist } from "@samueldavis/solidlib";
+import { persist } from "@samueldavis/solidlib";
 import {
   createContext,
   type JSX,
   useContext,
   type ParentProps,
+  type Signal,
+  createSignal,
 } from "solid-js";
-import { createStore, produce, type SetStoreFunction } from "solid-js/store";
-import {
-  createMapLike,
-  createSetLike,
-  type Credit,
-  type Edge,
-  type Person,
-  type TvSeries,
-} from "./Types";
+import { createSetLike, type SetLike, type TvSeries } from "./Types";
 import type {
   PeopleTVCreditsResponse,
   PersonId,
@@ -24,32 +18,18 @@ import type {
 import { tmdbRequest } from "./util";
 
 type AppState = {
-  apiKey: string;
-  list: Partial<TvSeries["id"][]>;
-  people: Partial<Record<Person["id"], Person>>;
-  tvSeries: Partial<Record<TvSeries["id"], TvSeries>>;
-  credits: Partial<Record<Credit["id"], Credit>>;
-  edges: Partial<Record<Edge["id"], Edge>>;
+  apiKey: Signal<string>;
+  list: SetLike<TvSeries["id"]>;
 };
 
-type AppStateContextValue = [AppState, SetStoreFunction<AppState>];
-const AppStateContext = createContext<AppStateContextValue>();
+const AppStateContext = createContext<AppState>();
 
 export function AppStateProvider(props: ParentProps) {
-  const [appState, setAppState] = persist(
-    createStore<AppState>({
-      apiKey: "",
-      list: [],
-      people: {},
-      tvSeries: {},
-      credits: {},
-      edges: {},
-    }),
-    { key: "mre" },
-  );
+  const apiKey = persist(createSignal(""), { key: "api-key" });
+  const list = persist(createSignal<TVSeriesId[]>([]), { key: "list" });
 
   return (
-    <AppStateContext.Provider value={[appState, setAppState]}>
+    <AppStateContext.Provider value={{ apiKey, list: createSetLike(list) }}>
       {props.children}
     </AppStateContext.Provider>
   );
@@ -63,98 +43,16 @@ export function useAppState() {
 }
 
 export function useList() {
-  const [state, setState] = useAppState();
-  return createSetLike([
-    () => state.list,
-    (list) =>
-      setState(
-        produce(
-          (state) => (state.list = isFunction(list) ? list(state.list) : list),
-        ),
-      ),
-  ]);
-}
-
-export function usePeople() {
-  const [state, setState] = useAppState();
-  return createMapLike(
-    [
-      () => state.people,
-      (people) =>
-        setState(
-          produce(
-            (state) =>
-              (state.people = isFunction(people)
-                ? people(state.people)
-                : people),
-          ),
-        ),
-    ],
-    (item) => item.id,
-  );
-}
-
-export function useCredits() {
-  const [state, setState] = useAppState();
-  return createMapLike(
-    [
-      () => state.credits,
-      (credits) =>
-        setState(
-          produce(
-            (state) =>
-              (state.credits = isFunction(credits)
-                ? credits(state.credits)
-                : credits),
-          ),
-        ),
-    ],
-    (item) => item.id,
-  );
-}
-
-export function useEdges() {
-  const [state, setState] = useAppState();
-  return createMapLike(
-    [
-      () => state.edges,
-      (edges) =>
-        setState(
-          produce(
-            (state) =>
-              (state.edges = isFunction(edges) ? edges(state.edges) : edges),
-          ),
-        ),
-    ],
-    (item) => item.id,
-  );
-}
-
-export function useTvSeries() {
-  const [state, setState] = useAppState();
-  return createMapLike(
-    [
-      () => state.tvSeries,
-      (tvSeries) =>
-        setState(
-          produce(
-            (state) =>
-              (state.tvSeries = isFunction(tvSeries)
-                ? tvSeries(state.tvSeries)
-                : tvSeries),
-          ),
-        ),
-    ],
-    (item) => item.id,
-  );
+  return useAppState().list;
 }
 
 export function useApi() {
-  const [appState] = useAppState();
+  const [getApiKey] = useAppState().apiKey;
+
   const authorize = (init?: RequestInit): RequestInit => ({
     ...(init ?? {}),
     headers: {
-      Authorization: `Bearer ${appState.apiKey}`,
+      Authorization: `Bearer ${getApiKey()}`,
       ...(init?.headers ?? {}),
     },
   });
