@@ -122,7 +122,7 @@ export default function Suggest() {
       creditNodes.set(creditId, creditNode);
     }
 
-    return [personNodes, seriesNodes, creditNodes];
+    return [personNodes, seriesNodes, creditNodes] as const;
   };
 
   const getElements = () => {
