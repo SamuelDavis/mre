@@ -5,6 +5,7 @@ import {
   createSignal,
   ErrorBoundary,
   For,
+  mergeProps,
   onCleanup,
   onMount,
   Show,
@@ -29,8 +30,10 @@ import {
 } from "../../Types";
 import type {
   Core,
+  CytoscapeOptions,
   EdgeDefinition,
   ElementDefinition,
+  Layouts,
   NodeDefinition,
   StylesheetJsonBlock,
 } from "cytoscape";
@@ -79,7 +82,7 @@ export default function Suggest() {
     { initialValue: new Map() },
   );
 
-  const getNodes = () => {
+  const getElements = () => {
     const personNodes = new Map<
       PersonData["id"],
       NodeDefinition & { data: PersonData }
@@ -134,12 +137,6 @@ export default function Suggest() {
       creditNodes.set(creditId, creditNode);
     }
 
-    return [personNodes, seriesNodes, creditNodes] as const;
-  };
-
-  const getElements = () => {
-    const [personNodes, seriesNodes, creditNodes] = getNodes();
-
     const count = (id: PersonData["id"] | SeriesData["id"]): number => {
       let n = 0;
       for (const credit of creditNodes.values())
@@ -177,8 +174,6 @@ export default function Suggest() {
     ];
   };
 
-  const getNodeCount = () =>
-    getNodes().reduce((acc, nodes) => acc + nodes.size, 0);
   const getIntersectionCount = () =>
     getElements().filter((el) => el.data._type !== "credit").length;
 
@@ -187,8 +182,7 @@ export default function Suggest() {
       <header>
         <h1>Suggest</h1>
         <small>
-          Found {getNodeCount()} nodes with
-          <span> {getIntersectionCount() || "no"} </span>intersections.
+          <span>Found {getIntersectionCount() || "no"} </span>intersections.
         </small>
       </header>
       <Show when={getCredits.loading}>
@@ -394,16 +388,27 @@ function CreditModal(local: { data: CreditsDetailsResponse }) {
 
 function Graph(
   props: ExtendProps<
-    "div",
+    "article",
     {
       getElements: Accessor<ElementDefinition[]>;
       onClickNode: Setter<undefined | NodeData>;
+      maxZoom?: CytoscapeOptions["maxZoom"];
+      minZoom?: CytoscapeOptions["minZoom"];
+      padding?: FcoseLayoutOptions["padding"];
     }
   >,
 ) {
-  const [local, parent] = splitProps(props, ["getElements", "onClickNode"]);
+  const merged = mergeProps({ minZoom: 0.5, maxZoom: 2, padding: 24 }, props);
+  const [local, parent] = splitProps(merged, [
+    "getElements",
+    "onClickNode",
+    "maxZoom",
+    "minZoom",
+    "padding",
+  ]);
   const list = useList();
   const getDocumentStyle = useDocumentStyles();
+
   const getDegree = createMemo(() => {
     const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
     for (const element of local.getElements())
@@ -421,30 +426,35 @@ function Graph(
     return Math.log(degree + 1) * mod;
   }
 
-  function render() {
-    cy?.destroy();
+  onMount(() => {
     cy = cytoscape({
       container: ref,
-      elements: local.getElements(),
       style,
-      layout,
-    });
-
-    cy.on("tap", "node, edge", (event) => {
+      minZoom: local.minZoom,
+      maxZoom: local.maxZoom,
+    }).on("tap", "node, edge", (event) => {
       local.onClickNode(event.target.data());
     });
-  }
 
-  onMount(render);
-  createEffect(render);
-  onCleanup(() => cy?.destroy());
+    onCleanup(() => cy?.destroy());
+  });
+
+  createEffect(() => {
+    currentLayout?.stop();
+    currentLayout = cy
+      ?.json({
+        elements: local.getElements(),
+      })
+      .layout(layout)
+      .run();
+  });
 
   let ref: undefined | HTMLDivElement;
   let cy: undefined | Core;
+  let currentLayout: undefined | Layouts;
 
   const layout: FcoseLayoutOptions = {
     name: "fcose",
-    animate: false,
   };
 
   const style: StylesheetJsonBlock[] = [
@@ -498,11 +508,23 @@ function Graph(
     },
   ];
 
+  function onReset(): void {
+    if (!cy) return;
+    cy.animate({
+      fit: { eles: cy.elements(), padding: local.padding },
+      duration: 100,
+    });
+  }
+
   return (
-    <div
-      class="aspect-video touch-none bg-(--pico-background-color)"
-      ref={ref}
-      {...parent}
-    />
+    <article {...parent}>
+      <header>
+        <button onClick={onReset}>Reset</button>
+      </header>
+      <div
+        class="aspect-video touch-none bg-(--pico-background-color)"
+        ref={ref}
+      />
+    </article>
   );
 }
