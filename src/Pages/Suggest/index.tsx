@@ -444,6 +444,7 @@ function Graph(
 
   const layout: FcoseLayoutOptions = {
     name: "fcose",
+    animate: false,
   };
 
   const style: StylesheetJsonBlock[] = [
