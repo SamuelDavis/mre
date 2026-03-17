@@ -402,6 +402,7 @@ function Graph(
   >,
 ) {
   const [local, parent] = splitProps(props, ["getElements", "onClickNode"]);
+  const list = useList();
   const getDocumentStyle = useDocumentStyles();
   const getDegree = createMemo(() => {
     const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
@@ -463,7 +464,7 @@ function Graph(
             case "person":
               return "red";
             case "series":
-              return "blue";
+              return list.has(node.data("_id")) ? "blue" : "gold";
             default:
               throw new TypeError();
           }
