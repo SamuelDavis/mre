@@ -39,7 +39,6 @@ import cytoscape from "cytoscape";
 import fcose from "cytoscape-fcose";
 import { HTMLIcon, Modal, type ExtendProps } from "@samueldavis/solidlib";
 import ErrorModal from "../../Components/ErrorModal";
-import { Dynamic } from "solid-js/web";
 import Img from "../../Components/Img";
 
 // @ts-ignore
@@ -205,22 +204,38 @@ export default function Suggest() {
               case "person":
                 return api
                   .personDetails(node._id)
-                  .then((data) => <PersonModal data={data} />);
+                  .then((res) => ({ _type: "person" as const, ...res }));
               case "series":
                 return api
                   .tvSeriesDetails(node._id)
-                  .then((data) => <TvSeriesModal data={data} />);
+                  .then((res) => ({ _type: "series" as const, ...res }));
               case "credit":
                 return api
                   .creditDetails(node._id)
-                  .then((data) => <CreditModal data={data} />);
+                  .then((res) => ({ _type: "credit" as const, ...res }));
             }
           });
           return (
             <ErrorBoundary fallback={ErrorModal.fallback(onClose)}>
               <Suspense fallback={<progress />}>
-                <Modal onClose={onClose}>
-                  <Dynamic component={getData() as any} />
+                <Modal onClose={onClose} class="flex flex-col">
+                  <article>
+                    {(() => {
+                      const data = getData();
+                      if (!data) return;
+                      switch (data._type) {
+                        case "person":
+                          return <PersonModal data={data} />;
+                        case "series":
+                          return <TvSeriesModal data={data} />;
+                        case "credit":
+                          return <CreditModal data={data} />;
+                      }
+                    })()}
+                    <button onClick={onClose} class="float-right">
+                      <HTMLIcon type="close" />
+                    </button>
+                  </article>
                 </Modal>
               </Suspense>
             </ErrorBoundary>
@@ -231,10 +246,7 @@ export default function Suggest() {
   );
 }
 
-function PersonModal(
-  props: ExtendProps<"article", { data: PeopleDetailsResponse }>,
-) {
-  const [local, parent] = splitProps(props, ["data"]);
+function PersonModal(local: { data: PeopleDetailsResponse }) {
   const getAlsoKnownAs = () =>
     local.data.also_known_as[0] !== local.data.name
       ? local.data.also_known_as[0]
@@ -245,7 +257,7 @@ function PersonModal(
   const getYear = (): string => local.data.birthday.slice(0, 4);
 
   return (
-    <article {...parent}>
+    <>
       <header>
         <h1 class="mb-0">
           <span>{local.data.name} </span>
@@ -274,24 +286,17 @@ function PersonModal(
           class="place-self-center"
         />
       </section>
-      <details>
-        <summary>Details</summary>
-        <pre>{JSON.stringify(local.data, null, 2)}</pre>
-      </details>
-    </article>
+    </>
   );
 }
 
-function TvSeriesModal(
-  props: ExtendProps<"article", { data: TvSeriesDetailsResponse }>,
-) {
-  const [local, parent] = splitProps(props, ["data"]);
+function TvSeriesModal(local: { data: TvSeriesDetailsResponse }) {
   const getHref = (): string =>
     `https://www.themoviedb.org/tv/${local.data.id}`;
   const getYear = (): string => local.data.first_air_date.slice(0, 4);
 
   return (
-    <article {...parent}>
+    <>
       <header>
         <h1 class="mb-0">
           <span>{local.data.name} </span>
@@ -332,25 +337,23 @@ function TvSeriesModal(
           class="place-self-center"
         />
       </section>
-      <details>
-        <summary>Details</summary>
-        <pre>{JSON.stringify(local.data, null, 2)}</pre>
-      </details>
-    </article>
+    </>
   );
 }
 
-function CreditModal(
-  props: ExtendProps<"article", { data: CreditsDetailsResponse }>,
-) {
-  const [local, parent] = splitProps(props, ["data"]);
-
+function CreditModal(local: { data: CreditsDetailsResponse }) {
   return (
-    <article {...parent}>
+    <>
       <header>
         <h1 class="mb-0">
           <span>{local.data.job} </span>
-          <small class="text-xs align-super">({local.data.department})</small>
+          <small class="text-xs align-super">
+            (
+            {local.data.job === "Actor"
+              ? local.data.media.character
+              : local.data.department}
+            )
+          </small>
         </h1>
       </header>
       <section class="grid gap-(--pico-block-spacing-horizontal) md:grid-cols-2">
@@ -385,11 +388,7 @@ function CreditModal(
           <Img type="poster" size="w185" path={local.data.media.poster_path} />
         </div>
       </section>
-      <details>
-        <summary>Details</summary>
-        <pre>{JSON.stringify(local.data, null, 2)}</pre>
-      </details>
-    </article>
+    </>
   );
 }
 
