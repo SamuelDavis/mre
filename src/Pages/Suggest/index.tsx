@@ -5,14 +5,12 @@ import {
   createSignal,
   ErrorBoundary,
   For,
-  mergeProps,
   onCleanup,
   onMount,
   Show,
   splitProps,
   Suspense,
-  type Accessor,
-  type Setter,
+  type Signal,
 } from "solid-js";
 import { useApi, useList, useDocumentStyles } from "../../AppState";
 import {
@@ -30,9 +28,7 @@ import {
 } from "../../Types";
 import type {
   Core,
-  CytoscapeOptions,
   EdgeDefinition,
-  ElementDefinition,
   Layouts,
   NodeDefinition,
   StylesheetJsonBlock,
@@ -50,6 +46,7 @@ cytoscape.use(fcose);
 export default function Suggest() {
   const api = useApi();
   const list = useList();
+  const getDocumentStyle = useDocumentStyles();
   const [getTargetNode, setTargetNode] = createSignal<undefined | NodeData>();
 
   const [getCredits, { mutate }] = createResource(
@@ -82,161 +79,311 @@ export default function Suggest() {
     { initialValue: new Map() },
   );
 
-  const getElements = () => {
-    const personNodes = new Map<
-      PersonData["id"],
-      NodeDefinition & { data: PersonData }
-    >();
-    const seriesNodes = new Map<
-      SeriesData["id"],
-      NodeDefinition & { data: SeriesData }
-    >();
-    const creditNodes = new Map<
-      CreditData["id"],
-      EdgeDefinition & { data: CreditData }
-    >();
+  const getElements = createMemo(
+    () => {
+      const personNodes = new Map<
+        PersonData["id"],
+        NodeDefinition & { data: PersonData }
+      >();
+      const seriesNodes = new Map<
+        SeriesData["id"],
+        NodeDefinition & { data: SeriesData }
+      >();
+      const creditNodes = new Map<
+        CreditData["id"],
+        EdgeDefinition & { data: CreditData }
+      >();
 
-    for (const credit of getCredits().values()) {
-      const personId: PersonData["id"] = `${credit.person.id}:person`;
-      const personNode: NodeDefinition & { data: PersonData } = {
-        data: {
-          _type: "person",
-          _id: credit.person.id,
-          label: credit.person.name,
-          img: credit.person.img,
-          id: personId,
-        },
+      for (const credit of getCredits().values()) {
+        const personId: PersonData["id"] = `${credit.person.id}:person`;
+        const personNode: NodeDefinition & { data: PersonData } = {
+          data: {
+            _type: "person",
+            _id: credit.person.id,
+            label: credit.person.name,
+            img: credit.person.img,
+            id: personId,
+          },
+        };
+        personNodes.set(personId, personNode);
+
+        const seriesId: SeriesData["id"] = `${credit.series.id}:series`;
+        const seriesNode: NodeDefinition & { data: SeriesData } = {
+          data: {
+            _type: "series",
+            _id: credit.series.id,
+            label: credit.series.name,
+            img: credit.series.img,
+            id: seriesId,
+          },
+        };
+        seriesNodes.set(seriesId, seriesNode);
+
+        const creditId: CreditData["id"] = `${personId}-${seriesId}`;
+        const creditNode: EdgeDefinition & {
+          data: CreditData;
+        } = {
+          data: {
+            _type: "credit",
+            _id: credit.credit.id,
+            label: credit.credit.name,
+            id: creditId,
+            source: personId,
+            target: seriesId,
+          },
+        };
+        creditNodes.set(creditId, creditNode);
+      }
+
+      const count = (id: PersonData["id"] | SeriesData["id"]): number => {
+        let n = 0;
+        for (const credit of creditNodes.values())
+          if (credit.data.source === id || credit.data.target === id) n++;
+        return n;
       };
-      personNodes.set(personId, personNode);
 
-      const seriesId: SeriesData["id"] = `${credit.series.id}:series`;
-      const seriesNode: NodeDefinition & { data: SeriesData } = {
-        data: {
-          _type: "series",
-          _id: credit.series.id,
-          label: credit.series.name,
-          img: credit.series.img,
-          id: seriesId,
-        },
-      };
-      seriesNodes.set(seriesId, seriesNode);
+      for (let i = 0; i < 1; i++) {
+        for (const credit of creditNodes.values()) {
+          const { id: creditId, source: personId } = credit.data;
+          if (count(personId) <= 1) {
+            personNodes.delete(personId);
+            creditNodes.delete(creditId);
+          }
+        }
 
-      const creditId: CreditData["id"] = `${personId}-${seriesId}`;
-      const creditNode: EdgeDefinition & {
-        data: CreditData;
-      } = {
-        data: {
-          _type: "credit",
-          _id: credit.credit.id,
-          label: credit.credit.name,
-          id: creditId,
-          source: personId,
-          target: seriesId,
-        },
-      };
-      creditNodes.set(creditId, creditNode);
-    }
-
-    const count = (id: PersonData["id"] | SeriesData["id"]): number => {
-      let n = 0;
-      for (const credit of creditNodes.values())
-        if (credit.data.source === id || credit.data.target === id) n++;
-      return n;
-    };
-
-    for (let i = 0; i < 2; i++) {
-      for (const credit of creditNodes.values()) {
-        const { id: creditId, source: personId } = credit.data;
-        if (count(personId) <= 1) {
-          personNodes.delete(personId);
-          creditNodes.delete(creditId);
+        for (const credit of creditNodes.values()) {
+          const { id: creditId, target: seriesId } = credit.data;
+          if (count(seriesId) <= 1) {
+            seriesNodes.delete(seriesId);
+            creditNodes.delete(creditId);
+          }
         }
       }
 
-      for (const credit of creditNodes.values()) {
-        const { id: creditId, target: seriesId } = credit.data;
-        if (count(seriesId) <= 1) {
-          seriesNodes.delete(seriesId);
-          creditNodes.delete(creditId);
-        }
+      for (const person of personNodes.values())
+        if (count(person.data.id) === 0) personNodes.delete(person.data.id);
+      for (const series of seriesNodes.values())
+        if (count(series.data.id) === 0) seriesNodes.delete(series.data.id);
+
+      return [
+        ...personNodes.values(),
+        ...seriesNodes.values(),
+        ...creditNodes.values(),
+      ];
+    },
+    undefined,
+    {
+      equals: (a, b) =>
+        a
+          .map((n) => n.data.id)
+          .sort()
+          .join() ===
+        b
+          .map((n) => n.data.id)
+          .sort()
+          .join(),
+    },
+  );
+
+  const getDegree = createMemo(() => {
+    const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
+    for (const element of getElements())
+      if (element.data._type === "credit") {
+        const { source: personId, target: seriesId } = element.data;
+        degrees.set(personId, (degrees.get(personId) ?? 0) + 1);
+        degrees.set(seriesId, (degrees.get(seriesId) ?? 0) + 1);
       }
-    }
+    return degrees;
+  });
 
-    for (const person of personNodes.values())
-      if (count(person.data.id) === 0) personNodes.delete(person.data.id);
-    for (const series of seriesNodes.values())
-      if (count(series.data.id) === 0) seriesNodes.delete(series.data.id);
+  function getSize(node: Node<PersonData | SeriesData>): number {
+    const degree = getDegree().get(node.data("id")) ?? 1;
+    const mod = node.data("type") === "person" ? 30 : 30;
+    return Math.log(degree + 1) * mod;
+  }
 
-    return [
-      ...personNodes.values(),
-      ...seriesNodes.values(),
-      ...creditNodes.values(),
-    ];
+  onMount(() => {
+    cy = cytoscape({
+      container: ref,
+      style,
+      minZoom: 0.5,
+      maxZoom: 2,
+    }).on("tap", "node, edge", (event) => {
+      setTargetNode(event.target.data());
+    });
+
+    onCleanup(() => cy?.destroy());
+  });
+
+  createEffect(() => {
+    currentLayout?.stop();
+    currentLayout = cy
+      ?.json({
+        elements: getElements(),
+      })
+      .layout(layout)
+      .run();
+  });
+
+  let ref: undefined | HTMLDivElement;
+  let cy: undefined | Core;
+  let currentLayout: undefined | Layouts;
+
+  const layout: FcoseLayoutOptions = {
+    name: "fcose",
+    animate: true,
+    animationDuration: 100,
+    randomize: true,
+    nodeRepulsion: (node: Node<PersonData | SeriesData>) =>
+      (getDegree().get(node.data("id")) ?? 1) * 300 + 7000,
+    idealEdgeLength: 120,
+    edgeElasticity: 0.2,
   };
 
-  const getIntersectionCount = () =>
-    getElements().filter((el) => el.data._type !== "credit").length;
+  const style: StylesheetJsonBlock[] = [
+    {
+      selector: "node, edge",
+      style: {
+        color: getDocumentStyle("--pico-contrast"),
+        "font-family": getDocumentStyle("--pico-font-family"),
+        "font-weight": getDocumentStyle("--pico-font-weight"),
+      },
+    },
+    {
+      selector: "node",
+      style: {
+        label: (node: Node<PersonData | SeriesData>) => node.data("label"),
+        "background-color": (node: Node<PersonData | SeriesData>) => {
+          switch (node.data("_type")) {
+            case "person":
+              return "red";
+            case "series":
+              return list.has(node.data("_id")) ? "blue" : "gold";
+            default:
+              throw new TypeError();
+          }
+        },
+        width: getSize,
+        height: getSize,
+        // @ts-ignore
+        "text-max-width": 10,
+        "text-wrap": "wrap",
+        "text-halign": "center",
+        "text-valign": (node: Node<PersonData | SeriesData>) =>
+          node.data("type") === "series" ? "center" : "top",
+      },
+    },
+    {
+      selector: "edge",
+      style: {
+        label: (node: Node<CreditData>) => node.data("label"),
+        "line-color": (node: Node<CreditData>) => {
+          switch (node.data("department")) {
+            case "Actors":
+              return "gold";
+            default:
+              return "silver";
+          }
+        },
+        "text-rotation": "autorotate",
+        "curve-style": "bezier",
+      },
+    },
+  ];
+
+  function onReset(): void {
+    if (!cy) return;
+    cy.animate({
+      fit: { eles: cy.elements(), padding: 24 },
+      duration: 100,
+    });
+  }
 
   return (
     <article>
       <header>
         <h1>Suggest</h1>
-        <small>
-          <span>Found {getIntersectionCount() || "no"} </span>intersections.
-        </small>
       </header>
-      <Show when={getCredits.loading}>
-        <progress />
-      </Show>
-      <Graph getElements={getElements} onClickNode={setTargetNode} />
+
+      <section>
+        <Show when={getCredits.loading}>
+          <progress />
+        </Show>
+        <header class="flex justify-between mb-(--pico-block-spacing-vertical)">
+          <h3>
+            <span>Found {getElements().length || "no"} </span>nodes.
+          </h3>
+        </header>
+        <div
+          class="relative aspect-video touch-none bg-(--pico-background-color)"
+          ref={ref}
+        >
+          <HTMLIcon
+            type="recenter"
+            onClick={onReset}
+            class="absolute top-4 right-4 z-1"
+          />
+        </div>
+      </section>
+
       <Show when={getTargetNode()}>
-        {(_) => {
-          const api = useApi();
-          const onClose = () => setTargetNode(undefined);
-          const [getData] = createResource(getTargetNode, async (node) => {
-            switch (node._type) {
-              case "person":
-                return api
-                  .personDetails(node._id)
-                  .then((res) => ({ _type: "person" as const, ...res }));
-              case "series":
-                return api
-                  .tvSeriesDetails(node._id)
-                  .then((res) => ({ _type: "series" as const, ...res }));
-              case "credit":
-                return api
-                  .creditDetails(node._id)
-                  .then((res) => ({ _type: "credit" as const, ...res }));
-            }
-          });
-          return (
-            <ErrorBoundary fallback={ErrorModal.fallback(onClose)}>
-              <Suspense fallback={<progress />}>
-                <Modal onClose={onClose} class="flex flex-col">
-                  <article>
-                    {(() => {
-                      const data = getData();
-                      if (!data) return;
-                      switch (data._type) {
-                        case "person":
-                          return <PersonModal data={data} />;
-                        case "series":
-                          return <TvSeriesModal data={data} />;
-                        case "credit":
-                          return <CreditModal data={data} />;
-                      }
-                    })()}
-                    <button onClick={onClose} class="float-right">
-                      <HTMLIcon type="close" />
-                    </button>
-                  </article>
-                </Modal>
-              </Suspense>
-            </ErrorBoundary>
-          );
-        }}
+        <DetailModal targetNode={[getTargetNode, setTargetNode]} />
       </Show>
     </article>
+  );
+}
+
+function DetailModal(
+  props: ExtendProps<
+    typeof Modal,
+    { targetNode: Signal<undefined | NodeData> },
+    "onClose" | "class"
+  >,
+) {
+  const [local, parent] = splitProps(props, ["targetNode"]);
+  const [getTargetNode, setTargetNode] = local.targetNode;
+  const api = useApi();
+  const onClose = () => setTargetNode(undefined);
+  const [getData] = createResource(getTargetNode, async (node) => {
+    switch (node._type) {
+      case "person":
+        return api
+          .personDetails(node._id)
+          .then((res) => ({ _type: "person" as const, ...res }));
+      case "series":
+        return api
+          .tvSeriesDetails(node._id)
+          .then((res) => ({ _type: "series" as const, ...res }));
+      case "credit":
+        return api
+          .creditDetails(node._id)
+          .then((res) => ({ _type: "credit" as const, ...res }));
+    }
+  });
+  return (
+    <ErrorBoundary fallback={ErrorModal.fallback(onClose)}>
+      <Suspense fallback={<progress />}>
+        <Modal onClose={onClose} class="flex flex-col" {...parent}>
+          <article>
+            {(() => {
+              const data = getData();
+              if (!data) return;
+              switch (data._type) {
+                case "person":
+                  return <PersonModal data={data} />;
+                case "series":
+                  return <TvSeriesModal data={data} />;
+                case "credit":
+                  return <CreditModal data={data} />;
+              }
+            })()}
+            <button onClick={onClose} class="float-right">
+              <HTMLIcon type="close" />
+            </button>
+          </article>
+        </Modal>
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 
@@ -383,148 +530,5 @@ function CreditModal(local: { data: CreditsDetailsResponse }) {
         </div>
       </section>
     </>
-  );
-}
-
-function Graph(
-  props: ExtendProps<
-    "article",
-    {
-      getElements: Accessor<ElementDefinition[]>;
-      onClickNode: Setter<undefined | NodeData>;
-      maxZoom?: CytoscapeOptions["maxZoom"];
-      minZoom?: CytoscapeOptions["minZoom"];
-      padding?: FcoseLayoutOptions["padding"];
-    }
-  >,
-) {
-  const merged = mergeProps({ minZoom: 0.5, maxZoom: 2, padding: 24 }, props);
-  const [local, parent] = splitProps(merged, [
-    "getElements",
-    "onClickNode",
-    "maxZoom",
-    "minZoom",
-    "padding",
-  ]);
-  const list = useList();
-  const getDocumentStyle = useDocumentStyles();
-
-  const getDegree = createMemo(() => {
-    const degrees = new Map<PersonData["id"] | SeriesData["id"], number>();
-    for (const element of local.getElements())
-      if (element.data._type === "credit") {
-        const { source: personId, target: seriesId } = element.data;
-        degrees.set(personId, (degrees.get(personId) ?? 0) + 1);
-        degrees.set(seriesId, (degrees.get(seriesId) ?? 0) + 1);
-      }
-    return degrees;
-  });
-
-  function getSize(node: Node<PersonData | SeriesData>): number {
-    const degree = getDegree().get(node.data("id")) ?? 1;
-    const mod = node.data("type") === "person" ? 30 : 30;
-    return Math.log(degree + 1) * mod;
-  }
-
-  onMount(() => {
-    cy = cytoscape({
-      container: ref,
-      style,
-      minZoom: local.minZoom,
-      maxZoom: local.maxZoom,
-    }).on("tap", "node, edge", (event) => {
-      local.onClickNode(event.target.data());
-    });
-
-    onCleanup(() => cy?.destroy());
-  });
-
-  createEffect(() => {
-    currentLayout?.stop();
-    currentLayout = cy
-      ?.json({
-        elements: local.getElements(),
-      })
-      .layout(layout)
-      .run();
-  });
-
-  let ref: undefined | HTMLDivElement;
-  let cy: undefined | Core;
-  let currentLayout: undefined | Layouts;
-
-  const layout: FcoseLayoutOptions = {
-    name: "fcose",
-  };
-
-  const style: StylesheetJsonBlock[] = [
-    {
-      selector: "node, edge",
-      style: {
-        color: getDocumentStyle("--pico-contrast"),
-        "font-family": getDocumentStyle("--pico-font-family"),
-        "font-weight": getDocumentStyle("--pico-font-weight"),
-      },
-    },
-    {
-      selector: "node",
-      style: {
-        label: (node: Node<PersonData | SeriesData>) => node.data("label"),
-        "background-color": (node: Node<PersonData | SeriesData>) => {
-          switch (node.data("_type")) {
-            case "person":
-              return "red";
-            case "series":
-              return list.has(node.data("_id")) ? "blue" : "gold";
-            default:
-              throw new TypeError();
-          }
-        },
-        width: getSize,
-        height: getSize,
-        // @ts-ignore
-        "text-max-width": 10,
-        "text-wrap": "wrap",
-        "text-halign": "center",
-        "text-valign": (node: Node<PersonData | SeriesData>) =>
-          node.data("type") === "series" ? "center" : "top",
-      },
-    },
-    {
-      selector: "edge",
-      style: {
-        label: (node: Node<CreditData>) => node.data("label"),
-        "line-color": (node: Node<CreditData>) => {
-          switch (node.data("department")) {
-            case "Actors":
-              return "gold";
-            default:
-              return "silver";
-          }
-        },
-        "text-rotation": "autorotate",
-        "curve-style": "bezier",
-      },
-    },
-  ];
-
-  function onReset(): void {
-    if (!cy) return;
-    cy.animate({
-      fit: { eles: cy.elements(), padding: local.padding },
-      duration: 100,
-    });
-  }
-
-  return (
-    <article {...parent}>
-      <header>
-        <button onClick={onReset}>Reset</button>
-      </header>
-      <div
-        class="aspect-video touch-none bg-(--pico-background-color)"
-        ref={ref}
-      />
-    </article>
   );
 }
