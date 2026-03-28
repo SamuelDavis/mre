@@ -151,51 +151,6 @@ export type TvSeriesDetailsResponse = {
   };
 };
 
-export type PeopleTVCreditsResponse = {
-  cast: {
-    adult: boolean;
-    backdrop_path: ImgPath;
-    genre_ids: Genre["id"][];
-    id: TVSeriesId;
-    origin_country: [ISOCountry];
-    original_langauge: ISOLanguage;
-    original_name: string;
-    overview: string;
-    popularity: number;
-    poster_path: ImgPath;
-    first_air_date: DateString;
-    name: string;
-    vote_average: number;
-    vote_count: number;
-    character: string;
-    credit_id: CreditId;
-    episode_count: number;
-    first_credit_air_date: DateString;
-  }[];
-  crew: {
-    adult: boolean;
-    backdrop_path: ImgPath;
-    genre_ids: Genre["id"][];
-    id: TVSeriesId;
-    origin_country: [ISOCountry];
-    original_langauge: ISOLanguage;
-    original_name: string;
-    overview: string;
-    popularity: number;
-    poster_path: ImgPath;
-    first_air_date: DateString;
-    name: string;
-    vote_average: number;
-    vote_count: number;
-    credit_id: CreditId;
-    department: Department;
-    episode_count: number;
-    first_credit_air_date: DateString;
-    job: Job;
-  }[];
-  id: PersonId;
-};
-
 export type PeopleDetailsResponse = {
   adult: boolean;
   also_known_as: string[];
@@ -211,6 +166,49 @@ export type PeopleDetailsResponse = {
   place_of_birth: EnglishCountry;
   popularity: number;
   profile_path: ImgPath;
+  tv_credits: {
+    cast: {
+      adult: boolean;
+      backdrop_path: ImgPath;
+      genre_ids: Genre["id"][];
+      id: TVSeriesId;
+      origin_country: [ISOCountry];
+      original_langauge: ISOLanguage;
+      original_name: string;
+      overview: string;
+      popularity: number;
+      poster_path: ImgPath;
+      first_air_date: DateString;
+      name: string;
+      vote_average: number;
+      vote_count: number;
+      character: string;
+      credit_id: CreditId;
+      episode_count: number;
+      first_credit_air_date: DateString;
+    }[];
+    crew: {
+      adult: boolean;
+      backdrop_path: ImgPath;
+      genre_ids: Genre["id"][];
+      id: TVSeriesId;
+      origin_country: [ISOCountry];
+      original_langauge: ISOLanguage;
+      original_name: string;
+      overview: string;
+      popularity: number;
+      poster_path: ImgPath;
+      first_air_date: DateString;
+      name: string;
+      vote_average: number;
+      vote_count: number;
+      credit_id: CreditId;
+      department: Department;
+      episode_count: number;
+      first_credit_air_date: DateString;
+      job: Job;
+    }[];
+  };
 };
 
 export type CreditsDetailsResponse = {

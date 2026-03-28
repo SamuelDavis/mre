@@ -12,7 +12,6 @@ import type {
   CreditId,
   CreditsDetailsResponse,
   PeopleDetailsResponse,
-  PeopleTVCreditsResponse,
   PersonId,
   SearchTVResponse,
   TvSeriesDetailsResponse,
@@ -76,19 +75,15 @@ export function useApi() {
       id: PersonId,
       init: RequestInit = {},
     ): Promise<PeopleDetailsResponse> {
-      return tmdbRequest(authorize(init), `person/${id}`);
+      return tmdbRequest(authorize(init), `person/${id}`, {
+        append_to_response: "tv_credits",
+      });
     },
     creditDetails(
       id: CreditId,
       init: RequestInit = {},
     ): Promise<CreditsDetailsResponse> {
       return tmdbRequest(authorize(init), `credit/${id}`);
-    },
-    personTvCredits(
-      id: PersonId,
-      init: RequestInit = {},
-    ): Promise<PeopleTVCreditsResponse> {
-      return tmdbRequest(authorize(init), `person/${id}/tv_credits`);
     },
   };
 }
