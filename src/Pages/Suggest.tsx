@@ -275,12 +275,12 @@ export default function Suggest() {
         "border-color": "white",
         "border-style": "solid",
         "border-width": (node: Node) => {
-          const [id, type] = node.id().split(":");
+          const [id, type] = node.data().id?.split(":") ?? [];
           switch (type) {
             case "person":
-              return getListPeopleIds().has(Number(id)) ? "12px" : undefined;
+              return getListPeopleIds().has(Number(id)) ? "12px" : "0";
             case "series":
-              return getListSeriesIds().has(Number(id)) ? "12px" : undefined;
+              return getListSeriesIds().has(Number(id)) ? "12px" : "0";
             default:
               throw new TypeError();
           }
@@ -290,9 +290,9 @@ export default function Suggest() {
     {
       selector: "edge",
       style: {
-        label: (node) => {
+        label: (node: Node) => {
           const { id, job } = node.data();
-          const [, type] = id.split(":");
+          const [, type] = id?.split(":") ?? [];
           return type === "crew" ? job : undefined;
         },
         "text-rotation": "autorotate",

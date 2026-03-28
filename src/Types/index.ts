@@ -13,7 +13,7 @@ import type {
   TvSeriesDetailsResponse,
   TVSeriesId,
 } from "./TMDB";
-import type { EdgeDataDefinition, NodeDataDefinition } from "cytoscape";
+import type { NodeDataDefinition } from "cytoscape";
 
 export type MapLike<K extends PropertyKey, T> = {
   has(id: K): boolean;
