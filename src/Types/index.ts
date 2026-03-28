@@ -131,9 +131,9 @@ export type AppTVSeriesDetails = Pick<
   | "aggregate_credits"
 >;
 
-const castOrderLimit: number = 3 as const;
+const castOrderLimit: number = 1 as const;
 const interestingJobs: Job[] = [
-  "Creator",
+  // "Creator",
   "Writer",
   "Director",
   // "Storyboard",
@@ -151,94 +151,7 @@ export function isInterestingCrew(credit: { job: Job }): boolean {
   return interestingJobs.includes(credit.job);
 }
 
-export type PersonData = NodeDataDefinition & {
-  _type: "person";
-  _id: PersonId;
-  id: `${PersonId}:person`;
-  label: string;
-  img: ImgPath;
+export type Node = {
+  data(): NodeDataDefinition;
+  data<K extends keyof NodeDataDefinition>(key: K): NodeDataDefinition[K];
 };
-export type SeriesData = NodeDataDefinition & {
-  _type: "series";
-  _id: TVSeriesId;
-  id: `${TVSeriesId}:series`;
-  label: string;
-  img: ImgPath;
-};
-export type CreditData = EdgeDataDefinition & {
-  _type: "credit";
-  _id: CreditId;
-  id: `${PersonId}:person-${TVSeriesId}:series`;
-  label: Job;
-  source: PersonData["id"];
-  target: SeriesData["id"];
-};
-export type NodeData = PersonData | SeriesData | CreditData;
-export type Node<T extends NodeData> = {
-  data(): T;
-  data<K extends keyof T>(key: K): T[K];
-};
-
-export type CreditNode = {
-  _type: "cast" | "crew";
-  person: { id: PersonId; name: string; img: ImgPath };
-  series: { id: TVSeriesId; name: string; img: ImgPath };
-  credit: { id: CreditId; name: Job };
-};
-
-export function tvSeriesToCredits(
-  response: TvSeriesDetailsResponse,
-): CreditNode[] {
-  return [
-    ...response.aggregate_credits.cast
-      .flatMap((credit) => credit.roles.map((role) => ({ ...role, ...credit })))
-      .filter(isInterestingCast)
-      .map(
-        (credit): CreditNode => ({
-          _type: "cast",
-          person: {
-            id: credit.id,
-            name: credit.name,
-            img: credit.profile_path,
-          },
-          series: {
-            id: response.id,
-            name: response.name,
-            img: response.poster_path,
-          },
-          credit: { id: credit.credit_id, name: "Actor" },
-        }),
-      ),
-    ...response.aggregate_credits.crew
-      .flatMap((credit) => credit.jobs.map((job) => ({ ...job, ...credit })))
-      .filter(isInterestingCrew)
-      .map(
-        (credit): CreditNode => ({
-          _type: "crew",
-          person: {
-            id: credit.id,
-            name: credit.name,
-            img: credit.profile_path,
-          },
-          series: {
-            id: response.id,
-            name: response.name,
-            img: response.poster_path,
-          },
-          credit: { id: credit.credit_id, name: credit.job },
-        }),
-      ),
-    ...response.created_by.map(
-      (credit): CreditNode => ({
-        _type: "crew",
-        person: { id: credit.id, name: credit.name, img: credit.profile_path },
-        series: {
-          id: response.id,
-          name: response.name,
-          img: response.poster_path,
-        },
-        credit: { id: credit.credit_id, name: "Creator" },
-      }),
-    ),
-  ];
-}

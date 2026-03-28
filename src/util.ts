@@ -1,3 +1,5 @@
+import { isNumber } from "@samueldavis/solidlib";
+
 export const rateLimitInterval = 2000;
 export const rateLimitMaxUsage = 20;
 export const usage = new Set<string>();
@@ -38,10 +40,15 @@ export async function tmdbRequest<T>(
   return data;
 }
 
-function waitUntil(cb: () => boolean, time = 250): Promise<void> {
+export function waitUntil(
+  cb: number | (() => boolean),
+  time = 250,
+): Promise<void> {
+  const now = performance.now();
+  const isDone = isNumber(cb) ? () => performance.now() >= now + cb : cb;
   return new Promise((resolve) => {
     const interval = setInterval(() => {
-      if (!cb()) return;
+      if (!isDone()) return;
       clearInterval(interval);
       resolve();
     }, time);
