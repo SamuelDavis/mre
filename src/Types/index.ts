@@ -1,4 +1,5 @@
 export * from "./TMDB";
+export * from "./Cyto";
 
 import { isNonNullable, type Signal } from "@samueldavis/solidlib";
 import type {
@@ -13,7 +14,6 @@ import type {
   TvSeriesDetailsResponse,
   TVSeriesId,
 } from "./TMDB";
-import type { NodeDataDefinition } from "cytoscape";
 
 export type MapLike<K extends PropertyKey, T> = {
   has(id: K): boolean;
@@ -130,28 +130,3 @@ export type AppTVSeriesDetails = Pick<
   | "poster_path"
   | "aggregate_credits"
 >;
-
-const castOrderLimit: number = 1 as const;
-const interestingJobs: Job[] = [
-  // "Creator",
-  "Writer",
-  "Director",
-  // "Storyboard",
-  // "Producer",
-  // "Editor",
-  // "Co-Director",
-  // "Executive Producer",
-] as const;
-
-export function isInterestingCast(credit: { order: number }): boolean {
-  return credit.order <= castOrderLimit;
-}
-
-export function isInterestingCrew(credit: { job: Job }): boolean {
-  return interestingJobs.includes(credit.job);
-}
-
-export type Node = {
-  data(): NodeDataDefinition;
-  data<K extends keyof NodeDataDefinition>(key: K): NodeDataDefinition[K];
-};

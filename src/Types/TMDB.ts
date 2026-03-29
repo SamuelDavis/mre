@@ -210,54 +210,72 @@ export type PeopleDetailsResponse = {
     }[];
   };
 };
-
-export type CreditsDetailsResponse = {
-  credit_type: "cast" & string;
-  department: Department;
-  job: Job;
-  media: {
-    adult: boolean;
-    backdrop_path: ImgPath;
-    id: number;
-    name: string;
-    original_language: ISOLanguage;
-    original_name: string;
-    overview: string;
-    poster_path: ImgPath;
-    media_type: "tv" & string;
-    genre_ids: Genre["id"][];
-    popularity: number;
-    first_air_date: DateString;
-    vote_average: number;
-    vote_count: number;
-    origin_country: ISOCountry[];
-    character: string;
-    episodes: [];
-    seasons: {
-      air_date: DateString;
-      episode_count: number;
-      id: number;
-      name: string;
-      overview: string;
-      poster_path: ImgPath;
-      season_number: number;
-      show_id: TVSeriesId;
-    }[];
-  };
-  media_type: "tv" & string;
-  id: CreditId;
-  person: {
-    adult: boolean;
-    id: PersonId;
-    name: string;
-    original_name: string;
-    media_type: "person" & string;
-    popularity: number;
-    gender: Gender;
-    known_for_department: Department;
-    profile_path: ImgPath;
-  };
+type Person = {
+  adult: boolean;
+  id: PersonId;
+  name: string;
+  original_name: string;
+  media_type: string;
+  popularity: number;
+  gender: Gender;
+  known_for_department: Department;
+  profile_path: ImgPath;
 };
+
+type Season = {
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: ImgPath;
+  media_type: "tv_season" & string;
+  vote_average: number;
+  air_date: DateString;
+  season_number: number;
+  show_id: number;
+  episode_count: number;
+};
+
+type Media = {
+  adult: boolean;
+  backdrop_path: ImgPath;
+  id: number;
+  name: string;
+  original_name: string;
+  overview: string;
+  poster_path: ImgPath;
+  media_type: "tv" & string;
+  original_language: ISOLanguage;
+  genre_ids: Genre["id"][];
+  popularity: number;
+  first_air_date: DateString;
+  vote_average: number;
+  vote_count: number;
+  origin_country: ISOCountry[];
+  episodes: [];
+  seasons: Season[];
+};
+
+export type CreditsDetailsResponse =
+  | {
+      credit_type: "cast";
+      department: "Acting";
+      job: Job<"Actors">;
+      media: Media & {
+        character: string;
+      };
+      media_type: "tv" & string;
+      id: CreditId;
+      person: Person;
+    }
+  | {
+      credit_type: "crew";
+      department: Department;
+      job: Job;
+      media: Media;
+      media_type: "tv" & string;
+      id: CreditId;
+      person: Person;
+    };
 
 export type Configuration = typeof Configuration;
 export type ImgSizes = Configuration["Details"]["images"]["sizes"];
