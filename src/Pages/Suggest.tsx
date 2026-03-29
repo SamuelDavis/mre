@@ -29,7 +29,7 @@ import {
   type ExtendProps,
 } from "@samueldavis/solidlib";
 import Img from "../Components/Img";
-import { interestingJobs, castOrderLimit, type Href } from "../Types";
+import { type Href, getCreditsData, getPeopleData } from "../Types";
 import { waitUntil } from "../util";
 
 type ElData = {
@@ -65,45 +65,74 @@ export default function Suggest() {
         } as const;
         nodes.set(seriesData.id, { data: seriesData });
 
-        const credits = [
-          ...seriesRes.aggregate_credits.cast
-            .flatMap((c) =>
-              c.roles.map((e) => ({ ...c, ...e, type: "cast" as const })),
-            )
-            .filter((c) => c.order < castOrderLimit),
-          ...seriesRes.aggregate_credits.crew
-            .flatMap((c) =>
-              c.jobs.map((e) => ({ ...c, ...e, type: "crew" as const })),
-            )
-            .filter((c) => interestingJobs.includes(c.job)),
-        ];
-        for (const credit of credits) {
-          const personData = {
-            _id: credit.id,
-            _type: "person",
-            id: `${credit.id}:person`,
-          } as const;
+        const creditsData = getCreditsData(seriesRes);
+        const peopleData = getPeopleData(seriesRes);
+
+        for (const creditData of creditsData)
+          edges.set(creditData.id, { data: creditData });
+
+        for (const personData of peopleData)
           nodes.set(personData.id, { data: personData });
 
-          const creditData = {
-            _id: credit.credit_id,
-            _type: credit.type,
-            id: `${credit.credit_id}:credit`,
-            source: seriesData.id,
-            target: personData.id,
-          } as const;
-          edges.set(creditData.id, { data: creditData });
+        const peopleReqs = peopleData.map((data) =>
+          api.personDetails(data._id),
+        );
+        for await (const { tv_credits } of peopleReqs) {
+          const seriesReqs = [...tv_credits.cast, ...tv_credits.crew].map(
+            (credit) => api.tvSeriesDetails(credit.id),
+          );
+          for await (const seriesRes of seriesReqs) {
+            const seriesData = {
+              _id: seriesRes.id,
+              _type: "series",
+              id: `${seriesRes.id}:series`,
+            } as const;
+            nodes.set(seriesData.id, { data: seriesData });
+
+            for (const creditData of getCreditsData(seriesRes))
+              edges.set(creditData.id, { data: creditData });
+            for (const personData of getPeopleData(seriesRes))
+              nodes.set(personData.id, { data: personData });
+          }
+
+          await waitUntil(animationDuration);
+          mutate({ nodes, edges });
+        }
+      }
+
+      for (let i = 0; i < 10; i++) {
+        const elementDegrees = new Map<string, number>();
+        for (const { data } of edges.values())
+          if (data.source && data.target)
+            for (const node of [data.source, data.target])
+              elementDegrees.set(node, (elementDegrees.get(node) ?? 0) + 1);
+
+        for (const [edge, { data }] of edges) {
+          for (const node of [data.source, data.target])
+            if ((elementDegrees.get(node) ?? 0) <= 1) edges.delete(edge);
+        }
+
+        nextNode: for (const node of nodes.keys()) {
+          for (const { data } of edges.values())
+            if ([data.source, data.target].includes(node)) continue nextNode;
+          nodes.delete(node);
         }
 
         await waitUntil(animationDuration);
-        mutate({ nodes, edges });
       }
 
-      await waitUntil(animationDuration);
       return { nodes, edges };
     },
     { initialValue: { nodes: new Map(), edges: new Map() } },
   );
+
+  const getListEdges = createMemo(() => {
+    const listSeries = list.arr().map((id) => `${id}:series`);
+    const edges = getElements().edges;
+    return [...edges.values()].filter((edge) =>
+      listSeries.includes(edge.data.source),
+    );
+  });
 
   const getElementDegrees = createMemo(() => {
     const elementDegrees = new Map<string, number>();
@@ -120,8 +149,10 @@ export default function Suggest() {
     const { id, _type } = node.data();
     const degree = getElementDegrees().get(id) ?? 0;
     let mod = 1;
-    if (_type === "series") mod = 2;
-    else if (_type === "person") mod = 4;
+    if (_type === "series")
+      mod = getListEdges().some((edge) => edge.data.source === id) ? 4 : 2;
+    else if (_type === "person")
+      mod = getListEdges().some((edge) => edge.data.target === id) ? 4 : 2;
     else throw new TypeError();
     return Math.log(degree + 1) * mod * 10;
   }
@@ -226,7 +257,10 @@ export default function Suggest() {
     <article>
       <header>
         <h1>Suggest</h1>
-        <h2>{getElements().nodes.size} nodes found.</h2>
+        <h2>
+          {getElements().nodes.size} nodes, {getElements().edges.size} edges
+          found.
+        </h2>
       </header>
       <section>
         <div
