@@ -54,3 +54,7 @@ export function waitUntil(
     }, time);
   });
 }
+
+export function safe<T>(v: T, def: NonNullable<T>): NonNullable<T> {
+  return v ?? def;
+}

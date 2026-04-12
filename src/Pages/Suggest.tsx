@@ -24,13 +24,13 @@ import cytoscape from "cytoscape";
 import {
   HTMLIcon,
   isArray,
-  isKeyed,
+  isString,
   Modal,
   type ExtendProps,
 } from "@samueldavis/solidlib";
 import Img from "../Components/Img";
 import { type Href, getCreditsData, getPeopleData } from "../Types";
-import { waitUntil } from "../util";
+import { safe, waitUntil } from "../util";
 
 type ElData = {
   _id: string | number;
@@ -78,9 +78,10 @@ export default function Suggest() {
           api.personDetails(data._id),
         );
         for await (const { tv_credits } of peopleReqs) {
-          const seriesReqs = [...tv_credits.cast, ...tv_credits.crew].map(
-            (credit) => api.tvSeriesDetails(credit.id),
-          );
+          const seriesReqs = [
+            ...safe(tv_credits.cast, []),
+            ...safe(tv_credits.crew, []),
+          ].map((credit) => api.tvSeriesDetails(credit.id));
           for await (const seriesRes of seriesReqs) {
             const seriesData = {
               _id: seriesRes.id,
@@ -315,15 +316,20 @@ export default function Suggest() {
           return {
             id: res.id,
             type: _type,
-            name: res.name,
+            name: res.name ?? "",
             overview: res.overview,
             img,
             href: `https://www.themoviedb.org/tv/${res.id}`,
             extra: [
-              { key: "release", value: res.first_air_date },
+              { key: "release", value: res.first_air_date ?? "" },
               { key: "episodes", value: res.number_of_episodes },
-              { key: "seasons", value: res.seasons.length },
-              { key: "genres", value: res.genres.map((genre) => genre.name) },
+              { key: "seasons", value: safe(res.seasons, []).length },
+              {
+                key: "genres",
+                value: safe(res.genres, [])
+                  .map((genre) => genre.name)
+                  .filter(isString),
+              },
             ],
           };
         }
@@ -337,17 +343,17 @@ export default function Suggest() {
           return {
             id: res.id,
             type: _type,
-            name: res.name,
+            name: res.name ?? "",
             overview: res.biography,
             img,
             href: `https://www.themoviedb.org/person/${res.id}`,
             extra: [
-              { key: "birthday", value: res.birthday },
+              { key: "birthday", value: res.birthday ?? "" },
               {
                 key: "gender",
                 value: ["female", "male"][res.gender - 1] ?? "?",
               },
-              { key: "known for", value: res.known_for_department },
+              { key: "known for", value: res.known_for_department ?? "" },
             ],
           };
         }
@@ -359,22 +365,22 @@ export default function Suggest() {
           const img: ComponentProps<typeof Img<"profile">> = {
             type: "profile",
             size: "w185",
-            path: person.profile_path,
+            path: person?.profile_path ?? "",
           };
 
           return {
-            id: person.id,
+            id: person?.id ?? 0,
             type: _type,
-            name: person.name,
+            name: person?.name ?? "",
             img,
             extra: [
-              { key: "Department", value: res.department },
-              isKeyed(media, "character")
-                ? { key: "Character", value: media.character }
-                : { key: "Job", value: res.job },
+              { key: "Department", value: res.department ?? "" },
+              media?.character
+                ? { key: "Character", value: media.character ?? "" }
+                : { key: "Job", value: res.job ?? "" },
               {
                 key: "gender",
-                value: ["female", "male"][person.gender - 1] ?? "?",
+                value: ["female", "male"][safe(person?.gender, 0) - 1] ?? "?",
               },
             ],
           };

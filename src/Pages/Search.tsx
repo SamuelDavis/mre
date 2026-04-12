@@ -19,6 +19,7 @@ import Img from "../Components/Img";
 import { TVGenres } from "../Types/Configuration";
 import { ListToggle } from "../Components/ListToggle";
 import type { SearchTVResponseResult } from "../Types";
+import { safe } from "../util";
 
 export default function Search() {
   return (
@@ -95,12 +96,12 @@ function SearchResult(
 ) {
   const [local, parent] = splitProps(props, ["data"]);
   const getGenres = () =>
-    local.data.genre_ids
+    safe(local.data.genre_ids, [])
       .map((id) => TVGenres.find((genre) => genre.id === id))
       .filter(isNonNullable);
   const getHref = (): string =>
     `https://www.themoviedb.org/tv/${local.data.id}`;
-  const getYear = (): string => local.data.first_air_date.slice(0, 4);
+  const getYear = (): string => local.data.first_air_date?.slice(0, 4) ?? "";
 
   return (
     <article {...parent}>

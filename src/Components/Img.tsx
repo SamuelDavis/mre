@@ -6,7 +6,7 @@ import { Configuration } from "../Types/Configuration";
 export default function Img<Type extends keyof ImgSizes>(
   props: ExtendProps<
     "img",
-    { type: Type; size: ImgSizes[Type][number]; path: ImgPath },
+    { type: Type; size: ImgSizes[Type][number]; path: ImgPath | undefined },
     "src"
   >,
 ) {

@@ -1,4 +1,6 @@
+import { isOf } from "@samueldavis/solidlib";
 import type { Job, TvSeriesDetailsResponse } from "./TMDB";
+import { safe } from "../util";
 
 export const castOrderLimit: number = 1 as const;
 export const interestingJobs: Job[] = [
@@ -13,18 +15,17 @@ export const interestingJobs: Job[] = [
 ] as const;
 
 export function getPeopleData(seriesRes: TvSeriesDetailsResponse) {
-  return [
-    ...seriesRes.aggregate_credits.cast
-      .flatMap((c) =>
-        c.roles.map((e) => ({ ...c, ...e, type: "cast" as const })),
-      )
-      .filter((c) => c.order <= castOrderLimit),
-    ...seriesRes.aggregate_credits.crew
-      .flatMap((c) =>
-        c.jobs.map((e) => ({ ...c, ...e, type: "crew" as const })),
-      )
-      .filter((c) => interestingJobs.includes(c.job)),
-  ].map(
+  const cast = safe(seriesRes.aggregate_credits.cast, [])
+    .flatMap((c) =>
+      safe(c.roles, []).map((e) => ({ ...c, ...e, type: "cast" as const })),
+    )
+    .filter((c) => c.order <= castOrderLimit);
+  const crew = safe(seriesRes.aggregate_credits.crew, [])
+    .flatMap((c) =>
+      safe(c.jobs, []).map((e) => ({ ...c, ...e, type: "crew" as const })),
+    )
+    .filter((c) => isOf(c.job, interestingJobs));
+  return [...cast, ...crew].map(
     (credit) =>
       ({ _id: credit.id, _type: "person", id: `${credit.id}:person` }) as const,
   );
@@ -32,16 +33,16 @@ export function getPeopleData(seriesRes: TvSeriesDetailsResponse) {
 
 export function getCreditsData(seriesRes: TvSeriesDetailsResponse) {
   return [
-    ...seriesRes.aggregate_credits.cast
+    ...safe(seriesRes.aggregate_credits.cast, [])
       .flatMap((c) =>
-        c.roles.map((e) => ({ ...c, ...e, type: "cast" as const })),
+        safe(c.roles, []).map((e) => ({ ...c, ...e, type: "cast" as const })),
       )
       .filter((c) => c.order <= castOrderLimit),
-    ...seriesRes.aggregate_credits.crew
+    ...safe(seriesRes.aggregate_credits.crew, [])
       .flatMap((c) =>
-        c.jobs.map((e) => ({ ...c, ...e, type: "crew" as const })),
+        safe(c.jobs, []).map((e) => ({ ...c, ...e, type: "crew" as const })),
       )
-      .filter((c) => interestingJobs.includes(c.job)),
+      .filter((c) => isOf(c.job, interestingJobs)),
   ].map(
     (credit) =>
       ({

@@ -2,18 +2,6 @@ export * from "./TMDB";
 export * from "./Cyto";
 
 import { isNonNullable, type Signal } from "@samueldavis/solidlib";
-import type {
-  CreditId,
-  DateString,
-  Department,
-  Genre,
-  ImgPath,
-  Job,
-  PersonId,
-  SearchTVResponseResult,
-  TvSeriesDetailsResponse,
-  TVSeriesId,
-} from "./TMDB";
 
 export type MapLike<K extends PropertyKey, T> = {
   has(id: K): boolean;
@@ -78,55 +66,3 @@ export function createSetLike<T>([get, set]: Signal<T[]>): SetLike<T> {
     },
   };
 }
-
-export type Person = {
-  id: PersonId;
-  name: string;
-  profile_path: ImgPath;
-};
-export type TvSeries = {
-  id: TVSeriesId;
-  name: string;
-  original_name: string;
-  poster_path: ImgPath;
-  first_air_date: DateString;
-  overview: string;
-  tagline: string;
-  genre_ids: Genre["id"][];
-};
-export type Credit<D extends Department = Department> = {
-  id: CreditId;
-  department: D;
-  job: Job<D>;
-};
-export type Edge = {
-  id: CreditId;
-  tvSeriesId: TVSeriesId;
-  personId: PersonId;
-  creditId: CreditId;
-};
-
-export type AppTvSeriesSearch = Pick<
-  SearchTVResponseResult,
-  | "genre_ids"
-  | "id"
-  | "name"
-  | "original_name"
-  | "first_air_date"
-  | "overview"
-  | "poster_path"
->;
-
-export type AppTVSeriesDetails = Pick<
-  TvSeriesDetailsResponse,
-  | "created_by"
-  | "genres"
-  | "tagline"
-  | "id"
-  | "name"
-  | "original_name"
-  | "first_air_date"
-  | "overview"
-  | "poster_path"
-  | "aggregate_credits"
->;

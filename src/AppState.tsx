@@ -7,7 +7,7 @@ import {
   type Signal,
   createSignal,
 } from "solid-js";
-import { createSetLike, type SetLike, type TvSeries } from "./Types";
+import { createSetLike, type SetLike } from "./Types";
 import type {
   CreditId,
   CreditsDetailsResponse,
@@ -21,7 +21,7 @@ import { tmdbRequest } from "./util";
 
 type AppState = {
   apiKey: Signal<string>;
-  list: SetLike<TvSeries["id"]>;
+  list: SetLike<TVSeriesId>;
 };
 
 const AppStateContext = createContext<AppState>();
