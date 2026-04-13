@@ -16,6 +16,7 @@ import { useApi, useDocumentStyles, useList } from "../AppState";
 import type {
   Core,
   EdgeDefinition,
+  Layouts,
   NodeDefinition,
   StylesheetJsonBlock,
 } from "cytoscape";
@@ -188,9 +189,11 @@ export default function Suggest() {
 
   createEffect(() => {
     const { nodes, edges } = getElements();
-    cy?.json({
-      elements: { nodes: [...nodes.values()], edges: [...edges.values()] },
-    })
+    layout.randomize = !currentLayout;
+    currentLayout = cy
+      ?.json({
+        elements: { nodes: [...nodes.values()], edges: [...edges.values()] },
+      })
       .layout(layout)
       .run();
   });
@@ -205,6 +208,7 @@ export default function Suggest() {
 
   let container: undefined | HTMLDivElement;
   let cy: undefined | Core;
+  let currentLayout: undefined | Layouts;
 
   const layout: FcoseLayoutOptions = {
     name: "fcose",
