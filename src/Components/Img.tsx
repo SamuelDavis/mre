@@ -1,50 +1,22 @@
-import { isNonNullable, isOf, type ExtendProps } from "@samueldavis/solidlib";
-import { splitProps } from "solid-js";
-import type { ImgPath, ImgSizes } from "../Types";
+import type { ExtendProps } from "@samueldavis/solidlib";
+import { Show, splitProps } from "solid-js";
 import { Configuration } from "../Types/Configuration";
+import type { ImgSize, ImgType } from "../Types/TMDB";
 
-export default function Img<Type extends keyof ImgSizes>(
+export default function Img<T extends ImgType>(
   props: ExtendProps<
     "img",
-    { type: Type; size: ImgSizes[Type][number]; path: ImgPath | undefined },
+    { type: T; size: ImgSize<T>; path: null | string },
     "src"
   >,
 ) {
-  const [local, parent] = splitProps(props, [
-    "type",
-    "size",
-    "path",
-    "alt",
-    "sizes",
-  ]);
-  const getAlt = (): HTMLImageElement["alt"] => local.alt ?? local.type;
-  const getSrc = (): HTMLImageElement["src"] =>
-    Configuration.Details.images.secure_base_url +
-    (local.size ?? "original") +
-    local.path;
-  const getSrcSet = (): HTMLImageElement["srcset"] =>
-    Configuration.Details.images.sizes[local.type]
-      .map((size) => {
-        const [orientation, stringValue] = [size.slice(0, 1), size.slice(1)];
-        const value = Number(stringValue);
-        if (!isOf(orientation, ["w"])) return null;
-        const url = `${Configuration.Details.images.secure_base_url}${size}${local.path}`;
-        return `${url} ${value}${orientation}`;
-      })
-      .filter(isNonNullable)
-      .concat([
-        `${Configuration.Details.images.secure_base_url}original${local.path} 1000w`,
-      ])
-      .join(", ");
-  const getSizes = (): HTMLImageElement["sizes"] => `${local.size.slice(1)}px`;
+  const [local, parent] = splitProps(props, ["type", "size", "path"]);
+  const getSrc = (): string =>
+    `${Configuration.configuration.images.secure_base_url}${local.size}${local.path}`;
 
   return (
-    <img
-      src={getSrc()}
-      srcset={getSrcSet()}
-      sizes={getSizes()}
-      alt={getAlt()}
-      {...parent}
-    />
+    <Show when={local.path}>
+      <img src={getSrc()} alt={local.type} loading="lazy" {...parent} />
+    </Show>
   );
 }

@@ -1,29 +1,35 @@
 {
-  "name": "solidjs-template",
+  "name": "mre",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "gen:types": "openapi-typescript ./tmdb-api.json --properties-required-by-default -o src/Types/tmdb-api.d.ts",
+    "gen:config": "node scripts/gen-config.ts"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
     "@samueldavis/solidlib": "github:samueldavis/solidlib",
     "@solidjs/router": "^0.15.4",
-    "@tailwindcss/vite": "^4.2.0",
-    "cytoscape": "^3.33.1",
+    "cytoscape": "^3.34.3",
     "cytoscape-fcose": "^2.2.0",
-    "solid-js": "^1.9.10",
-    "tailwindcss": "^4.2.0"
+    "solid-js": "^1.9.10"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@types/cytoscape": "^3.21.9",
     "@types/cytoscape-fcose": "^2.2.5",
     "@types/node": "^24.10.1",
+    "jsdom": "^29.1.1",
+    "openapi-typescript": "^7.13.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
-    "vite-plugin-solid": "^2.11.10"
+    "vite-plugin-solid": "^2.11.10",
+    "vitest": "^5.0.3"
   }
 }

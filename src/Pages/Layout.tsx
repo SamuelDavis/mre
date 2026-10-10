@@ -1,15 +1,25 @@
 import { A } from "@solidjs/router";
-import { type ParentProps } from "solid-js";
+import { Show, Suspense, type ParentProps } from "solid-js";
+import { useApiKey } from "../AppState";
+import ApiKeyForm from "../Components/ApiKeyForm";
 
 export default function Layout(props: ParentProps) {
+  const [getApiKey, setApiKey] = useApiKey();
+
+  function onForgetKey(): void {
+    setApiKey("");
+  }
+
   return (
     <>
       <header>
         <nav>
           <ul>
             <li>
-              <A href="/">Home</A>
+              <strong>MRE</strong>
             </li>
+          </ul>
+          <ul>
             <li>
               <A href="/search">Search</A>
             </li>
@@ -17,19 +27,26 @@ export default function Layout(props: ParentProps) {
               <A href="/list">List</A>
             </li>
             <li>
-              <A href="/suggest">Suggest</A>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <small>
-                <b>M</b>edia <b>R</b>ecommendation <b>E</b>ngine
-              </small>
+              <A href="/recommend">Recommend</A>
             </li>
           </ul>
         </nav>
       </header>
-      <main>{props.children}</main>
+      <main>
+        <Show when={getApiKey()} fallback={<ApiKeyForm />}>
+          <Suspense fallback={<progress />}>{props.children}</Suspense>
+        </Show>
+      </main>
+      <footer>
+        <small>
+          Data from <a href="https://www.themoviedb.org">TMDB</a>.{" "}
+          <Show when={getApiKey()}>
+            <button type="button" class="link" onClick={onForgetKey}>
+              Forget access token
+            </button>
+          </Show>
+        </small>
+      </footer>
     </>
   );
 }

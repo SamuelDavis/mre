@@ -1,42 +1,75 @@
-import type { Configuration, TVGenres } from "./Configuration";
 import type { paths } from "./tmdb-api";
+import type { Configuration } from "./Configuration";
 
-type ApiPath = keyof paths;
-type Body<T extends ApiPath> = paths[T] extends {
-  get: { responses: { "200": { content: { "application/json": unknown } } } };
+type Get<P extends keyof paths> = paths[P] extends {
+  get: { responses: { 200: { content: { "application/json": infer B } } } };
 }
-  ? paths[T]["get"]["responses"]["200"]["content"]["application/json"]
+  ? B
   : never;
 
-export type ImgPath = string | `/${string}.${string}`;
-export type Href = `http${string}`;
-export type DateString = `${number}-${number}-${number}`;
-export type Gender = 1 | 2;
-export type TVSeriesId = number;
-export type PersonId = number;
-export type CreditId = string;
+type Fix<T> = T extends readonly (infer I)[]
+  ? Fix<I>[]
+  : T extends object
+    ? {
+        [K in keyof T]: K extends `${string}_path` ? null | string : Fix<T[K]>;
+      }
+    : T;
 
-export type SearchTVResponse = Body<"/3/search/tv">;
-export type SearchTVResponseResult = NonNullable<
-  SearchTVResponse["results"]
->[number];
-export type TvSeriesDetailsResponse = Body<"/3/tv/{series_id}"> & {
+type Item<T> = T extends readonly (infer I)[] ? I : never;
+
+export type Body<P extends keyof paths> = Fix<Get<P>>;
+
+export const mediaTypes = ["movie", "tv"] as const;
+export type MediaType = (typeof mediaTypes)[number];
+export type MediaKey = `${MediaType}:${number}`;
+export type MediaRef = { media: MediaType; id: number };
+export type PersonId = number;
+
+export type MovieDetails = Body<"/3/movie/{movie_id}"> & {
+  credits: Body<"/3/movie/{movie_id}/credits">;
+};
+export type TvDetails = Body<"/3/tv/{series_id}"> & {
   aggregate_credits: Body<"/3/tv/{series_id}/aggregate_credits">;
 };
-export type PeopleDetailsResponse = Body<"/3/person/{person_id}"> & {
-  tv_credits: Body<"/3/person/{person_id}/tv_credits">;
+export type DetailsOf = { movie: MovieDetails; tv: TvDetails };
+export type Details = {
+  [M in MediaType]: { media: M; data: DetailsOf[M] };
+}[MediaType];
+
+export type MovieCast = Item<
+  Body<"/3/person/{person_id}/movie_credits">["cast"]
+> & { media_type: "movie" };
+export type MovieCrew = Item<
+  Body<"/3/person/{person_id}/movie_credits">["crew"]
+> & { media_type: "movie" };
+export type TvCast = Item<Body<"/3/person/{person_id}/tv_credits">["cast"]> & {
+  media_type: "tv";
+};
+export type TvCrew = Omit<
+  Item<Body<"/3/person/{person_id}/tv_credits">["crew"]>,
+  "episode_count"
+> & { media_type: "tv"; episode_count?: number };
+export type CombinedCredits = {
+  id: PersonId;
+  cast: (MovieCast | TvCast)[];
+  crew: (MovieCrew | TvCrew)[];
 };
 
-export type CreditsDetailsResponse = Body<"/3/credit/{credit_id}">;
+export type SearchMovie = Item<Body<"/3/search/movie">["results"]> & {
+  media_type: "movie";
+};
+export type SearchTv = Item<Body<"/3/search/tv">["results"]> & {
+  media_type: "tv";
+};
+export type SearchPerson = { media_type: "person"; id: PersonId };
+export type SearchMultiResult = SearchMovie | SearchTv | SearchPerson;
+export type SearchMulti = Omit<Body<"/3/search/multi">, "results"> & {
+  results: SearchMultiResult[];
+};
 
-export type Configuration = typeof Configuration;
-export type ImgSizes = Configuration["Details"]["images"]["sizes"];
-export type Department = Configuration["Jobs"][number]["department"];
-export type Job<D extends Department = Department> = Extract<
-  Configuration["Jobs"][number],
-  { department: D }
->["jobs"][number];
-export type ISOLanguage = Configuration["Languages"][number]["iso_639_1"];
-export type ISOCountry = Configuration["Countries"][number]["iso_3166_1"];
-export type EnglishCountry = Configuration["Countries"][number]["english_name"];
-export type Genre = (typeof TVGenres)[number];
+type Config = typeof Configuration;
+export type Job = Config["jobs"][number]["jobs"][number];
+export type Genre = Config["genres"][MediaType]["genres"][number];
+export type ImgType = "backdrop" | "logo" | "poster" | "profile" | "still";
+export type ImgSize<T extends ImgType> =
+  Config["configuration"]["images"][`${T}_sizes`][number];

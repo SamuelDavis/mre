@@ -1,9 +1,13 @@
 @layer pico, theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+@import "@picocss/pico/css/pico.classless.css" layer(pico);
 
-@layer pico {
-  @import "@picocss/pico/css/pico.classless.css";
+:root {
+  --graph-media: #22b8cf;
+  --graph-person: #e64980;
+  --graph-cast: #fab005;
+  --graph-crew: #868e96;
 }
 
 .material-symbols {
@@ -18,4 +22,9 @@
   min-height: 0;
   display: grid;
   place-content: center;
+}
+
+button.link {
+  @apply m-0 inline w-auto cursor-pointer border-0 bg-transparent p-0 text-left text-(--pico-primary) underline;
+  font-size: inherit;
 }

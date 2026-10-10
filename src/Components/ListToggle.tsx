@@ -1,20 +1,17 @@
 import type { ExtendProps } from "@samueldavis/solidlib";
 import { splitProps } from "solid-js";
 import { useList } from "../AppState";
-import type { TVSeriesId } from "../Types";
+import type { MediaKey } from "../Types/TMDB";
 
-export function ListToggle(
-  props: ExtendProps<"label", { seriesId: TVSeriesId }>,
+export default function ListToggle(
+  props: ExtendProps<"label", { mediaKey: MediaKey }>,
 ) {
-  const [local, parent] = splitProps(props, ["seriesId"]);
+  const [local, parent] = splitProps(props, ["mediaKey"]);
   const list = useList();
-  const getLabel = (): string =>
-    `${list.has(local.seriesId) ? "Remove from" : "Add to"} list`;
+  const getChecked = (): boolean => list.has(local.mediaKey);
 
-  function onClick(): void {
-    list.has(local.seriesId)
-      ? list.del(local.seriesId)
-      : list.add(local.seriesId);
+  function onChange(): void {
+    list.toggle(local.mediaKey);
   }
 
   return (
@@ -22,11 +19,10 @@ export function ListToggle(
       <input
         type="checkbox"
         role="switch"
-        name={`list[${props.seriesId}]`}
-        checked={list.has(local.seriesId)}
-        onClick={onClick}
+        checked={getChecked()}
+        onChange={onChange}
       />
-      <span class="ml-(--pico-block-spacing-horizontal)">{getLabel()}</span>
+      In my list
     </label>
   );
 }

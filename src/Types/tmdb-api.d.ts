@@ -2950,7 +2950,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -2967,7 +2967,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Invalid API key: You must be granted a valid key. */
-                        status_message?: string;
+                        status_message: string;
                         /**
                          * @default true
                          * @example false
@@ -2998,14 +2998,14 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        avatar?: {
-                            gravatar?: {
+                        avatar: {
+                            gravatar: {
                                 /** @example c9e9fc152ee756a900db85757c29815d */
-                                hash?: string;
+                                hash: string;
                             };
-                            tmdb?: {
+                            tmdb: {
                                 /** @example /xy44UvpbTgzs9kWmp4C3fEaCl5h.png */
-                                avatar_path?: string;
+                                avatar_path: string;
                             };
                         };
                         /**
@@ -3014,18 +3014,18 @@ export interface operations {
                          */
                         id: number;
                         /** @example en */
-                        iso_639_1?: string;
+                        iso_639_1: string;
                         /** @example CA */
-                        iso_3166_1?: string;
+                        iso_3166_1: string;
                         /** @example Travis Bell */
-                        name?: string;
+                        name: string;
                         /**
                          * @default true
                          * @example false
                          */
                         include_adult: boolean;
                         /** @example travisbell */
-                        username?: string;
+                        username: string;
                     };
                 };
             };
@@ -3064,7 +3064,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -3103,7 +3103,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -3137,37 +3137,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /se5Hxz7PArQZOG3Nx2bpfOhLhtV.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 9806
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Incredibles */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Bob Parr has given up his superhero days to log in time as an insurance adjuster and raise his three children with his formerly heroic wife in suburbia. But when he receives a mysterious assignment, it's time to get back into costume. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 71.477
                              */
                             popularity: number;
                             /** @example /2LqaLgk4Z226KkgPJuiOQ58wvrm.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2004-10-27 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Incredibles */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -3227,38 +3227,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /bsNm9z2TJfe0WO3RedPGWQ8mG1X.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 1396
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Breaking Bad */
-                            original_name?: string;
+                            original_name: string;
                             /** @example When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 292.904
                              */
                             popularity: number;
                             /** @example /ggFHVNu6YYI5L9pCfOacjizRGt.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2008-01-20 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Breaking Bad */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 8.878
@@ -3311,9 +3311,9 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example  */
-                            description?: string;
+                            description: string;
                             /**
                              * @default 0
                              * @example 0
@@ -3330,12 +3330,12 @@ export interface operations {
                              */
                             item_count: number;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example movie */
-                            list_type?: string;
+                            list_type: string;
                             /** @example Test Alpha Sort */
-                            name?: string;
-                            poster_path?: unknown;
+                            name: string;
+                            poster_path: unknown;
                         }[];
                         /**
                          * @default 0
@@ -3380,37 +3380,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /dUVbWINfRMGojGZRcO6GF1Z2nV8.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 120
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Lord of the Rings: The Fellowship of the Ring */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 84.737
                              */
                             popularity: number;
                             /** @example /6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2001-12-18 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Lord of the Rings: The Fellowship of the Ring */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -3475,38 +3475,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /2yZXtM2Kky1Sy0kachbDlwybl3y.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 1705
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Fringe */
-                            original_name?: string;
+                            original_name: string;
                             /** @example FBI Special Agent Olivia Dunham, brilliant but formerly institutionalized scientist Walter Bishop and his scheming, reluctant son Peter uncover a deadly mystery involving a series of unbelievable events and realize they may be a part of a larger, more disturbing pattern that blurs the line between science fiction and technology. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 151.906
                              */
                             popularity: number;
                             /** @example /sY9hg5dLJ93RJOyKEiu1nAtBRND.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2008-09-09 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Fringe */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 8.109
@@ -3566,9 +3566,9 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example 2013-10-17 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 5
@@ -3580,11 +3580,11 @@ export interface operations {
                              */
                             id: number;
                             /** @example The Workplace Proximity */
-                            name?: string;
+                            name: string;
                             /** @example Amy starts working at Caltech which causes friction with Sheldon. Howard agrees with Sheldon who mentions this to Bernadette causing a big fight for the Wolowitzes. */
-                            overview?: string;
+                            overview: string;
                             /** @example 4X5305 */
-                            production_code?: string;
+                            production_code: string;
                             /**
                              * @default 0
                              * @example 22
@@ -3601,7 +3601,7 @@ export interface operations {
                              */
                             show_id: number;
                             /** @example /k8atjbd5gAsntuhbPnFpvnvo0qn.jpg */
-                            still_path?: string;
+                            still_path: string;
                             /**
                              * @default 0
                              * @example 7.242
@@ -3661,37 +3661,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /rgNzvSagnlc32TuMEBa529QFIig.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 76726
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Chronicle */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Three high school students make an incredible discovery, leading to their developing uncanny powers beyond their understanding. As they learn to control their abilities and use them to their advantage, their lives start to spin out of control, and their darker sides begin to take over. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 37.148
                              */
                             popularity: number;
                             /** @example /xENglsVIIWEEhhB5lgpy33tGcKI.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2012-02-01 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Chronicle */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -3751,38 +3751,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /7phlGHRupo38EnuwmkAHdNUqov3.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 58932
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Crazy Ones */
-                            original_name?: string;
+                            original_name: string;
                             /** @example The Crazy Ones is an American situation comedy series created by David E. Kelley that stars Robin Williams and Sarah Michelle Gellar. The single-camera project premiered on CBS on September 26, 2013, as part of the 2013–14 American television season as a Thursday night 9 pm entry. Bill D'Elia, Dean Lorey, Jason Winer, John Montgomery and Mark Teitelbaum serve as executive producers for 20th Century Fox Television. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 8.939
                              */
                             popularity: number;
                             /** @example /s2e7hTrdmNUaJDf0yDP5b4AHvrD.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2013-09-26 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example The Crazy Ones */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 6.176
@@ -3831,9 +3831,9 @@ export interface operations {
                          */
                         success: boolean;
                         /** @example 1ce82ec1223641636ad4a60b07de3581 */
-                        guest_session_id?: string;
+                        guest_session_id: string;
                         /** @example 2016-08-27 16:26:40 UTC */
-                        expires_at?: string;
+                        expires_at: string;
                     };
                 };
             };
@@ -3861,9 +3861,9 @@ export interface operations {
                          */
                         success: boolean;
                         /** @example 2016-08-26 17:04:39 UTC */
-                        expires_at?: string;
+                        expires_at: string;
                         /** @example ff5c7eeb5a8870efe3cd7fc5c282cffd26800ecd */
-                        request_token?: string;
+                        request_token: string;
                     };
                 };
             };
@@ -3898,7 +3898,7 @@ export interface operations {
                          */
                         success: boolean;
                         /** @example 79191836ddaa0da3df76a5ffef6f07ad6ab0c641 */
-                        session_id?: string;
+                        session_id: string;
                     };
                 };
             };
@@ -3933,7 +3933,7 @@ export interface operations {
                          */
                         success: boolean;
                         /** @example 2629f70fb498edc263a0adb99118ac41f0053e8c */
-                        session_id?: string;
+                        session_id: string;
                     };
                 };
             };
@@ -3968,9 +3968,9 @@ export interface operations {
                          */
                         success: boolean;
                         /** @example 2018-07-24 04:10:26 UTC */
-                        expires_at?: string;
+                        expires_at: string;
                         /** @example 1531f1a558c8357ce8990cf887ff196e8f5402ec */
-                        request_token?: string;
+                        request_token: string;
                     };
                 };
             };
@@ -4025,496 +4025,496 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        certifications?: {
-                            AU?: {
+                        certifications: {
+                            AU: {
                                 /** @example E */
-                                certification?: string;
+                                certification: string;
                                 /** @example Exempt from classification. Films that are exempt from classification must not contain contentious material (i.e. material that would ordinarily be rated M or higher). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            BG?: {
+                            BG: {
                                 /** @example D */
-                                certification?: string;
+                                certification: string;
                                 /** @example Prohibited for persons under 16. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 4
                                  */
                                 order: number;
                             }[];
-                            BR?: {
+                            BR: {
                                 /** @example 14 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Not recommended for minors under fourteen. More violent material, stronger sex references and/or nudity. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 4
                                  */
                                 order: number;
                             }[];
-                            CA?: {
+                            CA: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example All ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 2
                                  */
                                 order: number;
                             }[];
-                            "CA-QC"?: {
+                            "CA-QC": {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            DE?: {
+                            DE: {
                                 /** @example 12 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Children 12 or older admitted, children between 6 and 11 only when accompanied by parent or a legal guardian. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 3
                                  */
                                 order: number;
                             }[];
-                            DK?: {
+                            DK: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            ES?: {
+                            ES: {
                                 /** @example A */
-                                certification?: string;
+                                certification: string;
                                 /** @example General admission. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            FI?: {
+                            FI: {
                                 /** @example K-16 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Over 16 years. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 4
                                  */
                                 order: number;
                             }[];
-                            FR?: {
+                            FR: {
                                 /** @example TP */
-                                certification?: string;
+                                certification: string;
                                 /** @example Valid for all audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            GB?: {
+                            GB: {
                                 /** @example 15 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Only those over 15 years are admitted. Nobody younger than 15 can rent or buy a 15-rated VHS, DVD, Blu-ray Disc, UMD or game, or watch a film in the cinema with this rating. Films under this category can contain adult themes, hard drugs, frequent strong language and limited use of very strong language, strong violence and strong sex references, and nudity without graphic detail. Sexual activity may be portrayed but without any strong detail. Sexual violence may be shown if discreet and justified by context. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 5
                                  */
                                 order: number;
                             }[];
-                            HU?: {
+                            HU: {
                                 /** @example 6 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Not recommended below age of 6. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 2
                                  */
                                 order: number;
                             }[];
-                            IN?: {
+                            IN: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example Unrestricted Public Exhibition throughout India, suitable for all age groups. Films under this category should not upset children over 4. Such films may contain educational, social or family-oriented themes. Films under this category may also contain fantasy violence and/or mild bad language. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            IT?: {
+                            IT: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            LT?: {
+                            LT: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            MY?: {
+                            MY: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            NL?: {
+                            NL: {
                                 /** @example AL */
-                                certification?: string;
+                                certification: string;
                                 /** @example All ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            NO?: {
+                            NO: {
                                 /** @example 6 */
-                                certification?: string;
+                                certification: string;
                                 /** @example 6 years (no restriction for children accompanied by an adult). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 2
                                  */
                                 order: number;
                             }[];
-                            NZ?: {
+                            NZ: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for general audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            PH?: {
+                            PH: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            PT?: {
+                            PT: {
                                 /** @example Públicos */
-                                certification?: string;
+                                certification: string;
                                 /** @example For all the public (especially designed for children under 3 years of age). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            RU?: {
+                            RU: {
                                 /** @example 6+ */
-                                certification?: string;
+                                certification: string;
                                 /** @example (For children above 6) – Unsuitable for children under 6. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 2
                                  */
                                 order: number;
                             }[];
-                            SE?: {
+                            SE: {
                                 /** @example 11 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Children over the age of 7, who are accompanied by an adult, are admitted to films that have been passed for children from the age of 11. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 3
                                  */
                                 order: number;
                             }[];
-                            US?: {
+                            US: {
                                 /** @example R */
-                                certification?: string;
+                                certification: string;
                                 /** @example Under 17 requires accompanying parent or adult guardian 21 or older. The parent/guardian is required to stay with the child under 17 through the entire movie, even if the parent gives the child/teenager permission to see the film alone. These films may contain strong profanity, graphic sexuality, nudity, strong violence, horror, gore, and strong drug use. A movie rated R for profanity often has more severe or frequent language than the PG-13 rating would permit. An R-rated movie may have more blood, gore, drug use, nudity, or graphic sexuality than a PG-13 movie would admit. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 4
                                  */
                                 order: number;
                             }[];
-                            KR?: {
+                            KR: {
                                 /** @example All */
-                                certification?: string;
+                                certification: string;
                                 /** @example Film suitable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            SK?: {
+                            SK: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example General audience. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            TH?: {
+                            TH: {
                                 /** @example P */
-                                certification?: string;
+                                certification: string;
                                 /** @example Educational. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            MX?: {
+                            MX: {
                                 /** @example AA */
-                                certification?: string;
+                                certification: string;
                                 /** @example Informative-only rating: Understandable for children under 7 years. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            ID?: {
+                            ID: {
                                 /** @example SU */
-                                certification?: string;
+                                certification: string;
                                 /** @example All ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            TR?: {
+                            TR: {
                                 /** @example Genel İzleyici Kitlesi */
-                                certification?: string;
+                                certification: string;
                                 /** @example General audience. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            AR?: {
+                            AR: {
                                 /** @example ATP */
-                                certification?: string;
+                                certification: string;
                                 /** @example For all public. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            GR?: {
+                            GR: {
                                 /** @example K */
-                                certification?: string;
+                                certification: string;
                                 /** @example No restrictions. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            TW?: {
+                            TW: {
                                 /** @example 0+ */
-                                certification?: string;
+                                certification: string;
                                 /** @example Viewing is permitted for audiences of all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            ZA?: {
+                            ZA: {
                                 /** @example A */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for all. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            SG?: {
+                            SG: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            IE?: {
+                            IE: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for children of school going age (note: children can be enrolled in school from the age of 4). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            PR?: {
+                            PR: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            JP?: {
+                            JP: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example General, suitable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            VI?: {
+                            VI: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example All ages admitted. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            CH?: {
+                            CH: {
                                 /** @example 0 */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            IL?: {
+                            IL: {
                                 /** @example All */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            HK?: {
+                            HK: {
                                 /** @example I */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            MO?: {
+                            MO: {
                                 /** @example A */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            LV?: {
+                            LV: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            LU?: {
+                            LU: {
                                 /** @example EA */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
@@ -4543,441 +4543,441 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        certifications?: {
-                            AU?: {
+                        certifications: {
+                            AU: {
                                 /** @example P */
-                                certification?: string;
+                                certification: string;
                                 /** @example Programming is intended for younger children 2–11; commercial stations must show at least 30 minutes of P-rated content each weekday and weekends at all times. No advertisements may be shown during P-rated programs. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            BR?: {
+                            BR: {
                                 /** @example 14 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Content suitable for viewers over the age of 14. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 3
                                  */
                                 order: number;
                             }[];
-                            CA?: {
+                            CA: {
                                 /** @example Exempt */
-                                certification?: string;
+                                certification: string;
                                 /** @example Shows which are exempt from ratings (such as news and sports programming) will not display an on-screen rating at all. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            "CA-QC"?: {
+                            "CA-QC": {
                                 /** @example 18+ */
-                                certification?: string;
+                                certification: string;
                                 /** @example Only to be viewed by adults and may contain extreme violence and graphic sexual content. It is mostly used for 18+ movies and pornography. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 5
                                  */
                                 order: number;
                             }[];
-                            DE?: {
+                            DE: {
                                 /** @example 0 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Can be aired at any time. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            ES?: {
+                            ES: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            FR?: {
+                            FR: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            GB?: {
+                            GB: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example The U symbol stands for Universal. A U film should be suitable for audiences aged four years and over. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            HU?: {
+                            HU: {
                                 /** @example Unrated */
-                                certification?: string;
+                                certification: string;
                                 /** @example Without age restriction. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            KR?: {
+                            KR: {
                                 /** @example Exempt */
-                                certification?: string;
+                                certification: string;
                                 /** @example This rating is only for knowledge based game shows; lifestyle shows; documentary shows; news; current topic discussion shows; education/culture shows; sports that excludes MMA or other violent sports; and other programs that Korea Communications Standards Commission recognizes. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            LT?: {
+                            LT: {
                                 /** @example S */
-                                certification?: string;
+                                certification: string;
                                 /** @example Intended for adult viewers from the age of 18 (corresponding to the age-appropriate index N-18) and broadcast between 23 (11pm) and 6 (6am) hours; Limited to minors and intended for adult audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 3
                                  */
                                 order: number;
                             }[];
-                            NL?: {
+                            NL: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            PH?: {
+                            PH: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            PT?: {
+                            PT: {
                                 /** @example 12AP */
-                                certification?: string;
+                                certification: string;
                                 /** @example Acompanhamento Parental (may not be suitable for children under 12, parental guidance advised). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 3
                                  */
                                 order: number;
                             }[];
-                            RU?: {
+                            RU: {
                                 /** @example 16+ */
-                                certification?: string;
+                                certification: string;
                                 /** @example Only teens the age of 16 or older can watch. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 4
                                  */
                                 order: number;
                             }[];
-                            SK?: {
+                            SK: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example No rating information. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            TH?: {
+                            TH: {
                                 /** @example ส */
-                                certification?: string;
+                                certification: string;
                                 /** @example Sor - Educational movies which the public should be encouraged to see. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            US?: {
+                            US: {
                                 /** @example TV-MA */
-                                certification?: string;
+                                certification: string;
                                 /** @example This program is specifically designed to be viewed by adults and therefore may be unsuitable for children under 17. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 6
                                  */
                                 order: number;
                             }[];
-                            IT?: {
+                            IT: {
                                 /** @example T */
-                                certification?: string;
+                                certification: string;
                                 /** @example All ages admitted. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            FI?: {
+                            FI: {
                                 /** @example S */
-                                certification?: string;
+                                certification: string;
                                 /** @example Allowed at all times. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            MY?: {
+                            MY: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example No age limit. Can be broadcast anytime. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            NZ?: {
+                            NZ: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example Approved for general viewing. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            NO?: {
+                            NO: {
                                 /** @example A */
-                                certification?: string;
+                                certification: string;
                                 /** @example Allowed at all times. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            BG?: {
+                            BG: {
                                 /** @example Unrated */
-                                certification?: string;
+                                certification: string;
                                 /** @example Can be viewed for each age. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            MX?: {
+                            MX: {
                                 /** @example AA */
-                                certification?: string;
+                                certification: string;
                                 /** @example Aimed at children (can be broadcast anytime). */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            IN?: {
+                            IN: {
                                 /** @example U */
-                                certification?: string;
+                                certification: string;
                                 /** @example Viewable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            DK?: {
+                            DK: {
                                 /** @example A */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for a general audience. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            SE?: {
+                            SE: {
                                 /** @example Btl */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            ID?: {
+                            ID: {
                                 /** @example SU */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for general audiences over the age of 2 years. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            TR?: {
+                            TR: {
                                 /** @example Genel İzleyici */
-                                certification?: string;
+                                certification: string;
                                 /** @example General audience. Suitable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            AR?: {
+                            AR: {
                                 /** @example ATP */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for all audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            PL?: {
+                            PL: {
                                 /** @example 0 */
-                                certification?: string;
+                                certification: string;
                                 /** @example Positive or neutral view of the world, little to no violence, non-sexual love, and no sexual content. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            MA?: {
+                            MA: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example All audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            GR?: {
+                            GR: {
                                 /** @example K */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for all ages. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            IL?: {
+                            IL: {
                                 /** @example E */
-                                certification?: string;
+                                certification: string;
                                 /** @example Exempt from classification. This rating is usually applied to live broadcasts. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            TW?: {
+                            TW: {
                                 /** @example 0+ */
-                                certification?: string;
+                                certification: string;
                                 /** @example Suitable for watching by general audiences. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            ZA?: {
+                            ZA: {
                                 /** @example All */
-                                certification?: string;
+                                certification: string;
                                 /** @example This is a programme/film that does not contain any obscenity, and is suitable for family viewing. A logo must be displayed in the corner of the screen for 30 seconds after each commercial break. */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            SG?: {
+                            SG: {
                                 /** @example G */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 1
                                  */
                                 order: number;
                             }[];
-                            PR?: {
+                            PR: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 order: number;
                             }[];
-                            VI?: {
+                            VI: {
                                 /** @example NR */
-                                certification?: string;
+                                certification: string;
                                 /** @example  */
-                                meaning?: string;
+                                meaning: string;
                                 /**
                                  * @default 0
                                  * @example 0
@@ -5010,7 +5010,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 1120293
@@ -5062,7 +5062,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 4037513
@@ -5114,7 +5114,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 225591
@@ -5172,50 +5172,50 @@ export interface operations {
                          */
                         id: number;
                         /** @example Star Wars Collection */
-                        name?: string;
+                        name: string;
                         /** @example en */
-                        original_language?: string;
+                        original_language: string;
                         /** @example Star Wars Collection */
-                        original_name?: string;
+                        original_name: string;
                         /** @example An epic space-opera theatrical film series, which depicts the adventures of various characters "a long time ago in a galaxy far, far away…." */
-                        overview?: string;
+                        overview: string;
                         /** @example /22dj38IckjzEEUZwN1tPU5VJ1qq.jpg */
-                        poster_path?: string;
+                        poster_path: string;
                         /** @example /4z9ijhgEthfRHShoOvMaBlpciXS.jpg */
-                        backdrop_path?: string;
-                        parts?: {
+                        backdrop_path: string;
+                        parts: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /2w4xG178RpB4MDAIfTkqAuSJzec.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 11
                              */
                             id: number;
                             /** @example Star Wars */
-                            name?: string;
+                            name: string;
                             /** @example Star Wars */
-                            original_name?: string;
+                            original_name: string;
                             /** @example Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire. */
-                            overview?: string;
+                            overview: string;
                             /** @example /6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example movie */
-                            media_type?: string;
+                            media_type: string;
                             /** @example en */
-                            original_language?: string;
-                            genre_ids?: number[];
+                            original_language: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 15.8557
                              */
                             popularity: number;
                             /** @example 1977-05-25 */
-                            release_date?: string;
+                            release_date: string;
                             /**
                              * @default true
                              * @example false
@@ -5264,7 +5264,7 @@ export interface operations {
                          * @example 10
                          */
                         id: number;
-                        backdrops?: {
+                        backdrops: {
                             /**
                              * @default 0
                              * @example 1.778
@@ -5275,9 +5275,9 @@ export interface operations {
                              * @example 1080
                              */
                             height: number;
-                            iso_639_1?: unknown;
+                            iso_639_1: unknown;
                             /** @example /d8duYyyC9J5T825Hg7grmaabfxQ.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.464
@@ -5294,7 +5294,7 @@ export interface operations {
                              */
                             width: number;
                         }[];
-                        posters?: {
+                        posters: {
                             /**
                              * @default 0
                              * @example 0.667
@@ -5306,9 +5306,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /r8Ph5MYXL04Qzu4QBbq2KjqwtkQ.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.516
@@ -5353,22 +5353,22 @@ export interface operations {
                          * @example 10
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example AE */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example ar */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example العربية */
-                            name?: string;
+                            name: string;
                             /** @example Arabic */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /** @example  */
-                                title?: string;
+                                title: string;
                                 /** @example  */
-                                overview?: string;
+                                overview: string;
                                 /** @example  */
-                                homepage?: string;
+                                homepage: string;
                             };
                         }[];
                     };
@@ -5395,23 +5395,23 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example  */
-                        description?: string;
+                        description: string;
                         /** @example San Francisco, California */
-                        headquarters?: string;
+                        headquarters: string;
                         /** @example https://www.lucasfilm.com */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 1
                          */
                         id: number;
                         /** @example /o86DbpburjxrqAzEDhXZcyE8pDb.png */
-                        logo_path?: string;
+                        logo_path: string;
                         /** @example Lucasfilm Ltd. */
-                        name?: string;
+                        name: string;
                         /** @example US */
-                        origin_country?: string;
-                        parent_company?: unknown;
+                        origin_country: string;
+                        parent_company: unknown;
                     };
                 };
             };
@@ -5440,11 +5440,11 @@ export interface operations {
                          * @example 1
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example 루카스필름 */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            type?: string;
+                            type: string;
                         }[];
                     };
                 };
@@ -5474,23 +5474,23 @@ export interface operations {
                          * @example 1
                          */
                         id: number;
-                        logos?: {
+                        logos: {
                             /**
                              * @default 0
                              * @example 2.97979797979798
                              */
                             aspect_ratio: number;
                             /** @example /o86DbpburjxrqAzEDhXZcyE8pDb.png */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 99
                              */
                             height: number;
                             /** @example 5aa080d6c3a3683fea00011e */
-                            id?: string;
+                            id: string;
                             /** @example .svg */
-                            file_type?: string;
+                            file_type: string;
                             /**
                              * @default 0
                              * @example 5.384
@@ -5528,18 +5528,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        images?: {
+                        images: {
                             /** @example http://image.tmdb.org/t/p/ */
-                            base_url?: string;
+                            base_url: string;
                             /** @example https://image.tmdb.org/t/p/ */
-                            secure_base_url?: string;
-                            backdrop_sizes?: string[];
-                            logo_sizes?: string[];
-                            poster_sizes?: string[];
-                            profile_sizes?: string[];
-                            still_sizes?: string[];
+                            secure_base_url: string;
+                            backdrop_sizes: string[];
+                            logo_sizes: string[];
+                            poster_sizes: string[];
+                            profile_sizes: string[];
+                            still_sizes: string[];
                         };
-                        change_keys?: string[];
+                        change_keys: string[];
                     };
                 };
             };
@@ -5564,11 +5564,11 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example AD */
-                        iso_3166_1?: string;
+                        iso_3166_1: string;
                         /** @example Andorra */
-                        english_name?: string;
+                        english_name: string;
                         /** @example Andorra */
-                        native_name?: string;
+                        native_name: string;
                     }[];
                 };
             };
@@ -5591,8 +5591,8 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example Production */
-                        department?: string;
-                        jobs?: string[];
+                        department: string;
+                        jobs: string[];
                     }[];
                 };
             };
@@ -5615,11 +5615,11 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example bi */
-                        iso_639_1?: string;
+                        iso_639_1: string;
                         /** @example Bislama */
-                        english_name?: string;
+                        english_name: string;
                         /** @example  */
-                        name?: string;
+                        name: string;
                     }[];
                 };
             };
@@ -5662,8 +5662,8 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example AD */
-                        iso_3166_1?: string;
-                        zones?: string[];
+                        iso_3166_1: string;
+                        zones: string[];
                     }[];
                 };
             };
@@ -5690,44 +5690,44 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example cast */
-                        credit_type?: string;
+                        credit_type: string;
                         /** @example Acting */
-                        department?: string;
+                        department: string;
                         /** @example Actor */
-                        job?: string;
-                        media?: {
+                        job: string;
+                        media: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /uDgy6hyPd82kOHh6I95FLtLnj6p.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 100088
                              */
                             id: number;
                             /** @example The Last of Us */
-                            name?: string;
+                            name: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Last of Us */
-                            original_name?: string;
+                            original_name: string;
                             /** @example Zwanzig Jahre nachdem die moderne Zivilisation zerstört wurde. – Joel, ein abgehärteter Überlebender, wird angeheuert, um Ellie, ein 14-jähriges Mädchen, aus einer bedrückenden Quarantänezone zu schmuggeln. Was als kleiner Job beginnt, wird bald zu einer brutalen, herzzerreißenden Reise, bei der die beiden die USA durchqueren müssen und aufeinander angewiesen sind, um zu überleben. */
-                            overview?: string;
+                            overview: string;
                             /** @example /igwIPNClQpGVzb61QlGqcpT5zUy.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example tv */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 898.378
                              */
                             popularity: number;
                             /** @example 2023-01-15 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /**
                              * @default 0
                              * @example 8.749
@@ -5738,13 +5738,13 @@ export interface operations {
                              * @example 3341
                              */
                             vote_count: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example Joel Miller */
-                            character?: string;
-                            episodes?: unknown[];
-                            seasons?: {
+                            character: string;
+                            episodes: unknown[];
+                            seasons: {
                                 /** @example 2023-01-15 */
-                                air_date?: string;
+                                air_date: string;
                                 /**
                                  * @default 0
                                  * @example 9
@@ -5756,11 +5756,11 @@ export interface operations {
                                  */
                                 id: number;
                                 /** @example Staffel 1 */
-                                name?: string;
+                                name: string;
                                 /** @example Die 1. Staffel der Endzeit-Horrorserie The Last of Us feierte ihre Premiere am 15. Januar 2023 bei HBO. In Staffel 1 beginnt für den Überlebenden Joel und das Mädchen Ellie eine Reise durch das postapokalyptische Amerika, in dem Plünderer und mutierte Wesen ihnen nach dem Leben trachten. */
-                                overview?: string;
+                                overview: string;
                                 /** @example /aUQKIpZZ31KWbpdHMCmaV76u78T.jpg */
-                                poster_path?: string;
+                                poster_path: string;
                                 /**
                                  * @default 0
                                  * @example 1
@@ -5774,10 +5774,10 @@ export interface operations {
                             }[];
                         };
                         /** @example tv */
-                        media_type?: string;
+                        media_type: string;
                         /** @example 6024a814c0ae36003d59cc3c */
-                        id?: string;
-                        person?: {
+                        id: string;
+                        person: {
                             /**
                              * @default true
                              * @example false
@@ -5789,11 +5789,11 @@ export interface operations {
                              */
                             id: number;
                             /** @example Pedro Pascal */
-                            name?: string;
+                            name: string;
                             /** @example Pedro Pascal */
-                            original_name?: string;
+                            original_name: string;
                             /** @example person */
-                            media_type?: string;
+                            media_type: string;
                             /**
                              * @default 0
                              * @example 106.095
@@ -5805,9 +5805,9 @@ export interface operations {
                              */
                             gender: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example /dBOrm29cr7NUrjiDQMTtrTyDpfy.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         };
                     };
                 };
@@ -5888,37 +5888,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 640146
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 9272.643
                              */
                             popularity: number;
                             /** @example /ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-02-15 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -6013,33 +6013,33 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example /mAJ84W6I8I272Da87qplS2Dp9ST.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /** @example 2023-01-23 */
-                            first_air_date?: string;
-                            genre_ids?: number[];
+                            first_air_date: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 202250
                              */
                             id: number;
                             /** @example Dirty Linen */
-                            name?: string;
-                            origin_country?: string[];
+                            name: string;
+                            origin_country: string[];
                             /** @example tl */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Dirty Linen */
-                            original_name?: string;
+                            original_name: string;
                             /** @example To exact vengeance, a young woman infiltrates the household of an influential family as a housemaid to expose their dirty secrets. However, love will get in the way of her revenge plot. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 2684.061
                              */
                             popularity: number;
                             /** @example /ujlkQtHAVShWyWTloGU2Vh5Jbo9.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 5
@@ -6087,39 +6087,39 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        movie_results?: {
+                        movie_results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /44immBwzhDVyjn87b3x3l9mlhAD.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 934433
                              */
                             id: number;
                             /** @example Scream VI */
-                            title?: string;
+                            title: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Scream VI */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter. */
-                            overview?: string;
+                            overview: string;
                             /** @example /wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example movie */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 853.917
                              */
                             popularity: number;
                             /** @example 2023-03-08 */
-                            release_date?: string;
+                            release_date: string;
                             /**
                              * @default true
                              * @example false
@@ -6136,10 +6136,10 @@ export interface operations {
                              */
                             vote_count: number;
                         }[];
-                        person_results?: unknown[];
-                        tv_results?: unknown[];
-                        tv_episode_results?: unknown[];
-                        tv_season_results?: unknown[];
+                        person_results: unknown[];
+                        tv_results: unknown[];
+                        tv_episode_results: unknown[];
+                        tv_season_results: unknown[];
                     };
                 };
             };
@@ -6163,14 +6163,14 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        genres?: {
+                        genres: {
                             /**
                              * @default 0
                              * @example 28
                              */
                             id: number;
                             /** @example Action */
-                            name?: string;
+                            name: string;
                         }[];
                     };
                 };
@@ -6195,14 +6195,14 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        genres?: {
+                        genres: {
                             /**
                              * @default 0
                              * @example 10759
                              */
                             id: number;
                             /** @example Action & Adventure */
-                            name?: string;
+                            name: string;
                         }[];
                     };
                 };
@@ -6236,37 +6236,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /ikR2qy9xJCHX7M8i5rcvuNfdYXs.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 16
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Dancer in the Dark */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Selma, a Czech immigrant on the verge of blindness, struggles to make ends meet for herself and her son, who has inherited the same genetic disorder and will suffer the same fate without an expensive operation. When life gets too difficult, Selma learns to cope through her love of musicals, escaping life's troubles - even if just for a moment - by dreaming up little numbers to the rhythmic beats of her surroundings. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 14.684
                              */
                             popularity: number;
                             /** @example /8Wdd3fQfbbQeoSfWpHrDfaFNhBU.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2000-06-30 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Dancer in the Dark */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -6330,38 +6330,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 1399
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Game of Thrones */
-                            original_name?: string;
+                            original_name: string;
                             /** @example Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 404.299
                              */
                             popularity: number;
                             /** @example /7WUHnWGx5OO145IRxPDUkQSh4C7.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2011-04-17 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Game of Thrones */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 8.436
@@ -6420,9 +6420,9 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example 2011-04-17 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 1
@@ -6434,11 +6434,11 @@ export interface operations {
                              */
                             id: number;
                             /** @example Winter Is Coming */
-                            name?: string;
+                            name: string;
                             /** @example Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army. */
-                            overview?: string;
+                            overview: string;
                             /** @example 101 */
-                            production_code?: string;
+                            production_code: string;
                             /**
                              * @default 0
                              * @example 62
@@ -6455,7 +6455,7 @@ export interface operations {
                              */
                             show_id: number;
                             /** @example /9hGF3WUkBf7cSjMg0cdMDHJkByd.jpg */
-                            still_path?: string;
+                            still_path: string;
                             /**
                              * @default 0
                              * @example 7.843
@@ -6511,7 +6511,7 @@ export interface operations {
                          */
                         id: number;
                         /** @example hero */
-                        name?: string;
+                        name: string;
                     };
                 };
             };
@@ -6549,37 +6549,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /3CxUndGhUcZdt1Zggjdb2HkLLQX.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 640146
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Das Superhelden-Duo Scott Lang und Hope Van Dyne erkundet zusammen mit Hopes Eltern Hank Pym und Janet Van Dyne das Quantenreich, interagiert mit seltsamen neuen Kreaturen und begibt sich auf ein Abenteuer, das sie über die Grenzen dessen hinaustreiben wird, was sie für möglich gehalten haben. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 9200.005
                              */
                             popularity: number;
                             /** @example /nA5otwVxAfpBP4PVgeuBk3qHcLY.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-02-15 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -6626,7 +6626,7 @@ export interface operations {
             content: {
                 "application/json": {
                     /** Format: json */
-                    RAW_BODY?: string;
+                    RAW_BODY: string;
                 };
             };
         };
@@ -6644,7 +6644,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was updated successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -6713,7 +6713,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was updated successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -6745,7 +6745,7 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example The item/record was created successfully. */
-                        status_message?: string;
+                        status_message: string;
                         /**
                          * @default true
                          * @example true
@@ -6788,49 +6788,49 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example travisbell */
-                        created_by?: string;
+                        created_by: string;
                         /** @example The idea behind this list is to collect the live action comic book movies from within the Marvel franchise. */
-                        description?: string;
+                        description: string;
                         /**
                          * @default 0
                          * @example 0
                          */
                         favorite_count: number;
                         /** @example 1 */
-                        id?: string;
-                        items?: {
+                        id: string;
+                        items: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /14QbnygCuTO0vl7CAFmPf1fgZfV.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 634649
                              */
                             id: number;
                             /** @example movie */
-                            media_type?: string;
+                            media_type: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Spider-Man: No Way Home */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Peter Parker ist demaskiert und kann sein normales Leben nicht mehr von den hohen Einsätzen als Superheld trennen. Als er Doctor Strange um Hilfe bittet, wird die Lage noch gefährlicher und er muss entdecken, was es wirklich bedeutet, Spider-Man zu sein. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 398.217
                              */
                             popularity: number;
                             /** @example /iNKf4D0AzOj9GLq8ZyG3WZaqibL.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2021-12-15 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Spider-Man: No Way Home */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -6853,11 +6853,11 @@ export interface operations {
                          */
                         item_count: number;
                         /** @example en */
-                        iso_639_1?: string;
+                        iso_639_1: string;
                         /** @example The Marvel Universe */
-                        name?: string;
+                        name: string;
                         /** @example /coJVIUEOToAEGViuhclM7pXC75R.jpg */
-                        poster_path?: string;
+                        poster_path: string;
                     };
                 };
             };
@@ -6889,7 +6889,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was updated successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -6928,7 +6928,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was deleted successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -6955,48 +6955,48 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        dates?: {
+                        dates: {
                             /** @example 2023-05-03 */
-                            maximum?: string;
+                            maximum: string;
                             /** @example 2023-03-16 */
-                            minimum?: string;
+                            minimum: string;
                         };
                         /**
                          * @default 0
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /iJQIbOPm81fPEGKt5BPuZmfnA54.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 502356
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Super Mario Bros. Movie */
-                            original_title?: string;
+                            original_title: string;
                             /** @example While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 6572.614
                              */
                             popularity: number;
                             /** @example /qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-04-05 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Super Mario Bros. Movie */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -7054,37 +7054,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /gMJngTNfaqCSCqGD4y8lVMZXKDn.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 640146
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 8567.865
                              */
                             popularity: number;
                             /** @example /ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-02-15 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Ant-Man and the Wasp: Quantumania */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -7142,37 +7142,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /tmU7GeKVybMWFButWEGl2M4GeiP.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 238
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Godfather */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 100.932
                              */
                             popularity: number;
                             /** @example /3bhkrj58Vtu7enYsRolD1fZdja1.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1972-03-14 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Godfather */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -7225,48 +7225,48 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        dates?: {
+                        dates: {
                             /** @example 2023-05-23 */
-                            maximum?: string;
+                            maximum: string;
                             /** @example 2023-05-04 */
-                            minimum?: string;
+                            minimum: string;
                         };
                         /**
                          * @default 0
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /7bWxAsNPv9CXHOhZbJVlj2KxgfP.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 713704
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Evil Dead Rise */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Two sisters find an ancient vinyl that gives birth to bloodthirsty demons that run amok in a Los Angeles apartment building and thrusts them into a primal battle for survival as they face the most nightmarish version of family imaginable. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 1696.367
                              */
                             popularity: number;
                             /** @example /mIBCtPvKZQlxubxKMeViO2UrP3q.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-04-12 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Evil Dead Rise */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -7326,78 +7326,78 @@ export interface operations {
                          */
                         adult: boolean;
                         /** @example /2w4xG178RpB4MDAIfTkqAuSJzec.jpg */
-                        backdrop_path?: string;
-                        belongs_to_collection?: {
+                        backdrop_path: string;
+                        belongs_to_collection: {
                             /**
                              * @default 0
                              * @example 10
                              */
                             id: number;
                             /** @example Star Wars Collection */
-                            name?: string;
+                            name: string;
                             /** @example /pWVLFh4OuejTpUaDQbB1C4zoS2p.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example /iY2ujEY2m68OTTlPFTiHub9joHS.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                         };
                         /**
                          * @default 0
                          * @example 11000000
                          */
                         budget: number;
-                        genres?: {
+                        genres: {
                             /**
                              * @default 0
                              * @example 12
                              */
                             id: number;
                             /** @example Adventure */
-                            name?: string;
+                            name: string;
                         }[];
                         /** @example http://www.starwars.com/films/star-wars-episode-iv-a-new-hope */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 11
                          */
                         id: number;
                         /** @example tt0076759 */
-                        imdb_id?: string;
-                        origin_country?: string[];
+                        imdb_id: string;
+                        origin_country: string[];
                         /** @example en */
-                        original_language?: string;
+                        original_language: string;
                         /** @example Star Wars */
-                        original_title?: string;
+                        original_title: string;
                         /** @example Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire. */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 20.6912
                          */
                         popularity: number;
                         /** @example /6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg */
-                        poster_path?: string;
-                        production_companies?: {
+                        poster_path: string;
+                        production_companies: {
                             /**
                              * @default 0
                              * @example 1
                              */
                             id: number;
                             /** @example /tlVSws0RvvtPBwViUyOFAO0vcQS.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example Lucasfilm Ltd. */
-                            name?: string;
+                            name: string;
                             /** @example US */
-                            origin_country?: string;
+                            origin_country: string;
                         }[];
-                        production_countries?: {
+                        production_countries: {
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example United States of America */
-                            name?: string;
+                            name: string;
                         }[];
                         /** @example 1977-05-25 */
-                        release_date?: string;
+                        release_date: string;
                         /**
                          * @default 0
                          * @example 775398007
@@ -7408,20 +7408,20 @@ export interface operations {
                          * @example 121
                          */
                         runtime: number;
-                        spoken_languages?: {
+                        spoken_languages: {
                             /** @example English */
-                            english_name?: string;
+                            english_name: string;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example English */
-                            name?: string;
+                            name: string;
                         }[];
                         /** @example Released */
-                        status?: string;
+                        status: string;
                         /** @example A long time ago in a galaxy far, far away... */
-                        tagline?: string;
+                        tagline: string;
                         /** @example Star Wars */
-                        title?: string;
+                        title: string;
                         /**
                          * @default false
                          * @example false
@@ -7473,7 +7473,7 @@ export interface operations {
                          * @example true
                          */
                         favorite: boolean;
-                        rated?: {
+                        rated: {
                             /**
                              * @default 0
                              * @example 9
@@ -7516,13 +7516,13 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        titles?: {
+                        titles: {
                             /** @example RS */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Borilački klub */
-                            title?: string;
+                            title: string;
                             /** @example  */
-                            type?: string;
+                            type: string;
                         }[];
                     };
                 };
@@ -7551,24 +7551,24 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        changes?: {
+                        changes: {
                             /** @example images */
-                            key?: string;
-                            items?: {
+                            key: string;
+                            items: {
                                 /** @example 643197b96dea3a00d4377270 */
-                                id?: string;
+                                id: string;
                                 /** @example added */
-                                action?: string;
+                                action: string;
                                 /** @example 2023-04-08 16:35:05 UTC */
-                                time?: string;
+                                time: string;
                                 /** @example  */
-                                iso_639_1?: string;
+                                iso_639_1: string;
                                 /** @example  */
-                                iso_3166_1?: string;
-                                value?: {
-                                    poster?: {
+                                iso_3166_1: string;
+                                value: {
+                                    poster: {
                                         /** @example /s9ZrHprviFCx3azfWNBtt1LPSnL.jpg */
-                                        file_path?: string;
+                                        file_path: string;
                                     };
                                 };
                             }[];
@@ -7603,7 +7603,7 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -7620,34 +7620,34 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Edward Norton */
-                            name?: string;
+                            name: string;
                             /** @example Edward Norton */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 26.99
                              */
                             popularity: number;
                             /** @example /8nytsqL59SFJTVYVrN72k6qkGgJ.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /**
                              * @default 0
                              * @example 4
                              */
                             cast_id: number;
                             /** @example The Narrator */
-                            character?: string;
+                            character: string;
                             /** @example 52fe4250c3a36847f80149f3 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
@@ -7664,24 +7664,24 @@ export interface operations {
                              */
                             id: number;
                             /** @example Production */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Arnon Milchan */
-                            name?: string;
+                            name: string;
                             /** @example Arnon Milchan */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 2.931
                              */
                             popularity: number;
                             /** @example /b2hBExX4NnczNAnLuTBF4kmNhZm.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /** @example 55731b8192514111610027d7 */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Production */
-                            department?: string;
+                            department: string;
                             /** @example Executive Producer */
-                            job?: string;
+                            job: string;
                         }[];
                     };
                 };
@@ -7712,12 +7712,12 @@ export interface operations {
                          */
                         id: number;
                         /** @example tt0137523 */
-                        imdb_id?: string;
-                        wikidata_id?: unknown;
+                        imdb_id: string;
+                        wikidata_id: unknown;
                         /** @example FightClub */
-                        facebook_id?: string;
-                        instagram_id?: unknown;
-                        twitter_id?: unknown;
+                        facebook_id: string;
+                        instagram_id: unknown;
+                        twitter_id: unknown;
                     };
                 };
             };
@@ -7745,7 +7745,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        backdrops?: {
+                        backdrops: {
                             /**
                              * @default 0
                              * @example 1.778
@@ -7756,9 +7756,9 @@ export interface operations {
                              * @example 800
                              */
                             height: number;
-                            iso_639_1?: unknown;
+                            iso_639_1: unknown;
                             /** @example /hZkgoQYus5vegHoetLkCJzb17zJ.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.622
@@ -7780,7 +7780,7 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        logos?: {
+                        logos: {
                             /**
                              * @default 0
                              * @example 5.203
@@ -7792,9 +7792,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example he */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /c1KLulrIhUqY5fT42nmC5aERGCp.png */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.312
@@ -7811,7 +7811,7 @@ export interface operations {
                              */
                             width: number;
                         }[];
-                        posters?: {
+                        posters: {
                             /**
                              * @default 0
                              * @example 0.667
@@ -7823,9 +7823,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example pt */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /r3pPehX4ik8NLYPpbDRAh0YRtMb.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.258
@@ -7870,14 +7870,14 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        keywords?: {
+                        keywords: {
                             /**
                              * @default 0
                              * @example 818
                              */
                             id: number;
                             /** @example based on novel or book */
-                            name?: string;
+                            name: string;
                         }[];
                     };
                 };
@@ -7905,38 +7905,38 @@ export interface operations {
                          * @example false
                          */
                         adult: boolean;
-                        backdrop_path?: unknown;
-                        belongs_to_collection?: unknown;
+                        backdrop_path: unknown;
+                        belongs_to_collection: unknown;
                         /**
                          * @default 0
                          * @example 0
                          */
                         budget: number;
-                        genres?: unknown[];
+                        genres: unknown[];
                         /** @example  */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 1119232
                          */
                         id: number;
-                        imdb_id?: unknown;
+                        imdb_id: unknown;
                         /** @example fr */
-                        original_language?: string;
+                        original_language: string;
                         /** @example König Charles III */
-                        original_title?: string;
+                        original_title: string;
                         /** @example  */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 0
                          */
                         popularity: number;
-                        poster_path?: unknown;
-                        production_companies?: unknown[];
-                        production_countries?: unknown[];
+                        poster_path: unknown;
+                        production_companies: unknown[];
+                        production_countries: unknown[];
                         /** @example  */
-                        release_date?: string;
+                        release_date: string;
                         /**
                          * @default 0
                          * @example 0
@@ -7947,13 +7947,13 @@ export interface operations {
                          * @example 0
                          */
                         runtime: number;
-                        spoken_languages?: unknown[];
+                        spoken_languages: unknown[];
                         /** @example Released */
-                        status?: string;
+                        status: string;
                         /** @example  */
-                        tagline?: string;
+                        tagline: string;
                         /** @example König Charles III */
-                        title?: string;
+                        title: string;
                         /**
                          * @default true
                          * @example false
@@ -8005,9 +8005,9 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example Movies I own */
-                            description?: string;
+                            description: string;
                             /**
                              * @default 0
                              * @example 0
@@ -8024,12 +8024,12 @@ export interface operations {
                              */
                             item_count: number;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example movie */
-                            list_type?: string;
+                            list_type: string;
                             /** @example My Movies */
-                            name?: string;
-                            poster_path?: unknown;
+                            name: string;
+                            poster_path: unknown;
                         }[];
                         /**
                          * @default 0
@@ -8094,19 +8094,19 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example BG */
-                            iso_3166_1?: string;
-                            release_dates?: {
+                            iso_3166_1: string;
+                            release_dates: {
                                 /** @example c */
-                                certification?: string;
-                                descriptors?: unknown[];
+                                certification: string;
+                                descriptors: unknown[];
                                 /** @example  */
-                                iso_639_1?: string;
+                                iso_639_1: string;
                                 /** @example  */
-                                note?: string;
+                                note: string;
                                 /** @example 2012-08-28T00:00:00.000Z */
-                                release_date?: string;
+                                release_date: string;
                                 /**
                                  * @default 0
                                  * @example 3
@@ -8150,28 +8150,28 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example Goddard */
-                            author?: string;
-                            author_details?: {
+                            author: string;
+                            author_details: {
                                 /** @example  */
-                                name?: string;
+                                name: string;
                                 /** @example Goddard */
-                                username?: string;
+                                username: string;
                                 /** @example /https://secure.gravatar.com/avatar/f248ec34f953bc62cafcbdd81fddd6b6.jpg */
-                                avatar_path?: string;
-                                rating?: unknown;
+                                avatar_path: string;
+                                rating: unknown;
                             };
                             /** @example Pretty awesome movie.  It shows what one crazy person can convince other crazy people to do.  Everyone needs something to believe in.  I recommend Jesus Christ, but they want Tyler Durden. */
-                            content?: string;
+                            content: string;
                             /** @example 2018-06-09T17:51:53.359Z */
-                            created_at?: string;
+                            created_at: string;
                             /** @example 5b1c13b9c3a36848f2026384 */
-                            id?: string;
+                            id: string;
                             /** @example 2021-06-23T15:58:09.421Z */
-                            updated_at?: string;
+                            updated_at: string;
                             /** @example https://www.themoviedb.org/review/5b1c13b9c3a36848f2026384 */
-                            url?: string;
+                            url: string;
                         }[];
                         /**
                          * @default 0
@@ -8214,37 +8214,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /3YAldML4EDyoC6RBpzceALigrAZ.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 9300
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Orlando */
-                            original_title?: string;
+                            original_title: string;
                             /** @example England, 1600. Queen Elizabeth I promises Orlando, a young nobleman obsessed with poetry, that she will grant him land and fortune if he agrees to satisfy a very particular request. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 7.768
                              */
                             popularity: number;
                             /** @example /xvz0qZkXXMq3dH2Revxii8drxWc.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1992-12-11 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Orlando */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -8299,29 +8299,29 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example SA */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example ar */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example العربية */
-                            name?: string;
+                            name: string;
                             /** @example Arabic */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /** @example  */
-                                homepage?: string;
+                                homepage: string;
                                 /** @example إدوارد يتعرض لضغوط حتى يصل به الحال إلى أنه لا يستطيع النوم لفتراتٍ طويلة، لكنه يجد بعض السلام في جلسات العلاج النفسي الجماعي، يتعرف إدوارد على أحد الأشخاص وهو (تايلر ديردن) الذي يحرره من تعلقه بالأشياء الذي تستعبده ،ثم يحرره من خوفه من الناس. يقومان معًا بإنشاء نادي القتال الذي يجذب الكثير من الأفراد المحبطين ،الذين يقومون بإخراج طاقة غضبهم وكرههم للعالم في القتال. */
-                                overview?: string;
+                                overview: string;
                                 /**
                                  * @default 0
                                  * @example 0
                                  */
                                 runtime: number;
                                 /** @example  */
-                                tagline?: string;
+                                tagline: string;
                                 /** @example  */
-                                title?: string;
+                                title: string;
                             };
                         }[];
                     };
@@ -8354,33 +8354,33 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Fight Club (1999) Trailer - Starring Brad Pitt, Edward Norton, Helena Bonham Carter */
-                            name?: string;
+                            name: string;
                             /** @example O-b2VfmmbyA */
-                            key?: string;
+                            key: string;
                             /** @example YouTube */
-                            site?: string;
+                            site: string;
                             /**
                              * @default 0
                              * @example 720
                              */
                             size: number;
                             /** @example Trailer */
-                            type?: string;
+                            type: string;
                             /**
                              * @default true
                              * @example false
                              */
                             official: boolean;
                             /** @example 2016-03-05T02:03:14.000Z */
-                            published_at?: string;
+                            published_at: string;
                             /** @example 639d5326be6d88007f170f44 */
-                            id?: string;
+                            id: string;
                         }[];
                     };
                 };
@@ -8410,52 +8410,52 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        results?: {
-                            AE?: {
+                        results: {
+                            AE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=AE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -8463,19 +8463,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AL?: {
+                            AL: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=AL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -8483,51 +8483,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AR?: {
+                            AR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=AR */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -8535,51 +8535,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AT?: {
+                            AT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=AT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -8587,35 +8587,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AU?: {
+                            AU: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=AU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -8623,35 +8623,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BA?: {
+                            BA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BA */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -8659,19 +8659,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BB?: {
+                            BB: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -8679,51 +8679,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BE?: {
+                            BE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BE */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -8731,51 +8731,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BG?: {
+                            BG: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BG */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -8783,19 +8783,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BH?: {
+                            BH: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BH */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -8803,19 +8803,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BO?: {
+                            BO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -8823,19 +8823,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BR?: {
+                            BR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -8843,19 +8843,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BS?: {
+                            BS: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=BS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -8863,51 +8863,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CA?: {
+                            CA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CA */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /sB5vHrmYmliwUvBwZe8HpXo9r8m.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 305
                                      */
                                     provider_id: number;
                                     /** @example Crave Starz */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -8915,51 +8915,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CH?: {
+                            CH: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /rVOOhp6V8FheEAKtFAJMLMbnaMZ.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 150
                                      */
                                     provider_id: number;
                                     /** @example blue TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /rVOOhp6V8FheEAKtFAJMLMbnaMZ.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 150
                                      */
                                     provider_id: number;
                                     /** @example blue TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -8967,51 +8967,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CL?: {
+                            CL: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -9019,51 +9019,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CO?: {
+                            CO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CO */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -9071,19 +9071,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CR?: {
+                            CR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9091,35 +9091,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CV?: {
+                            CV: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CV */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
@@ -9127,51 +9127,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CZ?: {
+                            CZ: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=CZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /wTF37o4jOkQfjnWe41gmeuASYZA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 308
                                      */
                                     provider_id: number;
                                     /** @example O2 TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -9179,51 +9179,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DE?: {
+                            DE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=DE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -9231,51 +9231,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DK?: {
+                            DK: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=DK */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -9283,19 +9283,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DO?: {
+                            DO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=DO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9303,51 +9303,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EC?: {
+                            EC: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=EC */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -9355,51 +9355,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EE?: {
+                            EE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=EE */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -9407,35 +9407,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EG?: {
+                            EG: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=EG */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -9443,67 +9443,67 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ES?: {
+                            ES: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=ES */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                ads?: {
+                                ads: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -9511,51 +9511,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FI?: {
+                            FI: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=FI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -9563,19 +9563,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FJ?: {
+                            FJ: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=FJ */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -9583,51 +9583,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FR?: {
+                            FR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=FR */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9635,51 +9635,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GB?: {
+                            GB: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=GB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -9687,19 +9687,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GF?: {
+                            GF: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=GF */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -9707,19 +9707,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GI?: {
+                            GI: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=GI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9727,51 +9727,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GR?: {
+                            GR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=GR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -9779,19 +9779,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GT?: {
+                            GT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=GT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9799,19 +9799,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HK?: {
+                            HK: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=HK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -9819,19 +9819,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HN?: {
+                            HN: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=HN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9839,51 +9839,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HR?: {
+                            HR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=HR */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                ads?: {
+                                ads: {
                                     /** @example /xrHrIraInfRXnrz1zHhY1tXJowg.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 572
                                      */
                                     provider_id: number;
                                     /** @example RTL Play */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -9891,51 +9891,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HU?: {
+                            HU: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=HU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -9943,19 +9943,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ID?: {
+                            ID: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=ID */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 122
                                      */
                                     provider_id: number;
                                     /** @example Hotstar */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -9963,51 +9963,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IE?: {
+                            IE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IE */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -10015,35 +10015,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IL?: {
+                            IL: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10051,51 +10051,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IN?: {
+                            IN: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -10103,19 +10103,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IQ?: {
+                            IQ: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IQ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10123,35 +10123,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IS?: {
+                            IS: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IS */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10159,51 +10159,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IT?: {
+                            IT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=IT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10211,19 +10211,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JM?: {
+                            JM: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=JM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -10231,35 +10231,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JO?: {
+                            JO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=JO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -10267,51 +10267,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JP?: {
+                            JP: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=JP */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /g8jqHtXJsMlc8B1Gb0Rt8AvUJMn.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 85
                                      */
                                     provider_id: number;
                                     /** @example dTV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -10319,35 +10319,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            KR?: {
+                            KR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=KR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /2ioan5BX5L9tz4fIGU93blTeFhv.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 356
                                      */
                                     provider_id: number;
                                     /** @example wavve */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -10355,35 +10355,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            KW?: {
+                            KW: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=KW */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10391,35 +10391,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LB?: {
+                            LB: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=LB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -10427,19 +10427,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LI?: {
+                            LI: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=LI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -10447,51 +10447,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LT?: {
+                            LT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=LT */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /xTVM8uXT9QocigQ07LE7Irc65W2.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 553
                                      */
                                     provider_id: number;
                                     /** @example Telia Play */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 15
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10499,35 +10499,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LV?: {
+                            LV: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=LV */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -10535,35 +10535,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MD?: {
+                            MD: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MD */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 26
@@ -10571,35 +10571,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MK?: {
+                            MK: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -10607,51 +10607,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MT?: {
+                            MT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -10659,35 +10659,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MU?: {
+                            MU: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MU */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 15
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 15
@@ -10695,19 +10695,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MX?: {
+                            MX: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MX */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10715,19 +10715,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MY?: {
+                            MY: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 122
                                      */
                                     provider_id: number;
                                     /** @example Hotstar */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -10735,35 +10735,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MZ?: {
+                            MZ: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=MZ */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 16
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 16
@@ -10771,51 +10771,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NL?: {
+                            NL: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=NL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /llmnYOyknekZsXtkCaazKjhTLvG.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 71
                                      */
                                     provider_id: number;
                                     /** @example Pathé Thuis */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /llmnYOyknekZsXtkCaazKjhTLvG.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 71
                                      */
                                     provider_id: number;
                                     /** @example Pathé Thuis */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10823,51 +10823,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NO?: {
+                            NO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=NO */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10875,35 +10875,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NZ?: {
+                            NZ: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=NZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -10911,51 +10911,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            OM?: {
+                            OM: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=OM */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10963,19 +10963,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PA?: {
+                            PA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -10983,51 +10983,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PE?: {
+                            PE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PE */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -11035,19 +11035,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PH?: {
+                            PH: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11055,19 +11055,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PK?: {
+                            PK: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     provider_id: number;
                                     /** @example Netflix */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -11075,51 +11075,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PL?: {
+                            PL: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11127,19 +11127,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PS?: {
+                            PS: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11147,51 +11147,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PT?: {
+                            PT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /dUeHhim2WUZz8S7EWjv0Ws6anRP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 242
                                      */
                                     provider_id: number;
                                     /** @example Meo */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11199,19 +11199,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PY?: {
+                            PY: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=PY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11219,35 +11219,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            QA?: {
+                            QA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=QA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -11255,19 +11255,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RO?: {
+                            RO: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=RO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11275,35 +11275,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RS?: {
+                            RS: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=RS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -11311,51 +11311,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RU?: {
+                            RU: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=RU */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /o9ExgOSLF3OTwR6T3DJOuwOKJgq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 113
                                      */
                                     provider_id: number;
                                     /** @example Ivi */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /o9ExgOSLF3OTwR6T3DJOuwOKJgq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 113
                                      */
                                     provider_id: number;
                                     /** @example Ivi */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /zLM7f1w2L8TU2Fspzns72m6h3yY.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 501
                                      */
                                     provider_id: number;
                                     /** @example Wink */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1000
@@ -11363,51 +11363,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SA?: {
+                            SA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11415,51 +11415,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SE?: {
+                            SE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SE */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11467,19 +11467,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SG?: {
+                            SG: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11487,35 +11487,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SI?: {
+                            SI: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SI */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 35
                                      */
                                     provider_id: number;
                                     /** @example Rakuten TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11523,51 +11523,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SK?: {
+                            SK: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SK */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -11575,19 +11575,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SM?: {
+                            SM: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 337
                                      */
                                     provider_id: number;
                                     /** @example Disney Plus */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -11595,19 +11595,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SV?: {
+                            SV: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=SV */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11615,19 +11615,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TH?: {
+                            TH: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=TH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 122
                                      */
                                     provider_id: number;
                                     /** @example Hotstar */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -11635,51 +11635,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TR?: {
+                            TR: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=TR */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -11687,19 +11687,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TT?: {
+                            TT: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=TT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -11707,19 +11707,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TW?: {
+                            TW: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=TW */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11727,35 +11727,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            UG?: {
+                            UG: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=UG */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 16
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 16
@@ -11763,51 +11763,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            US?: {
+                            US: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=US */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /jPXksae158ukMLFhhlNvzsvaEyt.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 257
                                      */
                                     provider_id: number;
                                     /** @example fuboTV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -11815,19 +11815,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            UY?: {
+                            UY: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=UY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11835,51 +11835,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            VE?: {
+                            VE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=VE */
-                                link?: string;
-                                rent?: {
+                                link: string;
+                                rent: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -11887,19 +11887,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            YE?: {
+                            YE: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=YE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
@@ -11907,51 +11907,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZA?: {
+                            ZA: {
                                 /** @example https://www.themoviedb.org/movie/550-fight-club/watch?locale=ZA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /emthp39XA2YScoYL1p0sdbAH2WA.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 119
                                      */
                                     provider_id: number;
                                     /** @example Amazon Prime Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 1
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -12001,7 +12001,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -12036,7 +12036,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was deleted successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -12061,20 +12061,20 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example New York City, New York */
-                        headquarters?: string;
+                        headquarters: string;
                         /** @example https://www.hbo.com */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 49
                          */
                         id: number;
                         /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                        logo_path?: string;
+                        logo_path: string;
                         /** @example HBO */
-                        name?: string;
+                        name: string;
                         /** @example US */
-                        origin_country?: string;
+                        origin_country: string;
                     };
                 };
             };
@@ -12103,11 +12103,11 @@ export interface operations {
                          * @example 49
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example Home Box Office */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            type?: string;
+                            type: string;
                         }[];
                     };
                 };
@@ -12137,23 +12137,23 @@ export interface operations {
                          * @example 49
                          */
                         id: number;
-                        logos?: {
+                        logos: {
                             /**
                              * @default 0
                              * @example 2.425287356321839
                              */
                             aspect_ratio: number;
                             /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 174
                              */
                             height: number;
                             /** @example 5a7a67a40e0a26020a000091 */
-                            id?: string;
+                            id: string;
                             /** @example .svg */
-                            file_type?: string;
+                            file_type: string;
                             /**
                              * @default 0
                              * @example 5.318
@@ -12199,7 +12199,7 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
@@ -12215,34 +12215,34 @@ export interface operations {
                              * @example 224513
                              */
                             id: number;
-                            known_for?: {
+                            known_for: {
                                 /**
                                  * @default true
                                  * @example false
                                  */
                                 adult: boolean;
                                 /** @example /ilRyazdMJwN05exqhwK4tMKBYZs.jpg */
-                                backdrop_path?: string;
-                                genre_ids?: number[];
+                                backdrop_path: string;
+                                genre_ids: number[];
                                 /**
                                  * @default 0
                                  * @example 335984
                                  */
                                 id: number;
                                 /** @example movie */
-                                media_type?: string;
+                                media_type: string;
                                 /** @example en */
-                                original_language?: string;
+                                original_language: string;
                                 /** @example Blade Runner 2049 */
-                                original_title?: string;
+                                original_title: string;
                                 /** @example Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years. */
-                                overview?: string;
+                                overview: string;
                                 /** @example /gajva2L0rPYkEWjzgFlBXCAVBE5.jpg */
-                                poster_path?: string;
+                                poster_path: string;
                                 /** @example 2017-10-04 */
-                                release_date?: string;
+                                release_date: string;
                                 /** @example Blade Runner 2049 */
-                                title?: string;
+                                title: string;
                                 /**
                                  * @default true
                                  * @example false
@@ -12260,16 +12260,16 @@ export interface operations {
                                 vote_count: number;
                             }[];
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Ana de Armas */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 343.33
                              */
                             popularity: number;
                             /** @example /3vxvsmYLTf4jnr163SUlBIw51ee.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
                         /**
                          * @default 0
@@ -12313,7 +12313,7 @@ export interface operations {
                          * @example false
                          */
                         adult: boolean;
-                        also_known_as?: string[];
+                        also_known_as: string[];
                         /**
                          * @example Thomas Jeffrey Hanks (born July 9, 1956) is an American actor and filmmaker. Known for both his comedic and dramatic roles, Hanks is one of the most popular and recognizable film stars worldwide, and is widely regarded as an American cultural icon.
                          *
@@ -12323,36 +12323,36 @@ export interface operations {
                          *
                          *     Description above from the Wikipedia article Tom Hanks, licensed under CC-BY-SA, full list of contributors on Wikipedia.
                          */
-                        biography?: string;
+                        biography: string;
                         /** @example 1956-07-09 */
-                        birthday?: string;
-                        deathday?: unknown;
+                        birthday: string;
+                        deathday: unknown;
                         /**
                          * @default 0
                          * @example 2
                          */
                         gender: number;
-                        homepage?: unknown;
+                        homepage: unknown;
                         /**
                          * @default 0
                          * @example 31
                          */
                         id: number;
                         /** @example nm0000158 */
-                        imdb_id?: string;
+                        imdb_id: string;
                         /** @example Acting */
-                        known_for_department?: string;
+                        known_for_department: string;
                         /** @example Tom Hanks */
-                        name?: string;
+                        name: string;
                         /** @example Concord, California, USA */
-                        place_of_birth?: string;
+                        place_of_birth: string;
                         /**
                          * @default 0
                          * @example 82.989
                          */
                         popularity: number;
                         /** @example /xndWFsBlClOJFRdhSt4NBwiPq2o.jpg */
-                        profile_path?: string;
+                        profile_path: string;
                     };
                 };
             };
@@ -12380,26 +12380,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        changes?: {
+                        changes: {
                             /** @example biography */
-                            key?: string;
-                            items?: {
+                            key: string;
+                            items: {
                                 /** @example 640469b113654500ba4e859a */
-                                id?: string;
+                                id: string;
                                 /** @example added */
-                                action?: string;
+                                action: string;
                                 /** @example 2023-03-05 10:06:41 UTC */
-                                time?: string;
+                                time: string;
                                 /** @example ca */
-                                iso_639_1?: string;
+                                iso_639_1: string;
                                 /** @example ES */
-                                iso_3166_1?: string;
+                                iso_3166_1: string;
                                 /**
                                  * @example Thomas "Tom" Jeffrey Hanks (Concord, Califòrnia, 9 de juliol de 1956) és un actor de cinema i productor estatunidenc, guanyador dues vegades de l'Oscar al millor actor i considerat un dels més versàtils i talentosos del cinema actual.
                                  *
                                  *     Hanks és l'actor que més diners ha guanyat de tota la història del cinema amb un total de gairebé sis mil milions de dòlars (setembre 2006). És també copropietari de Playtone, una companyia de producció de pel·lícules.
                                  */
-                                value?: string;
+                                value: string;
                             }[];
                         }[];
                     };
@@ -12427,37 +12427,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /3h1JZGDhZ8nzxdgvkxha0qBqi05.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 13
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Forrest Gump */
-                            original_title?: string;
+                            original_title: string;
                             /** @example A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 62.225
                              */
                             popularity: number;
                             /** @example /arw2vcBveWOVZr6pxd9XTd1TdQa.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1994-06-23 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Forrest Gump */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -12474,48 +12474,48 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example Forrest Gump */
-                            character?: string;
+                            character: string;
                             /** @example 52fe420ec3a36847f800074f */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                             /** @example movie */
-                            media_type?: string;
+                            media_type: string;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /tx3uj8GPWf5pzb0gWATJ4bokNHI.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 87061
                              */
                             id: number;
                             /** @example fr */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Le Voyage extraordinaire */
-                            original_title?: string;
+                            original_title: string;
                             /** @example An account of the extraordinary life of film pioneer Georges Méliès (1861-1938) and the amazing story of the copy in color of his masterpiece “A Trip to the Moon” (1902), unexpectedly found in Spain and restored thanks to the heroic efforts of a group of true cinema lovers. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 6.007
                              */
                             popularity: number;
                             /** @example /zHNNT9gfiGsuadR6x38KYOp6ekq.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2011-12-08 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Extraordinary Voyage */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -12532,13 +12532,13 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example 5d818a63d34eb3002c4f8fea */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Crew */
-                            department?: string;
+                            department: string;
                             /** @example Thanks */
-                            job?: string;
+                            job: string;
                             /** @example movie */
-                            media_type?: string;
+                            media_type: string;
                         }[];
                         /**
                          * @default 0
@@ -12574,27 +12574,27 @@ export interface operations {
                          */
                         id: number;
                         /** @example /m/0bxtg */
-                        freebase_mid?: string;
+                        freebase_mid: string;
                         /** @example /en/tom_hanks */
-                        freebase_id?: string;
+                        freebase_id: string;
                         /** @example nm0000158 */
-                        imdb_id?: string;
+                        imdb_id: string;
                         /**
                          * @default 0
                          * @example 14293
                          */
                         tvrage_id: number;
                         /** @example Q2263 */
-                        wikidata_id?: string;
+                        wikidata_id: string;
                         /** @example TomHanks */
-                        facebook_id?: string;
+                        facebook_id: string;
                         /** @example tomhanks */
-                        instagram_id?: string;
+                        instagram_id: string;
                         /** @example tomhanks */
-                        tiktok_id?: string;
+                        tiktok_id: string;
                         /** @example tomhanks */
-                        twitter_id?: string;
-                        youtube_id?: unknown;
+                        twitter_id: string;
+                        youtube_id: unknown;
                     };
                 };
             };
@@ -12623,7 +12623,7 @@ export interface operations {
                          * @example 287
                          */
                         id: number;
-                        profiles?: {
+                        profiles: {
                             /**
                              * @default 0
                              * @example 0.666
@@ -12634,9 +12634,9 @@ export interface operations {
                              * @example 980
                              */
                             height: number;
-                            iso_639_1?: unknown;
+                            iso_639_1: unknown;
                             /** @example /cckcYc2v0yh1tc9QjRelptcOBko.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.288
@@ -12679,33 +12679,33 @@ export interface operations {
                          * @example false
                          */
                         adult: boolean;
-                        also_known_as?: unknown[];
+                        also_known_as: unknown[];
                         /** @example  */
-                        biography?: string;
-                        birthday?: unknown;
-                        deathday?: unknown;
+                        biography: string;
+                        birthday: unknown;
+                        deathday: unknown;
                         /**
                          * @default 0
                          * @example 0
                          */
                         gender: number;
-                        homepage?: unknown;
+                        homepage: unknown;
                         /**
                          * @default 0
                          * @example 4064343
                          */
                         id: number;
-                        imdb_id?: unknown;
-                        known_for_department?: unknown;
+                        imdb_id: unknown;
+                        known_for_department: unknown;
                         /** @example Ángel Cruz */
-                        name?: string;
-                        place_of_birth?: unknown;
+                        name: string;
+                        place_of_birth: unknown;
                         /**
                          * @default 0
                          * @example 0
                          */
                         popularity: number;
-                        profile_path?: unknown;
+                        profile_path: unknown;
                     };
                 };
             };
@@ -12731,37 +12731,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /3h1JZGDhZ8nzxdgvkxha0qBqi05.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 13
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Forrest Gump */
-                            original_title?: string;
+                            original_title: string;
                             /** @example A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 62.225
                              */
                             popularity: number;
                             /** @example /arw2vcBveWOVZr6pxd9XTd1TdQa.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1994-06-23 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Forrest Gump */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -12778,46 +12778,46 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example Forrest Gump */
-                            character?: string;
+                            character: string;
                             /** @example 52fe420ec3a36847f800074f */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /tx3uj8GPWf5pzb0gWATJ4bokNHI.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 87061
                              */
                             id: number;
                             /** @example fr */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Le Voyage extraordinaire */
-                            original_title?: string;
+                            original_title: string;
                             /** @example An account of the extraordinary life of film pioneer Georges Méliès (1861-1938) and the amazing story of the copy in color of his masterpiece “A Trip to the Moon” (1902), unexpectedly found in Spain and restored thanks to the heroic efforts of a group of true cinema lovers. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 6.007
                              */
                             popularity: number;
                             /** @example /zHNNT9gfiGsuadR6x38KYOp6ekq.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2011-12-08 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example The Extraordinary Voyage */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -12834,11 +12834,11 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example 5d818a63d34eb3002c4f8fea */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Crew */
-                            department?: string;
+                            department: string;
                             /** @example Thanks */
-                            job?: string;
+                            job: string;
                         }[];
                         /**
                          * @default 0
@@ -12870,38 +12870,38 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /ttvojTMgaIN7U8gqB5LlNqO4vPN.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 1900
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example LIVE with Kelly and Mark */
-                            original_name?: string;
+                            original_name: string;
                             /** @example A morning talk show with A-list celebrity guests, top-notch performances and one-of-a-kind segments that are unrivaled on daytime television, plus spontaneous, hilarious and unpredictable talk. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 700.508
                              */
                             popularity: number;
                             /** @example /l5y8egG27p2fSTyq8s21SQMmQLy.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1988-09-05 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example LIVE with Kelly and Mark */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 5.4
@@ -12913,47 +12913,47 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example  */
-                            character?: string;
+                            character: string;
                             /** @example 52571af019c29571140d5c92 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 1
                              */
                             episode_count: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /6uMA6EAiwcsCqQJwWgYwtORvE0v.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 2391
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Tales from the Crypt */
-                            original_name?: string;
+                            original_name: string;
                             /** @example Cadaverous scream legend the Crypt Keeper is your macabre host for these forays of fright and fun based on the classic E.C. Comics tales from back in the day. So shamble up to the bar and pick your poison. Will it be an insane Santa on a personal slay ride? Honeymooners out to fulfill the "til death do we part" vow ASAP? */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 24.88
                              */
                             popularity: number;
                             /** @example /dDfXQH6Kg2JNASI0dqNALukjhk1.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1989-06-10 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Tales from the Crypt */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 7.978
@@ -12965,16 +12965,16 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example 525734f3760ee3776a397211 */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Directing */
-                            department?: string;
+                            department: string;
                             /**
                              * @default 0
                              * @example 1
                              */
                             episode_count: number;
                             /** @example Director */
-                            job?: string;
+                            job: string;
                         }[];
                         /**
                          * @default 0
@@ -13016,23 +13016,23 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 0.6666666666666666
                              */
                             aspect_ratio: number;
                             /** @example /1wY4psJ5NVEhCuOYROwLH2XExM2.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 1500
                              */
                             height: number;
                             /** @example 5b235d740e0a265b5d0031d9 */
-                            id?: string;
+                            id: string;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /**
                              * @default 0
                              * @example 5.456
@@ -13049,40 +13049,40 @@ export interface operations {
                              */
                             width: number;
                             /** @example poster */
-                            image_type?: string;
-                            media?: {
+                            image_type: string;
+                            media: {
                                 /**
                                  * @default true
                                  * @example false
                                  */
                                 adult: boolean;
                                 /** @example /bdD39MpSVhKjxarTxLSfX6baoMP.jpg */
-                                backdrop_path?: string;
+                                backdrop_path: string;
                                 /**
                                  * @default 0
                                  * @example 857
                                  */
                                 id: number;
                                 /** @example Saving Private Ryan */
-                                title?: string;
+                                title: string;
                                 /** @example en */
-                                original_language?: string;
+                                original_language: string;
                                 /** @example Saving Private Ryan */
-                                original_title?: string;
+                                original_title: string;
                                 /** @example As U.S. troops storm the beaches of Normandy, three brothers lie dead on the battlefield, with a fourth trapped behind enemy lines. Ranger captain John Miller and seven men are tasked with penetrating German-held territory and bringing the boy home. */
-                                overview?: string;
+                                overview: string;
                                 /** @example /uqx37cS8cpHg8U35f9U5IBlrCV3.jpg */
-                                poster_path?: string;
+                                poster_path: string;
                                 /** @example movie */
-                                media_type?: string;
-                                genre_ids?: number[];
+                                media_type: string;
+                                genre_ids: number[];
                                 /**
                                  * @default 0
                                  * @example 70.45
                                  */
                                 popularity: number;
                                 /** @example 1998-07-24 */
-                                release_date?: string;
+                                release_date: string;
                                 /**
                                  * @default true
                                  * @example false
@@ -13100,7 +13100,7 @@ export interface operations {
                                 vote_count: number;
                             };
                             /** @example movie */
-                            media_type?: string;
+                            media_type: string;
                         }[];
                         /**
                          * @default 0
@@ -13140,16 +13140,16 @@ export interface operations {
                          * @example 31
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example English */
-                            name?: string;
+                            name: string;
                             /** @example English */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /**
                                  * @example Thomas Jeffrey Hanks (born July 9, 1956) is an American actor and filmmaker. Known for both his comedic and dramatic roles, Hanks is one of the most popular and recognizable film stars worldwide, and is widely regarded as an American cultural icon.
                                  *
@@ -13159,9 +13159,9 @@ export interface operations {
                                  *
                                  *     Description above from the Wikipedia article Tom Hanks, licensed under CC-BY-SA, full list of contributors on Wikipedia.
                                  */
-                                biography?: string;
+                                biography: string;
                                 /** @example Tom Hanks */
-                                name?: string;
+                                name: string;
                             };
                         }[];
                     };
@@ -13188,16 +13188,16 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example 640b2aeecaaca20079decdcc */
-                        id?: string;
+                        id: string;
                         /** @example Ricardo Oliveira */
-                        author?: string;
-                        author_details?: {
+                        author: string;
+                        author_details: {
                             /** @example Ricardo Oliveira */
-                            name?: string;
+                            name: string;
                             /** @example RSOliveira */
-                            username?: string;
+                            username: string;
                             /** @example /23Cl7rhsknc7IIAcZZAGKzovjTu.jpg */
-                            avatar_path?: string;
+                            avatar_path: string;
                             /**
                              * @default 0
                              * @example 9
@@ -13219,24 +13219,24 @@ export interface operations {
                          *
                          *     Written and Reviewed by RSOliveira
                          */
-                        content?: string;
+                        content: string;
                         /** @example 2023-03-10T13:04:46.674Z */
-                        created_at?: string;
+                        created_at: string;
                         /** @example en */
-                        iso_639_1?: string;
+                        iso_639_1: string;
                         /**
                          * @default 0
                          * @example 100088
                          */
                         media_id: number;
                         /** @example The Last of Us */
-                        media_title?: string;
+                        media_title: string;
                         /** @example tv */
-                        media_type?: string;
+                        media_type: string;
                         /** @example 2023-03-10T13:04:46.734Z */
-                        updated_at?: string;
+                        updated_at: string;
                         /** @example https://www.themoviedb.org/review/640b2aeecaaca20079decdcc */
-                        url?: string;
+                        url: string;
                     };
                 };
             };
@@ -13269,29 +13269,29 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /zuW6fOiusv4X9nnW3paHGfXcSll.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 86311
                              */
                             id: number;
                             /** @example The Avengers Collection */
-                            name?: string;
+                            name: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The Avengers Collection */
-                            original_name?: string;
+                            original_name: string;
                             /** @example A superhero film series produced by Marvel Studios based on the Marvel Comics superhero team of the same name, and part of the Marvel Cinematic Universe (MCU).  The series features an ensemble cast from the Marvel Cinematic Universe series films, as they join forces for the peacekeeping organization S.H.I.E.L.D. led by Nick Fury. */
-                            overview?: string;
+                            overview: string;
                             /** @example /yFSIUVTCvgYrpalUktulvk3Gi5Y.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                         }[];
                         /**
                          * @default 0
@@ -13332,18 +13332,18 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 3268
                              */
                             id: number;
                             /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example HBO */
-                            name?: string;
+                            name: string;
                             /** @example US */
-                            origin_country?: string;
+                            origin_country: string;
                         }[];
                         /**
                          * @default 0
@@ -13384,14 +13384,14 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 262419
                              */
                             id: number;
                             /** @example lost */
-                            name?: string;
+                            name: string;
                         }[];
                         /**
                          * @default 0
@@ -13437,37 +13437,37 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /hZkgoQYus5vegHoetLkCJzb17zJ.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 550
                              */
                             id: number;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Fight Club */
-                            original_title?: string;
+                            original_title: string;
                             /** @example A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground "fight clubs" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 73.433
                              */
                             popularity: number;
                             /** @example /pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 1999-10-15 */
-                            release_date?: string;
+                            release_date: string;
                             /** @example Fight Club */
-                            title?: string;
+                            title: string;
                             /**
                              * @default true
                              * @example false
@@ -13525,39 +13525,39 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /aDYSnJAK0BTVeE8osOy22Kz3SXY.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 11
                              */
                             id: number;
                             /** @example Star Wars */
-                            title?: string;
+                            title: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Star Wars */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire. */
-                            overview?: string;
+                            overview: string;
                             /** @example /6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example movie */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 78.047
                              */
                             popularity: number;
                             /** @example 1977-05-25 */
-                            release_date?: string;
+                            release_date: string;
                             /**
                              * @default true
                              * @example false
@@ -13573,8 +13573,8 @@ export interface operations {
                              * @example 18528
                              */
                             vote_count: number;
-                            name?: string;
-                            original_name?: string;
+                            name: string;
+                            original_name: string;
                         }[];
                         /**
                          * @default 0
@@ -13617,7 +13617,7 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
@@ -13634,51 +13634,51 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Tom Hanks */
-                            name?: string;
+                            name: string;
                             /** @example Tom Hanks */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 84.631
                              */
                             popularity: number;
                             /** @example /xndWFsBlClOJFRdhSt4NBwiPq2o.jpg */
-                            profile_path?: string;
-                            known_for?: {
+                            profile_path: string;
+                            known_for: {
                                 /**
                                  * @default true
                                  * @example false
                                  */
                                 adult: boolean;
                                 /** @example /3h1JZGDhZ8nzxdgvkxha0qBqi05.jpg */
-                                backdrop_path?: string;
+                                backdrop_path: string;
                                 /**
                                  * @default 0
                                  * @example 13
                                  */
                                 id: number;
                                 /** @example Forrest Gump */
-                                title?: string;
+                                title: string;
                                 /** @example en */
-                                original_language?: string;
+                                original_language: string;
                                 /** @example Forrest Gump */
-                                original_title?: string;
+                                original_title: string;
                                 /** @example A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him. */
-                                overview?: string;
+                                overview: string;
                                 /** @example /arw2vcBveWOVZr6pxd9XTd1TdQa.jpg */
-                                poster_path?: string;
+                                poster_path: string;
                                 /** @example movie */
-                                media_type?: string;
-                                genre_ids?: number[];
+                                media_type: string;
+                                genre_ids: number[];
                                 /**
                                  * @default 0
                                  * @example 67.209
                                  */
                                 popularity: number;
                                 /** @example 1994-06-23 */
-                                release_date?: string;
+                                release_date: string;
                                 /**
                                  * @default true
                                  * @example false
@@ -13741,38 +13741,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /bsNm9z2TJfe0WO3RedPGWQ8mG1X.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 1396
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Breaking Bad */
-                            original_name?: string;
+                            original_name: string;
                             /** @example When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 298.884
                              */
                             popularity: number;
                             /** @example /ggFHVNu6YYI5L9pCfOacjizRGt.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2008-01-20 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Breaking Bad */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 8.879
@@ -13825,39 +13825,39 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /44immBwzhDVyjn87b3x3l9mlhAD.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 934433
                              */
                             id: number;
                             /** @example Scream VI */
-                            title?: string;
+                            title: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Scream VI */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter. */
-                            overview?: string;
+                            overview: string;
                             /** @example /wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example movie */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 609.941
                              */
                             popularity: number;
                             /** @example 2023-03-08 */
-                            release_date?: string;
+                            release_date: string;
                             /**
                              * @default true
                              * @example false
@@ -13915,39 +13915,39 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /44immBwzhDVyjn87b3x3l9mlhAD.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 934433
                              */
                             id: number;
                             /** @example Scream VI */
-                            title?: string;
+                            title: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Scream VI */
-                            original_title?: string;
+                            original_title: string;
                             /** @example Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter. */
-                            overview?: string;
+                            overview: string;
                             /** @example /wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example movie */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 609.941
                              */
                             popularity: number;
                             /** @example 2023-03-08 */
-                            release_date?: string;
+                            release_date: string;
                             /**
                              * @default true
                              * @example false
@@ -14005,7 +14005,7 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
@@ -14017,11 +14017,11 @@ export interface operations {
                              */
                             id: number;
                             /** @example Ana de Armas */
-                            name?: string;
+                            name: string;
                             /** @example Ana de Armas */
-                            original_name?: string;
+                            original_name: string;
                             /** @example person */
-                            media_type?: string;
+                            media_type: string;
                             /**
                              * @default 0
                              * @example 349.766
@@ -14033,42 +14033,42 @@ export interface operations {
                              */
                             gender: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example /3vxvsmYLTf4jnr163SUlBIw51ee.jpg */
-                            profile_path?: string;
-                            known_for?: {
+                            profile_path: string;
+                            known_for: {
                                 /**
                                  * @default true
                                  * @example false
                                  */
                                 adult: boolean;
                                 /** @example /ilRyazdMJwN05exqhwK4tMKBYZs.jpg */
-                                backdrop_path?: string;
+                                backdrop_path: string;
                                 /**
                                  * @default 0
                                  * @example 335984
                                  */
                                 id: number;
                                 /** @example Blade Runner 2049 */
-                                title?: string;
+                                title: string;
                                 /** @example en */
-                                original_language?: string;
+                                original_language: string;
                                 /** @example Blade Runner 2049 */
-                                original_title?: string;
+                                original_title: string;
                                 /** @example Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what's left of society into chaos. K's discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years. */
-                                overview?: string;
+                                overview: string;
                                 /** @example /gajva2L0rPYkEWjzgFlBXCAVBE5.jpg */
-                                poster_path?: string;
+                                poster_path: string;
                                 /** @example movie */
-                                media_type?: string;
-                                genre_ids?: number[];
+                                media_type: string;
+                                genre_ids: number[];
                                 /**
                                  * @default 0
                                  * @example 79.571
                                  */
                                 popularity: number;
                                 /** @example 2017-10-04 */
-                                release_date?: string;
+                                release_date: string;
                                 /**
                                  * @default true
                                  * @example false
@@ -14127,39 +14127,39 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /8P15FsYcTwQZ4G5rRMd1TKD14Aq.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 103768
                              */
                             id: number;
                             /** @example Sweet Tooth */
-                            name?: string;
+                            name: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Sweet Tooth */
-                            original_name?: string;
+                            original_name: string;
                             /** @example On a perilous adventure across a post-apocalyptic world, a lovable boy who's half-human and half-deer searches for a new beginning with a gruff protector. */
-                            overview?: string;
+                            overview: string;
                             /** @example /dBxxtfhC4vYrxB2fLsSxOTY2dQc.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example tv */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 137.498
                              */
                             popularity: number;
                             /** @example 2021-06-04 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /**
                              * @default 0
                              * @example 7.928
@@ -14170,7 +14170,7 @@ export interface operations {
                              * @example 1094
                              */
                             vote_count: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                         }[];
                         /**
                          * @default 0
@@ -14212,33 +14212,33 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example /mAJ84W6I8I272Da87qplS2Dp9ST.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /** @example 2023-01-23 */
-                            first_air_date?: string;
-                            genre_ids?: number[];
+                            first_air_date: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 202250
                              */
                             id: number;
                             /** @example Dirty Linen */
-                            name?: string;
-                            origin_country?: string[];
+                            name: string;
+                            origin_country: string[];
                             /** @example tl */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Dirty Linen */
-                            original_name?: string;
+                            original_name: string;
                             /** @example To exact vengeance, a young woman infiltrates the household of an influential family as a housemaid to expose their dirty secrets. However, love will get in the way of her revenge plot. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 2797.914
                              */
                             popularity: number;
                             /** @example /aoAZgnmMzY9vVy9VWnO3U5PZENh.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 5
@@ -14290,33 +14290,33 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example /mAJ84W6I8I272Da87qplS2Dp9ST.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /** @example 2023-01-23 */
-                            first_air_date?: string;
-                            genre_ids?: number[];
+                            first_air_date: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 202250
                              */
                             id: number;
                             /** @example Dirty Linen */
-                            name?: string;
-                            origin_country?: string[];
+                            name: string;
+                            origin_country: string[];
                             /** @example tl */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Dirty Linen */
-                            original_name?: string;
+                            original_name: string;
                             /** @example To exact vengeance, a young woman infiltrates the household of an influential family as a housemaid to expose their dirty secrets. However, love will get in the way of her revenge plot. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 2797.914
                              */
                             popularity: number;
                             /** @example /aoAZgnmMzY9vVy9VWnO3U5PZENh.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 5
@@ -14367,33 +14367,33 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example /mAJ84W6I8I272Da87qplS2Dp9ST.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /** @example 2023-01-23 */
-                            first_air_date?: string;
-                            genre_ids?: number[];
+                            first_air_date: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 202250
                              */
                             id: number;
                             /** @example Dirty Linen */
-                            name?: string;
-                            origin_country?: string[];
+                            name: string;
+                            origin_country: string[];
                             /** @example tl */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Dirty Linen */
-                            original_name?: string;
+                            original_name: string;
                             /** @example To exact vengeance, a young woman infiltrates the household of an influential family as a housemaid to expose their dirty secrets. However, love will get in the way of her revenge plot. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 2797.914
                              */
                             popularity: number;
                             /** @example /aoAZgnmMzY9vVy9VWnO3U5PZENh.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 5
@@ -14444,33 +14444,33 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example /99vBORZixICa32Pwdwj0lWcr8K.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /** @example 2021-09-03 */
-                            first_air_date?: string;
-                            genre_ids?: number[];
+                            first_air_date: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 130392
                              */
                             id: number;
                             /** @example The D'Amelio Show */
-                            name?: string;
-                            origin_country?: string[];
+                            name: string;
+                            origin_country: string[];
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example The D'Amelio Show */
-                            original_name?: string;
+                            original_name: string;
                             /** @example From relative obscurity and a seemingly normal life, to overnight success and thrust into the Hollywood limelight overnight, the D’Amelios are faced with new challenges and opportunities they could not have imagined. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 12.459
                              */
                             popularity: number;
                             /** @example /phv2Jc4H8cvRzvTKb9X1uKMboTu.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 8.9
@@ -14525,39 +14525,39 @@ export interface operations {
                          */
                         adult: boolean;
                         /** @example /6LWy0jvMpmjoS9fojNgHIKoWL05.jpg */
-                        backdrop_path?: string;
-                        created_by?: {
+                        backdrop_path: string;
+                        created_by: {
                             /**
                              * @default 0
                              * @example 9813
                              */
                             id: number;
                             /** @example 5256c8c219c2956ff604858a */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example David Benioff */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 2
                              */
                             gender: number;
                             /** @example /xvNN5huL0X8yJ7h3IZfGG4O2zBD.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
-                        episode_run_time?: number[];
+                        episode_run_time: number[];
                         /** @example 2011-04-17 */
-                        first_air_date?: string;
-                        genres?: {
+                        first_air_date: string;
+                        genres: {
                             /**
                              * @default 0
                              * @example 10765
                              */
                             id: number;
                             /** @example Sci-Fi & Fantasy */
-                            name?: string;
+                            name: string;
                         }[];
                         /** @example http://www.hbo.com/game-of-thrones */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 1399
@@ -14568,19 +14568,19 @@ export interface operations {
                          * @example false
                          */
                         in_production: boolean;
-                        languages?: string[];
+                        languages: string[];
                         /** @example 2019-05-19 */
-                        last_air_date?: string;
-                        last_episode_to_air?: {
+                        last_air_date: string;
+                        last_episode_to_air: {
                             /**
                              * @default 0
                              * @example 1551830
                              */
                             id: number;
                             /** @example The Iron Throne */
-                            name?: string;
+                            name: string;
                             /** @example In the aftermath of the devastating attack on King's Landing, Daenerys must face the survivors. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 4.809
@@ -14592,14 +14592,14 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example 2019-05-19 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 6
                              */
                             episode_number: number;
                             /** @example 806 */
-                            production_code?: string;
+                            production_code: string;
                             /**
                              * @default 0
                              * @example 80
@@ -14616,23 +14616,23 @@ export interface operations {
                              */
                             show_id: number;
                             /** @example /zBi2O5EJfgTS6Ae0HdAYLm9o2nf.jpg */
-                            still_path?: string;
+                            still_path: string;
                         };
                         /** @example Game of Thrones */
-                        name?: string;
-                        next_episode_to_air?: unknown;
-                        networks?: {
+                        name: string;
+                        next_episode_to_air: unknown;
+                        networks: {
                             /**
                              * @default 0
                              * @example 49
                              */
                             id: number;
                             /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example HBO */
-                            name?: string;
+                            name: string;
                             /** @example US */
-                            origin_country?: string;
+                            origin_country: string;
                         }[];
                         /**
                          * @default 0
@@ -14644,42 +14644,42 @@ export interface operations {
                          * @example 8
                          */
                         number_of_seasons: number;
-                        origin_country?: string[];
+                        origin_country: string[];
                         /** @example en */
-                        original_language?: string;
+                        original_language: string;
                         /** @example Game of Thrones */
-                        original_name?: string;
+                        original_name: string;
                         /** @example Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond. */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 346.098
                          */
                         popularity: number;
                         /** @example /1XS1oqL89opfnbLl8WnZY1O1uJx.jpg */
-                        poster_path?: string;
-                        production_companies?: {
+                        poster_path: string;
+                        production_companies: {
                             /**
                              * @default 0
                              * @example 76043
                              */
                             id: number;
                             /** @example /9RO2vbQ67otPrBLXCaC8UMp3Qat.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example Revolution Sun Studios */
-                            name?: string;
+                            name: string;
                             /** @example US */
-                            origin_country?: string;
+                            origin_country: string;
                         }[];
-                        production_countries?: {
+                        production_countries: {
                             /** @example GB */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example United Kingdom */
-                            name?: string;
+                            name: string;
                         }[];
-                        seasons?: {
+                        seasons: {
                             /** @example 2010-12-05 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 272
@@ -14691,11 +14691,11 @@ export interface operations {
                              */
                             id: number;
                             /** @example Specials */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            overview?: string;
+                            overview: string;
                             /** @example /kMTcwNRfFKCZ0O2OaBZS0nZ2AIe.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /**
                              * @default 0
                              * @example 0
@@ -14707,20 +14707,20 @@ export interface operations {
                              */
                             vote_average: number;
                         }[];
-                        spoken_languages?: {
+                        spoken_languages: {
                             /** @example English */
-                            english_name?: string;
+                            english_name: string;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example English */
-                            name?: string;
+                            name: string;
                         }[];
                         /** @example Ended */
-                        status?: string;
+                        status: string;
                         /** @example Winter Is Coming */
-                        tagline?: string;
+                        tagline: string;
                         /** @example Scripted */
-                        type?: string;
+                        type: string;
                         /**
                          * @default 0
                          * @example 8.438
@@ -14767,7 +14767,7 @@ export interface operations {
                          * @example true
                          */
                         favorite: boolean;
-                        rated?: {
+                        rated: {
                             /**
                              * @default 0
                              * @example 9
@@ -14804,7 +14804,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -14821,23 +14821,23 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Emilia Clarke */
-                            name?: string;
+                            name: string;
                             /** @example Emilia Clarke */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 42.737
                              */
                             popularity: number;
                             /** @example /u59kTmNHXzaGZqokivxLPiBVIML.jpg */
-                            profile_path?: string;
-                            roles?: {
+                            profile_path: string;
+                            roles: {
                                 /** @example 5256c8af19c2956ff60479f6 */
-                                credit_id?: string;
+                                credit_id: string;
                                 /** @example Daenerys Targaryen */
-                                character?: string;
+                                character: string;
                                 /**
                                  * @default 0
                                  * @example 78
@@ -14855,7 +14855,7 @@ export interface operations {
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
@@ -14872,23 +14872,23 @@ export interface operations {
                              */
                             id: number;
                             /** @example Art */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Deborah Riley */
-                            name?: string;
+                            name: string;
                             /** @example Deborah Riley */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 1.4
                              */
                             popularity: number;
                             /** @example /cjhADpqdrnwB1PdDUKaBnWrIj2Q.jpg */
-                            profile_path?: string;
-                            jobs?: {
+                            profile_path: string;
+                            jobs: {
                                 /** @example 54eee9e5c3a3686d5800584e */
-                                credit_id?: string;
+                                credit_id: string;
                                 /** @example Production Design */
-                                job?: string;
+                                job: string;
                                 /**
                                  * @default 0
                                  * @example 43
@@ -14896,7 +14896,7 @@ export interface operations {
                                 episode_count: number;
                             }[];
                             /** @example Art */
-                            department?: string;
+                            department: string;
                             /**
                              * @default 0
                              * @example 43
@@ -14936,13 +14936,13 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example AL */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Froni i shpatave */
-                            title?: string;
+                            title: string;
                             /** @example  */
-                            type?: string;
+                            type: string;
                         }[];
                     };
                 };
@@ -14971,34 +14971,34 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        changes?: {
+                        changes: {
                             /** @example images */
-                            key?: string;
-                            items?: {
+                            key: string;
+                            items: {
                                 /** @example 640435cf021cee0084710972 */
-                                id?: string;
+                                id: string;
                                 /** @example updated */
-                                action?: string;
+                                action: string;
                                 /** @example 2023-03-05 06:25:19 UTC */
-                                time?: string;
+                                time: string;
                                 /** @example en */
-                                iso_639_1?: string;
+                                iso_639_1: string;
                                 /** @example  */
-                                iso_3166_1?: string;
-                                value?: {
-                                    poster?: {
+                                iso_3166_1: string;
+                                value: {
+                                    poster: {
                                         /** @example /ouudK6RCNnsbT1CSXrlATXQIQTG.jpg */
-                                        file_path?: string;
+                                        file_path: string;
                                         /** @example en */
-                                        iso_639_1?: string;
+                                        iso_639_1: string;
                                     };
                                 };
-                                original_value?: {
-                                    poster?: {
+                                original_value: {
+                                    poster: {
                                         /** @example /ouudK6RCNnsbT1CSXrlATXQIQTG.jpg */
-                                        file_path?: string;
+                                        file_path: string;
                                         /** @example fr */
-                                        iso_639_1?: string;
+                                        iso_639_1: string;
                                     };
                                 };
                             }[];
@@ -15026,12 +15026,12 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
-                            descriptors?: unknown[];
+                        results: {
+                            descriptors: unknown[];
                             /** @example DE */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example 16 */
-                            rating?: string;
+                            rating: string;
                         }[];
                         /**
                          * @default 0
@@ -15063,7 +15063,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -15080,29 +15080,29 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Peter Dinklage */
-                            name?: string;
+                            name: string;
                             /** @example Peter Dinklage */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 30.6
                              */
                             popularity: number;
                             /** @example /lRsRgnksAhBRXwAB68MFjmTtLrk.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /** @example Tyrion Lannister */
-                            character?: string;
+                            character: string;
                             /** @example 5256c8b219c2956ff6047cd8 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
@@ -15119,24 +15119,24 @@ export interface operations {
                              */
                             id: number;
                             /** @example Production */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Duncan Muggoch */
-                            name?: string;
+                            name: string;
                             /** @example Duncan Muggoch */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 1.592
                              */
                             popularity: number;
                             /** @example /ukGjJ62Ejd4cFziald03G34Fsrp.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /** @example 5ceab029c3a3682e93217a85 */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Production */
-                            department?: string;
+                            department: string;
                             /** @example Producer */
-                            job?: string;
+                            job: string;
                         }[];
                         /**
                          * @default 0
@@ -15166,9 +15166,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
+                        results: {
                             /** @example  */
-                            description?: string;
+                            description: string;
                             /**
                              * @default 0
                              * @example 102
@@ -15180,21 +15180,21 @@ export interface operations {
                              */
                             group_count: number;
                             /** @example 5e9077d2e640d600151f32bd */
-                            id?: string;
+                            id: string;
                             /** @example Aired Order */
-                            name?: string;
-                            network?: {
+                            name: string;
+                            network: {
                                 /**
                                  * @default 0
                                  * @example 49
                                  */
                                 id: number;
                                 /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                                logo_path?: string;
+                                logo_path: string;
                                 /** @example HBO */
-                                name?: string;
+                                name: string;
                                 /** @example US */
-                                origin_country?: string;
+                                origin_country: string;
                             };
                             /**
                              * @default 0
@@ -15236,11 +15236,11 @@ export interface operations {
                          */
                         id: number;
                         /** @example tt0944947 */
-                        imdb_id?: string;
+                        imdb_id: string;
                         /** @example /m/0524b41 */
-                        freebase_mid?: string;
+                        freebase_mid: string;
                         /** @example /en/game_of_thrones */
-                        freebase_id?: string;
+                        freebase_id: string;
                         /**
                          * @default 0
                          * @example 121361
@@ -15252,13 +15252,13 @@ export interface operations {
                          */
                         tvrage_id: number;
                         /** @example Q23572 */
-                        wikidata_id?: string;
+                        wikidata_id: string;
                         /** @example GameOfThrones */
-                        facebook_id?: string;
+                        facebook_id: string;
                         /** @example gameofthrones */
-                        instagram_id?: string;
+                        instagram_id: string;
                         /** @example GameOfThrones */
-                        twitter_id?: string;
+                        twitter_id: string;
                     };
                 };
             };
@@ -15286,7 +15286,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        backdrops?: {
+                        backdrops: {
                             /**
                              * @default 0
                              * @example 1.778
@@ -15297,9 +15297,9 @@ export interface operations {
                              * @example 800
                              */
                             height: number;
-                            iso_639_1?: unknown;
+                            iso_639_1: unknown;
                             /** @example /hZkgoQYus5vegHoetLkCJzb17zJ.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.622
@@ -15321,7 +15321,7 @@ export interface operations {
                          * @example 550
                          */
                         id: number;
-                        logos?: {
+                        logos: {
                             /**
                              * @default 0
                              * @example 5.203
@@ -15333,9 +15333,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example he */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /c1KLulrIhUqY5fT42nmC5aERGCp.png */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.312
@@ -15352,7 +15352,7 @@ export interface operations {
                              */
                             width: number;
                         }[];
-                        posters?: {
+                        posters: {
                             /**
                              * @default 0
                              * @example 0.667
@@ -15364,9 +15364,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example pt */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /r3pPehX4ik8NLYPpbDRAh0YRtMb.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.258
@@ -15411,9 +15411,9 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example based on novel or book */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 818
@@ -15446,14 +15446,14 @@ export interface operations {
                          * @example false
                          */
                         adult: boolean;
-                        backdrop_path?: unknown;
-                        created_by?: unknown[];
-                        episode_run_time?: unknown[];
+                        backdrop_path: unknown;
+                        created_by: unknown[];
+                        episode_run_time: unknown[];
                         /** @example  */
-                        first_air_date?: string;
-                        genres?: unknown[];
+                        first_air_date: string;
+                        genres: unknown[];
                         /** @example  */
-                        homepage?: string;
+                        homepage: string;
                         /**
                          * @default 0
                          * @example 225491
@@ -15464,19 +15464,19 @@ export interface operations {
                          * @example true
                          */
                         in_production: boolean;
-                        languages?: unknown[];
+                        languages: unknown[];
                         /** @example 2023-04-21 */
-                        last_air_date?: string;
-                        last_episode_to_air?: {
+                        last_air_date: string;
+                        last_episode_to_air: {
                             /**
                              * @default 0
                              * @example 4398801
                              */
                             id: number;
                             /** @example Episode 8 */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 0
@@ -15488,15 +15488,15 @@ export interface operations {
                              */
                             vote_count: number;
                             /** @example 2023-04-21 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 8
                              */
                             episode_number: number;
                             /** @example  */
-                            production_code?: string;
-                            runtime?: unknown;
+                            production_code: string;
+                            runtime: unknown;
                             /**
                              * @default 0
                              * @example 1
@@ -15507,12 +15507,12 @@ export interface operations {
                              * @example 225491
                              */
                             show_id: number;
-                            still_path?: unknown;
+                            still_path: unknown;
                         };
                         /** @example 妖怪传 */
-                        name?: string;
-                        next_episode_to_air?: unknown;
-                        networks?: unknown[];
+                        name: string;
+                        next_episode_to_air: unknown;
+                        networks: unknown[];
                         /**
                          * @default 0
                          * @example 1
@@ -15523,23 +15523,23 @@ export interface operations {
                          * @example 1
                          */
                         number_of_seasons: number;
-                        origin_country?: string[];
+                        origin_country: string[];
                         /** @example zh */
-                        original_language?: string;
+                        original_language: string;
                         /** @example 妖怪传 */
-                        original_name?: string;
+                        original_name: string;
                         /** @example  */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 0
                          */
                         popularity: number;
-                        poster_path?: unknown;
-                        production_companies?: unknown[];
-                        production_countries?: unknown[];
-                        seasons?: {
-                            air_date?: unknown;
+                        poster_path: unknown;
+                        production_companies: unknown[];
+                        production_countries: unknown[];
+                        seasons: {
+                            air_date: unknown;
                             /**
                              * @default 0
                              * @example 1
@@ -15551,23 +15551,23 @@ export interface operations {
                              */
                             id: number;
                             /** @example Season 1 */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            overview?: string;
-                            poster_path?: unknown;
+                            overview: string;
+                            poster_path: unknown;
                             /**
                              * @default 0
                              * @example 1
                              */
                             season_number: number;
                         }[];
-                        spoken_languages?: unknown[];
+                        spoken_languages: unknown[];
                         /** @example Returning Series */
-                        status?: string;
+                        status: string;
                         /** @example  */
-                        tagline?: string;
+                        tagline: string;
                         /** @example Scripted */
-                        type?: string;
+                        type: string;
                         /**
                          * @default 0
                          * @example 0
@@ -15614,9 +15614,9 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example  */
-                            description?: string;
+                            description: string;
                             /**
                              * @default 0
                              * @example 0
@@ -15633,12 +15633,12 @@ export interface operations {
                              */
                             item_count: number;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Done */
-                            name?: string;
-                            poster_path?: unknown;
+                            name: string;
+                            poster_path: unknown;
                         }[];
                         /**
                          * @default 0
@@ -15681,39 +15681,39 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /bsNm9z2TJfe0WO3RedPGWQ8mG1X.jpg */
-                            backdrop_path?: string;
+                            backdrop_path: string;
                             /**
                              * @default 0
                              * @example 1396
                              */
                             id: number;
                             /** @example Breaking Bad */
-                            name?: string;
+                            name: string;
                             /** @example en */
-                            original_language?: string;
+                            original_language: string;
                             /** @example Breaking Bad */
-                            original_name?: string;
+                            original_name: string;
                             /** @example When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime. */
-                            overview?: string;
+                            overview: string;
                             /** @example /ggFHVNu6YYI5L9pCfOacjizRGt.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example tv */
-                            media_type?: string;
-                            genre_ids?: number[];
+                            media_type: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 292.904
                              */
                             popularity: number;
                             /** @example 2008-01-20 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /**
                              * @default 0
                              * @example 8.878
@@ -15724,7 +15724,7 @@ export interface operations {
                              * @example 11544
                              */
                             vote_count: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                         }[];
                         /**
                          * @default 0
@@ -15772,16 +15772,16 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /** @example lmao7 */
-                            author?: string;
-                            author_details?: {
+                            author: string;
+                            author_details: {
                                 /** @example lmao7 */
-                                name?: string;
+                                name: string;
                                 /** @example lmao7 */
-                                username?: string;
+                                username: string;
                                 /** @example /ekmYOUU4tfx9zGGadjRdE7UPce.jpg */
-                                avatar_path?: string;
+                                avatar_path: string;
                                 /**
                                  * @default 0
                                  * @example 9
@@ -15793,15 +15793,15 @@ export interface operations {
                              *
                              *     Fantasy, action, drama, comedy, love...and lots of surprises!
                              */
-                            content?: string;
+                            content: string;
                             /** @example 2017-02-20T05:47:28.872Z */
-                            created_at?: string;
+                            created_at: string;
                             /** @example 58aa82f09251416f92006a3a */
-                            id?: string;
+                            id: string;
                             /** @example 2021-06-23T15:57:54.649Z */
-                            updated_at?: string;
+                            updated_at: string;
                             /** @example https://www.themoviedb.org/review/58aa82f09251416f92006a3a */
-                            url?: string;
+                            url: string;
                         }[];
                         /**
                          * @default 0
@@ -15841,7 +15841,7 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 1159054
@@ -15889,38 +15889,38 @@ export interface operations {
                          * @example 1
                          */
                         page: number;
-                        results?: {
+                        results: {
                             /**
                              * @default true
                              * @example false
                              */
                             adult: boolean;
                             /** @example /zcFSvWa34nDn2NcqOPuthyOIBWT.jpg */
-                            backdrop_path?: string;
-                            genre_ids?: number[];
+                            backdrop_path: string;
+                            genre_ids: number[];
                             /**
                              * @default 0
                              * @example 197063
                              */
                             id: number;
-                            origin_country?: string[];
+                            origin_country: string[];
                             /** @example ko */
-                            original_language?: string;
+                            original_language: string;
                             /** @example 종이달 */
-                            original_name?: string;
+                            original_name: string;
                             /** @example A thriller drama about Yoo I-hwa, a stay-at-home mom living her comfortable and contented life without desires, but to her husband's indifference. While working as a bank contract employee, she unexpectedly touches money from VIP clients and gradually falls into an irreversible collapse. */
-                            overview?: string;
+                            overview: string;
                             /**
                              * @default 0
                              * @example 12.299
                              */
                             popularity: number;
                             /** @example /xXWynVdMGyJXBUDvIN27AXM3iJJ.jpg */
-                            poster_path?: string;
+                            poster_path: string;
                             /** @example 2023-04-10 */
-                            first_air_date?: string;
+                            first_air_date: string;
                             /** @example Pale Moon */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 7
@@ -15970,24 +15970,24 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example SA */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example ar */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example العربية */
-                            name?: string;
+                            name: string;
                             /** @example Arabic */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /** @example صراع العروش */
-                                name?: string;
+                                name: string;
                                 /** @example تتقاتل سبع عائلات نبيلة من أجل السيطرة على أرض - ويستيروس - الأسطورية. الاحتكاك بين العوائل يؤدي إلى حرب واسعة النطاق.  في حين يستيقظ الشر القديم في أقصى الشمال. وفي خضم الحرب، نظام عسكري مهمَل - حرس الليل - هم كل ما يقف بين عالم الإنسان والأهوال الجليدية. */
-                                overview?: string;
+                                overview: string;
                                 /** @example  */
-                                homepage?: string;
+                                homepage: string;
                                 /** @example الشتاء قادم */
-                                tagline?: string;
+                                tagline: string;
                             };
                         }[];
                     };
@@ -16022,33 +16022,33 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Inside Game of Thrones: A Story in Camera Work – BTS (HBO) */
-                            name?: string;
+                            name: string;
                             /** @example y2ZJ3lTaREY */
-                            key?: string;
+                            key: string;
                             /** @example YouTube */
-                            site?: string;
+                            site: string;
                             /**
                              * @default 0
                              * @example 1080
                              */
                             size: number;
                             /** @example Behind the Scenes */
-                            type?: string;
+                            type: string;
                             /**
                              * @default true
                              * @example true
                              */
                             official: boolean;
                             /** @example 2019-03-25T14:00:06.000Z */
-                            published_at?: string;
+                            published_at: string;
                             /** @example 5c999b48c3a36863b73b9d42 */
-                            id?: string;
+                            id: string;
                         }[];
                     };
                 };
@@ -16078,20 +16078,20 @@ export interface operations {
                          * @example 1399
                          */
                         id: number;
-                        results?: {
-                            AE?: {
+                        results: {
+                            AE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -16099,19 +16099,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AR?: {
+                            AR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -16119,35 +16119,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AT?: {
+                            AT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /y0kyIFElN5sJAsmW8Txj69wzrD2.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 321
                                      */
                                     provider_id: number;
                                     /** @example Sky X */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 23
@@ -16155,35 +16155,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AU?: {
+                            AU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /d3ixI1no0EpTj2i7u0Sd2DBXVlG.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 385
                                      */
                                     provider_id: number;
                                     /** @example BINGE */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -16191,19 +16191,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BA?: {
+                            BA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -16211,19 +16211,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BB?: {
+                            BB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -16231,19 +16231,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BE?: {
+                            BE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /pq8p1umEnJjdFAP1nFvNArTR61X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 311
                                      */
                                     provider_id: number;
                                     /** @example Be TV Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16251,19 +16251,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BG?: {
+                            BG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 15
@@ -16271,19 +16271,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BO?: {
+                            BO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -16291,19 +16291,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BR?: {
+                            BR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -16311,19 +16311,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BS?: {
+                            BS: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -16331,35 +16331,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CA?: {
+                            CA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CA */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /gJ3yVMWouaVj6iHd59TISJ1TlM5.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 230
                                      */
                                     provider_id: number;
                                     /** @example Crave */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16367,35 +16367,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CH?: {
+                            CH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /sHP8XLo4Ac4WMbziRyAdRQdb76q.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 210
                                      */
                                     provider_id: number;
                                     /** @example Sky */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -16403,19 +16403,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CI?: {
+                            CI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -16423,19 +16423,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CL?: {
+                            CL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -16443,19 +16443,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CO?: {
+                            CO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -16463,19 +16463,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CR?: {
+                            CR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16483,19 +16483,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CZ?: {
+                            CZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 22
@@ -16503,35 +16503,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DE?: {
+                            DE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DE */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /MiVcYLkztM6qqLeVSYWHFCUcXx.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 30
                                      */
                                     provider_id: number;
                                     /** @example WOW */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -16539,19 +16539,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DK?: {
+                            DK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -16559,19 +16559,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DO?: {
+                            DO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -16579,19 +16579,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DZ?: {
+                            DZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -16599,19 +16599,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EC?: {
+                            EC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=EC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /cDzkhgvozSr4GW2aRdV22uDuFpw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 339
                                      */
                                     provider_id: number;
                                     /** @example Movistar Play */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16619,19 +16619,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EG?: {
+                            EG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=EG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -16639,19 +16639,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ES?: {
+                            ES: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ES */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -16659,35 +16659,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FI?: {
+                            FI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FI */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16695,35 +16695,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FR?: {
+                            FR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /loOaayvNiLnD0zKl70TO2L5vlAL.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1870
                                      */
                                     provider_id: number;
                                     /** @example Pass Warner Amazon Channel */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 95
@@ -16731,35 +16731,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GB?: {
+                            GB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /fBHHXKC34ffxAsQvDe0ZJbvmTEQ.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     provider_id: number;
                                     /** @example Sky Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16767,19 +16767,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GF?: {
+                            GF: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GF */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -16787,19 +16787,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GH?: {
+                            GH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -16807,19 +16807,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GQ?: {
+                            GQ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GQ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -16827,19 +16827,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GT?: {
+                            GT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16847,19 +16847,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HK?: {
+                            HK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 40
@@ -16867,19 +16867,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HN?: {
+                            HN: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -16887,19 +16887,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HR?: {
+                            HR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 34
@@ -16907,19 +16907,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HU?: {
+                            HU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 22
@@ -16927,19 +16927,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ID?: {
+                            ID: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ID */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 14
@@ -16947,35 +16947,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IE?: {
+                            IE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /fBHHXKC34ffxAsQvDe0ZJbvmTEQ.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     provider_id: number;
                                     /** @example Sky Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /2pCbao1J9s0DMak2KKnEzmzHni8.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 130
                                      */
                                     provider_id: number;
                                     /** @example Sky Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -16983,19 +16983,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IL?: {
+                            IL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
@@ -17003,19 +17003,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IQ?: {
+                            IQ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IQ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -17023,35 +17023,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IT?: {
+                            IT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /cksgBjTHV3rzAVaO2zUyS1mH4Ke.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 40
                                      */
                                     provider_id: number;
                                     /** @example Chili */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /fBHHXKC34ffxAsQvDe0ZJbvmTEQ.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     provider_id: number;
                                     /** @example Sky Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -17059,19 +17059,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JM?: {
+                            JM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=JM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -17079,51 +17079,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JP?: {
+                            JP: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=JP */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /npg1OiBidQSndMsBZwgEPOYU6Jq.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 84
                                      */
                                     provider_id: number;
                                     /** @example U-NEXT */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -17131,19 +17131,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            KE?: {
+                            KE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=KE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -17151,19 +17151,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            KR?: {
+                            KR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=KR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /2ioan5BX5L9tz4fIGU93blTeFhv.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 356
                                      */
                                     provider_id: number;
                                     /** @example wavve */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -17171,19 +17171,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LB?: {
+                            LB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=LB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
@@ -17191,19 +17191,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LT?: {
+                            LT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=LT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xTVM8uXT9QocigQ07LE7Irc65W2.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 553
                                      */
                                     provider_id: number;
                                     /** @example Telia Play */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 15
@@ -17211,19 +17211,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LY?: {
+                            LY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=LY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -17231,19 +17231,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MD?: {
+                            MD: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MD */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 26
@@ -17251,19 +17251,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MK?: {
+                            MK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
@@ -17271,19 +17271,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MU?: {
+                            MU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -17291,19 +17291,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MX?: {
+                            MX: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MX */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -17311,19 +17311,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MY?: {
+                            MY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 14
@@ -17331,19 +17331,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MZ?: {
+                            MZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -17351,19 +17351,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NE?: {
+                            NE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -17371,19 +17371,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NG?: {
+                            NG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -17391,35 +17391,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NL?: {
+                            NL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 47
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -17427,35 +17427,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NO?: {
+                            NO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -17463,19 +17463,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NZ?: {
+                            NZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /od4YNSSLgOP3p8EtQTnEYfrPa77.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 273
                                      */
                                     provider_id: number;
                                     /** @example Neon TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -17483,19 +17483,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PA?: {
+                            PA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -17503,19 +17503,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PE?: {
+                            PE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -17523,19 +17523,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PH?: {
+                            PH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -17543,35 +17543,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PL?: {
+                            PL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /l5Wxbsgral716BOtZsGyPVNn8GC.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 250
                                      */
                                     provider_id: number;
                                     /** @example Horizon */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /bZNXgd8fwVTD68aAGlElkpAtu7b.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 549
                                      */
                                     provider_id: number;
                                     /** @example IPLA */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 17
@@ -17579,19 +17579,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PS?: {
+                            PS: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -17599,19 +17599,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PT?: {
+                            PT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -17619,19 +17619,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PY?: {
+                            PY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -17639,19 +17639,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RO?: {
+                            RO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 17
@@ -17659,19 +17659,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RS?: {
+                            RS: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 32
@@ -17679,35 +17679,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RU?: {
+                            RU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /w1T8s7FqakcfucR8cgOvbe6UeXN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 115
                                      */
                                     provider_id: number;
                                     /** @example Okko */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
                                      */
                                     display_priority: number;
                                 }[];
-                                ads?: {
+                                ads: {
                                     /** @example /3jJtMOIwtvcrCyeRMUvv4wsfhJk.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 577
                                      */
                                     provider_id: number;
                                     /** @example TvIgle */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 22
@@ -17715,19 +17715,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SA?: {
+                            SA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /xEPXbwbfABzPrUTWbgtDFH1NOa.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -17735,19 +17735,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SC?: {
+                            SC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -17755,35 +17755,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SE?: {
+                            SE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /shq88b09gTBYC4hA7K7MUL8Q4zP.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 68
                                      */
                                     provider_id: number;
                                     /** @example Microsoft Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -17791,19 +17791,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SG?: {
+                            SG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
@@ -17811,19 +17811,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SI?: {
+                            SI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
@@ -17831,19 +17831,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SK?: {
+                            SK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 37
@@ -17851,19 +17851,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SN?: {
+                            SN: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -17871,19 +17871,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SV?: {
+                            SV: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SV */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -17891,19 +17891,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TH?: {
+                            TH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -17911,19 +17911,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TR?: {
+                            TR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /z3XAGCCbDD3KTZFvc96Ytr3XR56.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 341
                                      */
                                     provider_id: number;
                                     /** @example blutv */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
@@ -17931,19 +17931,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TT?: {
+                            TT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -17951,19 +17951,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TW?: {
+                            TW: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TW */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /bxdNcDbk1ohVeOMmM3eusAAiTLw.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 425
                                      */
                                     provider_id: number;
                                     /** @example HBO Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 40
@@ -17971,19 +17971,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TZ?: {
+                            TZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -17991,19 +17991,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            UG?: {
+                            UG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=UG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -18011,51 +18011,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            US?: {
+                            US: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=US */
-                                link?: string;
-                                free?: {
+                                link: string;
+                                free: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -18063,19 +18063,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            UY?: {
+                            UY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=UY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kV8XFGI5OLJKl72dI8DtnKplfFr.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 467
                                      */
                                     provider_id: number;
                                     /** @example DIRECTV GO */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -18083,19 +18083,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            VE?: {
+                            VE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=VE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /Ajqyt5aNxNGjmF9uOfxArGrdf3X.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 384
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -18103,19 +18103,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZA?: {
+                            ZA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ZA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -18123,19 +18123,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZM?: {
+                            ZM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ZM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /okiQZMXnqwv0aD3QDYmu5DBNLce.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -18185,7 +18185,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -18220,7 +18220,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was deleted successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -18250,30 +18250,30 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example 5256c89f19c2956ff6046d47 */
-                        _id?: string;
+                        _id: string;
                         /** @example 2011-04-17 */
-                        air_date?: string;
-                        episodes?: {
+                        air_date: string;
+                        episodes: {
                             /** @example 2011-04-17 */
-                            air_date?: string;
+                            air_date: string;
                             /**
                              * @default 0
                              * @example 1
                              */
                             episode_number: number;
                             /** @example standard */
-                            episode_type?: string;
+                            episode_type: string;
                             /**
                              * @default 0
                              * @example 63056
                              */
                             id: number;
                             /** @example Winter Is Coming */
-                            name?: string;
+                            name: string;
                             /** @example Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army. */
-                            overview?: string;
+                            overview: string;
                             /** @example 101 */
-                            production_code?: string;
+                            production_code: string;
                             /**
                              * @default 0
                              * @example 62
@@ -18290,7 +18290,7 @@ export interface operations {
                              */
                             show_id: number;
                             /** @example /9hGF3WUkBf7cSjMg0cdMDHJkByd.jpg */
-                            still_path?: string;
+                            still_path: string;
                             /**
                              * @default 0
                              * @example 8.1
@@ -18301,13 +18301,13 @@ export interface operations {
                              * @example 396
                              */
                             vote_count: number;
-                            crew?: {
+                            crew: {
                                 /** @example Directing */
-                                department?: string;
+                                department: string;
                                 /** @example Director */
-                                job?: string;
+                                job: string;
                                 /** @example 5256c8a219c2956ff6046e77 */
-                                credit_id?: string;
+                                credit_id: string;
                                 /**
                                  * @default true
                                  * @example false
@@ -18324,24 +18324,24 @@ export interface operations {
                                  */
                                 id: number;
                                 /** @example Directing */
-                                known_for_department?: string;
+                                known_for_department: string;
                                 /** @example Tim Van Patten */
-                                name?: string;
+                                name: string;
                                 /** @example Tim Van Patten */
-                                original_name?: string;
+                                original_name: string;
                                 /**
                                  * @default 0
                                  * @example 0.8004
                                  */
                                 popularity: number;
                                 /** @example /vwcARZBg4PEzOwnPsXdjRWeUVrZ.jpg */
-                                profile_path?: string;
+                                profile_path: string;
                             }[];
-                            guest_stars?: {
+                            guest_stars: {
                                 /** @example Benjen Stark */
-                                character?: string;
+                                character: string;
                                 /** @example 5256c8b919c2956ff604836a */
-                                credit_id?: string;
+                                credit_id: string;
                                 /**
                                  * @default 0
                                  * @example 61
@@ -18363,44 +18363,44 @@ export interface operations {
                                  */
                                 id: number;
                                 /** @example Acting */
-                                known_for_department?: string;
+                                known_for_department: string;
                                 /** @example Joseph Mawle */
-                                name?: string;
+                                name: string;
                                 /** @example Joseph Mawle */
-                                original_name?: string;
+                                original_name: string;
                                 /**
                                  * @default 0
                                  * @example 0.8932
                                  */
                                 popularity: number;
                                 /** @example /1Ocb9v3h54beGVoJMm4w50UQhLf.jpg */
-                                profile_path?: string;
+                                profile_path: string;
                             }[];
                         }[];
                         /** @example Season 1 */
-                        name?: string;
-                        networks?: {
+                        name: string;
+                        networks: {
                             /**
                              * @default 0
                              * @example 49
                              */
                             id: number;
                             /** @example /tuomPhY2UtuPTqqFnKMVHvSb724.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example HBO */
-                            name?: string;
+                            name: string;
                             /** @example US */
-                            origin_country?: string;
+                            origin_country: string;
                         }[];
                         /** @example Trouble is brewing in the Seven Kingdoms of Westeros. For the driven inhabitants of this visionary world, control of Westeros' Iron Throne holds the lure of great power. But in a land where the seasons can last a lifetime, winter is coming...and beyond the Great Wall that protects them, an ancient evil has returned. In Season One, the story centers on three primary areas: the Stark and the Lannister families, whose designs on controlling the throne threaten a tenuous peace; the dragon princess Daenerys, heir to the former dynasty, who waits just over the Narrow Sea with her malevolent brother Viserys; and the Great Wall--a massive barrier of ice where a forgotten danger is stirring. */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 3624
                          */
                         id: number;
                         /** @example /wgfKiqzuMrFIkU1M68DDDY8kGC1.jpg */
-                        poster_path?: string;
+                        poster_path: string;
                         /**
                          * @default 0
                          * @example 1
@@ -18443,7 +18443,7 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /**
                              * @default 0
                              * @example 63056
@@ -18454,7 +18454,7 @@ export interface operations {
                              * @example 1
                              */
                             episode_number: number;
-                            rated?: {
+                            rated: {
                                 /**
                                  * @default 0
                                  * @example 9
@@ -18488,7 +18488,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -18505,23 +18505,23 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Peter Dinklage */
-                            name?: string;
+                            name: string;
                             /** @example Peter Dinklage */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 30.6
                              */
                             popularity: number;
                             /** @example /lRsRgnksAhBRXwAB68MFjmTtLrk.jpg */
-                            profile_path?: string;
-                            roles?: {
+                            profile_path: string;
+                            roles: {
                                 /** @example 5256c8b219c2956ff6047cd8 */
-                                credit_id?: string;
+                                credit_id: string;
                                 /** @example Tyrion Lannister */
-                                character?: string;
+                                character: string;
                                 /**
                                  * @default 0
                                  * @example 10
@@ -18539,7 +18539,7 @@ export interface operations {
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
@@ -18556,22 +18556,22 @@ export interface operations {
                              */
                             id: number;
                             /** @example Art */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Gemma Jackson */
-                            name?: string;
+                            name: string;
                             /** @example Gemma Jackson */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 0.995
                              */
                             popularity: number;
-                            profile_path?: unknown;
-                            jobs?: {
+                            profile_path: unknown;
+                            jobs: {
                                 /** @example 54eee8b8c3a3686d5e005430 */
-                                credit_id?: string;
+                                credit_id: string;
                                 /** @example Production Design */
-                                job?: string;
+                                job: string;
                                 /**
                                  * @default 0
                                  * @example 10
@@ -18579,7 +18579,7 @@ export interface operations {
                                 episode_count: number;
                             }[];
                             /** @example Art */
-                            department?: string;
+                            department: string;
                             /**
                              * @default 0
                              * @example 10
@@ -18618,17 +18618,17 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        changes?: {
+                        changes: {
                             /** @example episode */
-                            key?: string;
-                            items?: {
+                            key: string;
+                            items: {
                                 /** @example 5717c8c69251414cfd00250f */
-                                id?: string;
+                                id: string;
                                 /** @example updated */
-                                action?: string;
+                                action: string;
                                 /** @example 2016-04-20 18:21:58 UTC */
-                                time?: string;
-                                value?: {
+                                time: string;
+                                value: {
                                     /**
                                      * @default 0
                                      * @example 63056
@@ -18668,7 +18668,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -18685,29 +18685,29 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Peter Dinklage */
-                            name?: string;
+                            name: string;
                             /** @example Peter Dinklage */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 30.6
                              */
                             popularity: number;
                             /** @example /lRsRgnksAhBRXwAB68MFjmTtLrk.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /** @example Tyrion Lannister */
-                            character?: string;
+                            character: string;
                             /** @example 5256c8b219c2956ff6047cd8 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /**
                              * @default true
                              * @example false
@@ -18724,23 +18724,23 @@ export interface operations {
                              */
                             id: number;
                             /** @example Production */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Frank Doelger */
-                            name?: string;
+                            name: string;
                             /** @example Frank Doelger */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 0.694
                              */
                             popularity: number;
-                            profile_path?: unknown;
+                            profile_path: unknown;
                             /** @example 5256c8c419c2956ff604867c */
-                            credit_id?: string;
+                            credit_id: string;
                             /** @example Production */
-                            department?: string;
+                            department: string;
                             /** @example Producer */
-                            job?: string;
+                            job: string;
                         }[];
                         /**
                          * @default 0
@@ -18777,17 +18777,17 @@ export interface operations {
                          */
                         id: number;
                         /** @example /m/0gmd1gd */
-                        freebase_mid?: string;
+                        freebase_mid: string;
                         /** @example /m/0gmd1gd */
-                        freebase_id?: string;
+                        freebase_id: string;
                         /**
                          * @default 0
                          * @example 364731
                          */
                         tvdb_id: number;
-                        tvrage_id?: unknown;
+                        tvrage_id: unknown;
                         /** @example Q1658029 */
-                        wikidata_id?: string;
+                        wikidata_id: string;
                     };
                 };
             };
@@ -18821,7 +18821,7 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        posters?: {
+                        posters: {
                             /**
                              * @default 0
                              * @example 0.667
@@ -18833,9 +18833,9 @@ export interface operations {
                              */
                             height: number;
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example /wgfKiqzuMrFIkU1M68DDDY8kGC1.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.514
@@ -18881,20 +18881,20 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example SA */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example ar */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example العربية */
-                            name?: string;
+                            name: string;
                             /** @example Arabic */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /** @example  */
-                                name?: string;
+                                name: string;
                                 /** @example سلسلة درامية مبنية على سلسلة روايات لـ جورج آر آر مارتن بعنوان "إيه سونغ أوف آيس أن فاير" والتي حققت مبيعات كبيرة وتتمحور حول الصراعات التي كانت تحدث في العصور الوسطى بين العائلات النبيلة للسيطرة على عرش وستيروس. */
-                                overview?: string;
+                                overview: string;
                             };
                         }[];
                     };
@@ -18930,33 +18930,33 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Game Of Thrones - Season 1 Recap - Official HBO UK */
-                            name?: string;
+                            name: string;
                             /** @example e0Y8KpQpW8c */
-                            key?: string;
+                            key: string;
                             /** @example YouTube */
-                            site?: string;
+                            site: string;
                             /**
                              * @default 0
                              * @example 1080
                              */
                             size: number;
                             /** @example Recap */
-                            type?: string;
+                            type: string;
                             /**
                              * @default true
                              * @example true
                              */
                             official: boolean;
                             /** @example 2015-05-19T16:31:23.000Z */
-                            published_at?: string;
+                            published_at: string;
                             /** @example 5ce71a920e0a265ac0cfe497 */
-                            id?: string;
+                            id: string;
                         }[];
                     };
                 };
@@ -18989,20 +18989,20 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        results?: {
-                            AD?: {
+                        results: {
+                            AD: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AD */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 24
@@ -19010,19 +19010,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AE?: {
+                            AE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -19030,19 +19030,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AG?: {
+                            AG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -19050,19 +19050,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AR?: {
+                            AR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /nr5UBW4IGKgBwmhpTMOfcvnX2vX.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 467
                                      */
                                     provider_id: number;
                                     /** @example DIRECTV GO */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 12
@@ -19070,35 +19070,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AT?: {
+                            AT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /kAZkQcIxMxTmlwdgSB05fqtymp0.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     provider_id: number;
                                     /** @example Sky Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
@@ -19106,35 +19106,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            AU?: {
+                            AU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=AU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /fejdSG7TwNQ5E0p6u7A6LVs280R.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 134
                                      */
                                     provider_id: number;
                                     /** @example Foxtel Now */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /oMYZg3cGAGp9ecKGlBgumcjDmnN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -19142,19 +19142,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BA?: {
+                            BA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -19162,19 +19162,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BB?: {
+                            BB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 23
@@ -19182,35 +19182,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BE?: {
+                            BE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BE */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 33
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /kwftIxtjuCAROIcdd53UEjzSmca.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1857
                                      */
                                     provider_id: number;
                                     /** @example Telenet */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -19218,19 +19218,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BG?: {
+                            BG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 21
@@ -19238,19 +19238,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BH?: {
+                            BH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
@@ -19258,19 +19258,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BO?: {
+                            BO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -19278,19 +19278,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BR?: {
+                            BR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -19298,19 +19298,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BS?: {
+                            BS: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 24
@@ -19318,19 +19318,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            BZ?: {
+                            BZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=BZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -19338,35 +19338,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CA?: {
+                            CA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ewOptMVIYcOadMGGJz8DJueH2bH.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 230
                                      */
                                     provider_id: number;
                                     /** @example Crave */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /oMYZg3cGAGp9ecKGlBgumcjDmnN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -19374,35 +19374,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CH?: {
+                            CH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CH */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 3
                                      */
                                     provider_id: number;
                                     /** @example Google Play Movies */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /ytApMa9fThUQUFTn696AeNBrB8f.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 210
                                      */
                                     provider_id: number;
                                     /** @example Sky */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -19410,19 +19410,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CI?: {
+                            CI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 19
@@ -19430,19 +19430,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CL?: {
+                            CL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -19450,19 +19450,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CM?: {
+                            CM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -19470,19 +19470,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CO?: {
+                            CO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -19490,19 +19490,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CR?: {
+                            CR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -19510,19 +19510,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            CZ?: {
+                            CZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=CZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /489t5n9o1KhH7voGNQkrXT7vBKV.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1939
                                      */
                                     provider_id: number;
                                     /** @example Lepsi TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 26
@@ -19530,35 +19530,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DE?: {
+                            DE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kAZkQcIxMxTmlwdgSB05fqtymp0.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 29
                                      */
                                     provider_id: number;
                                     /** @example Sky Go */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 8
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /oMYZg3cGAGp9ecKGlBgumcjDmnN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -19566,19 +19566,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DK?: {
+                            DK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 39
@@ -19586,19 +19586,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            DO?: {
+                            DO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=DO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -19606,19 +19606,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EC?: {
+                            EC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=EC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /tRNA2CRgA4XHvd7Mx9dH3sFtDVb.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 339
                                      */
                                     provider_id: number;
                                     /** @example MovistarTV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -19626,19 +19626,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            EG?: {
+                            EG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=EG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 20
@@ -19646,35 +19646,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ES?: {
+                            ES: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ES */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /f6TRLB3H4jDpFEZ0z2KWSSvu1SB.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 149
                                      */
                                     provider_id: number;
                                     /** @example Movistar Plus+ Ficción Total */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 32
@@ -19682,35 +19682,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FI?: {
+                            FI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /eglAxQEXSO13p6gNf3HKymrIu7y.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 540
                                      */
                                     provider_id: number;
                                     /** @example Elisa Viihde */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 18
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 54
@@ -19718,35 +19718,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            FR?: {
+                            FR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=FR */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /oMYZg3cGAGp9ecKGlBgumcjDmnN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 78
@@ -19754,35 +19754,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GB?: {
+                            GB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GB */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /oMYZg3cGAGp9ecKGlBgumcjDmnN.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     provider_id: number;
                                     /** @example Apple TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /g0E9h3JAeIwmdvxlT73jiEuxdNj.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 39
                                      */
                                     provider_id: number;
                                     /** @example Now TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 43
@@ -19790,19 +19790,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GG?: {
+                            GG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GG */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 84
@@ -19810,19 +19810,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GQ?: {
+                            GQ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GQ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -19830,19 +19830,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GT?: {
+                            GT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -19850,19 +19850,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            GY?: {
+                            GY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=GY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -19870,19 +19870,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HK?: {
+                            HK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 38
@@ -19890,19 +19890,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HN?: {
+                            HN: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -19910,19 +19910,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HR?: {
+                            HR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 33
@@ -19930,19 +19930,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            HU?: {
+                            HU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=HU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -19950,19 +19950,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ID?: {
+                            ID: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ID */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 39
@@ -19970,35 +19970,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IE?: {
+                            IE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /g0E9h3JAeIwmdvxlT73jiEuxdNj.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 39
                                      */
                                     provider_id: number;
                                     /** @example Now TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /6AKbY2ayaEuH4zKg2prqoVQ9iaY.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 130
                                      */
                                     provider_id: number;
                                     /** @example Sky Store */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 9
@@ -20006,19 +20006,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IN?: {
+                            IN: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kVqjgpcwvDJOhCupjcLzwwtOp52.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 2336
                                      */
                                     provider_id: number;
                                     /** @example JioHotstar */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -20026,19 +20026,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IQ?: {
+                            IQ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IQ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20046,35 +20046,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            IT?: {
+                            IT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=IT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 33
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /g0E9h3JAeIwmdvxlT73jiEuxdNj.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 39
                                      */
                                     provider_id: number;
                                     /** @example Now TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -20082,19 +20082,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JM?: {
+                            JM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=JM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 22
@@ -20102,19 +20102,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JO?: {
+                            JO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=JO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -20122,51 +20122,51 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            JP?: {
+                            JP: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=JP */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /a5T7vNaGvoeckYO6rQkHolvyYf4.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 84
                                      */
                                     provider_id: number;
                                     /** @example U-NEXT */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 2
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
                                      */
                                     display_priority: number;
                                 }[];
-                                rent?: {
+                                rent: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -20174,19 +20174,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            KE?: {
+                            KE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=KE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20194,19 +20194,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LB?: {
+                            LB: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=LB */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20214,19 +20214,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            LC?: {
+                            LC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=LC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -20234,19 +20234,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MC?: {
+                            MC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -20254,19 +20254,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MD?: {
+                            MD: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MD */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 25
@@ -20274,19 +20274,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ME?: {
+                            ME: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ME */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -20294,19 +20294,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MG?: {
+                            MG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -20314,19 +20314,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MK?: {
+                            MK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 26
@@ -20334,19 +20334,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ML?: {
+                            ML: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ML */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -20354,19 +20354,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MU?: {
+                            MU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -20374,19 +20374,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MX?: {
+                            MX: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MX */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 5
@@ -20394,19 +20394,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MY?: {
+                            MY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -20414,19 +20414,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            MZ?: {
+                            MZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=MZ */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20434,19 +20434,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NE?: {
+                            NE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 19
@@ -20454,19 +20454,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NG?: {
+                            NG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 21
@@ -20474,19 +20474,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NI?: {
+                            NI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 13
@@ -20494,35 +20494,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NL?: {
+                            NL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NL */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 34
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 48
@@ -20530,19 +20530,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NO?: {
+                            NO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /3ZigBD8WTEPcEHAvMWiJGUsv5u4.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 578
                                      */
                                     provider_id: number;
                                     /** @example Strim */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -20550,35 +20550,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            NZ?: {
+                            NZ: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=NZ */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 59
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /iscLKFDwQlr0BAgVDBcuRapLiwC.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 273
                                      */
                                     provider_id: number;
                                     /** @example Neon TV */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -20586,19 +20586,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            OM?: {
+                            OM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=OM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -20606,19 +20606,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PA?: {
+                            PA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -20626,19 +20626,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PE?: {
+                            PE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20646,19 +20646,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PH?: {
+                            PH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 32
@@ -20666,35 +20666,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PL?: {
+                            PL: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PL */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jhMNVBV2UocEGepRkr9oFPD7Gpb.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 505
                                      */
                                     provider_id: number;
                                     /** @example Player */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -20702,35 +20702,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PT?: {
+                            PT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PT */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 43
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 32
@@ -20738,19 +20738,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            PY?: {
+                            PY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=PY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
@@ -20758,19 +20758,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            QA?: {
+                            QA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=QA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -20778,19 +20778,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RO?: {
+                            RO: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RO */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 23
@@ -20798,19 +20798,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RS?: {
+                            RS: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RS */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -20818,19 +20818,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            RU?: {
+                            RU: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=RU */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /5z8dpQN27kybhn21EVLZcJPpMEo.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 115
                                      */
                                     provider_id: number;
                                     /** @example Okko */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -20838,19 +20838,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SA?: {
+                            SA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /kC6JTo59Gj6I4vJPyBAYGh0sKAE.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 629
                                      */
                                     provider_id: number;
                                     /** @example OSN+ */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 20
@@ -20858,19 +20858,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SC?: {
+                            SC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -20878,35 +20878,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SE?: {
+                            SE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SE */
-                                link?: string;
-                                buy?: {
+                                link: string;
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 39
                                      */
                                     display_priority: number;
                                 }[];
-                                flatrate?: {
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 44
@@ -20914,19 +20914,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SG?: {
+                            SG: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SG */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 31
@@ -20934,19 +20934,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SI?: {
+                            SI: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SI */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 28
@@ -20954,19 +20954,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SK?: {
+                            SK: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SK */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 37
@@ -20974,19 +20974,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SN?: {
+                            SN: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SN */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -20994,19 +20994,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            SV?: {
+                            SV: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=SV */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -21014,19 +21014,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TC?: {
+                            TC: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TC */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 10
@@ -21034,19 +21034,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TD?: {
+                            TD: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TD */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -21054,19 +21054,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TH?: {
+                            TH: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TH */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 30
@@ -21074,19 +21074,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TR?: {
+                            TR: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TR */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 29
@@ -21094,19 +21094,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TT?: {
+                            TT: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TT */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
@@ -21114,19 +21114,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            TW?: {
+                            TW: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=TW */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 38
@@ -21134,35 +21134,35 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            US?: {
+                            US: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=US */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 11
                                      */
                                     display_priority: number;
                                 }[];
-                                buy?: {
+                                buy: {
                                     /** @example /seGSXajazLMCKGB5hnRCidtjay1.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 10
                                      */
                                     provider_id: number;
                                     /** @example Amazon Video */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 6
@@ -21170,19 +21170,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            UY?: {
+                            UY: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=UY */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 3
@@ -21190,19 +21190,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            VE?: {
+                            VE: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=VE */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /jbe4gVSfRlbPTdESXhEKpornsfu.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 1899
                                      */
                                     provider_id: number;
                                     /** @example HBO Max */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 27
@@ -21210,19 +21210,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZA?: {
+                            ZA: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ZA */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 4
@@ -21230,19 +21230,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZM?: {
+                            ZM: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ZM */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 7
@@ -21250,19 +21250,19 @@ export interface operations {
                                     display_priority: number;
                                 }[];
                             };
-                            ZW?: {
+                            ZW: {
                                 /** @example https://www.themoviedb.org/tv/1399-game-of-thrones/watch?locale=ZW */
-                                link?: string;
-                                flatrate?: {
+                                link: string;
+                                flatrate: {
                                     /** @example /ilR8XFZOr3e3wETQ4ZXLjXQXrts.jpg */
-                                    logo_path?: string;
+                                    logo_path: string;
                                     /**
                                      * @default 0
                                      * @example 55
                                      */
                                     provider_id: number;
                                     /** @example ShowMax */
-                                    provider_name?: string;
+                                    provider_name: string;
                                     /**
                                      * @default 0
                                      * @example 0
@@ -21301,14 +21301,14 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example 2011-04-17 */
-                        air_date?: string;
-                        crew?: {
+                        air_date: string;
+                        crew: {
                             /** @example Directing */
-                            department?: string;
+                            department: string;
                             /** @example Director */
-                            job?: string;
+                            job: string;
                             /** @example 5256c8a219c2956ff6046e77 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default true
                              * @example false
@@ -21325,29 +21325,29 @@ export interface operations {
                              */
                             id: number;
                             /** @example Directing */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Timothy Van Patten */
-                            name?: string;
+                            name: string;
                             /** @example Timothy Van Patten */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 7.775
                              */
                             popularity: number;
                             /** @example /MzSOFrd99HRdr6pkSRSctk3kBR.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
                         /**
                          * @default 0
                          * @example 1
                          */
                         episode_number: number;
-                        guest_stars?: {
+                        guest_stars: {
                             /** @example Benjen Stark */
-                            character?: string;
+                            character: string;
                             /** @example 5256c8b919c2956ff604836a */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 62
@@ -21369,30 +21369,30 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Joseph Mawle */
-                            name?: string;
+                            name: string;
                             /** @example Joseph Mawle */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 6.758
                              */
                             popularity: number;
                             /** @example /1Ocb9v3h54beGVoJMm4w50UQhLf.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
                         /** @example Winter Is Coming */
-                        name?: string;
+                        name: string;
                         /** @example Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army. */
-                        overview?: string;
+                        overview: string;
                         /**
                          * @default 0
                          * @example 63056
                          */
                         id: number;
                         /** @example 101 */
-                        production_code?: string;
+                        production_code: string;
                         /**
                          * @default 0
                          * @example 62
@@ -21404,7 +21404,7 @@ export interface operations {
                          */
                         season_number: number;
                         /** @example /9hGF3WUkBf7cSjMg0cdMDHJkByd.jpg */
-                        still_path?: string;
+                        still_path: string;
                         /**
                          * @default 0
                          * @example 7.8
@@ -21453,7 +21453,7 @@ export interface operations {
                          * @example true
                          */
                         favorite: boolean;
-                        rated?: {
+                        rated: {
                             /**
                              * @default 0
                              * @example 9
@@ -21488,18 +21488,18 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        changes?: {
+                        changes: {
                             /** @example production_code */
-                            key?: string;
-                            items?: {
+                            key: string;
+                            items: {
                                 /** @example 54bd9ed7c3a3686c6b00da66 */
-                                id?: string;
+                                id: string;
                                 /** @example added */
-                                action?: string;
+                                action: string;
                                 /** @example 2015-01-20 00:18:31 UTC */
-                                time?: string;
+                                time: string;
                                 /** @example 101 */
-                                value?: string;
+                                value: string;
                             }[];
                         }[];
                     };
@@ -21529,7 +21529,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        cast?: {
+                        cast: {
                             /**
                              * @default true
                              * @example false
@@ -21546,35 +21546,35 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Peter Dinklage */
-                            name?: string;
+                            name: string;
                             /** @example Peter Dinklage */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 30.6
                              */
                             popularity: number;
                             /** @example /lRsRgnksAhBRXwAB68MFjmTtLrk.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                             /** @example Tyrion Lannister */
-                            character?: string;
+                            character: string;
                             /** @example 5256c8b219c2956ff6047cd8 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 0
                              */
                             order: number;
                         }[];
-                        crew?: {
+                        crew: {
                             /** @example Directing */
-                            department?: string;
+                            department: string;
                             /** @example Director */
-                            job?: string;
+                            job: string;
                             /** @example 5256c8a219c2956ff6046e77 */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default true
                              * @example false
@@ -21591,24 +21591,24 @@ export interface operations {
                              */
                             id: number;
                             /** @example Directing */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Timothy Van Patten */
-                            name?: string;
+                            name: string;
                             /** @example Timothy Van Patten */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 8.292
                              */
                             popularity: number;
                             /** @example /MzSOFrd99HRdr6pkSRSctk3kBR.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
-                        guest_stars?: {
+                        guest_stars: {
                             /** @example Benjen Stark */
-                            character?: string;
+                            character: string;
                             /** @example 5256c8b919c2956ff604836a */
-                            credit_id?: string;
+                            credit_id: string;
                             /**
                              * @default 0
                              * @example 62
@@ -21630,18 +21630,18 @@ export interface operations {
                              */
                             id: number;
                             /** @example Acting */
-                            known_for_department?: string;
+                            known_for_department: string;
                             /** @example Joseph Mawle */
-                            name?: string;
+                            name: string;
                             /** @example Joseph Mawle */
-                            original_name?: string;
+                            original_name: string;
                             /**
                              * @default 0
                              * @example 8.559
                              */
                             popularity: number;
                             /** @example /1Ocb9v3h54beGVoJMm4w50UQhLf.jpg */
-                            profile_path?: string;
+                            profile_path: string;
                         }[];
                         /**
                          * @default 0
@@ -21679,11 +21679,11 @@ export interface operations {
                          */
                         id: number;
                         /** @example tt1480055 */
-                        imdb_id?: string;
+                        imdb_id: string;
                         /** @example /m/0gmc6ph */
-                        freebase_mid?: string;
+                        freebase_mid: string;
                         /** @example /en/winter_is_coming */
-                        freebase_id?: string;
+                        freebase_id: string;
                         /**
                          * @default 0
                          * @example 3254641
@@ -21695,7 +21695,7 @@ export interface operations {
                          */
                         tvrage_id: number;
                         /** @example Q2614622 */
-                        wikidata_id?: string;
+                        wikidata_id: string;
                     };
                 };
             };
@@ -21730,7 +21730,7 @@ export interface operations {
                          * @example 63056
                          */
                         id: number;
-                        stills?: {
+                        stills: {
                             /**
                              * @default 0
                              * @example 1.778
@@ -21741,9 +21741,9 @@ export interface operations {
                              * @example 1080
                              */
                             height: number;
-                            iso_639_1?: unknown;
+                            iso_639_1: unknown;
                             /** @example /9hGF3WUkBf7cSjMg0cdMDHJkByd.jpg */
-                            file_path?: string;
+                            file_path: string;
                             /**
                              * @default 0
                              * @example 5.454
@@ -21790,20 +21790,20 @@ export interface operations {
                          * @example 63056
                          */
                         id: number;
-                        translations?: {
+                        translations: {
                             /** @example SA */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example ar */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example العربية */
-                            name?: string;
+                            name: string;
                             /** @example Arabic */
-                            english_name?: string;
-                            data?: {
+                            english_name: string;
+                            data: {
                                 /** @example  */
-                                name?: string;
+                                name: string;
                                 /** @example خلف باب واسع من الجليد في شمالي وستيروس هناك شيء يحدث. تتلقى عائلة ستارك التي من وينترفيل زيارة من العائلة المالكة، بينما يشكل أمير عائلة تارغارين المنفي تحالفاً جديداً للسيطرة على العرش من جديد. */
-                                overview?: string;
+                                overview: string;
                             };
                         }[];
                     };
@@ -21840,33 +21840,33 @@ export interface operations {
                          * @example 3624
                          */
                         id: number;
-                        results?: {
+                        results: {
                             /** @example en */
-                            iso_639_1?: string;
+                            iso_639_1: string;
                             /** @example US */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Game Of Thrones - Season 1 Recap - Official HBO UK */
-                            name?: string;
+                            name: string;
                             /** @example e0Y8KpQpW8c */
-                            key?: string;
+                            key: string;
                             /** @example YouTube */
-                            site?: string;
+                            site: string;
                             /**
                              * @default 0
                              * @example 1080
                              */
                             size: number;
                             /** @example Recap */
-                            type?: string;
+                            type: string;
                             /**
                              * @default true
                              * @example true
                              */
                             official: boolean;
                             /** @example 2015-05-19T16:31:23.000Z */
-                            published_at?: string;
+                            published_at: string;
                             /** @example 5ce71a920e0a265ac0cfe497 */
-                            id?: string;
+                            id: string;
                         }[];
                     };
                 };
@@ -21911,7 +21911,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example Success. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -21948,7 +21948,7 @@ export interface operations {
                          */
                         status_code: number;
                         /** @example The item/record was deleted successfully. */
-                        status_message?: string;
+                        status_message: string;
                     };
                 };
             };
@@ -21973,7 +21973,7 @@ export interface operations {
                 content: {
                     "application/json": {
                         /** @example Comedians in Cars organized in Netflix's collections. */
-                        description?: string;
+                        description: string;
                         /**
                          * @default 0
                          * @example 83
@@ -21984,19 +21984,19 @@ export interface operations {
                          * @example 6
                          */
                         group_count: number;
-                        groups?: {
+                        groups: {
                             /** @example 5acf93efc3a368739a0000a9 */
-                            id?: string;
+                            id: string;
                             /** @example First Cup */
-                            name?: string;
+                            name: string;
                             /**
                              * @default 0
                              * @example 1
                              */
                             order: number;
-                            episodes?: {
+                            episodes: {
                                 /** @example 2015-06-17 */
-                                air_date?: string;
+                                air_date: string;
                                 /**
                                  * @default 0
                                  * @example 3
@@ -22008,12 +22008,12 @@ export interface operations {
                                  */
                                 id: number;
                                 /** @example Jim Carrey: We Love Breathing What You're Burning, Baby */
-                                name?: string;
+                                name: string;
                                 /** @example Jerry’s full of testosterone as he steps into a ‘76 Lamborghini Countach with Jim Carrey, who’s between a three-week cleanse and a five-day silent retreat. After coffee, it’s off to Carrey’s studio to study a portrait of a gorilla with a machine gun. Wow. */
-                                overview?: string;
+                                overview: string;
                                 /** @example  */
-                                production_code?: string;
-                                runtime?: unknown;
+                                production_code: string;
+                                runtime: unknown;
                                 /**
                                  * @default 0
                                  * @example 6
@@ -22025,7 +22025,7 @@ export interface operations {
                                  */
                                 show_id: number;
                                 /** @example /aOyE420zuFq9zWtEWjIccAiTrzU.jpg */
-                                still_path?: string;
+                                still_path: string;
                                 /**
                                  * @default 0
                                  * @example 7.4
@@ -22049,21 +22049,21 @@ export interface operations {
                             locked: boolean;
                         }[];
                         /** @example 5acf93e60e0a26346d0000ce */
-                        id?: string;
+                        id: string;
                         /** @example Netflix Collections */
-                        name?: string;
-                        network?: {
+                        name: string;
+                        network: {
                             /**
                              * @default 0
                              * @example 213
                              */
                             id: number;
                             /** @example /wwemzKWzjKYJFfCeiB57q3r4Bcm.png */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example Netflix */
-                            name?: string;
+                            name: string;
                             /** @example  */
-                            origin_country?: string;
+                            origin_country: string;
                         };
                         /**
                          * @default 0
@@ -22093,13 +22093,13 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
+                        results: {
                             /** @example AD */
-                            iso_3166_1?: string;
+                            iso_3166_1: string;
                             /** @example Andorra */
-                            english_name?: string;
+                            english_name: string;
                             /** @example Andorra */
-                            native_name?: string;
+                            native_name: string;
                         }[];
                     };
                 };
@@ -22125,8 +22125,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
-                            display_priorities?: {
+                        results: {
+                            display_priorities: {
                                 /**
                                  * @default 0
                                  * @example 6
@@ -22449,9 +22449,9 @@ export interface operations {
                              */
                             display_priority: number;
                             /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example Apple TV */
-                            provider_name?: string;
+                            provider_name: string;
                             /**
                              * @default 0
                              * @example 2
@@ -22482,8 +22482,8 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        results?: {
-                            display_priorities?: {
+                        results: {
+                            display_priorities: {
                                 /**
                                  * @default 0
                                  * @example 6
@@ -22806,9 +22806,9 @@ export interface operations {
                              */
                             display_priority: number;
                             /** @example /peURlLlr8jggOwK53fJ5wdQl05y.jpg */
-                            logo_path?: string;
+                            logo_path: string;
                             /** @example Apple TV */
-                            provider_name?: string;
+                            provider_name: string;
                             /**
                              * @default 0
                              * @example 2
